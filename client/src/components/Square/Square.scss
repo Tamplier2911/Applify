@@ -1,0 +1,130 @@
+/*
+.square {
+  position: absolute;
+  perspective: 1000px;
+  // grid-area: 2 /2 / 6 / 4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  width: 10rem;
+  height: 10rem;
+
+  top: 200px;
+  left: 200px;
+
+  &__body {
+    grid-area: 1/ 1 / 4 / 4;
+    width: 10rem;
+    height: 10rem;
+    background-color: #1671d8b4;
+
+    box-shadow: 0.2rem 0.2rem 1rem #000000b0;
+
+    transition: transform 0.3s;
+  }
+
+  &__mask--1 {
+    z-index: 10;
+    grid-area: 1 / 1 / 2 / 2;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--1:hover ~ .square__body {
+    transform: rotateY(-15deg) rotateX(15deg);
+  }
+
+  &__mask--2 {
+    z-index: 10;
+    grid-area: 1 / 2 / 2 / 3;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--2:hover ~ .square__body {
+    transform: rotateX(15deg);
+  }
+
+  &__mask--3 {
+    z-index: 10;
+    grid-area: 1 / 3 / 2 / 4;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--3:hover ~ .square__body {
+    transform: rotateY(15deg) rotateX(15deg);
+  }
+
+  &__mask--4 {
+    z-index: 10;
+    grid-area: 2 / 1 / 3 / 2;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--4:hover ~ .square__body {
+    transform: rotateY(-15deg);
+  }
+
+  &__mask--5 {
+    z-index: 10;
+    grid-area: 2 / 2 / 3 / 3;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--6 {
+    z-index: 10;
+    grid-area: 2 / 3 / 3 / 4;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--6:hover ~ .square__body {
+    transform: rotateY(15deg);
+  }
+
+  &__mask--7 {
+    z-index: 10;
+    grid-area: 3 / 1 / 4 / 2;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--7:hover ~ .square__body {
+    transform: rotateY(-15deg) rotateX(-15deg);
+  }
+
+  &__mask--8 {
+    z-index: 10;
+    grid-area: 3 / 2 / 4 / 3;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--8:hover ~ .square__body {
+    transform: rotateX(-15deg);
+  }
+
+  &__mask--9 {
+    z-index: 10;
+    grid-area: 3 / 3 / 4 / 4;
+
+    width: calc(10rem / 3);
+    height: calc(10rem / 3);
+  }
+
+  &__mask--9:hover ~ .square__body {
+    transform: rotateY(15deg) rotateX(-15deg);
+  }
+}
+*/
