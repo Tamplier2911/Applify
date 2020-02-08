@@ -163,18 +163,30 @@ export const SquareBody = styled.div`
   grid-area: 1/ 1 / 4 / 4;
   transition: transform 0.5s;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cl-white);
+  font-size: 1.8rem;
+  font-family: var(--font-title);
+  font-weight: 400;
+
   ${getSizeColorAndShadow}
 
   @media only screen and (max-width: 980px) {
     ${getSizeColorAndShadowTablet}
+    font-size: 1.6rem;
   }
 
   @media only screen and (max-width: 720px) {
     ${getSizeColorAndShadowPhone}
+    font-size: 1.5rem;
   }
 
   @media only screen and (max-width: 540px) {
     ${getSizeColorAndShadowPhoneS}
+    white-space: nowrap;
+    font-size: 1rem;
   }
 
   @media only screen and (max-width: 300px) {
@@ -204,7 +216,7 @@ export const SquareMaskOne = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateY(-25deg) rotateX(25deg);
+    transform: rotateY(-20deg) rotateX(20deg);
   }
 `;
 
@@ -230,7 +242,7 @@ export const SquareMaskTwo = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateX(25deg);
+    transform: rotateX(20deg);
   }
 `;
 
@@ -256,7 +268,7 @@ export const SquareMaskThree = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateY(25deg) rotateX(25deg);
+    transform: rotateY(20deg) rotateX(20deg);
   }
 `;
 
@@ -282,7 +294,7 @@ export const SquareMaskFour = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateY(-25deg);
+    transform: rotateY(-20deg);
   }
 `;
 
@@ -330,7 +342,7 @@ export const SquareMaskSix = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateY(25deg);
+    transform: rotateY(20deg);
   }
 `;
 
@@ -356,7 +368,7 @@ export const SquareMaskSeven = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateY(-25deg) rotateX(-25deg);
+    transform: rotateY(-20deg) rotateX(-20deg);
   }
 `;
 
@@ -382,7 +394,7 @@ export const SquareMaskEight = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateX(-25deg);
+    transform: rotateX(-20deg);
   }
 `;
 
@@ -408,6 +420,6 @@ export const SquareMaskNine = styled.div`
   }
 
   &:hover ~ ${SquareBody} {
-    transform: rotateY(25deg) rotateX(-25deg);
+    transform: rotateY(20deg) rotateX(-20deg);
   }
 `;

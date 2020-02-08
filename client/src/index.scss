@@ -7,14 +7,26 @@
   --cl-black: #000;
   --cl-white: #fff;
   --cl-grey: #a1a1a1;
-  --cl-font: #333;
-  // --cl-primary: #2f66cc;
+
+  --cl-font: #002a38;
   --cl-primary: #3876e9;
 
-  --cl-shadow: #00000031;
+  --cl-shadow: #00000069;
 
-  --cl-scroll-bg: #2834930c;
-  --cl-scroll-shadow: #0000004d;
+  --cl-scrollbar-bg: #2834930c;
+  --cl-scroll-shadow: rgba(0, 0, 0, 0.158);
+  --cl-scrollThumb-bg1: #fff;
+  --cl-scrollThumb-bg2: #c4c4c4;
+
+  --cl-header: #ffffffec;
+
+  --cl-tiles-1: #00a8a9;
+  --cl-tiles-2: #002a38;
+  --cl-tiles-3: #fed595;
+  --cl-tiles-4: #fe3f2d;
+  --cl-tiles-5: #ffaa2d;
+  --cl-tiles-6: #c0c1c3;
+  --cl-tiles-7: #d6d7d9;
 
   // BREAKPOINTS
   --bp-tablet: 48em;
@@ -71,8 +83,8 @@ body {
   &::-webkit-scrollbar-thumb {
     background-image: linear-gradient(
       to bottom,
-      var(--cl-primary),
-      var(--cl-black)
+      var(--cl-scrollThumb-bg1),
+      var(--cl-scrollThumb-bg2)
     );
     border-radius: 5rem;
   }

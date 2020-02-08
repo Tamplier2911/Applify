@@ -15,9 +15,8 @@ import {
   SquareMaskNine
 } from "./SquareStyles";
 
-const Square = ({ options }) => {
+const Square = ({ options, text }) => {
   const properties = { ...options, id: null };
-  console.log(properties);
   return (
     <SquareContainer {...properties}>
       <SquareMaskOne {...properties} />
@@ -29,7 +28,7 @@ const Square = ({ options }) => {
       <SquareMaskSeven {...properties} />
       <SquareMaskEight {...properties} />
       <SquareMaskNine {...properties} />
-      <SquareBody {...properties} />
+      <SquareBody {...properties}>{text ? text : null}</SquareBody>
     </SquareContainer>
   );
 };

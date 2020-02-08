@@ -4,7 +4,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 10,
-    posY: 20,
+    posY: 24,
     shadow: true,
     color: "#fe3f2d"
   },
@@ -13,7 +13,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 30,
-    posY: 30,
+    posY: 34,
     shadow: true,
     color: "#ffaa2d"
   },
@@ -22,7 +22,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 20,
-    posY: 30,
+    posY: 34,
     shadow: true,
     color: "#00a8a9"
   },
@@ -31,7 +31,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 30,
-    posY: 10,
+    posY: 14,
     shadow: true,
     color: "#fe3f2d"
   },
@@ -40,7 +40,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 40,
-    posY: 30,
+    posY: 34,
     shadow: true,
     color: "#fed595"
   },
@@ -58,7 +58,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 20,
-    posY: 20,
+    posY: 24,
     shadow: true,
     color: "#ffaa2d"
   },
@@ -76,7 +76,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 50,
-    posY: 0,
+    posY: 4,
     shadow: true,
     color: "#002a38"
   },
@@ -85,7 +85,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 40,
-    posY: 10,
+    posY: 14,
     shadow: true,
     color: "#00a8a9"
   },
@@ -94,7 +94,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 10,
-    posY: 50,
+    posY: 54,
     shadow: true,
     color: "#fed595"
   },
@@ -103,7 +103,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 30,
-    posY: 20,
+    posY: 24,
     shadow: true,
     color: "#002a38"
   },
@@ -112,7 +112,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 20,
-    posY: 40,
+    posY: 44,
     shadow: true,
     color: "#fe3f2d"
   },
@@ -121,7 +121,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 10,
-    posY: 40,
+    posY: 44,
     shadow: true,
     color: "#ffaa2d"
   },
@@ -130,7 +130,7 @@ export const squares = [
     width: 10,
     height: 10,
     posX: 40,
-    posY: 0,
+    posY: 4,
     shadow: true,
     color: "#fed595"
   },
@@ -207,3 +207,13 @@ export const squares = [
     color: "#d6d7d9"
   }
 ];
+
+export const ctaOptions = {
+  id: 24,
+  width: 20,
+  height: 7,
+  posX: 60,
+  posY: 50,
+  shadow: true,
+  color: "#002a38"
+};
