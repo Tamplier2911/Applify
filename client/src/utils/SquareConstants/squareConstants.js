@@ -210,9 +210,9 @@ export const squares = [
 
 export const ctaOptions = {
   id: 24,
-  width: 20,
+  width: 30,
   height: 7,
-  posX: 60,
+  posX: 50,
   posY: 50,
   shadow: true,
   color: "#002a38"

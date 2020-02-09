@@ -27,7 +27,7 @@ const App = () => {
           {squares.map(obj => {
             return <Square key={obj.id} options={obj} />;
           })}
-          <div>
+          <div className="CTA_active">
             <Link to="/">
               <Square options={ctaOptions} text={"Get Started"} />
             </Link>
@@ -35,6 +35,9 @@ const App = () => {
           <div className="main__hero--heading">
             <h1>Artem Nikolaiev</h1>
             <h3>Creative web solutions for your business...</h3>
+            <Link to="/" className="CTA_passive">
+              Get Started
+            </Link>
           </div>
         </div>
         <div>Hello, portfolio!</div>
