@@ -205,11 +205,47 @@ export const squares = [
     posY: 50,
     shadow: true,
     color: "#d6d7d9"
+  },
+  {
+    id: 25,
+    width: 4,
+    height: 4,
+    posX: 2,
+    posY: 40,
+    shadow: true,
+    color: "#ffaa2d"
+  },
+  {
+    id: 26,
+    width: 4,
+    height: 4,
+    posX: 110,
+    posY: 15,
+    shadow: true,
+    color: "#fed595"
+  },
+  {
+    id: 27,
+    width: 4,
+    height: 4,
+    posX: 0,
+    posY: 54,
+    shadow: true,
+    color: "#fe3f2d"
+  },
+  {
+    id: 28,
+    width: 4,
+    height: 4,
+    posX: 90,
+    posY: 5,
+    shadow: true,
+    color: "#00a8a9"
   }
 ];
 
 export const ctaOptions = {
-  id: 24,
+  id: 30,
   width: 30,
   height: 7,
   posX: 50,

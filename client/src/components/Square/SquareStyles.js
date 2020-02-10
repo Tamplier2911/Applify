@@ -33,21 +33,17 @@ const calcWidthAndHeightTablet = props => {
   `;
 };
 
-const calcWidthAndHeightPhone = props => {
-  const { width, height } = props;
-  return `
-        width: calc(${width / 2}rem / 3);
-        height: calc(${height / 2}rem / 3);
-  `;
-};
-
 const getSizeColorAndShadow = props => {
   const { width, height, color, shadow } = props;
   return `
         width: ${width}rem;
         height: ${height}rem;
         background-color: ${color};
-        box-shadow: ${shadow ? "0.2rem 0.2rem 1rem #000000b0;" : `0 0 0 #fff;`}
+        box-shadow: ${
+          shadow
+            ? "0.2rem 0.2rem 1rem var(--cl-square-shadow);"
+            : `0 0 0 var(--cl-white);`
+        }
     `;
 };
 
@@ -57,18 +53,10 @@ const getSizeColorAndShadowTablet = props => {
         width: ${width / 1.5}rem;
         height: ${height / 1.5}rem;
         background-color: ${color};
-        box-shadow: ${shadow ? "0.2rem 0.2rem 1rem #000000b0;" : `0 0 0 #fff;`}
-    `;
-};
-
-const getSizeColorAndShadowPhone = props => {
-  const { width, height, color, shadow } = props;
-  return `
-        width: ${width / 2}rem;
-        height: ${height / 2}rem;
-        background-color: ${color};
         box-shadow: ${
-          shadow ? "0.1rem 0.1rem 0.5rem #000000b0;" : `0 0 0 #fff;`
+          shadow
+            ? "0.2rem 0.2rem 1rem var(--cl-square-shadow);"
+            : `0 0 0 var(--cl-white);`
         }
     `;
 };
@@ -93,16 +81,6 @@ const getSizeAndPositionTablet = props => {
     `;
 };
 
-const getSizeAndPositionPhone = props => {
-  const { width, height, posX, posY } = props;
-  return `
-        width: ${width / 2}rem;
-        height: ${height / 2}rem;
-        left: ${posX / 2}rem;
-        top: ${posY / 2}rem;
-    `;
-};
-
 export const SquareContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -117,10 +95,6 @@ export const SquareContainer = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${getSizeAndPositionPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -145,11 +119,6 @@ export const SquareBody = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${getSizeColorAndShadowPhone}
-    font-size: 1.5rem;
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -164,10 +133,6 @@ export const SquareMaskOne = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
@@ -186,10 +151,6 @@ export const SquareMaskTwo = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
@@ -208,10 +169,6 @@ export const SquareMaskThree = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
@@ -230,10 +187,6 @@ export const SquareMaskFour = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
@@ -252,10 +205,6 @@ export const SquareMaskFive = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -270,10 +219,6 @@ export const SquareMaskSix = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
@@ -292,10 +237,6 @@ export const SquareMaskSeven = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
@@ -314,10 +255,6 @@ export const SquareMaskEight = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
@@ -336,10 +273,6 @@ export const SquareMaskNine = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
-    ${calcWidthAndHeightPhone}
-  }
-
-  @media only screen and (max-width: 540px) {
     display: none;
   }
 
