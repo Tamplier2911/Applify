@@ -10,6 +10,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 import Hero from "./components/Hero/Hero";
+import Projects from "./components/Projects/Projects";
 
 // pages
 
@@ -23,7 +24,10 @@ const App = () => {
 
       <main className="main">
         <Hero />
-        <div>Hello, portfolio!</div>
+
+        <Projects />
+
+        <div>Test</div>
       </main>
 
       <Footer />

@@ -6,6 +6,7 @@ import {
   FooterContainer,
   FooterContent,
   FooterSVGContainer,
+  FooterLink,
   FacebookSVG,
   GitHubSVG,
   LinkedInSVG,
@@ -17,12 +18,30 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSVGContainer>
-          <FacebookSVG />
-          <GitHubSVG />
-          <LinkedInSVG />
+          <FooterLink
+            href="https://www.facebook.com/artyom.nikolayev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FacebookSVG />
+          </FooterLink>
+          <FooterLink
+            href="https://github.com/Tamplier2911"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHubSVG />
+          </FooterLink>
+          <FooterLink
+            href="https://github.com/Tamplier2911"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedInSVG />
+          </FooterLink>
         </FooterSVGContainer>
         <FooterTextContainer>
-          Originally designed and developed by Artem Nikolaiev &copy;
+          Originally designed and developed by Artem Nikolaiev &copy; 2020
         </FooterTextContainer>
       </FooterContent>
     </FooterContainer>

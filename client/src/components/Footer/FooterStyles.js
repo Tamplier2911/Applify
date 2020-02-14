@@ -11,6 +11,11 @@ const SVGCSS = css`
   transition: fill 0.3s;
   //   box-shadow: 0 0.1rem 0.4rem #000;
 
+  @media only screen and (max-width: 540px) {
+    width: 5rem;
+    height: 5rem;
+  }
+
   &:hover {
     fill: var(--cl-tiles-2);
   }
@@ -55,6 +60,11 @@ export const FooterSVGContainer = styled.div`
     justify-content: center;
     grid-column-gap: 4rem;
   }
+`;
+
+export const FooterLink = styled.a`
+  display: grid;
+  align-items: center;
 `;
 
 export const FacebookSVG = styled(Facebook)`

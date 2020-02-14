@@ -35,7 +35,7 @@ const Hero = () => {
           <HeroHeader>Artem Nikolaiev</HeroHeader>
           <HeroText>Creative web solutions for your business...</HeroText>
         </HeroTextbox>
-        <HeroPassiveCTA>Get Started</HeroPassiveCTA>
+        <HeroPassiveCTA to="/">Get Started</HeroPassiveCTA>
       </HeroContent>
     </HeroContainer>
   );
