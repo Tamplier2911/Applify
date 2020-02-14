@@ -12,6 +12,8 @@ import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 import Projects from "./components/Projects/Projects";
 
+import Navigator from "./components/Navigator/Navigator";
+
 // pages
 
 // JS rendering CSS
@@ -26,6 +28,8 @@ const App = () => {
         <Hero />
 
         <Projects />
+
+        <Navigator />
 
         <div>Test</div>
       </main>

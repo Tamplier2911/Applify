@@ -1,0 +1,54 @@
+.navi {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+
+  position: fixed;
+  width: 10rem;
+  height: 10rem;
+  bottom: 6rem;
+  right: 6rem;
+
+  transform-origin: center;
+  transition: transform 0.3s;
+
+  &:hover {
+    // transform: scale(1.05);
+    transform: rotate(50deg);
+  }
+
+  //   transform: scale(1.05) rotate(50deg);
+}
+
+.navigator {
+  grid-area: 1 / 2 / 3 / 4;
+  background-color: slateblue;
+
+  &__s1 {
+    grid-area: 1 / 1 / 2 / 2;
+    background-color: springgreen;
+  }
+
+  &__s2 {
+    grid-area: 2 / 1 / 3 / 2;
+    background-color: tan;
+  }
+
+  &__s3 {
+    grid-area: 3 / 1 / 4 / 2;
+    background-color: thistle;
+  }
+
+  &__s4 {
+    grid-area: 3 / 2 / 4 / 3;
+    background-color: tomato;
+  }
+
+  &__s5 {
+    grid-area: 3 / 3 / 4 / 4;
+    background-color: yellowgreen;
+  }
+}

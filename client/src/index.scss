@@ -31,6 +31,13 @@
   --cl-tiles-6: #c0c1c3;
   --cl-tiles-7: #d6d7d9;
 
+  --cl-circle-0: #000;
+  --cl-cirlce-1: #55c57a;
+  --cl-circle-2: #dd4f4f;
+  --cl-circle-3: #000;
+  --cl-circle-hover: #002a38;
+  --cl-circle-transit: #747474;
+
   // BREAKPOINTS
   --bp-tablet: 48em;
   --bp-mobile: 26.563em;
@@ -39,6 +46,11 @@
   // 425px / 16px = 26.5625em
   // $mobile: 26.563em;
 }
+
+// Z-INDEX
+// header 20
+// projects content box 10
+// projects image container 5
 
 // BASE
 

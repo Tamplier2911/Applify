@@ -16,6 +16,17 @@ export const HeroContainer = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+  @media only screen and (max-width: 720px) {
+    @supports (-ms-ime-align: auto) {
+      background-image: linear-gradient(
+          to bottom right,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0.2)
+        ),
+        url(${bg});
+    }
+  }
 `;
 
 export const HeroActiveCTA = styled.div`

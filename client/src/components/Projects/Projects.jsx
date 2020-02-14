@@ -1,4 +1,4 @@
-import "./Projects.scss";
+// import "./Projects.scss";
 import React, { useEffect } from "react";
 
 // redux
@@ -14,17 +14,30 @@ import {
 } from "../../redux/projects/projects.actions";
 import { selectCurrentProject } from "../../redux/projects/projects.selectors";
 
-// in styled component I will just pass prop of active
-// if true - render orange bgcolor else grey
-// paragraphs will recive color to display, as well as button and
-// circles
-
-// another idea - depends on current project in state
-// either check if its id === to id 1 2 3 or 4 and add active if so
-// either add null
+// JS Rendering CSS
+import {
+  ProjectsContainer,
+  ProjecstTitle,
+  ProjectsCircles,
+  ProjectsCircleZero,
+  ProjectsCircleOne,
+  ProjectsCircleTwo,
+  ProjectsCircleThree,
+  ProjectsImageWrapper,
+  ProjectsImage,
+  ProjectsBox,
+  ProjectsContent,
+  ProjectsContentTitle,
+  ProjectsContentDesc,
+  ProjectsContentDescTitle,
+  ProjectsContentDescText,
+  ProjectsContentBottom,
+  ProjectsContentDate,
+  ProjectsContentLink
+} from "./ProjectsStyles";
 
 const Projects = ({
-  currentProject,
+  currentProject: { id, name, image, color, description, techStack, date, url },
   setCurrentProjectFirst,
   setCurrentProjectSecond,
   setCurrentProjectThird,
@@ -37,77 +50,55 @@ const Projects = ({
       setCurrentProjectNext();
     }, 15000);
     return () => clearInterval(slider);
-  }, []);
+  }, [setCurrentProjectNext]);
+
+  date = date.toLocaleString("en-us", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
 
   return (
-    <div className="projects">
-      <h2 className="projects__title">Latest projects:</h2>
-      <div className="projects__circles">
-        <div
-          onClick={setCurrentProjectFirst}
-          className={`projects__circles--1 ${
-            currentProject.id === 0 ? "bullet-active-0" : null
-          }`}
-        ></div>
-        <div
-          onClick={setCurrentProjectSecond}
-          className={`projects__circles--2 ${
-            currentProject.id === 1 ? "bullet-active-1" : null
-          }`}
-        ></div>
-        <div
-          onClick={setCurrentProjectThird}
-          className={`projects__circles--3 ${
-            currentProject.id === 2 ? "bullet-active-2" : null
-          }`}
-        ></div>
-        <div
-          onClick={setCurrentProjectFourth}
-          className={`projects__circles--4 ${
-            currentProject.id === 3 ? "bullet-active-3" : null
-          }`}
-        ></div>
-      </div>
-      <div className="projects__imageContainer">
-        <img
-          src={`${currentProject.image}`}
-          alt="Project presentation."
-          className="projects__image"
-        ></img>
-      </div>
-      <div className="projects__box">
-        <div className="projects__content">
-          <h3 className="projects__content--title">{currentProject.name}</h3>
-          <div className="projects__content--description">
-            <span style={{ color: currentProject.color }}>Description:</span>
-            <div>{currentProject.description}</div>
-          </div>
-          <div className="projects__content--description">
-            <span style={{ color: currentProject.color }}>
+    <ProjectsContainer>
+      <ProjecstTitle>Latest projects:</ProjecstTitle>
+      <ProjectsCircles>
+        <ProjectsCircleZero onClick={setCurrentProjectFirst} id={id} />
+        <ProjectsCircleOne onClick={setCurrentProjectSecond} id={id} />
+        <ProjectsCircleTwo onClick={setCurrentProjectThird} id={id} />
+        <ProjectsCircleThree onClick={setCurrentProjectFourth} id={id} />
+      </ProjectsCircles>
+      <ProjectsImageWrapper>
+        <ProjectsImage src={`${image}`} alt="Project presentation slide." />
+      </ProjectsImageWrapper>
+      <ProjectsBox>
+        <ProjectsContent>
+          <ProjectsContentTitle>{name}</ProjectsContentTitle>
+          <ProjectsContentDesc>
+            <ProjectsContentDescTitle color={color}>
+              Description:
+            </ProjectsContentDescTitle>
+            <ProjectsContentDescText>{description}</ProjectsContentDescText>
+          </ProjectsContentDesc>
+          <ProjectsContentDesc>
+            <ProjectsContentDescTitle color={color}>
               Technology Stack:
-            </span>
-            <div>{currentProject.techStack}</div>
-          </div>
-          <div className="projects__content--bottom">
-            <div className="projects__content--date">
-              {currentProject.date.toLocaleString("en-us", {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-              })}
-            </div>
-            <a
-              href={`${currentProject.url}`}
-              className={`projects__content--link bullet-active-${currentProject.id}`}
+            </ProjectsContentDescTitle>
+            <ProjectsContentDescText>{techStack}</ProjectsContentDescText>
+          </ProjectsContentDesc>
+          <ProjectsContentBottom>
+            <ProjectsContentDate>{date}</ProjectsContentDate>
+            <ProjectsContentLink
+              href={`${url}`}
+              color={color}
               target="_blank"
               rel="noopener noreferrer"
             >
               Visit
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+            </ProjectsContentLink>
+          </ProjectsContentBottom>
+        </ProjectsContent>
+      </ProjectsBox>
+    </ProjectsContainer>
   );
 };
 

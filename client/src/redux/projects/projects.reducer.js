@@ -49,7 +49,7 @@ const INITIAL_STATE = {
         "Natours - is a Traveling Experience company, which selling unforgettable trips all over the world.",
       techStack:
         "Fully fletched Express API, data is stored in NoSQL MongoDB with help elegant object modeling provided by Mongoose. App uses server-side rendering by hand of PUG template engine.",
-      date: new Date("2019-8-11"),
+      date: new Date("2019-10-18"),
       url: "https://natours-live-s.herokuapp.com/",
       active: true,
       color: "#55C57A"
@@ -62,7 +62,7 @@ const INITIAL_STATE = {
         "Clarify - is an email service, that helps you to collect feedback from people in order to improve their experience.",
       techStack:
         "Front-end of the app covered by React alongside with Redux and Redux-Sagas. Back-end handled with Express server, data persistance achieved with MongoDB and Mongoose",
-      date: new Date("2020-1-11"),
+      date: new Date("2019-10-18"),
       url: "https://clarify-s.herokuapp.com/",
       active: true,
       color: "#DD4F4F"
