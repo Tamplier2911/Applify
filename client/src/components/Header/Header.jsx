@@ -1,15 +1,31 @@
 // import "./Header.scss";
 import React from "react";
 
-// JS Rendering CSS
-import { HeaderContainer, HeaderContent } from "./HeaderStyles";
+// redux
+import { connect } from "react-redux";
+import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
 
-const Header = () => {
+// JS Rendering CSS
+import {
+  HeaderContainer,
+  HeaderContent,
+  HeaderMenu,
+  HeaderLinksWrapper,
+  HeaderLink
+} from "./HeaderStyles";
+
+const Header = ({ toggleSideNav }) => {
   return (
     <HeaderContainer>
-      <HeaderContent>header</HeaderContent>
+      <HeaderContent>
+        <HeaderLinksWrapper>
+          <HeaderLink to="/">Log In</HeaderLink> /{" "}
+          <HeaderLink to="/">Sign Up</HeaderLink>
+        </HeaderLinksWrapper>
+        <HeaderMenu onClick={toggleSideNav} />
+      </HeaderContent>
     </HeaderContainer>
   );
 };
 
-export default Header;
+export default connect(null, { toggleSideNav })(Header);

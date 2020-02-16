@@ -9,10 +9,10 @@ import { Switch, Route, Redirect, Link } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
+import Sidenav from "./components/Sidenav/Sidenav";
+
 import Hero from "./components/Hero/Hero";
 import Projects from "./components/Projects/Projects";
-
-import Navigator from "./components/Navigator/Navigator";
 
 // pages
 
@@ -23,13 +23,12 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <Sidenav />
 
       <main className="main">
         <Hero />
 
         <Projects />
-
-        <Navigator />
 
         <div>Test</div>
       </main>
