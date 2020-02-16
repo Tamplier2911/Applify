@@ -22,7 +22,7 @@
   --cl-scrollbar-bg: #2834930c;
   --cl-scroll-shadow: #00000028;
   --cl-scrollThumb-bg1: #fff;
-  --cl-scrollThumb-bg2: #c4c4c4;
+  --cl-scrollThumb-bg2: #002a38;
 
   --cl-header: #ffffffec;
 
@@ -51,6 +51,8 @@
 }
 
 // Z-INDEX
+// modal 150
+// sidenav 100
 // header 20
 // projects content box 10
 // projects image container 5
@@ -132,10 +134,6 @@ code {
     content: "";
     clear: both;
   }
-}
-
-#modal {
-  display: none;
 }
 
 /*

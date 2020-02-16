@@ -10,6 +10,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 import Sidenav from "./components/Sidenav/Sidenav";
+import Modal from "./components/Modal/Modal";
 
 import Hero from "./components/Hero/Hero";
 import Projects from "./components/Projects/Projects";
@@ -24,6 +25,7 @@ const App = () => {
     <div className="container">
       <Header />
       <Sidenav />
+      <Modal />
 
       <main className="main">
         <Hero />

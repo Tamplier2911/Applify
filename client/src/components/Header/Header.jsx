@@ -1,5 +1,5 @@
 // import "./Header.scss";
-import React from "react";
+import React, { Fragment } from "react";
 
 // redux
 import { connect } from "react-redux";
@@ -14,13 +14,22 @@ import {
   HeaderLink
 } from "./HeaderStyles";
 
+// temp logg condition
+const logged = true;
+
 const Header = ({ toggleSideNav }) => {
   return (
     <HeaderContainer>
       <HeaderContent>
         <HeaderLinksWrapper>
-          <HeaderLink to="/">Log In</HeaderLink> /{" "}
-          <HeaderLink to="/">Sign Up</HeaderLink>
+          {logged ? (
+            <HeaderLink to="/">Log Out</HeaderLink>
+          ) : (
+            <Fragment>
+              <HeaderLink to="/">Log In</HeaderLink> /{" "}
+              <HeaderLink to="/">Sign Up</HeaderLink>
+            </Fragment>
+          )}
         </HeaderLinksWrapper>
         <HeaderMenu onClick={toggleSideNav} />
       </HeaderContent>
