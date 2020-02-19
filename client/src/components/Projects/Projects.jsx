@@ -60,7 +60,7 @@ const Projects = ({
 
   return (
     <ProjectsContainer>
-      <ProjecstTitle>Latest projects:</ProjecstTitle>
+      <ProjecstTitle>Recent projects:</ProjecstTitle>
       <ProjectsCircles>
         <ProjectsCircleZero onClick={setCurrentProjectFirst} id={id} />
         <ProjectsCircleOne onClick={setCurrentProjectSecond} id={id} />

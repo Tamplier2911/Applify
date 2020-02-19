@@ -36,6 +36,8 @@ export const FooterContainer = styled.footer`
   grid-area: 3 / full-start / 4 / full-end;
   align-items: center;
   //   justify-items: center;
+
+  height: 8rem;
 `;
 
 export const FooterContent = styled.div`

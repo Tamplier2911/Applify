@@ -7,10 +7,10 @@ const circlesSharedStyle = css`
   border-radius: 50%;
   transition: background-color 0.3s;
 
-  &:hover,
-  &:active {
-    background-color: var(--cl-circle-hover);
-  }
+  // &:hover,
+  // &:active {
+  //   background-color: var(--cl-circle-hover);
+  // }
 `;
 
 const projectsAnimation = css`
@@ -31,24 +31,24 @@ const projectsAnimation = css`
 `;
 
 const getLinkColor = props => {
-  return props.color ? `${props.color};` : `var(--cl-tiles-2);`;
+  return props.color ? `${props.color}` : `var(--cl-tiles-2)`;
 };
 
 const getTitleColors = props => {
-  return props.color ? `${props.color};` : `var(--cl-tiles-2);`;
+  return props.color ? `${props.color}` : `var(--cl-tiles-2)`;
 };
 
 const getCircleColorZero = props => {
-  return props.id === 0 ? "var(--cl-circle-0);" : "var(--cl-circle-transit);";
+  return props.id === 0 ? "var(--cl-circle-0)" : "var(--cl-circle-transit)";
 };
 const getCircleColorOne = props => {
-  return props.id === 1 ? "var(--cl-cirlce-1);" : "var(--cl-circle-transit);";
+  return props.id === 1 ? "var(--cl-cirlce-1)" : "var(--cl-circle-transit)";
 };
 const getCircleColorTwo = props => {
-  return props.id === 2 ? "var(--cl-circle-2);" : "var(--cl-circle-transit);";
+  return props.id === 2 ? "var(--cl-circle-2)" : "var(--cl-circle-transit)";
 };
 const getCircleColorThree = props => {
-  return props.id === 3 ? "var(--cl-circle-3);" : "var(--cl-circle-transit);";
+  return props.id === 3 ? "var(--cl-circle-3)" : "var(--cl-circle-transit)";
 };
 
 export const ProjectsContainer = styled.div`
@@ -85,21 +85,45 @@ export const ProjectsCircles = styled.div`
 export const ProjectsCircleZero = styled.div`
   ${circlesSharedStyle}
   background-color: ${getCircleColorZero};
+
+  @media (hover: none) {
+    &:hover {
+      background-color: ${getCircleColorZero};
+    }
+  }
 `;
 
 export const ProjectsCircleOne = styled.div`
   ${circlesSharedStyle}
   background-color: ${getCircleColorOne};
+
+  @media (hover: none) {
+    &:hover {
+      background-color: ${getCircleColorOne};
+    }
+  }
 `;
 
 export const ProjectsCircleTwo = styled.div`
   ${circlesSharedStyle}
   background-color: ${getCircleColorTwo};
+
+  @media (hover: none) {
+    &:hover {
+      background-color: ${getCircleColorTwo};
+    }
+  }
 `;
 
 export const ProjectsCircleThree = styled.div`
   ${circlesSharedStyle}
   background-color: ${getCircleColorThree};
+
+  @media (hover: none) {
+    &:hover {
+      background-color: ${getCircleColorThree};
+    }
+  }
 `;
 
 export const ProjectsImageWrapper = styled.div`
@@ -190,5 +214,11 @@ export const ProjectsContentLink = styled.a`
 
   &:hover {
     background-color: var(--cl-tiles-2);
+  }
+
+  @media (hover: none) {
+    &:hover {
+      background-color: ${getLinkColor};
+    }
   }
 `;

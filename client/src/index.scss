@@ -83,6 +83,15 @@ html {
 // 100% / 16px * 9px = 1rem = 56.25% 9px
 // 100% / 16px * 8px = 1rem = 50% 8px
 
+// @media (hover: none) {
+// html *:hover {
+//   pointer-events: none;
+// }
+// html *:hover {
+//   all: unset !important;
+// }
+// }
+
 body {
   font-family: var(--font-text), -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",

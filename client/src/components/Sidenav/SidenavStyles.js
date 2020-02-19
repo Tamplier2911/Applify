@@ -60,8 +60,8 @@ const displaySidenav = props => {
         z-index: 100;
         top: 0;
         left: 0;
-        width: 300vw;
-        height: 300vh;
+        width: 400vw;
+        height: 400vh;
         background-color: var(--cl-sidenav);
   `;
   }
@@ -79,11 +79,37 @@ export const SidenavContent = styled.div`
   position: fixed;
   top: 0;
   width: 30rem;
-  height: 200vh;
+  height: 100vh;
   background-color: var(--cl-white);
   padding: 2rem;
   box-shadow: -0.1rem 0.2rem 0.4rem var(--cl-sidenav-shadow);
   animation: showSidenav 0.5s;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+    background-color: var(--cl-scroll-bg);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(
+      to bottom,
+      var(--cl-scrollThumb-bg1),
+      var(--cl-scrollThumb-bg2)
+    );
+    border-radius: 5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px var(--cl-scroll-shadow);
+    box-shadow: inset 0 0 6px var(--cl-scroll-shadow);
+  }
+
+  @media only screen and (max-width: 310px) {
+    height: 400vh;
+    grid-row-gap: 3rem;
+  }
 
   @media only screen and (max-width: 300px) {
     width: 25rem;
@@ -98,6 +124,10 @@ export const SidenavHero = styled.div`
   animation: showSidenavContent 0.6s;
 
   ${showSidenavContentAnimation}
+
+  @media only screen and (max-width: 310px) {
+    grid-row-gap: 1rem;
+  }
 `;
 
 export const SidenavHeroImgContainer = styled.div`
@@ -137,6 +167,10 @@ export const SidenavUserLinks = styled(Link)`
   margin-top: 3rem;
   font-size: 1.6rem;
   ${linkSharedStyles}
+
+  @media only screen and (max-width: 310px) {
+    margin-top: 1rem;
+  }
 `;
 
 export const SidenavNavigation = styled.nav`
@@ -152,6 +186,10 @@ export const SidenavNavigation = styled.nav`
     background-color: var(--cl-tiles-6);
     width: 100%;
     height: 0.2rem;
+
+    @media only screen and (max-width: 310px) {
+      top: -1.5rem;
+    }
   }
 
   ${showSidenavContentAnimation}

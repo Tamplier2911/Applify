@@ -78,7 +78,7 @@ const Sidenav = ({ sidenavCondition, toggleSideNav }) => {
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
-              <SidenavLink to="/" onClick={toggleSideNav}>
+              <SidenavLink to="/portfolio" onClick={toggleSideNav}>
                 Portfolio
               </SidenavLink>
             </SidenavLi>

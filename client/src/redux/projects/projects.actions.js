@@ -6,7 +6,9 @@ const {
   SET_CURRENT_PROJECT_THIRD,
   SET_CURRENT_PROJECT_FOURTH,
   SET_CURRENT_PROJECT_NEXT,
-  SET_CURRENT_PROJECT_PREV
+  SET_CURRENT_PROJECT_PREV,
+  SET_CURRENT_IMAGE_NEXT,
+  SET_CURRENT_IMAGE_PREV
 } = projectsTypes;
 
 export const setCurrentProjectFirst = () => ({
@@ -31,4 +33,12 @@ export const setCurrentProjectNext = () => ({
 
 export const setCurrentProjectPrev = () => ({
   type: SET_CURRENT_PROJECT_PREV
+});
+
+export const setCurrentImageNext = () => ({
+  type: SET_CURRENT_IMAGE_NEXT
+});
+
+export const setCurrentImagePrev = () => ({
+  type: SET_CURRENT_IMAGE_PREV
 });

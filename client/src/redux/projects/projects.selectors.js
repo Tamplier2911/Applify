@@ -11,3 +11,13 @@ export const selectCurrentProject = createSelector(
   [selectProjects],
   projects => projects.currentProject
 );
+
+export const selectAllImages = createSelector(
+  [selectProjects],
+  projects => projects.allImages
+);
+
+export const selectCurrentImage = createSelector(
+  [selectProjects],
+  projects => projects.currentImage
+);
