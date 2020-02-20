@@ -6,14 +6,14 @@ import Projects from "../../components/Projects/Projects";
 import ProjectsGallery from "../../components/ProjectsGallery/ProjectsGallery";
 
 // JS Rendering CSS
-import {} from "./PortfolioPageStyles";
+import { PortfolioPageContainer } from "./PortfolioPageStyles";
 
 const PortfolioPage = () => {
   return (
-    <div className="portfolioPage">
+    <PortfolioPageContainer>
       <Projects />
       <ProjectsGallery />
-    </div>
+    </PortfolioPageContainer>
   );
 };
 

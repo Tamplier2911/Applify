@@ -3,59 +3,13 @@ import React from "react";
 
 // components
 import Hero from "../../components/Hero/Hero";
-import Projects from "../../components/Projects/Projects";
+import HomeCards from "../../components/HomeCards/HomeCards";
 
 const HomePage = () => {
   return (
     <div className="homePage">
       <Hero />
-      <Projects />
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
+      <HomeCards />
       <div>Home Page</div>
     </div>
   );

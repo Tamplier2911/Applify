@@ -1,3 +1,4 @@
+/*
 .portfolioPage {
   display: grid;
   grid-row-gap: 15rem;
@@ -22,4 +23,13 @@
   //   margin-top: 2rem;
   //   grid-template-rows: 80vh 1fr;
   // }
+
+  @media only screen and (max-width: 768px) {
+    grid-row-gap: 8rem;
+  }
+
+  @media only screen and (max-width: 425px) {
+    grid-row-gap: 5rem;
+  }
 }
+*/

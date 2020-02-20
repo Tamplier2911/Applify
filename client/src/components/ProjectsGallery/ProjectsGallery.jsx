@@ -1,4 +1,4 @@
-import "./ProjectsGallery.scss";
+// import "./ProjectsGallery.scss";
 import React from "react";
 
 // redux
@@ -10,8 +10,17 @@ import {
   setCurrentImagePrev
 } from "../../redux/projects/projects.actions";
 
-import { ReactComponent as ChevronLeftSVG } from "../../assets/svg/chevron-left.svg";
-import { ReactComponent as ChevronRightSVG } from "../../assets/svg/chevron-right.svg";
+// JS Rendering CSS
+import {
+  ProjectsGalleryContainer,
+  ProjectsGalleryTitle,
+  ProjectsGalleryComposition,
+  ProjectsGalleryArrow,
+  ProjectsGalleryArrowLeftSVG,
+  ProjectsGalleryArrowRightSVG,
+  ProjectsGalleryImageContainer,
+  ProjectsGalleryImage
+} from "./ProjectsGalleryStyles";
 
 const ProjectsGallery = ({
   currentImage,
@@ -20,30 +29,23 @@ const ProjectsGallery = ({
 }) => {
   const { image } = currentImage;
   return (
-    <div className="projectsGallery">
-      <div className="projectsGallery__header">Projects gallery:</div>
-      <div className="projectsGallery__gallery">
-        <div
-          className="projectsGallery__arrow-left"
-          onClick={setCurrentImagePrev}
-        >
-          <ChevronLeftSVG className="projectsGallery__arrow-svg" />
-        </div>
-        <div className="projectsGallery__imgContainer">
-          <img
-            className="projectsGallery__img"
+    <ProjectsGalleryContainer>
+      <ProjectsGalleryTitle>Projects gallery:</ProjectsGalleryTitle>
+      <ProjectsGalleryComposition>
+        <ProjectsGalleryArrow onClick={setCurrentImagePrev}>
+          <ProjectsGalleryArrowLeftSVG />
+        </ProjectsGalleryArrow>
+        <ProjectsGalleryImageContainer>
+          <ProjectsGalleryImage
             src={image}
-            alt="project overview"
-          ></img>
-        </div>
-        <div
-          className="projectsGallery__arrow-right"
-          onClick={setCurrentImageNext}
-        >
-          <ChevronRightSVG className="projectsGallery__arrow-svg" />
-        </div>
-      </div>
-    </div>
+            alt="project gallery overview"
+          ></ProjectsGalleryImage>
+        </ProjectsGalleryImageContainer>
+        <ProjectsGalleryArrow onClick={setCurrentImageNext}>
+          <ProjectsGalleryArrowRightSVG />
+        </ProjectsGalleryArrow>
+      </ProjectsGalleryComposition>
+    </ProjectsGalleryContainer>
   );
 };
 

@@ -161,7 +161,6 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
       if (state.currentImage.id === 109) {
         return { ...state, currentImage: state.allImages[0] };
       }
-      console.log(state.currentImage);
       return {
         ...state,
         currentImage: state.allImages[state.currentImage.id - 100 + 1]
@@ -170,7 +169,6 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
       if (state.currentImage.id === 100) {
         return { ...state, currentImage: state.allImages[9] };
       }
-      console.log(state.currentImage);
       return {
         ...state,
         currentImage: state.allImages[state.currentImage.id - 100 - 1]
