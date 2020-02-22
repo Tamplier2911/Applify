@@ -10,7 +10,7 @@ const HomePage = () => {
     <div className="homePage">
       <Hero />
       <HomeCards />
-      <div>Home Page</div>
+      <div></div>
     </div>
   );
 };
