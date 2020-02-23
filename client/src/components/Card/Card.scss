@@ -1,0 +1,125 @@
+/*
+.home-cards__card {
+  display: grid;
+  grid-template-rows: 4fr 4fr 1fr;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  min-height: 40rem;
+
+  box-shadow: 0rem 0.1rem 1rem var(--cl-card-shadow);
+  transition: box-shadow 0.3s;
+
+  animation: cardFadeIn1 2s;
+
+  &:hover {
+    box-shadow: 0rem 0.1rem 1rem var(--cl-card-shadow-hover);
+  }
+
+  &:hover .home-cards__card--icon {
+    transform: scale(1.4) translateX(-35%);
+  }
+
+  &--icon {
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    background-color: #fff;
+    border-radius: 50%;
+
+    top: 13.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    transition: transform 0.3s;
+  }
+
+  &--image {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    display: block;
+    object-fit: cover;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--content {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-auto-rows: min-content;
+    justify-items: center;
+    align-content: center;
+    background-color: #fff;
+  }
+
+  &--title {
+  }
+
+  &--text {
+  }
+}
+
+@keyframes cardFadeIn1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cardFadeIn2 {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cardFadeIn3 {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cardFadeIn4 {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card-201 {
+}
+.card-202 {
+}
+.card-203 {
+}
+.card-204 {
+  @media only screen and (max-width: 1149px) {
+    grid-column: 1 / -1;
+  }
+
+  @media only screen and (max-width: 864px) {
+    grid-column: auto;
+  }
+}
+*/

@@ -33,3 +33,5 @@ export const PortfolioPageContainer = styled.section`
     grid-row-gap: 5rem;
   }
 `;
+
+export const PortfolioPagePlaceholder = styled.div``;
