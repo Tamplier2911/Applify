@@ -27,7 +27,8 @@ const ProjectsGallery = ({
   setCurrentImageNext,
   setCurrentImagePrev
 }) => {
-  const { image } = currentImage;
+  const { image, id } = currentImage;
+  console.log("re-rendered", id);
   return (
     <ProjectsGalleryContainer>
       <ProjectsGalleryTitle>Projects gallery:</ProjectsGalleryTitle>
@@ -35,12 +36,14 @@ const ProjectsGallery = ({
         <ProjectsGalleryArrow onClick={setCurrentImagePrev}>
           <ProjectsGalleryArrowLeftSVG />
         </ProjectsGalleryArrow>
-        <ProjectsGalleryImageContainer>
+
+        <ProjectsGalleryImageContainer style={{ animation: "2s imageFadein" }}>
           <ProjectsGalleryImage
             src={image}
             alt="project gallery overview"
           ></ProjectsGalleryImage>
         </ProjectsGalleryImageContainer>
+
         <ProjectsGalleryArrow onClick={setCurrentImageNext}>
           <ProjectsGalleryArrowRightSVG />
         </ProjectsGalleryArrow>

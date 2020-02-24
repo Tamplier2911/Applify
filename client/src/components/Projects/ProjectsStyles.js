@@ -213,7 +213,7 @@ export const ProjectsContentLink = styled.a`
   transition: 0.3s background-color;
 
   &:hover {
-    background-color: var(--cl-tiles-2);
+    background-color: var(--cl-tiles-1);
   }
 
   @media (hover: none) {

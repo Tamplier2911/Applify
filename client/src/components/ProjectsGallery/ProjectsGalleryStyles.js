@@ -3,6 +3,17 @@ import styled, { css } from "styled-components";
 import { ReactComponent as ChevronLeftSVG } from "../../assets/svg/chevron-left.svg";
 import { ReactComponent as ChevronRightSVG } from "../../assets/svg/chevron-right.svg";
 
+const ImageAnimation = css`
+  @keyframes imageFadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
 const ArrowStyles = css`
   align-self: center;
 `;
@@ -100,6 +111,8 @@ export const ProjectsGalleryArrowRightSVG = styled(ChevronRightSVG)`
 `;
 
 export const ProjectsGalleryImageContainer = styled.div`
+  ${ImageAnimation}
+
   box-shadow: 0 0.2rem 1rem var(--cl-square-shadow);
 `;
 

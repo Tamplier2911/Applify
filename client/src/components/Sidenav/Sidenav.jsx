@@ -73,7 +73,7 @@ const Sidenav = ({ sidenavCondition, toggleSideNav }) => {
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
-              <SidenavLink to="/" onClick={toggleSideNav}>
+              <SidenavLink to="/resume" onClick={toggleSideNav}>
                 Resume
               </SidenavLink>
             </SidenavLi>
@@ -83,17 +83,17 @@ const Sidenav = ({ sidenavCondition, toggleSideNav }) => {
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
-              <SidenavLink to="/" onClick={toggleSideNav}>
+              <SidenavLink to="/contacts" onClick={toggleSideNav}>
                 Contacts
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
-              <SidenavLink to="/" onClick={toggleSideNav}>
+              <SidenavLink to="/feedback" onClick={toggleSideNav}>
                 Feedback
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
-              <SidenavLink to="/" onClick={toggleSideNav}>
+              <SidenavLink to="/blog" onClick={toggleSideNav}>
                 Blog
               </SidenavLink>
             </SidenavLi>

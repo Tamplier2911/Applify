@@ -38,7 +38,7 @@ const cards = [
   {
     id: 204,
     gradient: ["rgb(60, 165, 92)", "rgb(182, 173, 73)"],
-    title: "1 week warranty",
+    title: "One Week Warranty",
     text: "Free adjustments",
     svg: IconShieldSVG
   }

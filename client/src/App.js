@@ -16,6 +16,7 @@ import Modal from "./components/Modal/Modal";
 // pages
 import HomePage from "./pages/HomePage/HomePage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
+import ResumePage from "./pages/ResumePage/ResumePage";
 
 // JS rendering CSS
 // import { HomepageContainer } from "./AppStyles";
@@ -30,6 +31,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/portfolio" component={PortfolioPage} />
+          <Route exact path="/resume" component={ResumePage} />
           <div>Test</div>
         </Switch>
       </main>
