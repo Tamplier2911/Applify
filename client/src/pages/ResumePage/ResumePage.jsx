@@ -11,12 +11,7 @@ import {
   ResumePageSubTitle
 } from "./ResumePageStyles";
 
-// make separe component for:
-// each blue title
-// each black title
-// each contact and interest link
-// each circle progress bar
-// title possibly too
+import resEng from "../../assets/pdf/Artem Nikolaiev CV.pdf";
 
 /*
 <a href="/images/myw3schoolsimage.jpg" download>
@@ -48,19 +43,25 @@ const ResumePage = props => {
           <ResumePageBlackHeader>About Me</ResumePageBlackHeader>
           <ResumePageSubTitle>
             My passion is technologies and self-education, looking forward a
-            long term productive partnership.
+            long-term productive partnership.
           </ResumePageSubTitle>
         </div>
         <div className="resume-page__info--details">
           <ResumePageBlackHeader>Personal Details</ResumePageBlackHeader>
-          <ResumePageBlueHeader>Birth Date</ResumePageBlueHeader>
-          <ResumePageSubTitle>15 / 03 / 1990</ResumePageSubTitle>
-          <ResumePageBlueHeader>Nationality</ResumePageBlueHeader>
-          <ResumePageSubTitle>Ukrainian</ResumePageSubTitle>
-          <ResumePageBlueHeader>Address</ResumePageBlueHeader>
-          <ResumePageSubTitle>
-            Avdiivka, Donetska Oblast, Ukraine
-          </ResumePageSubTitle>
+          <div className="resume-page__info--details-wrap">
+            <ResumePageBlueHeader>Birth Date</ResumePageBlueHeader>
+            <ResumePageSubTitle>15 / 03 / 1990</ResumePageSubTitle>
+          </div>
+          <div className="resume-page__info--details-wrap">
+            <ResumePageBlueHeader>Nationality</ResumePageBlueHeader>
+            <ResumePageSubTitle>Ukrainian</ResumePageSubTitle>
+          </div>
+          <div className="resume-page__info--details-wrap">
+            <ResumePageBlueHeader>Address</ResumePageBlueHeader>
+            <ResumePageSubTitle>
+              Avdiivka, Donetska Oblast, Ukraine
+            </ResumePageSubTitle>
+          </div>
         </div>
         <div className="resume-page__info--contact">
           <ResumePageBlackHeader>Contact</ResumePageBlackHeader>
@@ -185,6 +186,17 @@ const ResumePage = props => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="links-container">
+        <a href={resEng} download className="links-container__link">
+          Download English
+        </a>
+        <a href={resEng} download className="links-container__link">
+          Download Russian
+        </a>
+        <a href={resEng} download className="links-container__link">
+          Download Ukrainian
+        </a>
       </div>
     </div>
   );
