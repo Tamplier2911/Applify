@@ -5,10 +5,16 @@ import React from "react";
 import portrait from "../../assets/jpeg/profile-portrait.jpg";
 
 // JS Rendering CSS
+// MOVE ALL THAT TO SEPARATE COMPONENT
 import {
   ResumePageBlackHeader,
   ResumePageBlueHeader,
-  ResumePageSubTitle
+  ResumePageSubTitle,
+  ResumePageMailSVG,
+  ResumePagePhoneSVG,
+  ResumePageChromeSVG,
+  ResumePageTwitterSVG,
+  ResumePageCorrectSVG
 } from "./ResumePageStyles";
 
 import resEng from "../../assets/pdf/Artem Nikolaiev CV.pdf";
@@ -66,15 +72,15 @@ const ResumePage = props => {
         <div className="resume-page__info--contact">
           <ResumePageBlackHeader>Contact</ResumePageBlackHeader>
           <div className="resume-page__info--contact-wrapper">
-            <div className="resume-page__info--contact-icon"></div>
+            <ResumePageMailSVG />
             <ResumePageSubTitle>artyom.nikolaev@yahoo.com</ResumePageSubTitle>
           </div>
           <div className="resume-page__info--contact-wrapper">
-            <div className="resume-page__info--contact-icon"></div>
+            <ResumePagePhoneSVG />
             <ResumePageSubTitle>+38 093 151 21 28</ResumePageSubTitle>
           </div>
           <div className="resume-page__info--contact-wrapper">
-            <div className="resume-page__info--contact-icon"></div>
+            <ResumePageChromeSVG />
             <a
               href="https://github.com/Tamplier2911"
               className="resume-page__info--contact-link"
@@ -86,7 +92,7 @@ const ResumePage = props => {
           </div>
 
           <div className="resume-page__info--contact-wrapper">
-            <div className="resume-page__info--contact-icon"></div>
+            <ResumePageTwitterSVG />
             <a
               href="https://twitter.com/ArtyomNikolayev"
               className="resume-page__info--contact-link"
@@ -141,7 +147,7 @@ const ResumePage = props => {
             <div className="resume-page__main--skills-front-progress">
               <div className="resume-page__main--skills-front-progress-wrap">
                 <div className="resume-page__main--skills-front-circleprogress"></div>
-                <ResumePageSubTitle>HTML CSS JS</ResumePageSubTitle>
+                <ResumePageSubTitle>HTML / CSS / JS</ResumePageSubTitle>
               </div>
               <div className="resume-page__main--skills-front-progress-wrap">
                 <div className="resume-page__main--skills-front-circleprogress"></div>
@@ -167,19 +173,19 @@ const ResumePage = props => {
           <ResumePageBlackHeader>Interesets</ResumePageBlackHeader>
           <div className="resume-page__main--interesets-cover">
             <div className="resume-page__main--interesets-wrapper">
-              <div className="resume-page__main--interesets-icon"></div>
+              <ResumePageCorrectSVG />
               <ResumePageSubTitle>Music &amp; Movies</ResumePageSubTitle>
             </div>
             <div className="resume-page__main--interesets-wrapper">
-              <div className="resume-page__main--interesets-icon"></div>
+              <ResumePageCorrectSVG />
               <ResumePageSubTitle>Technologies</ResumePageSubTitle>
             </div>
             <div className="resume-page__main--interesets-wrapper">
-              <div className="resume-page__main--interesets-icon"></div>
+              <ResumePageCorrectSVG />
               <ResumePageSubTitle>Reading &amp; Education</ResumePageSubTitle>
             </div>
             <div className="resume-page__main--interesets-wrapper">
-              <div className="resume-page__main--interesets-icon"></div>
+              <ResumePageCorrectSVG />
               <ResumePageSubTitle>
                 Sitting with cocoa covered in blanket
               </ResumePageSubTitle>
