@@ -42,7 +42,7 @@ export const HeaderMenu = styled(MenuSVG)`
   cursor: pointer;
   transition: fill 0.3s;
   &:hover {
-    fill: var(--cl-tiles-1);
+    fill: var(--cl-mainhover);
   }
 `;
 
@@ -62,6 +62,6 @@ export const HeaderLink = styled(Link)`
 
   &:hover,
   &:active {
-    color: var(--cl-tiles-1);
+    color: var(--cl-mainhover);
   }
 `;

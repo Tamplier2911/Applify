@@ -31,7 +31,7 @@ const ArrowSVGStyles = css`
   box-shadow: 0 0.2rem 1rem var(--cl-square-shadow);
 
   &:hover {
-    fill: var(--cl-tiles-1);
+    fill: var(--cl-mainhover);
     background-color: var(--white);
     animation: pulse 2s infinite;
 

@@ -4,37 +4,31 @@
   --font-text: "Lato", sans-serif;
 
   // COLOR PALET
+  --cl-font: #002a38;
+  --cl-primary: #1a73e8;
   --cl-black: #000;
   --cl-white: #fff;
   --cl-grey: #eeeeee;
   --cl-dark-grey: #a0a0a0;
   --cl-darkest-grey: #747474;
 
-  --cl-projects-gal-bg-col: rgb(243, 243, 243);
-  --cl-projects-gal-pulse: rgba(0, 168, 168, 0.4);
-  --cl-projects-gal-pulse-shadow: rgba(204, 169, 44, 0);
+  --cl-shadow: #00000069;
+  --cl-header: #ffffffec;
 
-  --cl-card-shadow: rgba(0, 0, 0, 0.616);
-  --cl-card-shadow-hover: #fe3e2da1;
-
+  // SIDE NAV
   --cl-sidenav: hsla(0, 0%, 100%, 0.568);
   --cl-sidenav-shadow: rgba(0, 0, 0, 0.603);
 
-  --cl-font: #002a38;
-  --cl-primary: #1a73e8;
+  // MAIN HOVERS
+  --cl-mainhover: #1a73e8;
 
-  --cl-font-resume: #1a73e8;
-
-  --cl-shadow: #00000069;
-  --cl-square-shadow: #00000086;
-
+  // SCROLL BAR
   --cl-scrollbar-bg: #2834930c;
   --cl-scroll-shadow: #00000028;
   --cl-scrollThumb-bg1: #fff;
   --cl-scrollThumb-bg2: #1a73e8;
 
-  --cl-header: #ffffffec;
-
+  // TILE COLORS
   --cl-tiles-1: #00a8a9;
   --cl-tiles-2: #002a38;
   --cl-tiles-3: #fed595;
@@ -42,13 +36,33 @@
   --cl-tiles-5: #ffaa2d;
   --cl-tiles-6: #c0c1c3;
   --cl-tiles-7: #d6d7d9;
+  --cl-square-shadow: #00000086;
 
+  // HOME PAGE CARDS
+  --cl-card-shadow: rgba(0, 0, 0, 0.616);
+  --cl-card-shadow-hover: #fe3e2da1;
+
+  // PORTFOLIO PROJECTS CIRCLES
   --cl-circle-0: #000;
   --cl-cirlce-1: #55c57a;
   --cl-circle-2: #dd4f4f;
   --cl-circle-3: #000;
   --cl-circle-hover: #002a38;
   --cl-circle-transit: #747474;
+
+  // PROJECTS GALLERY
+  --cl-projects-gal-bg-col: rgb(243, 243, 243);
+  --cl-projects-gal-pulse: rgba(26, 115, 232, 0.4);
+  --cl-projects-gal-pulse-shadow: rgba(204, 169, 44, 0);
+
+  // RESUME PAGE
+  --cl-font-resume: #1a73e8;
+  --cl-progress-resume: #ddd;
+
+  // FOOTER LINKS
+  --cl-facebook: #fe3f2d;
+  --cl-github: #00a8a9;
+  --cl-linkedin: #ffaa2d;
 
   // BREAKPOINTS
   --bp-tablet: 48em;

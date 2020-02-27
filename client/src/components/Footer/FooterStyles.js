@@ -17,7 +17,7 @@ const SVGCSS = css`
   }
 
   &:hover {
-    fill: var(--cl-tiles-2);
+    fill: var(--cl-primary);
   }
 `;
 
@@ -70,17 +70,17 @@ export const FooterLink = styled.a`
 `;
 
 export const FacebookSVG = styled(Facebook)`
-  fill: var(--cl-tiles-4);
+  fill: var(--cl-facebook);
   ${SVGCSS}
 `;
 
 export const GitHubSVG = styled(Github)`
-  fill: var(--cl-tiles-1);
+  fill: var(--cl-github);
   ${SVGCSS}
 `;
 
 export const LinkedInSVG = styled(LinkedIn)`
-  fill: var(--cl-tiles-5);
+  fill: var(--cl-linkedin);
   ${SVGCSS}
 `;
 
