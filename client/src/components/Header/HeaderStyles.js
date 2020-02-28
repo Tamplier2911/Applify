@@ -29,8 +29,10 @@ export const HeaderContainer = styled.div`
 
 export const HeaderContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr min-content;
+  // grid-template-columns: 1fr min-content;
+  grid-template-columns: 1fr 1.05fr min-content;
   align-items: center;
+  // justify-items: center;
   /* max-width: 1170px; */
   /* margin: 0 auto;  */
   // color: #e4e4e4;
@@ -54,6 +56,7 @@ export const HeaderLinksWrapper = styled.div`
 export const HeaderLink = styled(Link)`
   &:link,
   &:visited {
+    white-space: nowrap;
     font-family: var(--font-title);
     text-decoration: none;
     color: currentColor;

@@ -5,6 +5,8 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
 
+import logo from "../../assets/png/logo-min.png";
+
 // JS Rendering CSS
 import {
   HeaderContainer,
@@ -31,6 +33,21 @@ const Header = ({ toggleSideNav }) => {
             </Fragment>
           )}
         </HeaderLinksWrapper>
+
+        <div className="logo-cover" style={{ height: "5rem", width: "5rem" }}>
+          <img
+            src={logo}
+            className="logo-image"
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "block",
+              objectFit: "cover"
+            }}
+            alt="logo in shape of rocket"
+          ></img>
+        </div>
+
         <HeaderMenu onClick={toggleSideNav} />
       </HeaderContent>
     </HeaderContainer>
