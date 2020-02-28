@@ -29,14 +29,16 @@ export const HeaderContainer = styled.div`
 
 export const HeaderContent = styled.div`
   display: grid;
-  // grid-template-columns: 1fr min-content;
   grid-template-columns: 1fr 1.05fr min-content;
   align-items: center;
-  // justify-items: center;
+
   /* max-width: 1170px; */
   /* margin: 0 auto;  */
-  // color: #e4e4e4;
-  // grid-column: center-start / center-end;
+
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+
   grid-column: 2 / 12;
 `;
 
@@ -67,4 +69,17 @@ export const HeaderLink = styled(Link)`
   &:active {
     color: var(--cl-mainhover);
   }
+`;
+
+export const HeaderLogoLink = styled(Link)`
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+`;
+
+export const HeaderLogoImage = styled.img`
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 `;

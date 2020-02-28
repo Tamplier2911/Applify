@@ -13,7 +13,9 @@ import {
   HeaderContent,
   HeaderMenu,
   HeaderLinksWrapper,
-  HeaderLink
+  HeaderLink,
+  HeaderLogoLink,
+  HeaderLogoImage
 } from "./HeaderStyles";
 
 // temp logg condition
@@ -33,21 +35,12 @@ const Header = ({ toggleSideNav }) => {
             </Fragment>
           )}
         </HeaderLinksWrapper>
-
-        <div className="logo-cover" style={{ height: "5rem", width: "5rem" }}>
-          <img
+        <HeaderLogoLink to="/">
+          <HeaderLogoImage
             src={logo}
-            className="logo-image"
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "block",
-              objectFit: "cover"
-            }}
             alt="logo in shape of rocket"
-          ></img>
-        </div>
-
+          ></HeaderLogoImage>
+        </HeaderLogoLink>
         <HeaderMenu onClick={toggleSideNav} />
       </HeaderContent>
     </HeaderContainer>
