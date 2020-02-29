@@ -5,7 +5,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
 
-import logo from "../../assets/png/logo-min.png";
+// import logo from "../../assets/png/logo-min.png";
 
 // JS Rendering CSS
 import {
@@ -15,7 +15,7 @@ import {
   HeaderLinksWrapper,
   HeaderLink,
   HeaderLogoLink,
-  HeaderLogoImage
+  HeaderLogoSVG
 } from "./HeaderStyles";
 
 // temp logg condition
@@ -36,10 +36,11 @@ const Header = ({ toggleSideNav }) => {
           )}
         </HeaderLinksWrapper>
         <HeaderLogoLink to="/">
-          <HeaderLogoImage
+          <HeaderLogoSVG />
+          {/* <HeaderLogoImage
             src={logo}
             alt="logo in shape of rocket"
-          ></HeaderLogoImage>
+          ></HeaderLogoImage> */}
         </HeaderLogoLink>
         <HeaderMenu onClick={toggleSideNav} />
       </HeaderContent>

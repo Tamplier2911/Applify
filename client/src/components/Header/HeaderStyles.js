@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as MenuSVG } from "../../assets/svg/menu.svg";
+import { ReactComponent as LogoSVG } from "../../assets/svg/logo-min.svg";
 
 export const HeaderContainer = styled.div`
   display: grid;
@@ -73,8 +74,8 @@ export const HeaderLink = styled(Link)`
 
 export const HeaderLogoLink = styled(Link)`
   display: inline-block;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
 `;
 
 export const HeaderLogoImage = styled.img`
@@ -82,4 +83,15 @@ export const HeaderLogoImage = styled.img`
   height: 100%;
   display: block;
   object-fit: cover;
+`;
+
+export const HeaderLogoSVG = styled(LogoSVG)`
+  fill: var(--cl-font);
+  width: 4rem;
+  height: 4rem;
+  transition: fill 0.3s;
+
+  &:hover {
+    fill: var(--cl-primary);
+  }
 `;

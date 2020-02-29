@@ -42,12 +42,23 @@ const getProgressPercentage = props => {
   }
 };
 
+const getFont = props => {
+  const { lang } = props;
+  if (lang === "eng") {
+    return `font-family: var(--font-title);`;
+  } else {
+    // return `font-family: monospace;`;
+    return `font-family: var(--font-cyrillic);`;
+  }
+};
+
 export const ResumeContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 0 2rem;
   grid-row-gap: 4rem;
   grid-column-gap: 4rem;
+  ${getFont}
 
   @media only screen and (max-width: 768px) {
     grid-row-gap: 8rem;
@@ -99,6 +110,8 @@ export const ResumeHeaderImg = styled.img`
 
 export const ResumeHeaderTitle = styled.div`
   grid-column: 2 / -1;
+  display: grid;
+  grid-row-gap: 0.5rem;
 
   @media only screen and (max-width: 310px) {
     grid-column: 1 / -1;
@@ -196,7 +209,7 @@ export const ResumeInfoContacstWrapper = styled.div`
 export const ResumeInfoContacsLink = styled.a`
   &:link,
   &:visited {
-    font-family: var(--font-title);
+    // font-family: var(--font-title);
     color: var(--cl-darkest-grey);
     text-decoration: none;
     transition: color 0.3s;
@@ -236,7 +249,7 @@ export const ResumeMainEducationOrg = styled.div`
 
 export const ResumeMainEducationOrgDate = styled.div`
   white-space: nowrap;
-  font-family: var(--font-title);
+  // font-family: var(--font-title);
   color: var(--cl-darkest-grey);
   @media only screen and (max-width: 360px) {
     order: 3;
@@ -332,21 +345,21 @@ export const ResumeDownloadLink = styled.a`
 
 export const ResumeBlackHeader = styled.h4`
   font-size: 1.8rem;
-  font-family: var(--font-title);
+  // font-family: var(--font-title);
   text-transform: uppercase;
   font-weight: bold;
 `;
 
 export const ResumeBlueHeader = styled.h4`
   font-size: 1.6rem;
-  font-family: var(--font-title);
+  // font-family: var(--font-title);
 
   font-weight: bold;
   color: var(--cl-font-resume);
 `;
 
 export const ResumeSubTitle = styled.div`
-  font-family: var(--font-title);
+  // font-family: var(--font-title);
   color: var(--cl-darkest-grey);
 `;
 
