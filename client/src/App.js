@@ -12,11 +12,15 @@ import Footer from "./components/Footer/Footer";
 
 import Sidenav from "./components/Sidenav/Sidenav";
 import Modal from "./components/Modal/Modal";
+import LanguagePannel from "./components/LanguagePanel/LanguagePanel";
 
 // pages
 import HomePage from "./pages/HomePage/HomePage";
-import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import ResumePage from "./pages/ResumePage/ResumePage";
+import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
+import ContactsPage from "./pages/ContactsPage/ContactsPage";
+import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
+import BlogPage from "./pages/BlogPage/BlogPage";
 
 // JS rendering CSS
 // import { HomepageContainer } from "./AppStyles";
@@ -27,13 +31,18 @@ const App = () => {
       <Header />
       <Sidenav />
       <Modal />
+
       <main className="main">
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/portfolio" component={PortfolioPage} />
           <Route exact path="/resume" component={ResumePage} />
+          <Route exact path="/portfolio" component={PortfolioPage} />
+          <Route exact path="/contacts" component={ContactsPage} />
+          <Route exact path="/feedback" component={FeedbackPage} />
+          <Route exact path="/blog" component={BlogPage} />
           <div>Test</div>
         </Switch>
+        <LanguagePannel />
       </main>
 
       <Footer />

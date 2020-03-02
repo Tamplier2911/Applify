@@ -1,11 +1,13 @@
-import "./Hero.scss";
+// import "./Hero.scss";
 import React from "react";
 
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+
+// components
 import Square from "../Square/Square";
-import {
-  squares,
-  ctaOptions
-} from "../../utils/SquareConstants/squareConstants";
 
 // JS Rendering CSS
 import {
@@ -19,7 +21,16 @@ import {
   HeroPassiveCTA
 } from "./HeroStyles";
 
-const Hero = () => {
+// component constants
+import {
+  squares,
+  ctaOptions
+} from "../../utils/SquareConstants/squareConstants";
+import heroData from "../../utils/ComponentHeroConstants/componentHeroConstants";
+
+const Hero = ({ lang }) => {
+  const currentData = heroData[lang];
+  const { companyName, companySlogan, companyCTA } = currentData;
   return (
     <HeroContainer>
       {squares.map(obj => {
@@ -27,18 +38,22 @@ const Hero = () => {
       })}
       <HeroActiveCTA>
         <HeroActiveCTALink to="/">
-          <Square options={ctaOptions} text={"Get Started"} />
+          <Square options={ctaOptions} text={companyCTA} />
         </HeroActiveCTALink>
       </HeroActiveCTA>
       <HeroContent>
         <HeroTextbox>
-          <HeroHeader>Artem Nikolaiev</HeroHeader>
-          <HeroText>Creative web solutions for your business...</HeroText>
+          <HeroHeader>{companyName}</HeroHeader>
+          <HeroText>{companySlogan}</HeroText>
         </HeroTextbox>
-        <HeroPassiveCTA to="/">Get Started</HeroPassiveCTA>
+        <HeroPassiveCTA to="/">{companyCTA}</HeroPassiveCTA>
       </HeroContent>
     </HeroContainer>
   );
 };
 
-export default Hero;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(Hero);

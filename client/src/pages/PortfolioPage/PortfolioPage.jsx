@@ -1,4 +1,4 @@
-import "./PortfolioPage.scss";
+// import "./PortfolioPage.scss";
 import React from "react";
 
 // components

@@ -1,6 +1,11 @@
 // import "./Resume.scss";
 import React from "react";
 
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+
 // JS Rendering CSS
 import {
   ResumeContainer,
@@ -51,17 +56,10 @@ import resRus from "../../assets/pdf/Artem_Nikolaiev_CV_RUS.pdf";
 import resUkr from "../../assets/pdf/Artem_Nikolaiev_CV_UKR.pdf";
 
 // component constants
-import resumeData from "../../utils/ResumePageConstants/resumePageConstants";
+import resumeData from "../../utils/ComponentResumeConstants/componentResumeConstants";
 
-const Resume = () => {
-  // create redux part of language change logic
-  // implement mechancis and actions for language change
-
-  // pass data about language to each page, work out language dynamically using current lang state
-  // state - {currentLang: 'eng'} // actions - setLangEng, setLangRus, setLangUkr
-
-  const currentLang = "rus";
-  const currentData = resumeData[currentLang];
+const Resume = ({ lang }) => {
+  const currentData = resumeData[lang];
   const {
     header: { name, occupation, image },
     info: {
@@ -92,7 +90,7 @@ const Resume = () => {
   } = currentData;
 
   return (
-    <ResumeContainer lang={currentLang}>
+    <ResumeContainer lang={lang}>
       <ResumeHeader>
         <ResumeHeaderImgContainer>
           <ResumeHeaderImg alt="author" src={image} />
@@ -295,4 +293,8 @@ const Resume = () => {
   );
 };
 
-export default Resume;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(Resume);
