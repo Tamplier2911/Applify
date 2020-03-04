@@ -3,7 +3,9 @@ import React, { Fragment } from "react";
 
 // redux
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // import logo from "../../assets/png/logo-min.png";
 
@@ -18,20 +20,26 @@ import {
   HeaderLogoSVG
 } from "./HeaderStyles";
 
+// Component Constants
+import headerData from "../../utils/ComponentHeaderConstants/componentHeaderConstants";
+
 // temp logg condition
 const logged = true;
 
-const Header = ({ toggleSideNav }) => {
+const Header = ({ toggleSideNav, lang }) => {
+  const currentData = headerData[lang];
+  const { headerLogOut, headerLogIn, headerSignUp } = currentData;
+
   return (
     <HeaderContainer>
       <HeaderContent>
         <HeaderLinksWrapper>
           {logged ? (
-            <HeaderLink to="/">Log Out</HeaderLink>
+            <HeaderLink to="/">{headerLogOut}</HeaderLink>
           ) : (
             <Fragment>
-              <HeaderLink to="/">Log In</HeaderLink> /{" "}
-              <HeaderLink to="/">Sign Up</HeaderLink>
+              <HeaderLink to="/">{headerLogIn}</HeaderLink> /{" "}
+              <HeaderLink to="/">{headerSignUp}</HeaderLink>
             </Fragment>
           )}
         </HeaderLinksWrapper>
@@ -48,4 +56,8 @@ const Header = ({ toggleSideNav }) => {
   );
 };
 
-export default connect(null, { toggleSideNav })(Header);
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps, { toggleSideNav })(Header);

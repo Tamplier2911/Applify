@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { selectSidenavHidden } from "../../redux/sidenav/sidenav.selectors";
 
 // JS Rendering CSS
@@ -25,6 +26,9 @@ import {
   SidenavLink
 } from "./SidenavStyles";
 
+// component constants
+import sidenavData from "../../utils/ComponentSidenavConstants/componentSidenavConstants";
+
 // temporary data object
 const data = {
   name: "Ulka Simone MohantyUlka Simone MohantyUlka Simone Mohanty",
@@ -35,8 +39,21 @@ const data = {
 // temporary user logged condition
 const logged = true;
 
-const Sidenav = ({ sidenavCondition, toggleSideNav }) => {
+const Sidenav = ({ sidenavCondition, toggleSideNav, lang }) => {
   const { name, email, photo } = data;
+  const currentData = sidenavData[lang];
+  const {
+    sidenavProfile,
+    sidenavLogOut,
+    sidenavLogIn,
+    sidenavHome,
+    sidenavResume,
+    sidenavPortfolio,
+    sidenavContacts,
+    sidenavFeedback,
+    sidenavBlog
+  } = currentData;
+
   return ReactDOM.createPortal(
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
       <SidenavContent onClick={e => e.stopPropagation()}>
@@ -50,17 +67,17 @@ const Sidenav = ({ sidenavCondition, toggleSideNav }) => {
                 <SidenavUserName>{name}</SidenavUserName>
                 <SidenavUserEmail>{email}</SidenavUserEmail>
                 <SidenavUserLinks to="/" onClick={toggleSideNav}>
-                  Profile
+                  {sidenavProfile}
                 </SidenavUserLinks>
                 <SidenavUserLinks to="/" onClick={toggleSideNav}>
-                  Log Out
+                  {sidenavLogOut}
                 </SidenavUserLinks>
               </SidenavUserData>
             </Fragment>
           ) : (
             <SidenavUserData>
               <SidenavUserLinks to="/" onClick={toggleSideNav}>
-                Log In
+                {sidenavLogIn}
               </SidenavUserLinks>
             </SidenavUserData>
           )}
@@ -69,32 +86,32 @@ const Sidenav = ({ sidenavCondition, toggleSideNav }) => {
           <SidenavUl>
             <SidenavLi>
               <SidenavLink to="/" onClick={toggleSideNav}>
-                Home
+                {sidenavHome}
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
               <SidenavLink to="/resume" onClick={toggleSideNav}>
-                Resume
+                {sidenavResume}
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
               <SidenavLink to="/portfolio" onClick={toggleSideNav}>
-                Portfolio
+                {sidenavPortfolio}
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
               <SidenavLink to="/contacts" onClick={toggleSideNav}>
-                Contacts
+                {sidenavContacts}
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
               <SidenavLink to="/feedback" onClick={toggleSideNav}>
-                Feedback
+                {sidenavFeedback}
               </SidenavLink>
             </SidenavLi>
             <SidenavLi>
               <SidenavLink to="/blog" onClick={toggleSideNav}>
-                Blog
+                {sidenavBlog}
               </SidenavLink>
             </SidenavLi>
           </SidenavUl>
@@ -106,7 +123,8 @@ const Sidenav = ({ sidenavCondition, toggleSideNav }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  sidenavCondition: selectSidenavHidden
+  sidenavCondition: selectSidenavHidden,
+  lang: selectCurrentLanguage
 });
 
 export default connect(mapStateToProps, { toggleSideNav })(Sidenav);

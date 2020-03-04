@@ -73,7 +73,7 @@ const resumeData = {
           },
           {
             skillSubject: "MongoDB / Mongoose",
-            skillPercentage: 70
+            skillPercentage: 39
           }
         ]
       },
@@ -263,7 +263,7 @@ const resumeData = {
           },
           {
             skillSubject: "MongoDB / Mongoose",
-            skillPercentage: 70
+            skillPercentage: 39
           }
         ]
       },

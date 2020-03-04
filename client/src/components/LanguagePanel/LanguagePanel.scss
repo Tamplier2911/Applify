@@ -1,7 +1,9 @@
+/*
 .language-panel {
   position: fixed;
-  bottom: 5rem;
-  right: 5rem;
+  bottom: 4rem;
+  right: 4rem;
+  z-index: 20;
 
   &__language-1 {
     cursor: pointer;
@@ -73,7 +75,6 @@
     width: 7rem;
     height: 7rem;
     transition: transform 0.3s;
-    z-index: 20;
 
     &:hover {
       transform: scale(1.1);
@@ -128,3 +129,4 @@
     left: -4.8rem;
   }
 }
+*/

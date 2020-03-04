@@ -47,7 +47,7 @@ export const FooterContent = styled.div`
   display: grid;
   grid-template-columns: min-content 1fr;
 
-  @media only screen and (max-width: 540px) {
+  @media only screen and (max-width: 590px) {
     grid-template-columns: 1fr;
     grid-row-gap: 2rem;
   }
@@ -58,7 +58,7 @@ export const FooterSVGContainer = styled.div`
   grid-template-columns: repeat(3, min-content);
   grid-column-gap: 1rem;
 
-  @media only screen and (max-width: 540px) {
+  @media only screen and (max-width: 590px) {
     justify-content: center;
     grid-column-gap: 4rem;
   }
@@ -90,7 +90,7 @@ export const FooterTextContainer = styled.div`
   justify-items: end;
   font-size: 1.4rem;
 
-  @media only screen and (max-width: 540px) {
+  @media only screen and (max-width: 590px) {
     justify-items: center;
     text-align: center;
   }

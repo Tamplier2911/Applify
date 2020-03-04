@@ -54,6 +54,17 @@ export const HeaderMenu = styled(MenuSVG)`
 export const HeaderLinksWrapper = styled.div`
   font-size: 1.8rem;
   // font-weight: bold;
+
+  @media only screen and (max-width: 500px) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 15rem;
+  }
+
+  @media only screen and (max-width: 300px) {
+    width: 12rem;
+  }
 `;
 
 export const HeaderLink = styled(Link)`

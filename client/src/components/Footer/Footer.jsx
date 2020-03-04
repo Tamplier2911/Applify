@@ -1,6 +1,11 @@
 // import "./Footer.scss";
 import React from "react";
 
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+
 // JS Rendering CSS
 import {
   FooterContainer,
@@ -13,7 +18,13 @@ import {
   FooterTextContainer
 } from "./FooterStyles";
 
-const Footer = () => {
+// Component Constants
+import footerData from "../../utils/ComponentFooterConstants/componentFooterConstants";
+
+const Footer = ({ lang }) => {
+  const currentData = footerData[lang];
+  const { footerCopyright } = currentData;
+
   return (
     <FooterContainer>
       <FooterContent>
@@ -40,12 +51,14 @@ const Footer = () => {
             <LinkedInSVG />
           </FooterLink>
         </FooterSVGContainer>
-        <FooterTextContainer>
-          Originally designed and developed by Artem Nikolaiev &copy; 2020
-        </FooterTextContainer>
+        <FooterTextContainer>{footerCopyright}</FooterTextContainer>
       </FooterContent>
     </FooterContainer>
   );
 };
 
-export default Footer;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(Footer);

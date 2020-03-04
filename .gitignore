@@ -37,3 +37,13 @@ yarn-error.log*
 #git rm -r --cached .
 #git add .
 #git commit -m "fixed untracked files"
+
+# .slugignore reference
+# Heres a comment
+# *.psd
+# *.pdf
+# /test
+# /spec
+
+# You can inspect the extracted contents of your slug 
+# with heroku run bash and by using commands such as ls and du.

@@ -27,8 +27,8 @@ const ProjectsGallery = ({
   setCurrentImageNext,
   setCurrentImagePrev
 }) => {
-  const { image, id } = currentImage;
-  console.log("re-rendered", id);
+  // const { image, id } = currentImage;
+  const { image } = currentImage;
   return (
     <ProjectsGalleryContainer>
       <ProjectsGalleryTitle>Projects gallery:</ProjectsGalleryTitle>

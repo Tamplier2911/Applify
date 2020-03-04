@@ -9,10 +9,15 @@ import {
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
-  setCurrentProjectNext
+  setCurrentProjectNext,
+  getCurrentProject
   // setCurrentProjectPrev
 } from "../../redux/projects/projects.actions";
 import { selectCurrentProject } from "../../redux/projects/projects.selectors";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+
+// projects constants
+import { projectsHeaders } from "../../utils/ComponentProjectsConstants/componentProjectsConstants";
 
 // JS Rendering CSS
 import {
@@ -42,30 +47,54 @@ const Projects = ({
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
-  setCurrentProjectNext
+  setCurrentProjectNext,
+  getCurrentProject,
+  lang
   // setCurrentProjectPrev
 }) => {
   useEffect(() => {
+    getCurrentProject(lang);
     const slider = setInterval(() => {
-      setCurrentProjectNext();
+      setCurrentProjectNext(lang);
     }, 15000);
     return () => clearInterval(slider);
-  }, [setCurrentProjectNext]);
+  }, [setCurrentProjectNext, getCurrentProject, lang]);
 
-  date = date.toLocaleString("en-us", {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  });
+  const {
+    projectsHeader,
+    projectsDescription,
+    projectsTechStack,
+    projectsVisit
+  } = projectsHeaders[lang];
+
+  date = date
+    ? date.toLocaleString("en-us", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      })
+    : undefined;
 
   return (
     <ProjectsContainer>
-      <ProjecstTitle>Recent projects:</ProjecstTitle>
+      <ProjecstTitle>{projectsHeader}</ProjecstTitle>
       <ProjectsCircles>
-        <ProjectsCircleZero onClick={setCurrentProjectFirst} id={id} />
-        <ProjectsCircleOne onClick={setCurrentProjectSecond} id={id} />
-        <ProjectsCircleTwo onClick={setCurrentProjectThird} id={id} />
-        <ProjectsCircleThree onClick={setCurrentProjectFourth} id={id} />
+        <ProjectsCircleZero
+          onClick={() => setCurrentProjectFirst(lang)}
+          id={id}
+        />
+        <ProjectsCircleOne
+          onClick={() => setCurrentProjectSecond(lang)}
+          id={id}
+        />
+        <ProjectsCircleTwo
+          onClick={() => setCurrentProjectThird(lang)}
+          id={id}
+        />
+        <ProjectsCircleThree
+          onClick={() => setCurrentProjectFourth(lang)}
+          id={id}
+        />
       </ProjectsCircles>
       <ProjectsImageWrapper>
         <ProjectsImage src={`${image}`} alt="Project presentation slide." />
@@ -75,13 +104,13 @@ const Projects = ({
           <ProjectsContentTitle>{name}</ProjectsContentTitle>
           <ProjectsContentDesc>
             <ProjectsContentDescTitle color={color}>
-              Description:
+              {projectsDescription}
             </ProjectsContentDescTitle>
             <ProjectsContentDescText>{description}</ProjectsContentDescText>
           </ProjectsContentDesc>
           <ProjectsContentDesc>
             <ProjectsContentDescTitle color={color}>
-              Technology Stack:
+              {projectsTechStack}
             </ProjectsContentDescTitle>
             <ProjectsContentDescText>{techStack}</ProjectsContentDescText>
           </ProjectsContentDesc>
@@ -93,7 +122,7 @@ const Projects = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visit
+              {projectsVisit}
             </ProjectsContentLink>
           </ProjectsContentBottom>
         </ProjectsContent>
@@ -104,7 +133,8 @@ const Projects = ({
 
 const mapStateToProps = () =>
   createStructuredSelector({
-    currentProject: selectCurrentProject
+    currentProject: selectCurrentProject,
+    lang: selectCurrentLanguage
   });
 
 export default connect(mapStateToProps, {
@@ -112,6 +142,7 @@ export default connect(mapStateToProps, {
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
-  setCurrentProjectNext
+  setCurrentProjectNext,
+  getCurrentProject
   // setCurrentProjectPrev
 })(Projects);

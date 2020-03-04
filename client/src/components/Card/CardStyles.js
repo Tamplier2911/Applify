@@ -79,10 +79,10 @@ const getCardRsponsiveness = props => {
   const { val } = props;
   if (val === 204) {
     return `
-        @media only screen and (max-width: 1149px) {
+        @media only screen and (max-width: 1157px) {
             grid-column: 1 / -1;
         }
-        @media only screen and (max-width: 864px) {
+        @media only screen and (max-width: 872px) {
             grid-column: auto;
         }
     `;
