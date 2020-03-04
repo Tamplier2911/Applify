@@ -6,6 +6,7 @@ export const ButtonContainer = styled.div`
 
 export const ButtonBody = styled.button`
   cursor: pointer;
+  font-family: var(--font-title);
   padding: 1rem 2rem;
   border: none;
   color: var(--cl-white);
