@@ -1,0 +1,15 @@
+.contacts-form {
+  display: grid;
+  grid-row-gap: 4rem;
+  grid-auto-rows: min-content;
+
+  &__title {
+    font-weight: 400;
+    font-size: 1.7rem;
+  }
+
+  &__form {
+    display: grid;
+    grid-row-gap: 2rem;
+  }
+}

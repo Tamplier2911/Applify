@@ -1,5 +1,5 @@
 // import "./Projects.scss";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // redux
 import { connect } from "react-redux";
@@ -52,13 +52,25 @@ const Projects = ({
   lang
   // setCurrentProjectPrev
 }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    getCurrentProject(lang);
+    // invoke this code only once to init current project
+    if (!id) {
+      getCurrentProject(lang);
+    }
+
+    // animation state
+    setIsLoaded(false);
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 400);
+
+    // slider functionality
     const slider = setInterval(() => {
       setCurrentProjectNext(lang);
     }, 15000);
     return () => clearInterval(slider);
-  }, [setCurrentProjectNext, getCurrentProject, lang]);
+  }, [setCurrentProjectNext, getCurrentProject, lang, id]);
 
   const {
     projectsHeader,
@@ -96,11 +108,11 @@ const Projects = ({
           id={id}
         />
       </ProjectsCircles>
-      <ProjectsImageWrapper>
+      <ProjectsImageWrapper load={isLoaded}>
         <ProjectsImage src={`${image}`} alt="Project presentation slide." />
       </ProjectsImageWrapper>
       <ProjectsBox>
-        <ProjectsContent>
+        <ProjectsContent load={isLoaded}>
           <ProjectsContentTitle>{name}</ProjectsContentTitle>
           <ProjectsContentDesc>
             <ProjectsContentDescTitle color={color}>

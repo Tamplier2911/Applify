@@ -1,18 +1,9 @@
 import styled, { css } from "styled-components";
 
-const circlesSharedStyle = css`
-  cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  transition: background-color 0.3s;
-
-  // &:hover,
-  // &:active {
-  //   background-color: var(--cl-circle-hover);
-  // }
-`;
-
+/*
+// before projects animation was faked using this mechanic:
+// new projects pops in every 15 second via set interval
+// this animation runs 15 second 0-20% fade in 20-100% resting state. 
 const projectsAnimation = css`
   @keyframes fadein {
     0% {
@@ -28,6 +19,27 @@ const projectsAnimation = css`
       opacity: 1;
     }
   }
+`;
+*/
+
+const fadeInProject = props => {
+  const { load } = props;
+  if (!load) {
+    return `opacity: 0;`;
+  } else if (load) {
+    return `
+        opacity: 1;
+        transition: opacity 1s ease-in;
+      `;
+  }
+};
+
+const circlesSharedStyle = css`
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
 `;
 
 const getLinkColor = props => {
@@ -126,6 +138,7 @@ export const ProjectsCircleThree = styled.div`
   }
 `;
 
+// ${projectsAnimation}
 export const ProjectsImageWrapper = styled.div`
   position: relative;
   z-index: 5;
@@ -139,7 +152,7 @@ export const ProjectsImageWrapper = styled.div`
     grid-area: 2 / 2 / 10 / 10;
   }
 
-  ${projectsAnimation}
+  ${fadeInProject}
 `;
 
 export const ProjectsImage = styled.img`
@@ -166,6 +179,7 @@ export const ProjectsBox = styled.div`
   }
 `;
 
+// ${projectsAnimation}
 export const ProjectsContent = styled.div`
   grid-column: 2 / 3;
   display: grid;
@@ -179,7 +193,7 @@ export const ProjectsContent = styled.div`
     grid-column: 1 / 3;
   }
 
-  ${projectsAnimation}
+  ${fadeInProject}
 `;
 
 export const ProjectsContentTitle = styled.h3`

@@ -1,10 +1,11 @@
 // import "./ProjectsGallery.scss";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // redux
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentImage } from "../../redux/projects/projects.selectors";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import {
   setCurrentImageNext,
   setCurrentImagePrev
@@ -22,22 +23,36 @@ import {
   ProjectsGalleryImage
 } from "./ProjectsGalleryStyles";
 
+// component constants
+import galleryData from "../../utils/ComponentProjectsGalleryConstants/componentProjectsGalleryConstants";
+
 const ProjectsGallery = ({
   currentImage,
   setCurrentImageNext,
-  setCurrentImagePrev
+  setCurrentImagePrev,
+  lang
 }) => {
-  // const { image, id } = currentImage;
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(false);
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 400);
+  }, [currentImage]);
+
+  const currentData = galleryData[lang];
+  const { projectsGalleryHeader } = currentData;
   const { image } = currentImage;
   return (
     <ProjectsGalleryContainer>
-      <ProjectsGalleryTitle>Projects gallery:</ProjectsGalleryTitle>
+      <ProjectsGalleryTitle>{projectsGalleryHeader}</ProjectsGalleryTitle>
       <ProjectsGalleryComposition>
         <ProjectsGalleryArrow onClick={setCurrentImagePrev}>
           <ProjectsGalleryArrowLeftSVG />
         </ProjectsGalleryArrow>
 
-        <ProjectsGalleryImageContainer style={{ animation: "2s imageFadein" }}>
+        <ProjectsGalleryImageContainer load={isLoaded}>
           <ProjectsGalleryImage
             src={image}
             alt="project gallery overview"
@@ -53,7 +68,8 @@ const ProjectsGallery = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  currentImage: selectCurrentImage
+  currentImage: selectCurrentImage,
+  lang: selectCurrentLanguage
 });
 
 export default connect(mapStateToProps, {

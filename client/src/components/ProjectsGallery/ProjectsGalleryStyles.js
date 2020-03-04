@@ -3,6 +3,17 @@ import styled, { css } from "styled-components";
 import { ReactComponent as ChevronLeftSVG } from "../../assets/svg/chevron-left.svg";
 import { ReactComponent as ChevronRightSVG } from "../../assets/svg/chevron-right.svg";
 
+const fadeInImage = props => {
+  const { load } = props;
+  if (!load) {
+    return `opacity: 0;`;
+  } else if (load) {
+    return `transition: opacity 1s ease-in;
+    opacity: 1;`;
+  }
+};
+
+/*
 const ImageAnimation = css`
   @keyframes imageFadein {
     0% {
@@ -13,6 +24,7 @@ const ImageAnimation = css`
     }
   }
 `;
+*/
 
 const ArrowStyles = css`
   align-self: center;
@@ -111,8 +123,7 @@ export const ProjectsGalleryArrowRightSVG = styled(ChevronRightSVG)`
 `;
 
 export const ProjectsGalleryImageContainer = styled.div`
-  ${ImageAnimation}
-
+  ${fadeInImage}
   box-shadow: 0 0.2rem 1rem var(--cl-square-shadow);
 `;
 
