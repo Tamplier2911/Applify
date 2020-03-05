@@ -1,33 +1,49 @@
-import "./Contacts.scss";
+// import "./Contacts.scss";
 import React from "react";
+
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
 import ContactsForm from "../ContactsForm/ContactsForm";
 
-// svg
-import { ReactComponent as DevSVG } from "../../assets/svg/web_developer.svg";
-
 // JS Rendering CSS
-import {} from "./ContactsStyles";
+import {
+  ContactsContainer,
+  ContactsTitle,
+  ContactsFormComp,
+  ContactsFormCompLeft,
+  ContactsFormCompSVG,
+  ContactsFormCompRight,
+  ContactsFormCompFormWrap
+} from "./ContactsStyles";
 
-const Contacts = () => {
+// component constants
+import contactsData from "../../utils/ComponentContactsConstants/componentContactsConstants";
+
+const Contacts = ({ lang }) => {
+  const { contactsHeader } = contactsData[lang];
   return (
-    <div className="contacts">
-      <h2 className="contacts__header">
-        Ready to enhance your business with cutting edge technologies?
-      </h2>
-      <div className="contacts__formComposition">
-        <div className="contacts__formComposition--left">
-          <DevSVG className="contacts__formComposition--left--svg" />
-        </div>
-        <div className="contacts__formComposition--right">
-          <div className="contacts__formComposition--right--formContainer">
+    <ContactsContainer>
+      <ContactsTitle>{contactsHeader}</ContactsTitle>
+      <ContactsFormComp>
+        <ContactsFormCompLeft>
+          <ContactsFormCompSVG />
+        </ContactsFormCompLeft>
+        <ContactsFormCompRight>
+          <ContactsFormCompFormWrap>
             <ContactsForm />
-          </div>
-        </div>
-      </div>
-    </div>
+          </ContactsFormCompFormWrap>
+        </ContactsFormCompRight>
+      </ContactsFormComp>
+    </ContactsContainer>
   );
 };
 
-export default Contacts;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(Contacts);

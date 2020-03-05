@@ -1,18 +1,21 @@
-import "./ContactsPage.scss";
+// import "./ContactsPage.scss";
 import React from "react";
 
 // components
 import Contacts from "../../components/Contacts/Contacts";
 
 // JS Rendering CSS
-import {} from "./ContactsPageStyles";
+import {
+  ContactsPageContainer,
+  ContactsPagePlaceholder
+} from "./ContactsPageStyles";
 
 const ContactsPage = () => {
   return (
-    <div className="contacts-page">
+    <ContactsPageContainer>
       <Contacts />
-      <div></div>
-    </div>
+      <ContactsPagePlaceholder />
+    </ContactsPageContainer>
   );
 };
 

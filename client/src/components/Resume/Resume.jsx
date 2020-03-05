@@ -59,7 +59,6 @@ import resUkr from "../../assets/pdf/Artem_Nikolaiev_CV_UKR.pdf";
 import resumeData from "../../utils/ComponentResumeConstants/componentResumeConstants";
 
 const Resume = ({ lang }) => {
-  const currentData = resumeData[lang];
   const {
     header: { name, occupation, image },
     info: {
@@ -87,7 +86,7 @@ const Resume = ({ lang }) => {
       interests: { interestsHeader, interestSubjects }
     },
     downloadLinks: { linkDescriptions }
-  } = currentData;
+  } = resumeData[lang];
 
   return (
     <ResumeContainer lang={lang}>

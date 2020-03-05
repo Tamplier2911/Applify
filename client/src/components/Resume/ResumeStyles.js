@@ -6,6 +6,17 @@ import { ReactComponent as ChromeSVG } from "../../assets/svg/resume-chrome.svg"
 import { ReactComponent as TwitterSVG } from "../../assets/svg/resume-twitter.svg";
 import { ReactComponent as CorrectSVG } from "../../assets/svg/resume-correct.svg";
 
+const fadeResumeIn = css`
+  @keyframes fadeResumeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
 const SVGStyles = css`
   fill: var(--cl-font-resume);
   height: 2.5rem;
@@ -46,10 +57,10 @@ const getFont = props => {
   const { lang } = props;
   if (lang === "eng") {
     return `font-family: var(--font-title);`;
-  } else {
-    // return `font-family: monospace;`;
+  } else if (lang === "rus" || lang === "ukr") {
     return `font-family: var(--font-cyrillic);`;
   }
+  return `font-family: var(--font-title);`;
 };
 
 export const ResumeContainer = styled.div`
@@ -59,6 +70,8 @@ export const ResumeContainer = styled.div`
   grid-row-gap: 4rem;
   grid-column-gap: 4rem;
   ${getFont}
+  ${fadeResumeIn}
+  animation: 1s fadeResumeIn;
 
   @media only screen and (max-width: 768px) {
     grid-row-gap: 8rem;

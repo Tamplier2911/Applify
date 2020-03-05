@@ -1,0 +1,116 @@
+.blog-post-view {
+  cursor: pointer;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+
+  background-position: center;
+  background-size: 180%;
+  background-repeat: no-repeat;
+
+  backface-visibility: hidden;
+
+  color: var(--cl-white);
+  text-decoration: none;
+  font-weight: 300;
+  font-family: var(--font-title);
+
+  min-height: 20rem; // double check
+  box-shadow: 0 0.2rem 0.5rem var(--cl-square-shadow);
+
+  transition: background-size 8s, filter 0.5s, box-shadow 0.3s;
+  animation: 1s blogFadeIn;
+
+  &:hover {
+    filter: brightness(140%);
+    background-size: 140%;
+    box-shadow: 0 0.2rem 0.5rem var(--cl-card-shadow-hover);
+  }
+
+  &__content {
+    grid-row: 2 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr min-content;
+
+    &--wrapper {
+      display: grid;
+      grid-auto-rows: min-content;
+      align-content: center;
+      padding: 1rem 2rem;
+    }
+    &--theme {
+      font-size: 1.5rem;
+    }
+    &--title {
+      font-weight: 400;
+      font-size: 1.7rem;
+    }
+    &--date {
+      font-size: 1.5rem;
+
+      display: grid;
+      grid-template-columns: 1fr min-content;
+      align-items: center;
+
+      &-itself {
+        align-items: center;
+      }
+    }
+
+    &--likewrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 0.5rem;
+      align-items: end;
+    }
+    &--svg {
+      width: 2rem;
+      height: 2rem;
+      fill: var(--cl-white);
+      transition: fill 0.3s;
+      &:hover {
+        fill: #eb4646;
+      }
+    }
+    &--like {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.big {
+  grid-column: span 2;
+  @media only screen and (max-width: 425px) {
+    grid-column: 1 / 2;
+  }
+}
+
+.small {
+  grid-column: span 1;
+
+  @media only screen and (max-width: 990px) {
+    grid-column: span 2;
+  }
+
+  @media only screen and (max-width: 768px) {
+    grid-column: span 2;
+  }
+
+  @media only screen and (max-width: 425px) {
+    grid-column: 1 / 2;
+  }
+  //   background-color: floralwhite;
+}
+
+.liked {
+  fill: #eb4646;
+}
+
+@keyframes blogFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

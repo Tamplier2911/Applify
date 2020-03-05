@@ -63,7 +63,8 @@ const Projects = ({
     setIsLoaded(false);
     setTimeout(() => {
       setIsLoaded(true);
-    }, 400);
+    }, 600);
+    // 400 ?
 
     // slider functionality
     const slider = setInterval(() => {

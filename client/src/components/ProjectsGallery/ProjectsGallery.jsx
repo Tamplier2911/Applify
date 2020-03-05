@@ -38,12 +38,13 @@ const ProjectsGallery = ({
     setIsLoaded(false);
     setTimeout(() => {
       setIsLoaded(true);
-    }, 400);
+    }, 600);
+    // 400
   }, [currentImage]);
 
-  const currentData = galleryData[lang];
-  const { projectsGalleryHeader } = currentData;
+  const { projectsGalleryHeader } = galleryData[lang];
   const { image } = currentImage;
+
   return (
     <ProjectsGalleryContainer>
       <ProjectsGalleryTitle>{projectsGalleryHeader}</ProjectsGalleryTitle>

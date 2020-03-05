@@ -12,6 +12,7 @@ export const ButtonBody = styled.button`
   color: var(--cl-white);
   background-color: var(--cl-font);
   transition: background-color 0.3s;
+  outline: none;
 
   &:hover {
     background-color: var(--cl-primary);

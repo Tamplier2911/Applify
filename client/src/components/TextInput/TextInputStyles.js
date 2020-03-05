@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 
 const shrink = css`
-  top: -1rem;
+  // top: -1rem;
+  top: -1.8rem;
   font-size: 1.35rem;
   color: var(--cl-font);
 `;
