@@ -110,6 +110,7 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 4rem;
 
     background-color: var(--cl-white);
@@ -121,9 +122,20 @@
     transition: color 0.3s, transform 0.3s;
 
     &:hover {
-      color: var(--cl-primary);
       transform: scale(1.1);
     }
+
+    &:hover * {
+      fill: var(--cl-primary);
+    }
+  }
+
+  &__back-svg {
+    fill: var(--cl-font);
+    width: 4rem;
+    height: 4rem;
+
+    transition: fill 0.3s;
   }
 }
 

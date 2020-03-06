@@ -1,7 +1,11 @@
 import "./BlogPost.scss";
 import React from "react";
 
+// router
 import { withRouter } from "react-router-dom";
+
+// svg
+import { ReactComponent as ReturnSVG } from "../../assets/svg/return.svg";
 
 const dataObjectSample = {
   blogTitle: "Why You Should Start Learning Code TODAY!",
@@ -66,7 +70,7 @@ const BlogPost = ({ history }) => {
         className="blog-post__back-button"
         onClick={() => history.push("/blog")}
       >
-        &#x2199;
+        <ReturnSVG className="blog-post__back-svg" />
       </div>
     </section>
   );

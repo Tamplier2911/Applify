@@ -58,16 +58,16 @@
     & div {
       cursor: pointer;
       transition: color 0.3s;
+      font-weight: bold;
+      font-size: 2rem;
+
+      @media only screen and (max-width: 425px) {
+        font-size: 3rem;
+      }
 
       &:hover {
         color: var(--cl-primary);
       }
-    }
-
-    &--left {
-    }
-
-    &--right {
     }
   }
 }
