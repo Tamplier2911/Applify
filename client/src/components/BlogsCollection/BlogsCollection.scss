@@ -34,6 +34,9 @@
     flex-wrap: wrap;
     font-weight: bold;
 
+    // text-align: center;
+    justify-content: center;
+
     // THIS COULD WORK IF I PASS TOTAL AS A PROP
     // TO STILED COMPONENT
     // TOTAL = NUMBER OF COLUMNS

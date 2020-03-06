@@ -11,7 +11,7 @@ const BlogPage = () => {
   return (
     <div className="blog-page">
       <BlogsCollection />
-      {/* <div></div> */}
+      <div></div>
     </div>
   );
 };
