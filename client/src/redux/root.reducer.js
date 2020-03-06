@@ -8,6 +8,7 @@ import authReducer from "./auth/auth.reducer";
 import projectsReducer from "./projects/projects.reducer";
 import sidenavReducer from "./sidenav/sidenav.reducer";
 import modalReducer from "./modal/modal.reducer";
+import blogsReducer from "./blogs/blogs.reducer";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   user: authReducer,
   projects: projectsReducer,
   sidenav: sidenavReducer,
-  modal: modalReducer
+  modal: modalReducer,
+  blogs: blogsReducer
 });
 
 export default rootReducer;

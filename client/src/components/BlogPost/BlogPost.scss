@@ -1,0 +1,137 @@
+.blog-post {
+  display: grid;
+  grid-row-gap: 10rem;
+  margin-bottom: 4rem;
+
+  animation: 1s blogFadeIn;
+
+  @media only screen and (max-width: 768px) {
+    grid-row-gap: 5rem;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    &--text {
+      display: grid;
+      align-items: center;
+      font-size: 4rem;
+      font-weight: 400;
+      padding: 1rem;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 3.5rem;
+        text-align: center;
+      }
+    }
+
+    &--author {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: 2rem;
+      padding: 1rem;
+      width: 25rem;
+
+      @media only screen and (max-width: 768px) {
+        margin: 0 auto;
+      }
+
+      &-imgWrap {
+        grid-row: 1 / -1;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        overflow: hidden;
+        align-self: center;
+      }
+
+      &-img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      &-name {
+        align-self: end;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &-date {
+        align-self: start;
+      }
+    }
+  }
+  &__image {
+    height: 50rem;
+
+    @media only screen and (max-width: 768px) {
+      height: 30rem;
+    }
+
+    &--img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    display: grid;
+    grid-row-gap: 4rem;
+
+    @media only screen and (max-width: 768px) {
+      grid-row-gap: 2rem;
+    }
+
+    &--title {
+      justify-self: center;
+      font-size: 2.7rem;
+      font-weight: 400;
+    }
+    &--paragraph {
+      font-size: 2rem;
+    }
+  }
+
+  &__back-button {
+    cursor: pointer;
+    position: fixed;
+    bottom: 4rem;
+    left: 4rem;
+
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+
+    background-color: var(--cl-white);
+    box-shadow: 0.1rem 0.2rem 0.6rem var(--cl-langpan-shadow);
+    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
+
+    transition: color 0.3s, transform 0.3s;
+
+    &:hover {
+      color: var(--cl-primary);
+      transform: scale(1.1);
+    }
+  }
+}
+
+@keyframes blogFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

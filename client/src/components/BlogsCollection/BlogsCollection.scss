@@ -15,9 +15,9 @@
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
 
-    @media only screen and (max-width: 990px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    // @media only screen and (max-width: 990px) {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
 
     @media only screen and (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
@@ -29,28 +29,50 @@
   }
 
   &__navigation {
-    display: grid;
-    grid-template-columns: repeat(6, min-content);
-    grid-column-gap: 1rem;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bold;
+
+    // THIS COULD WORK IF I PASS TOTAL AS A PROP
+    // TO STILED COMPONENT
+    // TOTAL = NUMBER OF COLUMNS
+    // display: grid;
+    // grid-template-columns: repeat(6, min-content);
+    // grid-column-gap: 1rem;
+
+    & *:not(:last-child) {
+      margin-right: 2rem;
+    }
 
     @media only screen and (max-width: 425px) {
-      grid-column: span 2;
-      grid-template-columns: repeat(6, 1fr);
-      padding: 2rem;
+      // grid-column: span 2;
+      // grid-template-columns: repeat(6, 1fr);
+      // padding: 2rem;
       text-align: center;
+    }
+
+    & div {
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--cl-primary);
+      }
     }
 
     &--left {
     }
-    &--1 {
-    }
-    &--2 {
-    }
-    &--3 {
-    }
-    &--newSet {
-    }
+
     &--right {
     }
   }
+}
+
+.selected {
+  color: var(--cl-primary);
+}
+
+.disabled {
+  opacity: 0.4;
 }

@@ -25,6 +25,9 @@ import BlogPage from "./pages/BlogPage/BlogPage";
 // JS rendering CSS
 // import { HomepageContainer } from "./AppStyles";
 
+// TEMPORARY
+import BlogPost from "./components/BlogPost/BlogPost";
+
 const App = () => {
   return (
     <div className="container">
@@ -40,6 +43,7 @@ const App = () => {
           <Route exact path="/contacts" component={ContactsPage} />
           <Route exact path="/feedback" component={FeedbackPage} />
           <Route exact path="/blog" component={BlogPage} />
+          <Route path="/blog/:id" component={BlogPost} />
           <div>Test</div>
         </Switch>
         <LanguagePannel />

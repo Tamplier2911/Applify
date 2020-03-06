@@ -1,0 +1,7 @@
+const blogsTypes = {
+  SET_CURRENT_SET_NEXT: "SET_CURRENT_SET_NEXT",
+  SET_CURRENT_SET_PREV: "SET_CURRENT_SET_PREV",
+  SET_CURRENT_SET_BY_SLOT: "SET_CURRENT_SET_BY_SLOT"
+};
+
+export default blogsTypes;

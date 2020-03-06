@@ -12,14 +12,26 @@ const BlogPostView = ({ id, title, theme, date, like, image, liked, pos }) => {
   const big = [0, 3, 4];
   //   const small = [1001, 1002, 1005];
 
-  return (
-    <Link
+  /*
+  <Link
       to={`${id}`}
       className={`blog-post-view ${big.includes(pos) ? "big" : "small"}`}
       style={{
         backgroundImage: `linear-gradient(to bottom, transparent , #0000007e 40%) ,url(${image})`
-      }}
+      }}>
+  </Link>
+  */
+
+  return (
+    <Link
+      to={`blog/${id}`}
+      className={`blog-post-view ${big.includes(pos) ? "big" : "small"}`}
     >
+      <img
+        className="blog-post-view__image"
+        alt="blog post presentation"
+        src={`${image}`}
+      ></img>
       <div className="blog-post-view__content">
         <div className="blog-post-view__content--wrapper">
           <div className="blog-post-view__content--theme">{theme}</div>
