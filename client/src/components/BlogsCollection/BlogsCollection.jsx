@@ -21,7 +21,15 @@ import {
 import BlogPostView from "../BlogPostView/BlogPostView";
 
 // JS Rendering CSS
-import {} from "./BlogsCollectionStyles";
+import {
+  BlogsCollectionContainer,
+  BlogsCollectionTitle,
+  BlogsCollectionBlogs,
+  BlogsCollectionNav,
+  BlogsCollectionNavLeft,
+  BlogsCollectionNavNum,
+  BlogsCollectionNavRight
+} from "./BlogsCollectionStyles";
 
 // component constatns
 import blogsCollectionData from "../../utils/ComponentBlogsCollectionConstants/componentBlogsCollectionConstants";
@@ -40,43 +48,41 @@ const BlogsCollection = ({
 
   let count = -1;
   return (
-    <div className="blogs-collection">
-      <h2 className="blogs-collection__title">{blogsCollectionHeader}</h2>
-      <div className="blogs-collection__blogs">
+    <BlogsCollectionContainer>
+      <BlogsCollectionTitle>{blogsCollectionHeader}</BlogsCollectionTitle>
+      <BlogsCollectionBlogs>
         {currentDataSet.map(blog => {
           const { id } = blog;
           count++;
           return <BlogPostView {...blog} key={id} pos={count} />;
         })}
-        <div className="blogs-collection__navigation">
-          <div
-            className={`blogs-collection__navigation--left ${
-              currentDataSlot === 1 ? "disabled" : ""
-            }`}
+        <BlogsCollectionNav>
+          <BlogsCollectionNavLeft
+            {...(currentDataSlot === 1 ? { disabled: 1 } : { disabled: 0 })}
             onClick={
               currentDataSlot === 1 ? () => {} : () => setCurrentSetPrev()
             }
           >
             &#x3c;
-          </div>
+          </BlogsCollectionNavLeft>
           {Object.keys(allDataSets).map(key => {
             const keyNum = parseInt(key);
             return (
-              <div
+              <BlogsCollectionNavNum
                 key={key}
-                className={`blogs-collection__navigation--${key} ${
-                  currentDataSlot === keyNum ? "selected" : ""
-                }`}
+                {...(currentDataSlot === keyNum
+                  ? { selected: 1 }
+                  : { selected: 0 })}
                 onClick={() => setCurrentSetBySlot(keyNum)}
               >
                 {key}
-              </div>
+              </BlogsCollectionNavNum>
             );
           })}
-          <div
-            className={`blogs-collection__navigation--right ${
-              currentDataSlot === allDataSlots ? "disabled" : ""
-            }`}
+          <BlogsCollectionNavRight
+            {...(currentDataSlot === allDataSlots
+              ? { disabled: 1 }
+              : { disabled: 0 })}
             onClick={
               currentDataSlot === allDataSlots
                 ? () => {}
@@ -84,10 +90,10 @@ const BlogsCollection = ({
             }
           >
             &#x3e;
-          </div>
-        </div>
-      </div>
-    </div>
+          </BlogsCollectionNavRight>
+        </BlogsCollectionNav>
+      </BlogsCollectionBlogs>
+    </BlogsCollectionContainer>
   );
 };
 

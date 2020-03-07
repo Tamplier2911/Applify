@@ -1,18 +1,18 @@
-import "./BlogPage.scss";
+// import "./BlogPage.scss";
 import React from "react";
 
 // components
 import BlogsCollection from "../../components/BlogsCollection/BlogsCollection";
 
 // JS Rendering CSS
-import {} from "./BlogPageStyles.js";
+import { BlogPageContainer, BlogPagePlaceholder } from "./BlogPageStyles.js";
 
 const BlogPage = () => {
   return (
-    <div className="blog-page">
+    <BlogPageContainer>
       <BlogsCollection />
-      <div></div>
-    </div>
+      <BlogPagePlaceholder />
+    </BlogPageContainer>
   );
 };
 

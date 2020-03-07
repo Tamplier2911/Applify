@@ -21,12 +21,10 @@ import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
 import BlogPage from "./pages/BlogPage/BlogPage";
+import BlogPost from "./components/BlogPost/BlogPost";
 
 // JS rendering CSS
 // import { HomepageContainer } from "./AppStyles";
-
-// TEMPORARY
-import BlogPost from "./components/BlogPost/BlogPost";
 
 const App = () => {
   return (

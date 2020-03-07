@@ -1,34 +1,29 @@
+/*
 .blog-post-view {
   cursor: pointer;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-
-  // background-position: center;
-  // background-size: 180%;
-  // background-repeat: no-repeat;
-  // backface-visibility: hidden;
 
   color: var(--cl-white);
   text-decoration: none;
   font-weight: 300;
   font-family: var(--font-title);
 
-  min-height: 40rem; // double check
+  min-height: 20rem; // double check
+  max-height: 20rem; // double check
   box-shadow: 0 0.2rem 0.5rem var(--cl-square-shadow);
 
-  // transition: background-size 8s, filter 0.5s, box-shadow 0.3s;
   transition: filter 0.5s, box-shadow 0.3s;
   animation: 1s blogFadeIn;
   filter: brightness(90%);
 
   @media only screen and (max-width: 425px) {
-    max-height: 30rem;
     grid-template-rows: repeat(10, 1fr);
+    max-height: 30rem;
   }
 
   &:hover {
     filter: brightness(130%);
-    // background-size: 140%;
     box-shadow: 0 0.2rem 1rem var(--cl-card-shadow-hover);
   }
 
@@ -37,7 +32,6 @@
     grid-column: 1 / -1;
     width: 100%;
     height: 100%;
-    // height: 50rem;
     display: block;
     object-fit: cover;
   }
@@ -59,18 +53,25 @@
       grid-auto-rows: min-content;
       align-content: center;
       padding: 1rem 2rem;
-
-      @media only screen and (max-width: 425px) {
-        // align-content: end;
-      }
     }
+
     &--theme {
       font-size: 1.5rem;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
+
     &--title {
       font-weight: 400;
       font-size: 1.7rem;
+
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
+
     &--date {
       font-size: 1.5rem;
 
@@ -87,7 +88,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 0.5rem;
-      align-items: end;
+      align-items: center;
     }
     &--svg {
       width: 2rem;
@@ -140,3 +141,5 @@
     opacity: 1;
   }
 }
+
+*/

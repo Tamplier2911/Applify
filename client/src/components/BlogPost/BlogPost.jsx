@@ -1,12 +1,29 @@
-import "./BlogPost.scss";
+// import "./BlogPost.scss";
 import React from "react";
 
 // router
 import { withRouter } from "react-router-dom";
 
-// svg
-import { ReactComponent as ReturnSVG } from "../../assets/svg/return.svg";
+// JS Rendering CSS
+import {
+  BlogPostContainer,
+  BlogPostHeader,
+  BlogPostTitle,
+  BlogPostAuthor,
+  BlogPostAuthorImgCont,
+  BlogPostAuthorImg,
+  BlogPostAuthorName,
+  BlogPostDate,
+  BlogPostImgCont,
+  BlogPostImg,
+  BlogPostContent,
+  BlogPostContentTitle,
+  BlogPostContentParagraph,
+  BlogPostBackButton,
+  BlogPostBackButtonSVG
+} from "./BlogPostStyles";
 
+// DATA SAMPLE
 const dataObjectSample = {
   blogTitle: "Why You Should Start Learning Code TODAY!",
   author: {
@@ -36,43 +53,32 @@ const BlogPost = ({ history }) => {
   });
 
   return (
-    <section className="blog-post">
-      <div className="blog-post__header">
-        <h1 className="blog-post__header--text">{blogTitle}</h1>
-        <div className="blog-post__header--author">
-          <div className="blog-post__header--author-imgWrap">
-            <img
-              src={authorImage}
-              className="blog-post__header--author-img"
-              alt="happy author"
-            ></img>
-          </div>
-          <div className="blog-post__header--author-name">{authorName}</div>
-          <div className="blog-post__header--author-date">{date}</div>
-        </div>
-      </div>
-      <div className="blog-post__image">
-        <img
-          className="blog-post__image--img"
-          alt="blog representation"
-          src="https://bit.ly/2VLGiN2"
-        ></img>
-      </div>
-      <div className="blog-post__content">
-        <h2 className="blog-post__content--title">{contentTitle}</h2>
-        <p className="blog-post__content--paragraph">{contentText}</p>
-        <h2 className="blog-post__content--title">{contentTitle}</h2>
-        <p className="blog-post__content--paragraph">{contentText}</p>
-        <h2 className="blog-post__content--title">{contentTitle}</h2>
-        <p className="blog-post__content--paragraph">{contentText}</p>
-      </div>
-      <div
-        className="blog-post__back-button"
-        onClick={() => history.push("/blog")}
-      >
-        <ReturnSVG className="blog-post__back-svg" />
-      </div>
-    </section>
+    <BlogPostContainer>
+      <BlogPostHeader>
+        <BlogPostTitle>{blogTitle}</BlogPostTitle>
+        <BlogPostAuthor>
+          <BlogPostAuthorImgCont>
+            <BlogPostAuthorImg src={authorImage} alt="happy author" />
+          </BlogPostAuthorImgCont>
+          <BlogPostAuthorName>{authorName}</BlogPostAuthorName>
+          <BlogPostDate>{date}</BlogPostDate>
+        </BlogPostAuthor>
+      </BlogPostHeader>
+      <BlogPostImgCont>
+        <BlogPostImg alt="blog representation" src="https://bit.ly/2VLGiN2" />
+      </BlogPostImgCont>
+      <BlogPostContent>
+        <BlogPostContentTitle>{contentTitle}</BlogPostContentTitle>
+        <BlogPostContentParagraph>{contentText}</BlogPostContentParagraph>
+        <BlogPostContentTitle>{contentTitle}</BlogPostContentTitle>
+        <BlogPostContentParagraph>{contentText}</BlogPostContentParagraph>
+        <BlogPostContentTitle>{contentTitle}</BlogPostContentTitle>
+        <BlogPostContentParagraph>{contentText}</BlogPostContentParagraph>
+      </BlogPostContent>
+      <BlogPostBackButton onClick={() => history.push("/blog")}>
+        <BlogPostBackButtonSVG />
+      </BlogPostBackButton>
+    </BlogPostContainer>
   );
 };
 
