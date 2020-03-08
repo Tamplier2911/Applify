@@ -3,8 +3,6 @@ import styled from "styled-components";
 export const BlogPageContainer = styled.section`
   display: grid;
   grid-row-gap: 5rem;
-  // grid-template-rows: 70vh 1fr;
-  // grid-row-gap: 10rem;
 
   // @media only screen and (max-width: 980px) {
   //   grid-template-rows: 68vh 1fr;

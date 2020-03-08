@@ -1,0 +1,30 @@
+.feedback-collection {
+  display: grid;
+  grid-row-gap: 4rem;
+
+  &__title {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    font-weight: 300;
+    padding: 1rem;
+  }
+
+  &__button {
+    cursor: pointer;
+    // justify-self: center;
+    font-family: var(--font-title);
+
+    display: grid;
+    background-color: var(--cl-font);
+    color: var(--cl-white);
+    // padding: 1rem 10rem;
+    padding: 1rem;
+    text-align: center;
+
+    transition: color 0.3s, background-color 0.3s;
+
+    &:hover {
+      background-color: var(--cl-primary);
+    }
+  }
+}
