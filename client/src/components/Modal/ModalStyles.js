@@ -117,7 +117,7 @@ export const ModalClose = styled.div`
 
   &:hover,
   &:active {
-    color: var(--cl-tiles-1);
+    color: var(--cl-primary);
   }
 `;
 

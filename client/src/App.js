@@ -1,10 +1,12 @@
 import "./App.scss";
 // import React, {useEffect, lazy, Suspense} from "react";
-import React from "react";
+import React, { useEffect } from "react";
 // import { Switch, Route, Redirect } from "react-router-dom";
 import { Switch, Route } from "react-router-dom";
 
 // redux
+import { connect } from "react-redux";
+import { openModal } from "./redux/modal/modal.actions";
 
 // components
 import Header from "./components/Header/Header";
@@ -28,7 +30,14 @@ import BlogPost from "./components/BlogPost/BlogPost";
 // JS rendering CSS
 // import { HomepageContainer } from "./AppStyles";
 
-const App = () => {
+const App = ({ openModal }) => {
+  useEffect(() => {
+    openModal({
+      header: "Attention!",
+      content: "App is currently in development."
+    });
+  }, [openModal]);
+
   return (
     <div className="container">
       <Header />
@@ -56,7 +65,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default connect(null, { openModal })(App);
 /*
 <Route
     exact
