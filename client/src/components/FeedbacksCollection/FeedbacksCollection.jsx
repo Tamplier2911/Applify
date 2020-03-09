@@ -1,111 +1,34 @@
-import "./FeedbacksCollection.scss";
+// import "./FeedbacksCollection.scss";
 import React, { useState } from "react";
+
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
 import FeedbackView from "../FeedbackView/FeedbackView";
 
+// JS Rendering CSS
+import {
+  FeedbacksCollectionContainer,
+  FeedbacksCollectionTitle,
+  FeedbacksCollectionBtn
+} from "./FeedbacksCollectionStyles";
+
 // temporary DTO
-const reviewData = [
-  {
-    id: 32214,
-    name: "Dayana WoodsDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/39y1VnX",
-    rating: 4.2,
-    color: "#1a73e8",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32215,
-    name: "Yuki MayDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/2ItRmX9",
-    rating: 3.5,
-    color: "#fe3f2d",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32216,
-    name:
-      "Rayley BridgesDayana WoodsDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/3cECNxT",
-    rating: 5.0,
-    color: "#00a8a9",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32217,
-    name: "Clara Jepsen",
-    photo: "https://bit.ly/3av5BXQ",
-    rating: 4.5,
-    color: "#ffaa2d",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32218,
-    name: "Dayana WoodsDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/39y1VnX",
-    rating: 4.2,
-    color: "#1a73e8",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32219,
-    name: "Yuki MayDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/2ItRmX9",
-    rating: 3.5,
-    color: "#fe3f2d",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32220,
-    name:
-      "Rayley BridgesDayana WoodsDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/3cECNxT",
-    rating: 5.0,
-    color: "#00a8a9",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32221,
-    name: "Clara Jepsen",
-    photo: "https://bit.ly/3av5BXQ",
-    rating: 4.5,
-    color: "#ffaa2d",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32222,
-    name:
-      "Rayley BridgesDayana WoodsDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/3cECNxT",
-    rating: 5.0,
-    color: "#00a8a9",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  },
-  {
-    id: 32223,
-    name: "Clara Jepsen",
-    photo: "https://bit.ly/3av5BXQ",
-    rating: 4.5,
-    color: "#ffaa2d",
-    feedback:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint maxime dicta explicabo molestias accusantium magnam optio, dolores, ex vitae alias id est itaque corporis praesentium obcaecati aliquam molestiae dolore ipsum?"
-  }
-];
+import feedbacksCollectionData, {
+  feedbacksTemporaryData
+} from "../../utils/ComponentFeedbacksCollectionConstants/componentFeedbacksCollectionConstants";
 
-// const totalReviews = reviewData.length;
+const reviewData = feedbacksTemporaryData;
 
-// const getMoreReviews = () => {};
+const FeedbacksCollection = ({ lang }) => {
+  const {
+    feedbacksCollectionTitle,
+    feedbacksCollectionMore
+  } = feedbacksCollectionData[lang];
 
-const FeedbacksCollection = () => {
   const [feedsData, setFeedsData] = useState({
     currentlyLoadedFeeds: reviewData.slice(0, 4),
     allFeedsCollection: reviewData,
@@ -114,17 +37,23 @@ const FeedbacksCollection = () => {
 
   const { currentlyLoadedFeeds, allFeedsCollection, totalFeeds } = feedsData;
   let count = -1;
+
+  // if all feedbacks loaded - statement is true
+  const allFeedbacksLoaded = currentlyLoadedFeeds.length === totalFeeds ? 1 : 0;
+
   return (
-    <div className="feedback-collection">
-      <div className="feedback-collection__title">Recent Feedbacks:</div>
+    <FeedbacksCollectionContainer>
+      <FeedbacksCollectionTitle>
+        {feedbacksCollectionTitle}
+      </FeedbacksCollectionTitle>
       {currentlyLoadedFeeds.map(feedback => {
         count++;
         return <FeedbackView key={feedback.id} {...feedback} count={count} />;
       })}
-      <div
-        className="feedback-collection__button"
+      <FeedbacksCollectionBtn
+        loaded={allFeedbacksLoaded}
         onClick={
-          currentlyLoadedFeeds.length === totalFeeds
+          allFeedbacksLoaded
             ? () => {}
             : () =>
                 setFeedsData({
@@ -136,10 +65,14 @@ const FeedbacksCollection = () => {
                 })
         }
       >
-        Show More
-      </div>
-    </div>
+        {feedbacksCollectionMore}
+      </FeedbacksCollectionBtn>
+    </FeedbacksCollectionContainer>
   );
 };
 
-export default FeedbacksCollection;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(FeedbacksCollection);

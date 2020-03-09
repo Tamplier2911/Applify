@@ -36,7 +36,7 @@ const bigOrSmall = props => {
   if (big) {
     return `grid-column: span 2;
             @media only screen and (max-width: 425px) {
-                rid-column: 1 / 2;
+                grid-column: 1 / 2;
             }`;
   } else {
     return `grid-column: span 1;

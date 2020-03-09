@@ -1,3 +1,5 @@
+/*
+
 .feedback {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -98,11 +100,27 @@
       font-size: 2rem;
       color: var(--cl-white);
 
-      width: 160px;
+      width: 15rem;
       text-align: center;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+
+      @media only screen and (max-width: 768px) {
+        width: 14rem;
+      }
+
+      @media only screen and (max-width: 678px) {
+        width: 20rem;
+      }
+
+      @media only screen and (max-width: 425px) {
+        grid-column: 5 / 6;
+      }
+
+      @media only screen and (max-width: 360px) {
+        width: 15rem;
+      }
 
       @media only screen and (max-width: 310px) {
         font-size: 1.8rem;
@@ -116,6 +134,10 @@
       grid-template-columns: repeat(5, min-content);
       grid-column-gap: 1rem;
       justify-self: center;
+
+      @media only screen and (max-width: 425px) {
+        grid-column: 5 / 6;
+      }
 
       @media only screen and (max-width: 310px) {
         grid-column: 1 / -1;
@@ -218,6 +240,10 @@
 .cnt-name-even {
   grid-column: 1 / 5;
 
+  @media only screen and (max-width: 425px) {
+    grid-column: 1 / 2;
+  }
+
   @media only screen and (max-width: 310px) {
     grid-column: 1 / -1;
   }
@@ -225,6 +251,10 @@
 
 .cnt-rating-even {
   grid-column: 1 / 5;
+
+  @media only screen and (max-width: 425px) {
+    grid-column: 1 / 2;
+  }
 
   @media only screen and (max-width: 310px) {
     grid-column: 1 / -1;
@@ -265,3 +295,5 @@
     display: none;
   }
 }
+
+*/
