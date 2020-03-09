@@ -66,7 +66,7 @@ const Sidenav = ({ sidenavCondition, toggleSideNav, lang }) => {
               <SidenavUserData>
                 <SidenavUserName>{name}</SidenavUserName>
                 <SidenavUserEmail>{email}</SidenavUserEmail>
-                <SidenavUserLinks to="/" onClick={toggleSideNav}>
+                <SidenavUserLinks to="/profile" onClick={toggleSideNav}>
                   {sidenavProfile}
                 </SidenavUserLinks>
                 <SidenavUserLinks to="/" onClick={toggleSideNav}>
@@ -76,7 +76,7 @@ const Sidenav = ({ sidenavCondition, toggleSideNav, lang }) => {
             </Fragment>
           ) : (
             <SidenavUserData>
-              <SidenavUserLinks to="/" onClick={toggleSideNav}>
+              <SidenavUserLinks to="/authorization" onClick={toggleSideNav}>
                 {sidenavLogIn}
               </SidenavUserLinks>
             </SidenavUserData>

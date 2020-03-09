@@ -70,7 +70,7 @@ const ContactsForm = ({ lang }) => {
         />
         <TextInput
           rows="6"
-          onChange={e => onInputChange(e)}
+          onInputChange={e => onInputChange(e)}
           label={contactsFormMsgField}
           name="message"
           value={message}

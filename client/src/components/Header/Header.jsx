@@ -38,8 +38,8 @@ const Header = ({ toggleSideNav, lang }) => {
             <HeaderLink to="/">{headerLogOut}</HeaderLink>
           ) : (
             <Fragment>
-              <HeaderLink to="/">{headerLogIn}</HeaderLink> /{" "}
-              <HeaderLink to="/">{headerSignUp}</HeaderLink>
+              <HeaderLink to="/authorization">{headerLogIn}</HeaderLink> /{" "}
+              <HeaderLink to="/authorization">{headerSignUp}</HeaderLink>
             </Fragment>
           )}
         </HeaderLinksWrapper>

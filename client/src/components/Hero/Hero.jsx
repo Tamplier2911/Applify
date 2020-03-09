@@ -37,7 +37,7 @@ const Hero = ({ lang }) => {
         return <Square key={obj.id} options={obj} />;
       })}
       <HeroActiveCTA>
-        <HeroActiveCTALink to="/">
+        <HeroActiveCTALink to="/contacts">
           <Square options={ctaOptions} text={companyCTA} />
         </HeroActiveCTALink>
       </HeroActiveCTA>
@@ -46,7 +46,7 @@ const Hero = ({ lang }) => {
           <HeroHeader>{companyName}</HeroHeader>
           <HeroText>{companySlogan}</HeroText>
         </HeroTextbox>
-        <HeroPassiveCTA to="/">{companyCTA}</HeroPassiveCTA>
+        <HeroPassiveCTA to="/contacts">{companyCTA}</HeroPassiveCTA>
       </HeroContent>
     </HeroContainer>
   );

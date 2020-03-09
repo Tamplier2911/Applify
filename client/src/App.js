@@ -16,6 +16,8 @@ import LanguagePannel from "./components/LanguagePanel/LanguagePanel";
 
 // pages
 import HomePage from "./pages/HomePage/HomePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import AuthorizationPage from "./pages/AuthorizationPage/AuthorizationPage";
 import ResumePage from "./pages/ResumePage/ResumePage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
@@ -36,6 +38,8 @@ const App = () => {
       <main className="main">
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/profile" component={ProfilePage} />
+          <Route exact path="/authorization" component={AuthorizationPage} />
           <Route exact path="/resume" component={ResumePage} />
           <Route exact path="/portfolio" component={PortfolioPage} />
           <Route exact path="/contacts" component={ContactsPage} />

@@ -8,11 +8,12 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
 import FormHolder from "../FormHolder/FormHolder";
+import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
 // component constants
 import feedbackCreateData from "../../utils/ComponentFeedbackCreateConstants/componentFeedbackCreateConstants";
 
-const loggedIn = false;
+const loggedIn = true;
 
 const FeedbackCreate = ({ lang }) => {
   const { feedbackCreateTitle } = feedbackCreateData[lang];
@@ -20,7 +21,7 @@ const FeedbackCreate = ({ lang }) => {
     <div className="feedback-create">
       <FormHolder type="feedback" title={feedbackCreateTitle}>
         {loggedIn ? (
-          <div>I AM A FORM</div>
+          <FeedbackForm />
         ) : (
           <div className="feedback-create__not-authorized">
             You have to authorize, in order to post review.
