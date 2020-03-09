@@ -7,18 +7,11 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
+import FormHolder from "../FormHolder/FormHolder";
 import ContactsForm from "../ContactsForm/ContactsForm";
 
 // JS Rendering CSS
-import {
-  ContactsContainer,
-  ContactsTitle,
-  ContactsFormComp,
-  ContactsFormCompLeft,
-  ContactsFormCompSVG,
-  ContactsFormCompRight,
-  ContactsFormCompFormWrap
-} from "./ContactsStyles";
+import { ContactsContainer } from "./ContactsStyles";
 
 // component constants
 import contactsData from "../../utils/ComponentContactsConstants/componentContactsConstants";
@@ -27,17 +20,9 @@ const Contacts = ({ lang }) => {
   const { contactsHeader } = contactsData[lang];
   return (
     <ContactsContainer>
-      <ContactsTitle>{contactsHeader}</ContactsTitle>
-      <ContactsFormComp>
-        <ContactsFormCompLeft>
-          <ContactsFormCompSVG />
-        </ContactsFormCompLeft>
-        <ContactsFormCompRight>
-          <ContactsFormCompFormWrap>
-            <ContactsForm />
-          </ContactsFormCompFormWrap>
-        </ContactsFormCompRight>
-      </ContactsFormComp>
+      <FormHolder type={"contact"} title={contactsHeader}>
+        <ContactsForm />
+      </FormHolder>
     </ContactsContainer>
   );
 };
