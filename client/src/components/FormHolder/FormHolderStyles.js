@@ -104,7 +104,11 @@ export const FormHolderLeft = styled.div`
     grid-area: 1 / 2 / 6 / -1;
   }
 
-  @media only screen and (max-width: 310px) {
+  // @media only screen and (max-width: 310px) {
+  // grid-area: 1 / 1 / 4 / -1;
+  // }
+
+  @media only screen and (max-width: 245px) {
     grid-area: 1 / 1 / 4 / -1;
   }
 `;

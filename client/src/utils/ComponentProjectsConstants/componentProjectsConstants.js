@@ -191,12 +191,12 @@ export const projectsData = {
   },
   currentImage: {
     id: 100,
-    image: "https://bit.ly/32bmiES"
+    image: "https://bit.ly/3cJPx6A"
   },
   allImages: [
     {
       id: 100,
-      image: "https://bit.ly/32bmiES"
+      image: "https://bit.ly/3cJPx6A"
     },
     {
       id: 101,

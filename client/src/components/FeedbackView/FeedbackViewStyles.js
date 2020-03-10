@@ -42,9 +42,11 @@ const getImageWrapStyles = props => {
   const { even, color } = props;
   if (even) {
     return `border: 0.3rem solid ${color};
+            background-color: ${color};
             justify-self: end;`;
   } else {
-    return `border: 0.3rem solid ${color};`;
+    return `border: 0.3rem solid ${color};
+            background-color: ${color};`;
   }
 };
 

@@ -1,4 +1,4 @@
-import "./FormHolder.scss";
+// import "./FormHolder.scss";
 import React from "react";
 
 // JS Rendering CSS

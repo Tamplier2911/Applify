@@ -32,10 +32,10 @@ import BlogPost from "./components/BlogPost/BlogPost";
 
 const App = ({ openModal }) => {
   useEffect(() => {
-    openModal({
-      header: "Attention!",
-      content: "App is currently in development."
-    });
+    // openModal({
+    //   header: "Attention!",
+    //   content: "App is currently in development."
+    // });
   }, [openModal]);
 
   return (

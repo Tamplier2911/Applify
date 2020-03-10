@@ -1,45 +1,89 @@
-import "./FeedbackForm.scss";
-import React from "react";
+// import "./FeedbackForm.scss";
+import React, { useState } from "react";
+
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
-import FormInput from "../FormInput/FormInput";
 import TextInput from "../TextInput/TextInput";
+import SelectInput from "../SelectInput/SelectInput";
 import Button from "../Button/Button";
 
 // JS Rendering CSS
-import {} from "./FeedbackFormStyles";
+import {
+  FeedbackFormContainer,
+  FeedbackFormTitle,
+  FeedbackFormParagraph,
+  FeedbackFormElement,
+  FeedbackFormRatingSVG
+} from "./FeedbackFormStyles";
 
-export const FeedbackForm = () => {
+// component constants
+import feedbackFormData from "../../utils/ComponentFeedbackFormConstants/componentFeedbackFormConstants";
+
+export const FeedbackForm = ({ lang }) => {
+  const [feedback, setFeedback] = useState({
+    feedbackMessage: "",
+    feedbackRating: "5"
+  });
+  const { feedbackMessage, feedbackRating } = feedback;
+
+  const onInputChange = e => {
+    const { name, value } = e.target;
+    setFeedback({ ...feedback, [name]: value });
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    // validate input
+    console.log(feedback);
+  };
+
+  const labels = Array.from(new Array(Number(feedbackRating)), (n, i) => i + 1);
+
+  const {
+    feedbackFormTitle,
+    feedbackFormFeedback,
+    feedbackFormSubmit,
+    options
+  } = feedbackFormData[lang];
+
   return (
-    <div className="feedback-form">
-      <div className="feedback-form__title">Testing Title</div>
-      <form
-        className="feedback-form__form"
-        autoComplete="off"
-        onSubmit={e => e => console.log(e.target)}
-      >
-        <FormInput
-          onInputChange={e => () => console.log(e.target)}
-          value={""}
-          label={"Testing Purposes"}
-          // name="test"
-          type="text"
-          required
-        />
+    <FeedbackFormContainer>
+      <FeedbackFormTitle lang={lang}>
+        <FeedbackFormParagraph>{feedbackFormTitle[0]}</FeedbackFormParagraph>
+        <FeedbackFormParagraph>{feedbackFormTitle[1]}</FeedbackFormParagraph>
+      </FeedbackFormTitle>
+      <FeedbackFormElement autoComplete="off" onSubmit={e => onSubmit(e)}>
         <TextInput
           rows="6"
-          onInputChange={e => () => console.log(e.target)}
-          label={"Feedback"}
-          // name="feedback"
-          // value={message}
+          onInputChange={e => onInputChange(e)}
+          label={feedbackFormFeedback}
+          name="feedbackMessage"
+          value={feedbackMessage}
           max="1000"
-          //   placeholder="Don't be shy, share your ideas with me!"
+          //   placeholder="Please, leave me a feedback!"
           required
         />
-        <Button type="submit" value={"Submit"} />
-      </form>
-    </div>
+        <SelectInput
+          label={labels.map(label => (
+            <FeedbackFormRatingSVG key={label} />
+          ))}
+          name={"feedbackRating"}
+          onInputChange={e => onInputChange(e)}
+          defaultValue={"5"}
+          options={options}
+          required
+        />
+        <Button type="submit" value={feedbackFormSubmit} />
+      </FeedbackFormElement>
+    </FeedbackFormContainer>
   );
 };
 
-export default FeedbackForm;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(FeedbackForm);

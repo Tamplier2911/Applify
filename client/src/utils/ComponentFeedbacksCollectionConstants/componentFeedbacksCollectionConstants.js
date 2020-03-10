@@ -17,7 +17,7 @@ export const feedbacksTemporaryData = [
   {
     id: 32214,
     name: "Dayana WoodsDayana WoodsDayana WoodsDayana WoodsDayana Woods",
-    photo: "https://bit.ly/330IOAE",
+    photo: "https://bit.ly/38C4fcz",
     rating: 4.2,
     color: "#1a73e8",
     feedback:

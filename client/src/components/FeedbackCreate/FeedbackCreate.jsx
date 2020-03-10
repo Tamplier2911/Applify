@@ -1,4 +1,4 @@
-import "./FeedbackCreate.scss";
+// import "./FeedbackCreate.scss";
 import React from "react";
 
 // redux
@@ -10,25 +10,34 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import FormHolder from "../FormHolder/FormHolder";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
+// JS Rendering CSS
+import {
+  FeedbackCreateContainer,
+  FeedbackCreateUnauthorized
+} from "./FeedbackCreateStyles";
+
 // component constants
 import feedbackCreateData from "../../utils/ComponentFeedbackCreateConstants/componentFeedbackCreateConstants";
 
 const loggedIn = true;
 
 const FeedbackCreate = ({ lang }) => {
-  const { feedbackCreateTitle } = feedbackCreateData[lang];
+  const {
+    feedbackCreateTitle,
+    feedbackCreateNotAuthorized
+  } = feedbackCreateData[lang];
   return (
-    <div className="feedback-create">
+    <FeedbackCreateContainer>
       <FormHolder type="feedback" title={feedbackCreateTitle}>
         {loggedIn ? (
           <FeedbackForm />
         ) : (
-          <div className="feedback-create__not-authorized">
-            You have to authorize, in order to post review.
-          </div>
+          <FeedbackCreateUnauthorized>
+            {feedbackCreateNotAuthorized}
+          </FeedbackCreateUnauthorized>
         )}
       </FormHolder>
-    </div>
+    </FeedbackCreateContainer>
   );
 };
 
