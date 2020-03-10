@@ -1,4 +1,4 @@
-import "./BlogsCollection.scss";
+// import "./BlogsCollection.scss";
 import React from "react";
 
 // redux

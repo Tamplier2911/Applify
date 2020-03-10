@@ -137,6 +137,8 @@ export const FormHolderRight = styled.div`
   background-color: var(--cl-contacts-bg);
   box-shadow: 0 0.2rem 0.5rem var(--cl-square-shadow);
 
+  align-content: center;
+
   @media only screen and (max-width: 1000px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);

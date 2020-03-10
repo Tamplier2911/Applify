@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FeedbackPageContainer = styled.div`
+export const FeedbackPageContainer = styled.section`
   display: grid;
   grid-row-gap: 5rem;
 
