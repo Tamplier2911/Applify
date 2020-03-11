@@ -11,15 +11,15 @@ const xss = require("xss-clean");
 
 const hpp = require("hpp");
 
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
 const cors = require("cors");
 const enforce = require("express-sslify");
 
 // error handlers
-// const AppError = require("./utils/appError");
-// const globalErrorHandler = require("./controllers/errorController");
+const AppError = require("./utils/appError");
+const globalErrorHandler = require("./controllers/errorController");
 
 // routes
 // const a = require("./routes/a");
@@ -46,7 +46,7 @@ app.use("/api", limiter);
 
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(mongoSanitize());
@@ -76,13 +76,12 @@ if (process.env.NODE_ENV === "production") {
   // serving static files
   app.use(express.static(path.join(__dirname, "client/build")));
 
-  // on request to any route that is not covered
+  // on request to any route that is not covered - send index html
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
 
-/*
 // HANDLING UNHANDLED ROUTES
 app.all("*", (req, res, next) => {
   const error = new AppError(
@@ -92,7 +91,6 @@ app.all("*", (req, res, next) => {
 
   next(error);
 });
-*/
 
 // run service worker on request
 app.get("/service-worker.js", (req, res) => {
@@ -100,6 +98,6 @@ app.get("/service-worker.js", (req, res) => {
 });
 
 // GLOBAL ERROR HANDLING MIDDLEWARE
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 module.exports = app;

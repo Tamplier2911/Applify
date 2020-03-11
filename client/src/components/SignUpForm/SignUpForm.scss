@@ -1,2 +1,26 @@
+/*
+
 .signup-form {
+  display: grid;
+  grid-row-gap: 4rem;
+  grid-auto-rows: min-content;
+
+  &__title {
+    font-family: var(--font-title);
+    // ${getFont}
+    font-weight: 400;
+    font-size: 1.7rem;
+
+    margin-top: 2rem;
+    @media only screen and (max-width: 425px) {
+      margin-top: 5rem;
+    }
+  }
+
+  &__form {
+    display: grid;
+    grid-row-gap: 2rem;
+  }
 }
+
+*/

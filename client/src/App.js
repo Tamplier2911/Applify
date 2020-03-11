@@ -1,4 +1,4 @@
-import "./App.scss";
+// import "./App.scss";
 // import React, {useEffect, lazy, Suspense} from "react";
 import React, { useEffect } from "react";
 // import { Switch, Route, Redirect } from "react-router-dom";
@@ -28,23 +28,23 @@ import BlogPage from "./pages/BlogPage/BlogPage";
 import BlogPost from "./components/BlogPost/BlogPost";
 
 // JS rendering CSS
-// import { HomepageContainer } from "./AppStyles";
+import { AppContainer, AppMain } from "./AppStyles";
 
 const App = ({ openModal }) => {
   useEffect(() => {
-    // openModal({
-    //   header: "Attention!",
-    //   content: "App is currently in development."
-    // });
+    openModal({
+      header: "Attention!",
+      content: "App is currently in development, back-end is not yet wired up."
+    });
   }, [openModal]);
 
   return (
-    <div className="container">
+    <AppContainer>
       <Header />
       <Sidenav />
       <Modal />
 
-      <main className="main">
+      <AppMain>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/profile" component={ProfilePage} />
@@ -55,13 +55,13 @@ const App = ({ openModal }) => {
           <Route exact path="/feedback" component={FeedbackPage} />
           <Route exact path="/blog" component={BlogPage} />
           <Route path="/blog/:id" component={BlogPost} />
-          <div>Test</div>
+          <div>Remove this once Back is wired</div>
         </Switch>
         <LanguagePannel />
-      </main>
+      </AppMain>
 
       <Footer />
-    </div>
+    </AppContainer>
   );
 };
 
