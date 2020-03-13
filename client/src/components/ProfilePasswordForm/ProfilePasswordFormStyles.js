@@ -17,7 +17,10 @@ export const ProfilePasswordFormContainer = styled.div`
 
   padding: 2rem;
   box-shadow: 0 0.1rem 0.5rem var(--cl-font);
-  margin-bottom: 5rem;
+
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 5rem;
+  }
 `;
 
 export const ProfilePasswordFormTitle = styled.h3`
