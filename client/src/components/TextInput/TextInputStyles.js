@@ -37,6 +37,8 @@ export const FormInputFillingBar = styled.div`
 `;
 
 export const TextInputArea = styled.textarea`
+  position: relative;
+  z-index: 2;
   color: var(--cl-primary);
   font-family: var(--font-title);
   font-size: 1.7rem;
@@ -87,6 +89,7 @@ export const TextInputArea = styled.textarea`
 
 export const TextInputAreaLabel = styled.label`
   position: absolute;
+  z-index: 1;
   font-family: var(--font-title);
   color: var(--cl-font);
   font-size: 1.7rem;

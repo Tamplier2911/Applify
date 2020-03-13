@@ -17,7 +17,8 @@ import signInFormData from "../../utils/ComponentSignInFormConstants/componentSi
 import {
   SignInFormContainer,
   SignInFormTitle,
-  SignInFormElement
+  SignInFormElement,
+  SignInFormPasForgot
 } from "./SignInFormStyles";
 
 const SignInForm = ({ lang }) => {
@@ -43,7 +44,8 @@ const SignInForm = ({ lang }) => {
     signInFormTitle,
     signInFormEmail,
     signInFormPassword,
-    signInFormButton
+    signInFormButton,
+    signInFormForgotPas
   } = signInFormData[lang];
 
   return (
@@ -71,6 +73,9 @@ const SignInForm = ({ lang }) => {
         />
         <Button type="submit" value={signInFormButton} />
       </SignInFormElement>
+      <SignInFormPasForgot to="/forgotPassword">
+        {signInFormForgotPas}
+      </SignInFormPasForgot>
     </SignInFormContainer>
   );
 };

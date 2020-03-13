@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { Link } from "react-router-dom";
-
 const getFont = props => {
   const { lang } = props;
   if (lang === "eng") {
@@ -12,41 +10,28 @@ const getFont = props => {
   return `font-family: var(--font-title);`;
 };
 
-export const SignInFormContainer = styled.div`
+export const ProfileAboutFormContainer = styled.div`
   display: grid;
   grid-row-gap: 4rem;
   grid-auto-rows: min-content;
+
+  padding: 2rem;
+  box-shadow: 0 0.1rem 0.5rem var(--cl-font);
 `;
 
-export const SignInFormTitle = styled.h3`
+export const ProfileAboutFormTitle = styled.h3`
   ${getFont}
+
   font-weight: 400;
   font-size: 1.7rem;
 
   margin-top: 2rem;
   @media only screen and (max-width: 425px) {
-    margin-top: 5rem;
+    //   margin-top: 5rem;
   }
 `;
 
-export const SignInFormElement = styled.form`
+export const ProfileAboutFormElement = styled.form`
   display: grid;
   grid-row-gap: 2rem;
-`;
-
-export const SignInFormPasForgot = styled(Link)`
-  &:link,
-  &:visited {
-    justify-self: start;
-    font-size: 1.6rem;
-    font-family: var(--font-title);
-    text-decoration: none;
-    color: var(--cl-font);
-    transition: color 0.3s;
-  }
-
-  &:hover,
-  &:active {
-    color: var(--cl-primary);
-  }
 `;

@@ -36,6 +36,8 @@ export const FormInputContainer = styled.div`
 `;
 
 export const FormInputBar = styled.input`
+  position: relative;
+  z-index: 2;
   color: var(--cl-primary);
   font-family: var(--font-title);
   font-size: 1.7rem;
@@ -81,6 +83,7 @@ export const FormInputBar = styled.input`
 
 export const FormInputLabel = styled.label`
   position: absolute;
+  z-index: 1;
   font-family: var(--font-title);
   color: var(--cl-font);
   font-size: 1.7rem;

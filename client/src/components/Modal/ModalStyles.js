@@ -72,6 +72,17 @@ export const ModalContentBox = styled.div`
     margin: 10rem auto auto 4rem;
   }
 
+  @media only screen and (max-width: 300px) {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  @media only screen and (max-width: 200px) {
+    width: 125vw;
+    height: 130vh;
+  }
+
   &::-webkit-scrollbar {
     width: 0.4rem;
     background-color: var(--cl-scroll-bg);

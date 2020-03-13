@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AuthPageContainer = styled.div`
+export const AuthPageContainer = styled.section`
   display: grid;
   grid-row-gap: 5rem;
 
@@ -20,11 +20,11 @@ export const AuthPageContainer = styled.div`
   // }
 
   @media only screen and (max-width: 768px) {
-    grid-row-gap: 5rem;
+    grid-row-gap: 3rem;
   }
 
   @media only screen and (max-width: 425px) {
-    grid-row-gap: 5rem;
+    grid-row-gap: 1rem;
   }
 `;
 
