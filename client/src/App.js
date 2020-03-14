@@ -32,10 +32,10 @@ import { AppContainer, AppMain } from "./AppStyles";
 
 const App = ({ openModal }) => {
   useEffect(() => {
-    openModal({
-      header: "Attention!",
-      content: "App is currently in development, back-end is not yet wired up."
-    });
+    // openModal({
+    //   header: "Attention!",
+    //   content: "App is currently in development, back-end is not yet wired up."
+    // });
   }, [openModal]);
 
   return (

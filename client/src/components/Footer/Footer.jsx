@@ -22,8 +22,7 @@ import {
 import footerData from "../../utils/ComponentFooterConstants/componentFooterConstants";
 
 const Footer = ({ lang }) => {
-  const currentData = footerData[lang];
-  const { footerCopyright } = currentData;
+  const { footerCopyright, footerAriaLabels } = footerData[lang];
 
   return (
     <FooterContainer>
@@ -33,6 +32,7 @@ const Footer = ({ lang }) => {
             href="https://www.facebook.com/artyom.nikolayev"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={footerAriaLabels[0]}
           >
             <FacebookSVG />
           </FooterLink>
@@ -40,6 +40,7 @@ const Footer = ({ lang }) => {
             href="https://github.com/Tamplier2911"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={footerAriaLabels[1]}
           >
             <GitHubSVG />
           </FooterLink>
@@ -47,6 +48,7 @@ const Footer = ({ lang }) => {
             href="https://github.com/Tamplier2911"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={footerAriaLabels[2]}
           >
             <LinkedInSVG />
           </FooterLink>

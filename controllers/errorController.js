@@ -66,9 +66,9 @@ const sendErrorProd = (err, req, res) => {
         status: err.status,
         message: err.message
       });
-
-      // Programmatic or other unknown error: don't leak error details
     }
+    // Programmatic or other unknown error: don't leak error details
+
     // 1) Log error
     console.error("Non-operational API ERROR ಥ_ಥ", err);
 
@@ -77,18 +77,18 @@ const sendErrorProd = (err, req, res) => {
       status: "error",
       message: "Oops! How unfortunate ಥ_ಥ!"
     });
-
-    // FOR RENDERED WEBSITE
   }
+  // FOR RENDERED WEBSITE
+
   // Operational, truested error: send message to client
   if (err.isOperational) {
     return res.status(err.statusCode).render("error", {
       title: "Something went wrong!",
       msg: err.message
     });
-
-    // Programmatic or other unknown error: don't leak error details
   }
+  // Programmatic or other unknown error: don't leak error details
+
   // 1) Log error
   console.error("Non-operational RENDERED ERROR ಥ_ಥ", err);
 
