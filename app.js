@@ -49,6 +49,7 @@ app.enable("trust proxy");
 
 // cross-origin-requests
 // https://github.com/expressjs/cors
+// test
 app.use(cors());
 app.options("*", cors());
 
