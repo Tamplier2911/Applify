@@ -76,9 +76,6 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
 
 // Update logged in User
 exports.updateMe = catchAsync(async (req, res, next) => {
-  //   console.log(req.file); // - ref to file object
-  //   console.log(req.body); // - ref to body
-  //   console.log(req.user); // - ref to user object from protect
   // if user trying to update password - throw error
   if (req.body.password || req.body.passwordConfirm) {
     return next(

@@ -6,18 +6,8 @@ const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-// new email class
-// const Email = require('../utils/email');
-
-// const sendUserData = (message = "", data = "") => {
-//   return res.status(200).json({
-//     status: "success",
-//     data: {
-//       data,
-//       message
-//     }
-//   });
-// };
+// email class
+const Email = require("../utils/email");
 
 const signToken = id => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -60,19 +50,21 @@ exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
-    // photo: req.file ? req.file.filename : "default.jpg",
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm
   });
 
   // defining url
-  //   const url = `${req.protocol}://${req.get("host")}/user`;
-  // creating instance of Email with current user and url
-  //   const sendEmail = new Email(newUser, url);
-  // sending emal
-  //   await sendEmail.sendWelcome();
+  // const url = `${req.protocol}://${req.get("host")}/user`;
+  const url =
+    process.env.NODE_ENV === "production"
+      ? `https://applify-s.herokuapp.com/profile`
+      : `http://localhost:3000/profile`;
 
-  // await new Email(newUser, url).sendWelcome();
+  // creating instance of Email with current user, url and data obj
+  const sendEmail = new Email(newUser, url, {});
+  // sending emal
+  await sendEmail.sendWelcome();
 
   // create and send jwt
   createSendToken(newUser, 201, req, res);
@@ -196,18 +188,16 @@ exports.isLoggedIn = async (req, res, next) => {
 };
 
 exports.getUserObject = catchAsync(async (req, res, next) => {
-  const {
-    user: { _id, name, email, photo, about }
-  } = req;
-  if (_id) {
+  const { user } = req;
+  if (user) {
     const userData = {
-      id: _id,
-      name: name,
-      email: email,
-      photo: photo,
-      about: about
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      photo: user.photo,
+      about: user.about
     };
-
+    console.log(userData);
     return res.status(200).json({
       status: "success",
       data: {
@@ -250,15 +240,20 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     // Saving all changes from this.resetToken this.tokenExpires, deactivate all validators
     await currentUser.save({ validateBeforeSave: false });
 
-    const url = `${req.protocol}://${req.get("host")}/reset`;
+    // defining url
+    // const url = `${req.protocol}://${req.get("host")}/reset`;
+    const url =
+      process.env.NODE_ENV === "production"
+        ? `https://applify-s.herokuapp.com/passwordReset/${resetToken}`
+        : `http://localhost:3000/passwordReset/${resetToken}`;
 
     try {
       // create instance of email with current user and reset url
-      // const sendEmail = new Email(currentUser, url, { resetToken: resetToken });
+      const sendEmail = new Email(currentUser, url, { resetToken: resetToken });
 
       // perform password reset method on email instance
-      // await sendEmail.sendPasswordReset();
-      //   console.log(resetToken); // <=================================== remove this
+      await sendEmail.sendPasswordReset();
+
       res.status(200).json({
         status: "success",
         message: "Reset token was sent to your email!"
