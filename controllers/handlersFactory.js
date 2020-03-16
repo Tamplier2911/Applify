@@ -67,7 +67,7 @@ exports.getOne = (Model, populateOptions) =>
     });
   });
 
-exports.getAll = Model =>
+exports.getAll = (Model, populateOptions) =>
   catchAsync(async (req, res, next) => {
     // Nested route GET review allowance
     let filter = {};
@@ -79,6 +79,8 @@ exports.getAll = Model =>
       .sort()
       .limit()
       .paginate();
+
+    if (populateOptions) query = features.query.populate(populateOptions);
 
     // EXECUTE THE QUERY (await)
     const document = await features.query;

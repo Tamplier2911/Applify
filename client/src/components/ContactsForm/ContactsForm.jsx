@@ -45,7 +45,8 @@ const ContactsForm = ({ lang }) => {
     contactsFormNameField,
     contactsFormEmailField,
     contactsFormMsgField,
-    contactsFormSubmitField
+    contactsFormSubmitField,
+    contactsFormMsgLength
   } = contactsFormData[lang];
 
   return (
@@ -74,12 +75,14 @@ const ContactsForm = ({ lang }) => {
           label={contactsFormMsgField}
           name="message"
           value={message}
-          max="700"
+          max="2000"
           //   placeholder="Don't be shy, share your ideas with me!"
           required
         />
         <Button type="submit" value={contactsFormSubmitField} />
       </ContactsFormItself>
+      {contactsFormMsgLength + " "}
+      {2000 - message.length}
     </ContactsFormContainer>
   );
 };

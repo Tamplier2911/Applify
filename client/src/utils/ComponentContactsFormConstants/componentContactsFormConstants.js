@@ -5,7 +5,8 @@ const contactsFormData = {
     contactsFormNameField: "Name",
     contactsFormEmailField: "Email",
     contactsFormMsgField: "Message",
-    contactsFormSubmitField: "Send"
+    contactsFormSubmitField: "Send",
+    contactsFormMsgLength: "Message length:"
   },
   rus: {
     contactsFormTitle:
@@ -13,7 +14,8 @@ const contactsFormData = {
     contactsFormNameField: "Имя",
     contactsFormEmailField: "Эл. адрес",
     contactsFormMsgField: "Сообщение",
-    contactsFormSubmitField: "Отправить"
+    contactsFormSubmitField: "Отправить",
+    contactsFormMsgLength: "Длина сообщения:"
   },
   ukr: {
     contactsFormTitle:
@@ -21,7 +23,8 @@ const contactsFormData = {
     contactsFormNameField: "Ім'я",
     contactsFormEmailField: "Ел. адреса",
     contactsFormMsgField: "Повідомлення",
-    contactsFormSubmitField: "Відправити"
+    contactsFormSubmitField: "Відправити",
+    contactsFormMsgLength: "Довжина повідомлення:"
   }
 };
 

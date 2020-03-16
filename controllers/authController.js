@@ -197,7 +197,7 @@ exports.getUserObject = catchAsync(async (req, res, next) => {
       photo: user.photo,
       about: user.about
     };
-    console.log(userData);
+    // console.log(userData);
     return res.status(200).json({
       status: "success",
       data: {

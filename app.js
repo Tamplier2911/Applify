@@ -41,7 +41,7 @@ const globalErrorHandler = require("./controllers/errorController");
 /********************************** ROUTES ***********************************/
 
 const userRouter = require("./routes/userRoutes");
-// const b = require("./routes/b");
+const messageRouter = require("./routes/messageRoutes");
 // const c = require("./routes/c");
 
 const app = express();
@@ -83,11 +83,11 @@ app.use((req, res, next) => {
 
 // ROUTES
 app.use("/api/v1/users", userRouter);
-// app.use("/api/v1/b", b);
+app.use("/api/v1/messages", messageRouter);
 // app.use("/api/v1/c", c);
 
 if (process.env.NODE_ENV === "production") {
-  // compress all responsee bodies
+  // compress all response bodies
   app.use(compression());
 
   // enforce https whenever http are made

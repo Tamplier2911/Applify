@@ -1,6 +1,6 @@
 const multer = require("multer");
 const sharp = require("sharp");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
