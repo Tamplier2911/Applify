@@ -41,3 +41,5 @@ export const FeedbackFormRatingSVG = styled(RatingSVG)`
     height: 1.5rem;
   }
 `;
+
+export const FeedbackFormLength = styled.p``;

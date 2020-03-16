@@ -6,13 +6,14 @@ const feedbackFormData = {
     ],
     feedbackFormFeedback: "Feedback",
     feedbackFormSubmit: "Submit",
-    options: [
+    feedbackFormOptions: [
       { name: "Awful", value: "1" },
       { name: "Could be better...", value: "2" },
       { name: "Good enough", value: "3" },
       { name: "Meet expectations", value: "4" },
       { name: "Unforgettable", value: "5" }
-    ]
+    ],
+    feedbackFormLength: "Feedback length:"
   },
   rus: {
     feedbackFormTitle: [
@@ -21,13 +22,14 @@ const feedbackFormData = {
     ],
     feedbackFormFeedback: "Отзыв",
     feedbackFormSubmit: "Разместить",
-    options: [
+    feedbackFormOptions: [
       { name: "Ужасно", value: "1" },
       { name: "Могло быть лучше...", value: "2" },
       { name: "Достаточно хорошо", value: "3" },
       { name: "Оправдывает ожидания", value: "4" },
       { name: "Незабываемо", value: "5" }
-    ]
+    ],
+    feedbackFormLength: "Длина отзыва:"
   },
   ukr: {
     feedbackFormTitle: [
@@ -36,13 +38,14 @@ const feedbackFormData = {
     ],
     feedbackFormFeedback: "Відгук",
     feedbackFormSubmit: "Розмістити",
-    options: [
+    feedbackFormOptions: [
       { name: "Жахливо", value: "1" },
       { name: "Могло бути краще...", value: "2" },
       { name: "Достатньо добре", value: "3" },
       { name: "Виправдовує очікування", value: "4" },
       { name: "Незабутньо", value: "5" }
-    ]
+    ],
+    feedbackFormLength: "Довжина відгука:"
   }
 };
 

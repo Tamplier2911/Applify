@@ -5,9 +5,9 @@ const AppError = require("../utils/appError");
 // handlers
 const { getAll, getOne, updateOne, deleteOne } = require("./handlersFactory");
 
-// everyone can create message
-// exports.createNewMessage = createOne(Message);
+// Actions to perform by EVERYONE
 
+// Create New Message
 exports.createNewMessage = catchAsync(async (req, res, next) => {
   const { body } = req;
   const { user } = req;
@@ -32,17 +32,22 @@ exports.createNewMessage = catchAsync(async (req, res, next) => {
   });
 });
 
-// only admin can read, update and delete message.
+// Actions to perform by ADMIN ONLY
+
+// Get All Messages
 exports.getAllMessages = getAll(Message, {
   path: "from",
   select: "name email photo"
 });
 
+// Get Single Message
 exports.getSingleMessage = getOne(Message, {
   path: "from",
   select: "name email photo"
 });
 
+// Update Single Message
 exports.updateMessage = updateOne(Message);
 
+// Delete Single Message
 exports.deleteMessage = deleteOne(Message);

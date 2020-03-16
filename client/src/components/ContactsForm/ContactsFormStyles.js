@@ -26,3 +26,5 @@ export const ContactsFormItself = styled.form`
   display: grid;
   grid-row-gap: 2rem;
 `;
+
+export const ContactsFormLength = styled.p``;

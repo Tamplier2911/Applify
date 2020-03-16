@@ -124,19 +124,19 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-// actions to perform by admin
+// Actions to perform by ADMIN ONLY
 
 // Get All Users
 exports.getAllUsers = getAll(User);
 
-// get single user by id
+// Get Single User
 exports.getSingleUser = getOne(User);
 
-// create user
+// Create Single User
 exports.createNewUser = createOne(User);
 
-// update user using id - do NOT update pw with this.
+// Update Single User - NOT PASSWORD
 exports.updateUser = updateOne(User);
 
-// delete user using id
+// Delete Single User
 exports.deleteUser = deleteOne(User);

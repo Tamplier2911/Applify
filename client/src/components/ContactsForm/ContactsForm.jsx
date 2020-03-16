@@ -15,7 +15,8 @@ import Button from "../Button/Button";
 import {
   ContactsFormContainer,
   ContactsFormTitle,
-  ContactsFormItself
+  ContactsFormItself,
+  ContactsFormLength
 } from "./ContactsFormStyles";
 
 // component constants
@@ -81,8 +82,10 @@ const ContactsForm = ({ lang }) => {
         />
         <Button type="submit" value={contactsFormSubmitField} />
       </ContactsFormItself>
-      {contactsFormMsgLength + " "}
-      {2000 - message.length}
+      <ContactsFormLength>
+        {contactsFormMsgLength + " "}
+        {2000 - message.length}
+      </ContactsFormLength>
     </ContactsFormContainer>
   );
 };

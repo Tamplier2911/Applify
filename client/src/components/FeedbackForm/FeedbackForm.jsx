@@ -16,7 +16,8 @@ import {
   FeedbackFormTitle,
   FeedbackFormParagraph,
   FeedbackFormElement,
-  FeedbackFormRatingSVG
+  FeedbackFormRatingSVG,
+  FeedbackFormLength
 } from "./FeedbackFormStyles";
 
 // component constants
@@ -46,7 +47,8 @@ export const FeedbackForm = ({ lang }) => {
     feedbackFormTitle,
     feedbackFormFeedback,
     feedbackFormSubmit,
-    options
+    feedbackFormOptions,
+    feedbackFormLength
   } = feedbackFormData[lang];
 
   return (
@@ -62,7 +64,7 @@ export const FeedbackForm = ({ lang }) => {
           label={feedbackFormFeedback}
           name="feedbackMessage"
           value={feedbackMessage}
-          max="1000"
+          max="500"
           //   placeholder="Please, leave me a feedback!"
           required
         />
@@ -73,11 +75,15 @@ export const FeedbackForm = ({ lang }) => {
           name={"feedbackRating"}
           onInputChange={e => onInputChange(e)}
           defaultValue={"5"}
-          options={options}
+          options={feedbackFormOptions}
           required
         />
         <Button type="submit" value={feedbackFormSubmit} />
       </FeedbackFormElement>
+      <FeedbackFormLength>
+        {feedbackFormLength + " "}
+        {500 - feedbackMessage.length}
+      </FeedbackFormLength>
     </FeedbackFormContainer>
   );
 };
