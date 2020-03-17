@@ -5,6 +5,8 @@ const router = express.Router();
 const {
   getAllBlogposts,
   getSingleBlogpost,
+  likeSingleBlogpost,
+  dislikeSingleBlogpost,
   createNewBlogpost,
   updateBlogpost,
   deleteBlogpost,
@@ -21,7 +23,9 @@ router.route("/:id").get(getSingleBlogpost);
 
 // PROTECTED
 router.use(protect);
-// like dislike mechanism
+
+router.route("/like/:id").patch(likeSingleBlogpost);
+router.route("/dislike/:id").patch(dislikeSingleBlogpost);
 
 // RESTRICTED
 router.use(restrictTo("admin", "owner"));

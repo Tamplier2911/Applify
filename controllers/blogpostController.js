@@ -2,17 +2,12 @@ const multer = require("multer");
 const sharp = require("sharp");
 
 const Blogpost = require("../models/blogpostModel");
+const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 // handlers
-const {
-  getAll,
-  getOne,
-  createOne,
-  updateOne,
-  deleteOne
-} = require("./handlersFactory");
+const { getAll, getOne, updateOne, deleteOne } = require("./handlersFactory");
 
 // Actions to perform by EVERYONE
 
@@ -23,6 +18,54 @@ exports.getAllBlogposts = getAll(Blogpost);
 exports.getSingleBlogpost = getOne(Blogpost, {
   path: "author",
   select: "name photo"
+});
+
+// Actions to perform by AUTHENTICATED USERS
+
+// Like Blogpost
+exports.likeSingleBlogpost = catchAsync(async (req, res, next) => {
+  const { user } = req;
+
+  const blogpostId = req.params.id;
+  const blogpost = await Blogpost.findById(blogpostId);
+
+  if (!user.likedBlogposts.includes(blogpostId)) {
+    user.likedBlogposts.push(blogpostId);
+    await User.findByIdAndUpdate(user._id, user);
+    blogpost.likes++;
+    await Blogpost.findByIdAndUpdate(blogpostId, blogpost);
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      blogpostLikes: blogpost.likes,
+      userLiked: user.likedBlogposts
+    }
+  });
+});
+
+// Dislike Blogpost
+exports.dislikeSingleBlogpost = catchAsync(async (req, res, next) => {
+  const { user } = req;
+
+  const blogpostId = req.params.id;
+  const blogpost = await Blogpost.findById(blogpostId);
+
+  if (user.likedBlogposts.includes(blogpostId)) {
+    user.likedBlogposts = user.likedBlogposts.filter(el => el !== blogpostId);
+    await User.findByIdAndUpdate(user._id, user);
+    blogpost.likes--;
+    await Blogpost.findByIdAndUpdate(blogpostId, blogpost);
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      blogpostLikes: blogpost.likes,
+      userLiked: user.likedBlogposts
+    }
+  });
 });
 
 // Actions to perform by ADMIN ONLY
@@ -49,7 +92,6 @@ exports.uploadBlogpostImage = upload.single("image");
 exports.resizeBlogpostImage = catchAsync(async (req, res, next) => {
   // test for required fields right here, before saving image into DB
   const { title, theme, content } = req.body;
-  console.log(title, theme, content);
   if (!title || !theme || !content) {
     return next(new AppError("Blogpost title, theme or content are missing."));
   }
@@ -83,11 +125,7 @@ exports.createNewBlogpost = catchAsync(async (req, res, next) => {
   // get author
   blogpostData.author = req.user._id;
 
-  console.log(blogpostData);
-
-  //   const blogpost = await Blogpost.create(blogpostData);
-
-  const blogpost = {};
+  const blogpost = await Blogpost.create(blogpostData);
 
   if (!blogpost) {
     return next(
