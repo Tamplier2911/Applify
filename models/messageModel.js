@@ -7,8 +7,8 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter your name."],
       trim: true,
-      maxlength: [40, "Name must not consists of more than 40 characters."],
-      minlength: [1, "Name must consists of 1 characters or more."]
+      maxlength: [40, "Name must not consist of more than 40 characters."],
+      minlength: [1, "Name must consist of 1 characters or more."]
     },
     email: {
       type: String,
@@ -26,9 +26,9 @@ const messageSchema = new mongoose.Schema(
       trim: true,
       maxlength: [
         2000,
-        "Message must not consists of more than 2000 characters."
+        "Message must not consist of more than 2000 characters."
       ],
-      minlength: [1, "Message must consists of 1 characters or more."]
+      minlength: [1, "Message must consist of 1 characters or more."]
     },
     from: {
       type: mongoose.Schema.ObjectId,

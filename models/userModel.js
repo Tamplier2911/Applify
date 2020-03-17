@@ -9,8 +9,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter your name."],
       trim: true,
-      maxlength: [40, "Name must not consists of more than 40 characters."],
-      minlength: [1, "Name must consists of 1 characters or more."]
+      maxlength: [40, "Name must not consist of more than 40 characters."],
+      minlength: [1, "Name must consist of 1 characters or more."]
     },
     email: {
       type: String,
@@ -29,8 +29,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
       trim: true,
-      maxlength: [700, "About must not consists of more than 700 characters."]
+      maxlength: [700, "About must not consist of more than 700 characters."]
     },
+    likedBlogposts: [String],
     role: {
       type: String,
       enum: ["user", "admin", "owner"],

@@ -190,12 +190,14 @@ exports.isLoggedIn = async (req, res, next) => {
 exports.getUserObject = catchAsync(async (req, res, next) => {
   const { user } = req;
   if (user) {
+    const { _id, name, email, photo, about, likedBlogposts } = user;
     const userData = {
-      id: user._id,
-      name: user.name,
-      email: user.email,
-      photo: user.photo,
-      about: user.about
+      id: _id,
+      name: name,
+      email: email,
+      photo: photo,
+      about: about,
+      likedBlogposts: likedBlogposts
     };
     // console.log(userData);
     return res.status(200).json({

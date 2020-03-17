@@ -43,6 +43,7 @@ const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes");
 const messageRouter = require("./routes/messageRoutes");
 const feedbackRouter = require("./routes/feedbackRoutes");
+const blogpostRouter = require("./routes/blogpostRoutes");
 // const c = require("./routes/c");
 
 const app = express();
@@ -86,6 +87,7 @@ app.use((req, res, next) => {
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/messages", messageRouter);
 app.use("/api/v1/feedbacks", feedbackRouter);
+app.use("/api/v1/blogposts", blogpostRouter);
 // app.use("/api/v1/c", c);
 
 if (process.env.NODE_ENV === "production") {

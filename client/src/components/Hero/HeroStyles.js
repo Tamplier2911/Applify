@@ -1,8 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import bg from "../../assets/jpeg/tabletbg-min.jpg";
 
+const fadeInHeroComponent = css`
+  @keyframes heroFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
 export const HeroContainer = styled.div`
+  ${fadeInHeroComponent}
+  animation: 1s heroFadeIn;
+
   display: grid;
   position: relative;
   overflow: hidden;
