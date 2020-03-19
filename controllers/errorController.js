@@ -108,7 +108,7 @@ module.exports = (err, req, res, next) => {
     sendErrorDev(err, req, res);
   } else if (process.env.NODE_ENV === "production") {
     // Take copy of original error object, and work with it since now
-    // err = JSON.parse(JSON.stringify(err));
+    // error = JSON.parse(JSON.stringify(err));
     error = Object.assign({}, err);
 
     if (error.name === "CastError") {
@@ -122,6 +122,6 @@ module.exports = (err, req, res, next) => {
     } else if (error.name === "TokenExpiredError") {
       error = handleJWTExired(error);
     }
-    sendErrorProd(error, req, res);
+    sendErrorProd(error.message ? error : err, req, res);
   }
 };
