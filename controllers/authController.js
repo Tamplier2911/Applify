@@ -246,8 +246,8 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     // const url = `${req.protocol}://${req.get("host")}/reset`;
     const url =
       process.env.NODE_ENV === "production"
-        ? `https://applify-s.herokuapp.com/passwordReset/${resetToken}`
-        : `http://localhost:3000/passwordReset/${resetToken}`;
+        ? `https://applify-s.herokuapp.com/restore/${resetToken}`
+        : `http://localhost:3000/restore/${resetToken}`;
 
     try {
       // create instance of email with current user and reset url

@@ -5,6 +5,8 @@ import { ReactComponent as ContactsSVG } from "../../assets/svg/web_developer.sv
 import { ReactComponent as SignUpSVG } from "../../assets/svg/rocket_boy.svg";
 import { ReactComponent as SignInSVG } from "../../assets/svg/personal_data.svg";
 import { ReactComponent as FeedbackSVG } from "../../assets/svg/conversation.svg";
+import { ReactComponent as ForgotSVG } from "../../assets/svg/forgot-password.svg";
+import { ReactComponent as RestoreSVG } from "../../assets/svg/restore-password.svg";
 
 const SVGStyles = css`
   height: 40rem;
@@ -126,6 +128,14 @@ export const FormHolderSignUpSVG = styled(SignUpSVG)`
 `;
 
 export const FormHolderSignInSVG = styled(SignInSVG)`
+  ${SVGStyles}
+`;
+
+export const FormHolderForgotSVG = styled(ForgotSVG)`
+  ${SVGStyles}
+`;
+
+export const FormHolderRestoreSVG = styled(RestoreSVG)`
   ${SVGStyles}
 `;
 

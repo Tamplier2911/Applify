@@ -24,16 +24,8 @@ import {
 import profileData from "../../utils/ComponentProfileConstants/componentProfileConstants";
 
 const Profile = ({ lang, user }) => {
-  // console.log(user);
   const { name, email, photo, about } = user;
   const { profileTitle } = profileData[lang];
-
-  // let image = "";
-  // if (process.env.NODE_ENV === "development" && photo) {
-  //   image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + photo}`;
-  // } else {
-  //   image = photo;
-  // }
 
   let image = "";
   if (process.env.NODE_ENV === "development" && photo) {

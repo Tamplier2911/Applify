@@ -12,6 +12,8 @@ import {
   FormHolderSignUpSVG,
   FormHolderFeedbacksSVG,
   FormHolderContactsSVG,
+  FormHolderForgotSVG,
+  FormHolderRestoreSVG,
   FormHolderFormWrap
 } from "./FormHolderStyles";
 
@@ -32,6 +34,10 @@ const FormHolder = ({ children, type, title }) => {
             <FormHolderContactsSVG />
           ) : type === "feedback" ? (
             <FormHolderFeedbacksSVG />
+          ) : type === "forgot" ? (
+            <FormHolderForgotSVG />
+          ) : type === "restore" ? (
+            <FormHolderRestoreSVG />
           ) : null}
         </FormHolderLeft>
         <FormHolderRight>

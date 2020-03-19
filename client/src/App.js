@@ -27,7 +27,7 @@ import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
 import BlogPage from "./pages/BlogPage/BlogPage";
-import BlogPost from "./components/BlogPost/BlogPost";
+import PasswordRestorationPage from "./pages/PasswordRestorationPage/PasswordRestorationPage";
 
 // JS rendering CSS
 import { AppContainer, AppMain } from "./AppStyles";
@@ -50,7 +50,6 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
 
       <AppMain>
         <Switch>
-          <Route exact path="/" component={HomePage} />
           <Route
             exact
             path="/profile"
@@ -63,17 +62,16 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
               isLogged ? <Redirect to="" /> : <AuthorizationPage />
             }
           />
-          <Route
-            exact
-            path="/forgotPassword"
-            component={() => <div>Forgotten :[</div>}
-          />
+          {/* <Route exact path="/forgotPassword" component={ForgotPasswordPage} />
+          <Route path="/forgotPassword/:id" component={RestorePasswordPage} /> */}
           <Route exact path="/resume" component={ResumePage} />
           <Route exact path="/portfolio" component={PortfolioPage} />
           <Route exact path="/contacts" component={ContactsPage} />
           <Route exact path="/feedback" component={FeedbackPage} />
-          <Route exact path="/blog" component={BlogPage} />
-          <Route path="/blog/:id" component={BlogPost} />
+          <Route path="/blog" component={BlogPage} />
+          <Route path="/restore" component={PasswordRestorationPage} />
+          <Route path="/" component={HomePage} />
+
           <div>Remove this once Back is wired</div>
         </Switch>
         <LanguagePannel />

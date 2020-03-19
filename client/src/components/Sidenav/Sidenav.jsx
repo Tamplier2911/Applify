@@ -64,8 +64,6 @@ const Sidenav = ({
     image = `${"api/" + photo}`;
   }
 
-  console.log(image);
-
   return ReactDOM.createPortal(
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
       <SidenavContent onClick={e => e.stopPropagation()}>

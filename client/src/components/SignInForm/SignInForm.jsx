@@ -89,7 +89,7 @@ const SignInForm = ({ lang, logUserInStart, openModal }) => {
         />
         <Button type="submit" value={signInFormButton} />
       </SignInFormElement>
-      <SignInFormPasForgot to="/forgotPassword">
+      <SignInFormPasForgot to="/restore">
         {signInFormForgotPas}
       </SignInFormPasForgot>
     </SignInFormContainer>
