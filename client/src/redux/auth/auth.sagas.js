@@ -74,7 +74,7 @@ export function* logUserIn({ payload }) {
       statusText,
       data: { message }
     } = error.response;
-    console.log(message);
+    console.log(error.response);
     yield put(
       openModal({
         header: statusText || "Attention!",

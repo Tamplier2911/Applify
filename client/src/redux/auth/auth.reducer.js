@@ -27,8 +27,8 @@ const authReducer = (state = INITIAL_STATE, action) => {
     case FETCH_AUTH_OBJECT_SUCCESS:
       const homeURL =
         process.env.NODE_ENV === "production"
-          ? process.env.REACT_APP_SERVE_IMAGE_PROD
-          : process.env.REACT_APP_SERVE_IMAGE_DEV;
+          ? "https://applify-s.herokuapp.com/"
+          : "http://localhost:5000/";
       // let image = "";
       // if (process.env.NODE_ENV === "production") {
       //   image = action.payload.photo
@@ -44,7 +44,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userObject: action.payload
-          ? { ...action.payload, photo: `${action.payload.photo}` }
+          ? { ...action.payload, photo: `${homeURL + action.payload.photo}` }
           : { name: "", email: "", photo: "", about: "" },
         errorMessage: null,
         isLogged: action.payload ? true : false
