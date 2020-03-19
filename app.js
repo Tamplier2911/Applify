@@ -61,7 +61,7 @@ app.options("*", cors());
 
 // app.use(express.static(path.join(__dirname, "uploads")));
 // app.use("/uploads", express.static("uploads"));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(helmet());
 

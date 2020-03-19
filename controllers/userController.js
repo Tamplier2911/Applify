@@ -87,7 +87,8 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
 
   // filter request body in case of avoiding unwanted fields
-  const filteredBody = filterObject(req.body, "name", "email");
+  const filteredBody = filterObject(req.body, "name", "email", "about");
+  console.log(filteredBody);
 
   // if we have req.file from multer middleware
   // we store filename as a photo property

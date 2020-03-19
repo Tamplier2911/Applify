@@ -10,6 +10,12 @@ const {
   LOG_USER_OUT_START,
   LOG_USER_OUT_SUCCESS,
   LOG_USER_OUT_FAILURE,
+  UPDATE_USER_DATA_START,
+  UPDATE_USER_DATA_SUCCESS,
+  UPDATE_USER_DATA_FAILURE,
+  UPDATE_USER_PASSWORD_START,
+  UPDATE_USER_PASSWORD_SUCCESS,
+  UPDATE_USER_PASSWORD_FAILURE,
   FETCH_AUTH_OBJECT_START,
   FETCH_AUTH_OBJECT_SUCCESS,
   FETCH_AUTH_OBJECT_FAILURE
@@ -56,6 +62,34 @@ export const logUserOutSuccess = loggedIn => ({
 
 export const logUserOutFailure = errorMessage => ({
   type: LOG_USER_OUT_FAILURE,
+  payload: errorMessage
+});
+
+export const updateUserDataStart = userCredentials => ({
+  type: UPDATE_USER_DATA_START,
+  payload: userCredentials
+});
+
+export const updateUserDataSuccess = () => ({
+  type: UPDATE_USER_DATA_SUCCESS
+});
+
+export const updateUserDataFailure = errorMessage => ({
+  type: UPDATE_USER_DATA_FAILURE,
+  payload: errorMessage
+});
+
+export const updateUserPasswordStart = userCredentials => ({
+  type: UPDATE_USER_PASSWORD_START,
+  payload: userCredentials
+});
+
+export const updateUserPasswordSuccess = () => ({
+  type: UPDATE_USER_PASSWORD_SUCCESS
+});
+
+export const updateUserPasswordFailure = errorMessage => ({
+  type: UPDATE_USER_PASSWORD_FAILURE,
   payload: errorMessage
 });
 

@@ -1,10 +1,11 @@
 // import "./ProfileAboutForm.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // redux
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { updateUserDataStart } from "../../redux/auth/auth.actions";
 
 // components
 import TextInput from "../TextInput/TextInput";
@@ -20,7 +21,7 @@ import {
 // component constants
 import profileAboutFormData from "../../utils/ComponentProfileAboutFormConstants/componentProfileAboutFormConstants";
 
-const ProfileAboutForm = ({ about, lang }) => {
+const ProfileAboutForm = ({ about, lang, updateUserDataStart }) => {
   const {
     profileAboutFormTitle,
     profileAboutFormAbout,
@@ -37,11 +38,12 @@ const ProfileAboutForm = ({ about, lang }) => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    // clean up input
-    console.log(aboutMeObj);
+    updateUserDataStart(aboutMeObj);
   };
 
-  // console.log(aboutMeObj, "from ProfileAboutForm");
+  useEffect(() => {
+    setAboutMeObj({ aboutMe: about });
+  }, [about]);
 
   return (
     <ProfileAboutFormContainer>
@@ -72,4 +74,6 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage
 });
 
-export default connect(mapStateToProps)(ProfileAboutForm);
+export default connect(mapStateToProps, { updateUserDataStart })(
+  ProfileAboutForm
+);

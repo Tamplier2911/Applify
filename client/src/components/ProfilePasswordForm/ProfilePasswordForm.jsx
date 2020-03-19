@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { openModal } from "../../redux/modal/modal.actions";
+import { updateUserPasswordStart } from "../../redux/auth/auth.actions";
 
 // components
 import FormInput from "../FormInput/FormInput";
@@ -20,7 +22,7 @@ import {
 // component constants
 import profilePasswordFormData from "../../utils/ComponentProfilePasswordFormConstants/componentProfilePasswordFormConstants";
 
-const ProfilePasswordForm = ({ lang }) => {
+const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
   const {
     profilePasswordFormTitle,
     profilePasswordFormCurPass,
@@ -44,11 +46,36 @@ const ProfilePasswordForm = ({ lang }) => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    // validate pass
-    console.log(userPassword);
-  };
+    if (
+      currentPassword.length < 8 ||
+      newPassword.length < 8 ||
+      newPasswordConfirm.length < 8
+    )
+      return openModal({
+        header: "Attention!",
+        content: "Password must be at least 8 characters long."
+      });
 
-  // console.log(userPassword, "from ProfilePasswordForm");
+    if (newPassword !== newPasswordConfirm)
+      return openModal({
+        header: "Attention!",
+        content: "New Password and Confirm New Password fields don't match."
+      });
+
+    if (!currentPassword || !newPassword || !newPasswordConfirm)
+      return openModal({
+        header: "Attention!",
+        content:
+          "Please enter current password, new password and confirmation of new password."
+      });
+
+    updateUserPasswordStart(userPassword);
+    setUserPassword({
+      currentPassword: "",
+      newPassword: "",
+      newPasswordConfirm: ""
+    });
+  };
 
   return (
     <ProfilePasswordFormContainer>
@@ -93,4 +120,6 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage
 });
 
-export default connect(mapStateToProps)(ProfilePasswordForm);
+export default connect(mapStateToProps, { openModal, updateUserPasswordStart })(
+  ProfilePasswordForm
+);

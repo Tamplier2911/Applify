@@ -57,6 +57,15 @@ const Sidenav = ({
     sidenavBlog
   } = currentData;
 
+  let image = "";
+  if (process.env.NODE_ENV === "development" && photo) {
+    image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
+  } else {
+    image = `${"api/" + photo}`;
+  }
+
+  console.log(image);
+
   return ReactDOM.createPortal(
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
       <SidenavContent onClick={e => e.stopPropagation()}>
@@ -64,7 +73,7 @@ const Sidenav = ({
           {isLogged ? (
             <Fragment>
               <SidenavHeroImgContainer>
-                <SidenavImage src={photo} alt="Happy user." />
+                <SidenavImage src={image} alt="Happy user." />
               </SidenavHeroImgContainer>
               <SidenavUserData>
                 <SidenavUserName>{name}</SidenavUserName>
