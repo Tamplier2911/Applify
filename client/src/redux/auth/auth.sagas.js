@@ -121,8 +121,8 @@ export function* fetchAuthObject() {
     console.log(message);
     yield put(
       openModal({
-        header: statusText || "Attention!",
-        content: message ? message : error.message
+        header: statusText,
+        content: message
       })
     );
     yield put(fetchAuthObjectFailure(message || error.message));
