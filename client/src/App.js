@@ -1,12 +1,14 @@
 // import "./App.scss";
 // import React, {useEffect, lazy, Suspense} from "react";
 import React, { useEffect } from "react";
-// import { Switch, Route, Redirect } from "react-router-dom";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { openModal } from "./redux/modal/modal.actions";
+import { selectIsLogged } from "./redux/auth/auth.selectors";
+import { fetchAuthObjectStart } from "./redux/auth/auth.actions";
 
 // components
 import Header from "./components/Header/Header";
@@ -30,13 +32,14 @@ import BlogPost from "./components/BlogPost/BlogPost";
 // JS rendering CSS
 import { AppContainer, AppMain } from "./AppStyles";
 
-const App = ({ openModal }) => {
+const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
   useEffect(() => {
     // openModal({
     //   header: "Attention!",
     //   content: "App is currently in development, back-end is not yet wired up."
     // });
-  }, [openModal]);
+    fetchAuthObjectStart();
+  }, [openModal, fetchAuthObjectStart]);
 
   return (
     <AppContainer>
@@ -48,7 +51,18 @@ const App = ({ openModal }) => {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/profile" component={ProfilePage} />
-          <Route exact path="/authorization" component={AuthorizationPage} />
+          <Route
+            exact
+            path="/authorization"
+            render={() =>
+              isLogged ? <Redirect to="" /> : <AuthorizationPage />
+            }
+          />
+          <Route
+            exact
+            path="/forgotPassword"
+            component={() => <div>Forgotten :[</div>}
+          />
           <Route exact path="/resume" component={ResumePage} />
           <Route exact path="/portfolio" component={PortfolioPage} />
           <Route exact path="/contacts" component={ContactsPage} />
@@ -65,7 +79,13 @@ const App = ({ openModal }) => {
   );
 };
 
-export default connect(null, { openModal })(App);
+const mapStateToProps = createStructuredSelector({
+  isLogged: selectIsLogged
+});
+
+export default connect(mapStateToProps, { openModal, fetchAuthObjectStart })(
+  App
+);
 /*
 <Route
     exact

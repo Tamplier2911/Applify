@@ -49,11 +49,18 @@ const blogpostRouter = require("./routes/blogpostRoutes");
 const app = express();
 app.enable("trust proxy");
 
+// html rendering engine
+// app.set("view engine", "pug");
+// app.set("views", path.join(__dirname, "views"));
+
 // cross-origin-requests
 // https://github.com/expressjs/cors
 // test
 app.use(cors());
 app.options("*", cors());
+
+// app.use(express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static("uploads"));
 
 app.use(helmet());
 

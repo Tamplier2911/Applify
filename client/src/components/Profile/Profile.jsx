@@ -5,6 +5,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { selectUserObject } from "../../redux/auth/auth.selectors";
 
 // components
 import ProfilePortrait from "../ProfilePortrait/ProfilePortrait";
@@ -22,17 +23,10 @@ import {
 // component constants
 import profileData from "../../utils/ComponentProfileConstants/componentProfileConstants";
 
-// temporary data object
-const data = {
-  name: "Ulka Simone MohantyUlka Simone MohantyUlka Simone Mohanty",
-  email: "ulkasimone@gmail.comulkasimone@gmail.comulkasimone@gmail.com",
-  photo: "https://my-hit.org/storage/1967587_210x300x50x2.jpg",
-  about:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus eveniet sunt dolorum? Obcaecati nobis dicta ab! Assumenda, ea vero possimus eius exercitationem delectus, accusantium sunt consectetur tempora repudiandae placeat maiores."
-};
+const Profile = ({ lang, user }) => {
+  // console.log(user);
+  const { name, email, photo, about } = user;
 
-const Profile = ({ lang }) => {
-  const { name, email, photo, about } = data;
   const { profileTitle } = profileData[lang];
   return (
     <ProfileContainer>
@@ -48,7 +42,8 @@ const Profile = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
+  user: selectUserObject
 });
 
 export default connect(mapStateToProps)(Profile);

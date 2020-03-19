@@ -83,6 +83,21 @@ export const HeaderLink = styled(Link)`
   }
 `;
 
+export const HeaderLogout = styled.div`
+  cursor: pointer;
+  display: inline;
+  white-space: nowrap;
+  font-family: var(--font-title);
+  text-decoration: none;
+  color: currentColor;
+  transition: color 0.3s;
+
+  &:hover,
+  &:active {
+    color: var(--cl-mainhover);
+  }
+`;
+
 export const HeaderLogoLink = styled(Link)`
   display: inline-block;
   width: 4rem;

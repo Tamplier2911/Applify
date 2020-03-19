@@ -2,7 +2,16 @@ import { createSelector } from "reselect";
 
 const selectUser = state => state.user;
 
-export const selectAuthObject = createSelector(
+export const selectUserObject = createSelector(
   [selectUser],
-  user => user.currentUser
+  user => user.userObject
+);
+
+// export const selectUserPhoto = createSelector([selectUserObject], userObject =>
+//   userObject ? userObject.photo : ""
+// );
+
+export const selectIsLogged = createSelector(
+  [selectUser],
+  user => user.isLogged
 );

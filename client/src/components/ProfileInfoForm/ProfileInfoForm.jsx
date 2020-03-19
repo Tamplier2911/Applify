@@ -1,5 +1,5 @@
 // import "./ProfileInfoForm.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // redux
 import { connect } from "react-redux";
@@ -31,12 +31,20 @@ const ProfileInfoForm = ({ name, email, lang }) => {
   } = profileInfoFormData[lang];
 
   const [profileInfo, setProfileInfo] = useState({
-    profileName: name,
-    profileEmail: email,
+    profileName: "",
+    profileEmail: "",
     profileImage: undefined
   });
 
   const { profileName, profileEmail } = profileInfo;
+
+  useEffect(() => {
+    setProfileInfo({
+      profileName: name,
+      profileEmail: email,
+      profileImage: undefined
+    });
+  }, [email, name]);
 
   const onInputChange = e => {
     const { name, value } = e.target;

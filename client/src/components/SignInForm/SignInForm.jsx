@@ -5,6 +5,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { logUserInStart } from "../../redux/auth/auth.actions";
+import { openModal } from "../../redux/modal/modal.actions";
+
+// validator
+import emailValidator from "../../utils/EmailValidator/emailValidator";
 
 // components
 import FormInput from "../FormInput/FormInput";
@@ -21,7 +26,7 @@ import {
   SignInFormPasForgot
 } from "./SignInFormStyles";
 
-const SignInForm = ({ lang }) => {
+const SignInForm = ({ lang, logUserInStart, openModal }) => {
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: ""
@@ -36,8 +41,19 @@ const SignInForm = ({ lang }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    // validate email
-    console.log(userCredentials, lang);
+
+    if (!emailValidator(email) || !password)
+      return openModal({
+        header: "Attention!",
+        content:
+          "Please, enter email and password. Note: email must match required format."
+      });
+
+    logUserInStart(userCredentials);
+    setUserCredentials({
+      email: "",
+      password: ""
+    });
   };
 
   const {
@@ -84,4 +100,6 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage
 });
 
-export default connect(mapStateToProps)(SignInForm);
+export default connect(mapStateToProps, { logUserInStart, openModal })(
+  SignInForm
+);

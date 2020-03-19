@@ -42,6 +42,8 @@ const dynamicDataStyles = css`
   overflow: hidden;
   text-overflow: ellipsis;
 
+  text-align: center;
+
   @media only screen and (max-width: 300px) {
     width: 15rem;
   }
@@ -164,6 +166,19 @@ export const SidenavUserEmail = styled.div`
 `;
 
 export const SidenavUserLinks = styled(Link)`
+  margin-top: 3rem;
+  font-size: 1.6rem;
+  ${linkSharedStyles}
+
+  @media only screen and (max-width: 310px) {
+    margin-top: 1rem;
+  }
+`;
+
+export const SidenavLogout = styled.div`
+  cursor: pointer;
+  display: inline;
+
   margin-top: 3rem;
   font-size: 1.6rem;
   ${linkSharedStyles}

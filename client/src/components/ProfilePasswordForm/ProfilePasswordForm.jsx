@@ -39,7 +39,6 @@ const ProfilePasswordForm = ({ lang }) => {
 
   const onInputChange = e => {
     const { name, value } = e.target;
-    console.log(e);
     setUserPassword({ ...userPassword, [name]: value });
   };
 

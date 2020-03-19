@@ -8,6 +8,11 @@ import { createStructuredSelector } from "reselect";
 import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { selectSidenavHidden } from "../../redux/sidenav/sidenav.selectors";
+import { logUserOutStart } from "../../redux/auth/auth.actions";
+import {
+  selectIsLogged,
+  selectUserObject
+} from "../../redux/auth/auth.selectors";
 
 // JS Rendering CSS
 import {
@@ -20,6 +25,7 @@ import {
   SidenavUserName,
   SidenavUserEmail,
   SidenavUserLinks,
+  SidenavLogout,
   SidenavNavigation,
   SidenavUl,
   SidenavLi,
@@ -29,20 +35,15 @@ import {
 // component constants
 import sidenavData from "../../utils/ComponentSidenavConstants/componentSidenavConstants";
 
-// temporary data object
-const data = {
-  name: "Ulka Simone MohantyUlka Simone MohantyUlka Simone Mohanty",
-  email: "ulkasimone@gmail.comulkasimone@gmail.comulkasimone@gmail.com",
-  photo: "https://my-hit.org/storage/1967587_210x300x50x2.jpg",
-  about:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus eveniet sunt dolorum? Obcaecati nobis dicta ab! Assumenda, ea vero possimus eius exercitationem delectus, accusantium sunt consectetur tempora repudiandae placeat maiores."
-};
-
-// temporary user logged condition
-const logged = true;
-
-const Sidenav = ({ sidenavCondition, toggleSideNav, lang }) => {
-  const { name, email, photo } = data;
+const Sidenav = ({
+  sidenavCondition,
+  toggleSideNav,
+  lang,
+  isLogged,
+  user,
+  logUserOutStart
+}) => {
+  const { name, email, photo } = user;
   const currentData = sidenavData[lang];
   const {
     sidenavProfile,
@@ -60,7 +61,7 @@ const Sidenav = ({ sidenavCondition, toggleSideNav, lang }) => {
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
       <SidenavContent onClick={e => e.stopPropagation()}>
         <SidenavHero>
-          {logged ? (
+          {isLogged ? (
             <Fragment>
               <SidenavHeroImgContainer>
                 <SidenavImage src={photo} alt="Happy user." />
@@ -71,9 +72,14 @@ const Sidenav = ({ sidenavCondition, toggleSideNav, lang }) => {
                 <SidenavUserLinks to="/profile" onClick={toggleSideNav}>
                   {sidenavProfile}
                 </SidenavUserLinks>
-                <SidenavUserLinks to="/" onClick={toggleSideNav}>
+                <SidenavLogout
+                  onClick={() => {
+                    logUserOutStart();
+                    toggleSideNav();
+                  }}
+                >
                   {sidenavLogOut}
-                </SidenavUserLinks>
+                </SidenavLogout>
               </SidenavUserData>
             </Fragment>
           ) : (
@@ -126,7 +132,11 @@ const Sidenav = ({ sidenavCondition, toggleSideNav, lang }) => {
 
 const mapStateToProps = createStructuredSelector({
   sidenavCondition: selectSidenavHidden,
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
+  isLogged: selectIsLogged,
+  user: selectUserObject
 });
 
-export default connect(mapStateToProps, { toggleSideNav })(Sidenav);
+export default connect(mapStateToProps, { toggleSideNav, logUserOutStart })(
+  Sidenav
+);

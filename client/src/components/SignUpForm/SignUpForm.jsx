@@ -5,6 +5,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { openModal } from "../../redux/modal/modal.actions";
+import { signUserUpStart } from "../../redux/auth/auth.actions";
+
+// validator
+import emailValidator from "../../utils/EmailValidator/emailValidator";
 
 // components
 import FormInput from "../FormInput/FormInput";
@@ -20,7 +25,7 @@ import {
 // component constants
 import signUpFormData from "../../utils/ComponentSignUpFormConstants/componentSignUpFormConstants";
 
-const SignUpForm = ({ lang }) => {
+const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
   const {
     signUpFormTitle,
     signUpFormName,
@@ -46,7 +51,29 @@ const SignUpForm = ({ lang }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(userCredentials);
+    if (password.length < 8)
+      return openModal({
+        header: "Attention!",
+        content: "Password must be at least 8 characters long."
+      });
+    if (password !== passwordConfirm)
+      return openModal({
+        header: "Attention!",
+        content: "Password and Confirm Password fields don't match."
+      });
+    if (!emailValidator(email) || !name || !password || !passwordConfirm)
+      return openModal({
+        header: "Attention!",
+        content:
+          "Please, enter your name, email and password. Note: email must match required format."
+      });
+    signUserUpStart(userCredentials);
+    setUserCredentials({
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirm: ""
+    });
   };
 
   return (
@@ -99,4 +126,6 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage
 });
 
-export default connect(mapStateToProps)(SignUpForm);
+export default connect(mapStateToProps, { signUserUpStart, openModal })(
+  SignUpForm
+);

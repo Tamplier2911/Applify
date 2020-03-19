@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { selectIsLogged } from "../../redux/auth/auth.selectors";
+import { logUserOutStart } from "../../redux/auth/auth.actions";
 
 // import logo from "../../assets/png/logo-min.png";
 
@@ -16,6 +18,7 @@ import {
   HeaderMenu,
   HeaderLinksWrapper,
   HeaderLink,
+  HeaderLogout,
   HeaderLogoLink,
   HeaderLogoSVG
 } from "./HeaderStyles";
@@ -23,10 +26,7 @@ import {
 // Component Constants
 import headerData from "../../utils/ComponentHeaderConstants/componentHeaderConstants";
 
-// temp logg condition
-const logged = true;
-
-const Header = ({ toggleSideNav, lang }) => {
+const Header = ({ toggleSideNav, lang, isLogged, logUserOutStart }) => {
   const currentData = headerData[lang];
   const { headerLogOut, headerLogIn, headerSignUp } = currentData;
 
@@ -34,8 +34,10 @@ const Header = ({ toggleSideNav, lang }) => {
     <HeaderContainer>
       <HeaderContent>
         <HeaderLinksWrapper>
-          {logged ? (
-            <HeaderLink to="/">{headerLogOut}</HeaderLink>
+          {isLogged ? (
+            <HeaderLogout onClick={() => logUserOutStart()}>
+              {headerLogOut}
+            </HeaderLogout>
           ) : (
             <Fragment>
               <HeaderLink to="/authorization">{headerLogIn}</HeaderLink> /{" "}
@@ -57,7 +59,10 @@ const Header = ({ toggleSideNav, lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
+  isLogged: selectIsLogged
 });
 
-export default connect(mapStateToProps, { toggleSideNav })(Header);
+export default connect(mapStateToProps, { toggleSideNav, logUserOutStart })(
+  Header
+);
