@@ -46,6 +46,7 @@ export function* signUserUp({ payload }) {
       statusText,
       data: { message }
     } = error.response;
+    console.log(message);
     yield put(
       openModal({
         header: statusText || "Attention!",
@@ -73,6 +74,7 @@ export function* logUserIn({ payload }) {
       statusText,
       data: { message }
     } = error.response;
+    console.log(message);
     yield put(
       openModal({
         header: statusText || "Attention!",
@@ -96,6 +98,7 @@ export function* logUserOut() {
       statusText,
       data: { message }
     } = error.response;
+    console.log(message);
     yield put(
       openModal({
         header: statusText || "Attention!",
@@ -121,8 +124,8 @@ export function* fetchAuthObject() {
     console.log(message);
     yield put(
       openModal({
-        header: statusText,
-        content: message
+        header: statusText || "Attention!",
+        content: message ? message : error.message
       })
     );
     yield put(fetchAuthObjectFailure(message || error.message));

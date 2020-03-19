@@ -25,6 +25,10 @@ const INITIAL_STATE = {
 const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_AUTH_OBJECT_SUCCESS:
+      const homeURL =
+        process.env.NODE_ENV === "production"
+          ? process.env.REACT_APP_SERVE_IMAGE_PROD
+          : process.env.REACT_APP_SERVE_IMAGE_DEV;
       // let image = "";
       // if (process.env.NODE_ENV === "production") {
       //   image = action.payload.photo
@@ -36,11 +40,11 @@ const authReducer = (state = INITIAL_STATE, action) => {
       //     : "";
       // }
       // action.payload.photo = image;
-      console.log(action.payload, "FROM REDUCER");
+      console.log(action.payload, "FROM REDUCER", homeURL);
       return {
         ...state,
         userObject: action.payload
-          ? action.payload
+          ? { ...action.payload, photo: `${action.payload.photo}` }
           : { name: "", email: "", photo: "", about: "" },
         errorMessage: null,
         isLogged: action.payload ? true : false
