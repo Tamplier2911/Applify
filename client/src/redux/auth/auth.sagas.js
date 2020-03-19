@@ -48,11 +48,11 @@ export function* signUserUp({ payload }) {
     } = error.response;
     yield put(
       openModal({
-        header: statusText,
-        content: message
+        header: statusText || "Attention!",
+        content: message || error.message
       })
     );
-    yield put(signUserUpFailure(message));
+    yield put(signUserUpFailure(message || error.message));
   }
 }
 
@@ -75,11 +75,11 @@ export function* logUserIn({ payload }) {
     } = error.response;
     yield put(
       openModal({
-        header: statusText,
-        content: message
+        header: statusText || "Attention!",
+        content: message || error.message
       })
     );
-    yield put(logUserInFailure(message));
+    yield put(logUserInFailure(message || error.message));
   }
 }
 
@@ -98,11 +98,11 @@ export function* logUserOut() {
     } = error.response;
     yield put(
       openModal({
-        header: statusText,
-        content: message
+        header: statusText || "Attention!",
+        content: message || error.message
       })
     );
-    yield put(logUserOutFailure(message));
+    yield put(logUserOutFailure(message || error.message));
   }
 }
 
