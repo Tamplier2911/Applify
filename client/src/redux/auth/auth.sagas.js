@@ -120,11 +120,12 @@ export function* fetchAuthObject() {
     } = error.response;
     yield put(
       openModal({
-        header: statusText,
-        content: message
+        header: statusText || "Attention!",
+        content: message || error.message
       })
     );
-    yield put(fetchAuthObjectFailure(message));
+    console.log(error, "FROM SAGA");
+    yield put(fetchAuthObjectFailure(message || error.message));
   }
 }
 

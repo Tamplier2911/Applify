@@ -34,11 +34,11 @@ import { AppContainer, AppMain } from "./AppStyles";
 
 const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
   useEffect(() => {
-    openModal({
-      header: "Attention!",
-      content:
-        "App is currently in development, back-end is wired up partially."
-    });
+    // openModal({
+    //   header: "Attention!",
+    //   content:
+    //     "App is currently in development, back-end is wired up partially."
+    // });
     fetchAuthObjectStart();
   }, [openModal, fetchAuthObjectStart]);
 
