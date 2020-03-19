@@ -49,7 +49,7 @@ export function* signUserUp({ payload }) {
     yield put(
       openModal({
         header: statusText || "Attention!",
-        content: message || error.message
+        content: message ? message : error.message
       })
     );
     yield put(signUserUpFailure(message || error.message));
@@ -76,7 +76,7 @@ export function* logUserIn({ payload }) {
     yield put(
       openModal({
         header: statusText || "Attention!",
-        content: message || error.message
+        content: message ? message : error.message
       })
     );
     yield put(logUserInFailure(message || error.message));
@@ -99,7 +99,7 @@ export function* logUserOut() {
     yield put(
       openModal({
         header: statusText || "Attention!",
-        content: message || error.message
+        content: message ? message : error.message
       })
     );
     yield put(logUserOutFailure(message || error.message));
@@ -118,13 +118,13 @@ export function* fetchAuthObject() {
       statusText,
       data: { message }
     } = error.response;
+    console.log(message);
     yield put(
       openModal({
         header: statusText || "Attention!",
-        content: message || error.message
+        content: message ? message : error.message
       })
     );
-    console.log(error, "FROM SAGA");
     yield put(fetchAuthObjectFailure(message || error.message));
   }
 }
