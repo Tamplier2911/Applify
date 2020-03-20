@@ -16,6 +16,12 @@ const {
   UPDATE_USER_PASSWORD_START,
   UPDATE_USER_PASSWORD_SUCCESS,
   UPDATE_USER_PASSWORD_FAILURE,
+  USER_FORGOT_PASSWORD_START,
+  USER_FORGOT_PASSWORD_SUCCESS,
+  USER_FORGOT_PASSWORD_FAILURE,
+  USER_RESTORE_PASSWORD_START,
+  USER_RESTORE_PASSWORD_SUCCESS,
+  USER_RESTORE_PASSWORD_FAILURE,
   FETCH_AUTH_OBJECT_START,
   FETCH_AUTH_OBJECT_SUCCESS,
   FETCH_AUTH_OBJECT_FAILURE
@@ -90,6 +96,34 @@ export const updateUserPasswordSuccess = () => ({
 
 export const updateUserPasswordFailure = errorMessage => ({
   type: UPDATE_USER_PASSWORD_FAILURE,
+  payload: errorMessage
+});
+
+export const userForgotPasswordStart = userCredentials => ({
+  type: USER_FORGOT_PASSWORD_START,
+  payload: userCredentials
+});
+
+export const userForgotPasswordSuccess = () => ({
+  type: USER_FORGOT_PASSWORD_SUCCESS
+});
+
+export const userForgotPasswordFailure = errorMessage => ({
+  type: USER_FORGOT_PASSWORD_FAILURE,
+  payload: errorMessage
+});
+
+export const userRestorePasswordStart = userCredentials => ({
+  type: USER_RESTORE_PASSWORD_START,
+  payload: userCredentials
+});
+
+export const userRestorePasswordSuccess = () => ({
+  type: USER_RESTORE_PASSWORD_SUCCESS
+});
+
+export const userRestorePasswordFailure = errorMessage => ({
+  type: USER_RESTORE_PASSWORD_FAILURE,
   payload: errorMessage
 });
 

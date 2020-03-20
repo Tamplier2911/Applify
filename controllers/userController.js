@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const multer = require("multer");
 const sharp = require("sharp");
 // const jwt = require("jsonwebtoken");
@@ -88,12 +90,28 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 
   // filter request body in case of avoiding unwanted fields
   const filteredBody = filterObject(req.body, "name", "email", "about");
-  console.log(filteredBody);
 
   // if we have req.file from multer middleware
   // we store filename as a photo property
   if (req.file) {
     filteredBody.photo = req.file.filename;
+
+    // here we perform removing of old picture
+    // name of which we now also have to send by form
+    const { oldPhoto } = req.body;
+    const oldPhotoArr = oldPhoto.split("/");
+    const filename = oldPhotoArr[oldPhotoArr.length - 1];
+
+    // if its not default image - perform delete on old image
+    if (filename && filename !== "default.jpg") {
+      fs.unlink(
+        path.join(__dirname, "..", "uploads/images/users", filename),
+        err => {
+          if (err) throw err;
+          console.log(`${filename} successfully deleted.`);
+        }
+      );
+    }
   }
 
   // find user by id and update document using filtered body

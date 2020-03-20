@@ -29,6 +29,7 @@ import profileInfoFormData from "../../utils/ComponentProfileInfoFormConstants/c
 const ProfileInfoForm = ({
   name,
   email,
+  photo,
   lang,
   openModal,
   updateUserDataStart
@@ -44,7 +45,8 @@ const ProfileInfoForm = ({
   const [profileInfo, setProfileInfo] = useState({
     profileName: "",
     profileEmail: "",
-    profileImage: null
+    profileImage: null,
+    profileOldImage: photo
   });
 
   const { profileName, profileEmail, profileImage } = profileInfo;
@@ -53,9 +55,10 @@ const ProfileInfoForm = ({
     setProfileInfo({
       profileName: name,
       profileEmail: email,
-      profileImage: null
+      profileImage: null,
+      profileOldImage: photo
     });
-  }, [email, name]);
+  }, [email, name, photo]);
 
   const onInputChange = e => {
     const { name, value } = e.target;

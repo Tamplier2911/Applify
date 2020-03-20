@@ -13,7 +13,7 @@ export const ProfilePortraitWrapper = styled.div`
   width: 20rem;
   height: 20rem;
   border-radius: 50%;
-  box-shadow: 0 0.2rem 0.5rem var(--cl-shadow);
+  box-shadow: 0rem 0rem 1.2rem var(--cl-primary);
   overflow: hidden;
 
   @media only screen and (max-width: 768px) {

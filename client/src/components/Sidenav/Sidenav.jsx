@@ -60,7 +60,7 @@ const Sidenav = ({
   let image = "";
   if (process.env.NODE_ENV === "development" && photo) {
     image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
-  } else {
+  } else if (photo) {
     image = `${"api/" + photo}`;
   }
 

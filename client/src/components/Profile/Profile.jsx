@@ -30,18 +30,17 @@ const Profile = ({ lang, user }) => {
   let image = "";
   if (process.env.NODE_ENV === "development" && photo) {
     image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
-  } else {
+  } else if (photo) {
     image = `${"api/" + photo}`;
   }
 
-  console.log(image);
   return (
     <ProfileContainer>
       <ProfileTitle>{profileTitle}</ProfileTitle>
       <ProfileContent>
         <ProfilePortrait photo={image} />
         <ProfileAboutFrom about={about} />
-        <ProfileInfoForm name={name} email={email} />
+        <ProfileInfoForm name={name} email={email} photo={photo} />
         <ProfilePasswordForm />
       </ProfileContent>
     </ProfileContainer>

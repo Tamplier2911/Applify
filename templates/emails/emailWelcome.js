@@ -636,7 +636,7 @@ module.exports = (user, url, data) => {
                               <tr>
                                 <td>
                                   <p class="f-fallback sub">
-                                    If you’re havent registred on applify-s.com
+                                    If you’re havent registred on www.applify-tech.com
                                     recently, just ignore this message.
                                   </p>
                                   <!-- <p class="f-fallback sub">${url}</p> -->

@@ -1,23 +1,35 @@
-import "./RestorePassword.scss";
+// import "./RestorePassword.scss";
 import React from "react";
+
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
 import FormHolder from "../FormHolder/FormHolder";
 import RestorePasswordForm from "../RestorePasswordForm/RestorePasswordForm";
 
 // JS Rendering CSS
-import {} from "./RestorePasswordStyles";
+import { RestorePasswordContainer } from "./RestorePasswordStyles";
 
 // component constants
+import restorePasswordData from "../../utils/ComponentRestorePasswordConstants/componentRestorePasswordConstants";
 
-const RestorePassword = () => {
+const RestorePassword = ({ lang }) => {
+  const { restorePasswordTitle } = restorePasswordData[lang];
+
   return (
-    <div className="restore-password">
-      <FormHolder type="restore" title={"Restore password:"}>
+    <RestorePasswordContainer>
+      <FormHolder type="restore" title={restorePasswordTitle}>
         <RestorePasswordForm />
       </FormHolder>
-    </div>
+    </RestorePasswordContainer>
   );
 };
 
-export default RestorePassword;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(RestorePassword);

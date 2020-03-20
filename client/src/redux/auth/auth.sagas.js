@@ -13,6 +13,10 @@ import {
   updateUserDataFailure,
   updateUserPasswordSuccess,
   updateUserPasswordFailure,
+  userForgotPasswordSuccess,
+  userForgotPasswordFailure,
+  userRestorePasswordSuccess,
+  userRestorePasswordFailure,
   fetchAuthObjectStart,
   fetchAuthObjectSuccess,
   fetchAuthObjectFailure
@@ -30,6 +34,8 @@ const {
   LOG_USER_OUT_START,
   UPDATE_USER_DATA_START,
   UPDATE_USER_PASSWORD_START,
+  USER_FORGOT_PASSWORD_START,
+  USER_RESTORE_PASSWORD_START,
   FETCH_AUTH_OBJECT_START
 } = authTypes;
 
@@ -113,15 +119,23 @@ export function* logUserOut() {
 }
 
 export function* updateUserData({ payload }) {
-  const { profileName, profileEmail, profileImage, aboutMe } = payload;
+  const {
+    profileName,
+    profileEmail,
+    profileImage,
+    profileOldImage,
+    aboutMe
+  } = payload;
   const form = new FormData();
 
   // fill up multipart/formdata
+  if (aboutMe) form.append("about", aboutMe);
   if (profileName) form.append("name", profileName);
   if (profileEmail) form.append("email", profileEmail);
-  if (profileImage) form.append("photo", profileImage);
-  if (aboutMe) form.append("about", aboutMe);
-
+  if (profileImage) {
+    form.append("oldPhoto", profileOldImage);
+    form.append("photo", profileImage);
+  }
   try {
     const res = yield axios({
       method: "PATCH",
@@ -189,6 +203,76 @@ export function* updateUserPassword({ payload }) {
   }
 }
 
+export function* userForgotPassword({ payload }) {
+  const { userEmail } = payload;
+  try {
+    const res = yield axios({
+      method: "POST",
+      url: "/api/v1/users/forgotPassword",
+      data: {
+        email: userEmail
+      }
+    });
+    yield put(userForgotPasswordSuccess());
+    if (res.data.status === "success") {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "Instructions was sent to your email."
+        })
+      );
+    }
+  } catch (error) {
+    const {
+      statusText,
+      data: { message }
+    } = error.response;
+    yield put(
+      openModal({
+        header: statusText || "Attention!",
+        content: message || error.message
+      })
+    );
+    yield put(userForgotPasswordFailure(message || error.message));
+  }
+}
+
+export function* userRestorePassword({ payload }) {
+  const { newPassword, newPasswordConfirm, resetToken } = payload;
+  try {
+    const res = yield axios({
+      method: "PATCH",
+      url: `/api/v1/users/resetPassword/${resetToken}`,
+      data: {
+        password: newPassword,
+        passwordConfirm: newPasswordConfirm
+      }
+    });
+    yield put(userRestorePasswordSuccess());
+    if (res.data.status === "success") {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "Your password was successfully restored!"
+        })
+      );
+    }
+    yield put(fetchAuthObjectStart());
+  } catch (error) {
+    const {
+      statusText,
+      data: { message }
+    } = error.response;
+    yield put(
+      openModal({
+        header: statusText || "Attention!",
+        content: message || error.message
+      })
+    );
+    yield put(userRestorePasswordFailure(message || error.message));
+  }
+}
+
 export function* fetchAuthObject() {
   try {
     const res = yield axios({
@@ -231,6 +315,14 @@ export function* onUpdateUserPasswordStart() {
   yield takeLatest(UPDATE_USER_PASSWORD_START, updateUserPassword);
 }
 
+export function* onUserForgotPasswordStart() {
+  yield takeLatest(USER_FORGOT_PASSWORD_START, userForgotPassword);
+}
+
+export function* onUserRestorePasswordStart() {
+  yield takeLatest(USER_RESTORE_PASSWORD_START, userRestorePassword);
+}
+
 export function* onFetchAuthObjectStart() {
   yield takeLatest(FETCH_AUTH_OBJECT_START, fetchAuthObject);
 }
@@ -242,6 +334,8 @@ export function* authSagas() {
     call(onLogUserOutStart),
     call(onUpdateUserDataStart),
     call(onUpdateUserPasswordStart),
+    call(onUserForgotPasswordStart),
+    call(onUserRestorePasswordStart),
     call(onFetchAuthObjectStart)
   ]);
 }

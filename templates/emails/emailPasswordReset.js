@@ -637,7 +637,7 @@ module.exports = (user, url, data) => {
                                 <tr>
                                   <td>
                                     <p class="f-fallback sub">
-                                        If you’re haven't trigger password reset recently on applify-s.com, just ignore this message.
+                                        If you’re haven't trigger password reset recently on www.applify-tech.com - just ignore this message.
                                     </p>
                                     <!-- <p class="f-fallback sub">${url}</p> -->
                                   </td>

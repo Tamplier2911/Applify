@@ -1,23 +1,42 @@
-import "./PasswordRestorationPage.scss";
+// import "./PasswordRestorationPage.scss";
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectIsLogged } from "../../redux/auth/auth.selectors";
 
 // components
 import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
 import RestorePassword from "../../components/RestorePassword/RestorePassword";
 
 // JS Rendering CSS
-import {} from "./PasswordRestorationPageStyles";
+import { PasswordRestorationPageContainer } from "./PasswordRestorationPageStyles";
 
-const PasswordRestorationPage = ({ match }) => {
+const PasswordRestorationPage = ({ match, isLogged }) => {
   return (
-    <div className="password-restoration-page">
+    <PasswordRestorationPageContainer>
       <Switch>
-        <Route exact path={`${match.path}`} component={ForgotPassword} />
-        <Route path={`${match.path}/:id`} component={RestorePassword} />
+        {/* <Route exact path={`${match.path}`} component={ForgotPassword} /> */}
+        <Route
+          exact
+          path={`${match.path}`}
+          render={() => (isLogged ? <Redirect to="/" /> : <ForgotPassword />)}
+        />
+        {/* <Route path={`${match.path}/:id`} component={RestorePassword} /> */}
+        <Route
+          exact
+          path={`${match.path}/:id`}
+          render={() => (isLogged ? <Redirect to="/" /> : <RestorePassword />)}
+        />
       </Switch>
-    </div>
+    </PasswordRestorationPageContainer>
   );
 };
 
-export default PasswordRestorationPage;
+const mapStateToProps = createStructuredSelector({
+  isLogged: selectIsLogged
+});
+
+export default connect(mapStateToProps)(PasswordRestorationPage);

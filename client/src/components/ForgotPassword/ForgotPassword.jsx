@@ -1,26 +1,34 @@
-import "./ForgotPassword.scss";
+// import "./ForgotPassword.scss";
 import React from "react";
+
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
 import FormHolder from "../FormHolder/FormHolder";
 import ForgotPasswordForm from "../ForgotPasswordForm/ForgotPasswordForm";
 
 // JS Rendering CSS
-import {} from "./ForgotPasswordStyles";
+import { ForgotPasswordContainer } from "./ForgotPasswordStyles";
 
 // component constants
+import forgotPasswordData from "../../utils/ComponentForgotPasswordConstants/componentForgotPasswordConstants";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ lang }) => {
+  const { forgotPasswordTitle } = forgotPasswordData[lang];
   return (
-    <div className="forgot-password">
-      <FormHolder
-        type="forgot"
-        title={"Forgot password? I'll get you back on track!"}
-      >
+    <ForgotPasswordContainer>
+      <FormHolder type="forgot" title={forgotPasswordTitle}>
         <ForgotPasswordForm />
       </FormHolder>
-    </div>
+    </ForgotPasswordContainer>
   );
 };
 
-export default ForgotPassword;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps)(ForgotPassword);

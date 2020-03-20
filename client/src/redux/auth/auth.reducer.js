@@ -9,6 +9,8 @@ const {
   LOG_USER_OUT_FAILURE,
   UPDATE_USER_DATA_FAILURE,
   UPDATE_USER_PASSWORD_FAILURE,
+  USER_FORGOT_PASSWORD_FAILURE,
+  USER_RESTORE_PASSWORD_FAILURE,
   FETCH_AUTH_OBJECT_SUCCESS,
   FETCH_AUTH_OBJECT_FAILURE
 } = authTypes;
@@ -29,9 +31,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
     case FETCH_AUTH_OBJECT_SUCCESS:
       return {
         ...state,
-        userObject: action.payload
-          ? action.payload
-          : { name: "", email: "", photo: "", about: "" },
+        userObject: action.payload ? action.payload : state.userObject,
         errorMessage: null,
         isLogged: action.payload ? true : false
       };
@@ -54,6 +54,8 @@ const authReducer = (state = INITIAL_STATE, action) => {
     case LOG_USER_OUT_FAILURE:
     case UPDATE_USER_DATA_FAILURE:
     case UPDATE_USER_PASSWORD_FAILURE:
+    case USER_FORGOT_PASSWORD_FAILURE:
+    case USER_RESTORE_PASSWORD_FAILURE:
     case FETCH_AUTH_OBJECT_FAILURE:
       return {
         ...state,

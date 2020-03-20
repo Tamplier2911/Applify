@@ -139,7 +139,7 @@ export const SidenavHeroImgContainer = styled.div`
   overflow: hidden;
 
   justify-self: center;
-  box-shadow: 0.1rem 0.2rem 0.4rem var(--cl-sidenav-shadow);
+  box-shadow: 0rem 0rem 1rem var(--cl-primary);
 `;
 
 export const SidenavImage = styled.img`
