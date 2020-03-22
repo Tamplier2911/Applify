@@ -1,0 +1,68 @@
+import "./MessageRead.scss";
+import React from "react";
+import { withRouter } from "react-router-dom";
+
+// redux
+import { connect } from "react-redux";
+import { selectMessage } from "../../redux/messages/messages.selectors";
+
+// components
+import GetBack from "../GetBack/GetBack";
+
+// JS Rendering CSS
+import {} from "./MessageReadStyles";
+
+const MessageRead = ({ messageObject }) => {
+  const { createdAt, name, email, message, from } = messageObject;
+
+  let photo = "";
+  if (from) {
+    photo = from.photo;
+  } else {
+    photo = "uploads/images/users/default.jpg";
+  }
+
+  const date = new Date(createdAt).toLocaleString("en-us", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+
+  let image = "";
+  if (process.env.NODE_ENV === "development" && photo) {
+    image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
+  } else if (photo) {
+    image = `${"api/" + photo}`;
+  }
+
+  return (
+    <div className="message-read">
+      <div>Name: {name}</div>
+      <div>Email: {email}</div>
+      <div>Message: {message}</div>
+      <div>Date: {date}</div>
+      <div>
+        Photo:{" "}
+        <div style={{ width: "10rem", height: "10rem" }}>
+          <img
+            alt="happy user"
+            src={image}
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "block",
+              objectFit: "cover"
+            }}
+          ></img>
+        </div>
+      </div>
+      <GetBack path={"/profile/messages"} />
+    </div>
+  );
+};
+
+const mapStateToProps = (state, ownProps) => ({
+  messageObject: selectMessage(ownProps.match.params.id)(state)
+});
+
+export default withRouter(connect(mapStateToProps)(MessageRead));

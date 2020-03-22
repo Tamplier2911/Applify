@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProfilePageContainer = styled.section`
-  display: grid;
+  // display: grid;
   //   grid-row-gap: 5rem;
 
   // @media only screen and (max-width: 980px) {

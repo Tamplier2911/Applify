@@ -9,6 +9,7 @@ import projectsReducer from "./projects/projects.reducer";
 import sidenavReducer from "./sidenav/sidenav.reducer";
 import modalReducer from "./modal/modal.reducer";
 import blogsReducer from "./blogs/blogs.reducer";
+import messagesReducer from "./messages/messages.reducer";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   projects: projectsReducer,
   sidenav: sidenavReducer,
   modal: modalReducer,
-  blogs: blogsReducer
+  blogs: blogsReducer,
+  messages: messagesReducer
 });
 
 export default rootReducer;

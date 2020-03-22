@@ -4,6 +4,7 @@ export const ProfilePortraitContainer = styled.div`
   display: grid;
   box-shadow: 0 0.1rem 0.5rem var(--cl-font);
   padding: 2rem;
+  grid-row-gap: 2rem;
 `;
 
 export const ProfilePortraitWrapper = styled.div`

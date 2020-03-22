@@ -9,9 +9,8 @@ const { getAll, getOne, updateOne, deleteOne } = require("./handlersFactory");
 
 // Create New Message
 exports.createNewMessage = catchAsync(async (req, res, next) => {
-  const { body } = req;
-  const { user } = req;
-  console.log(body, user);
+  const { body, user } = req;
+
   if (user) {
     body.from = user;
   }

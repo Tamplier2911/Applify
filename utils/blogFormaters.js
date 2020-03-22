@@ -21,6 +21,6 @@ exports.formBlogpostData = str => {
 
   const dataObject = { titleSet, contentSet, linkSet, imageSet };
 
-  console.log(dataObject);
+  // console.log(dataObject);
   return dataObject;
 };

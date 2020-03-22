@@ -51,7 +51,6 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
       <AppMain>
         <Switch>
           <Route
-            exact
             path="/profile"
             render={() => (isLogged ? <ProfilePage /> : <Redirect to="/" />)}
           />

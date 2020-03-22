@@ -38,7 +38,7 @@ export const FeedbackForm = ({ lang }) => {
   const onSubmit = e => {
     e.preventDefault();
     // validate input
-    console.log(feedback);
+    // console.log(feedback);
   };
 
   const labels = Array.from(new Array(Number(feedbackRating)), (n, i) => i + 1);

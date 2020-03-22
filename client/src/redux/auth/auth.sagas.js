@@ -1,6 +1,12 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
 import axios from "axios";
 
+// error filter
+import {
+  getErrorMessage,
+  successfulResponse
+} from "../../utils/ErrorFilters/errorFilters";
+
 // auth actions
 import {
   signUserUpSuccess,
@@ -21,6 +27,9 @@ import {
   fetchAuthObjectSuccess,
   fetchAuthObjectFailure
 } from "./auth.actions";
+
+// messages actions
+import { cleanUpMessagesFromState } from "../messages/messages.actions";
 
 // modal actions
 import { openModal } from "../modal/modal.actions";
@@ -54,17 +63,9 @@ export function* signUserUp({ payload }) {
     yield put(signUserUpSuccess(true));
     yield put(fetchAuthObjectStart());
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(signUserUpFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(signUserUpFailure(content));
   }
 }
 
@@ -81,17 +82,9 @@ export function* logUserIn({ payload }) {
     yield put(logUserInSuccess(true));
     yield put(fetchAuthObjectStart());
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(logUserInFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(logUserInFailure(content));
   }
 }
 
@@ -102,19 +95,12 @@ export function* logUserOut() {
       url: "/api/v1/users/logout"
     });
     yield put(logUserOutSuccess(false));
+    yield put(cleanUpMessagesFromState());
     yield put(fetchAuthObjectStart());
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(logUserOutFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(logUserOutFailure(content));
   }
 }
 
@@ -143,7 +129,7 @@ export function* updateUserData({ payload }) {
       data: form
     });
     yield put(updateUserDataSuccess());
-    if (res.data.status === "success") {
+    if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
@@ -153,17 +139,9 @@ export function* updateUserData({ payload }) {
     }
     yield put(fetchAuthObjectStart());
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(updateUserDataFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(updateUserDataFailure(content));
   }
 }
 
@@ -179,7 +157,7 @@ export function* updateUserPassword({ payload }) {
       }
     });
     yield put(updateUserPasswordSuccess());
-    if (res.data.status === "success") {
+    if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
@@ -189,17 +167,9 @@ export function* updateUserPassword({ payload }) {
     }
     yield put(fetchAuthObjectStart());
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(updateUserPasswordFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(updateUserPasswordFailure(content));
   }
 }
 
@@ -214,7 +184,7 @@ export function* userForgotPassword({ payload }) {
       }
     });
     yield put(userForgotPasswordSuccess());
-    if (res.data.status === "success") {
+    if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
@@ -223,17 +193,9 @@ export function* userForgotPassword({ payload }) {
       );
     }
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(userForgotPasswordFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(userForgotPasswordFailure(content));
   }
 }
 
@@ -249,7 +211,7 @@ export function* userRestorePassword({ payload }) {
       }
     });
     yield put(userRestorePasswordSuccess());
-    if (res.data.status === "success") {
+    if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
@@ -259,17 +221,9 @@ export function* userRestorePassword({ payload }) {
     }
     yield put(fetchAuthObjectStart());
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(userRestorePasswordFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(userRestorePasswordFailure(content));
   }
 }
 
@@ -281,17 +235,9 @@ export function* fetchAuthObject() {
     });
     yield put(fetchAuthObjectSuccess(res.data.data.userObject));
   } catch (error) {
-    const {
-      statusText,
-      data: { message }
-    } = error.response;
-    yield put(
-      openModal({
-        header: statusText || "Attention!",
-        content: message || error.message
-      })
-    );
-    yield put(fetchAuthObjectFailure(message || error.message));
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(fetchAuthObjectFailure(content));
   }
 }
 

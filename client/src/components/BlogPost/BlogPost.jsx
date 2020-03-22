@@ -1,8 +1,8 @@
 // import "./BlogPost.scss";
 import React from "react";
 
-// router
-import { withRouter } from "react-router-dom";
+// components
+import GetBack from "../GetBack/GetBack";
 
 // JS Rendering CSS
 import {
@@ -18,9 +18,7 @@ import {
   BlogPostImg,
   BlogPostContent,
   BlogPostContentTitle,
-  BlogPostContentParagraph,
-  BlogPostBackButton,
-  BlogPostBackButtonSVG
+  BlogPostContentParagraph
 } from "./BlogPostStyles";
 
 // DATA SAMPLE
@@ -38,7 +36,7 @@ const dataObjectSample = {
   }
 };
 
-const BlogPost = ({ history }) => {
+const BlogPost = () => {
   const {
     blogTitle,
     author: { authorName, authorImage },
@@ -75,11 +73,9 @@ const BlogPost = ({ history }) => {
         <BlogPostContentTitle>{contentTitle}</BlogPostContentTitle>
         <BlogPostContentParagraph>{contentText}</BlogPostContentParagraph>
       </BlogPostContent>
-      <BlogPostBackButton onClick={() => history.push("/blog")}>
-        <BlogPostBackButtonSVG />
-      </BlogPostBackButton>
+      <GetBack path={`/blog`} />
     </BlogPostContainer>
   );
 };
 
-export default withRouter(BlogPost);
+export default BlogPost;

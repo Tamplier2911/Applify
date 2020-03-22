@@ -13,6 +13,7 @@ export const ButtonBody = styled.button`
   background-color: var(--cl-font);
   transition: background-color 0.3s;
   outline: none;
+  font-size: 1.6rem;
 
   &:hover {
     background-color: var(--cl-primary);

@@ -15,7 +15,8 @@ const TextInput = ({ onInputChange, value, max, label, ...otherProps }) => {
       <TextInputArea
         onChange={onInputChange}
         {...otherProps}
-        defaultValue={value}
+        // defaultValue={value}
+        value={value}
         maxLength={max}
       />
       <FormInputFillingBar />

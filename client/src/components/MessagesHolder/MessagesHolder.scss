@@ -1,0 +1,38 @@
+/*
+
+.messages-holder {
+  grid-row: 1/2;
+  animation: 1s holderFadeIn;
+  display: grid;
+
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 5rem;
+  }
+
+  &__title {
+    //   ${getFont}
+    font-family: var(--font-title);
+    font-size: 4rem;
+    font-weight: 300;
+    padding: 1rem;
+
+    @media only screen and (max-width: 768px) {
+      line-height: 1;
+    }
+  }
+
+  &__messages {
+    display: grid;
+  }
+}
+
+@keyframes holderFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+*/

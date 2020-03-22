@@ -5,11 +5,16 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { openModal } from "../../redux/modal/modal.actions";
+import { sendMessageStart } from "../../redux/messages/messages.actions";
 
 // components
 import FormInput from "../FormInput/FormInput";
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
+
+// validator
+import emailValidator from "../../utils/EmailValidator/emailValidator";
 
 // JS Rendering CSS
 import {
@@ -22,7 +27,7 @@ import {
 // component constants
 import contactsFormData from "../../utils/ComponentContactsFormConstants/componentContactsFormConstants";
 
-const ContactsForm = ({ lang }) => {
+const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
   const [contactsInfo, setContactsInfo] = useState({
     name: "",
     email: "",
@@ -37,8 +42,19 @@ const ContactsForm = ({ lang }) => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    // PERFORM VALIDATION ON EMAIL
-    console.log(contactsInfo);
+    if (name.length < 1 || name.length > 40)
+      return openModal({
+        header: "Attention!",
+        content: "Name must not consist of more than 40 characters."
+      });
+    if (!emailValidator(email) || !name || !message)
+      return openModal({
+        header: "Attention!",
+        content:
+          "Please, enter your name, email and message. Note: email must match required format."
+      });
+    sendMessageStart(contactsInfo);
+    setContactsInfo({ name: "", email: "", message: "" });
   };
 
   const {
@@ -94,4 +110,6 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage
 });
 
-export default connect(mapStateToProps)(ContactsForm);
+export default connect(mapStateToProps, { openModal, sendMessageStart })(
+  ContactsForm
+);

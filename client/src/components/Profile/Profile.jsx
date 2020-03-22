@@ -24,7 +24,7 @@ import {
 import profileData from "../../utils/ComponentProfileConstants/componentProfileConstants";
 
 const Profile = ({ lang, user }) => {
-  const { name, email, photo, about } = user;
+  const { name, email, photo, about, id } = user;
   const { profileTitle } = profileData[lang];
 
   let image = "";
@@ -38,7 +38,7 @@ const Profile = ({ lang, user }) => {
     <ProfileContainer>
       <ProfileTitle>{profileTitle}</ProfileTitle>
       <ProfileContent>
-        <ProfilePortrait photo={image} />
+        <ProfilePortrait photo={image} userId={id} />
         <ProfileAboutFrom about={about} />
         <ProfileInfoForm name={name} email={email} photo={photo} />
         <ProfilePasswordForm />
