@@ -37,16 +37,19 @@ const MessageRead = ({ messageObject }) => {
 
   let image = "";
   if (process.env.NODE_ENV === "development" && photo) {
-    image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
+    image = `${locationHref + "api/" + photo}`;
   } else if (photo) {
-    image = `${process.env.REACT_APP_SERVE_IMAGE_PROD + "api/" + photo}`;
+    image = `${locationHref + "api/" + photo}`;
   }
 
   return (
     <div className="message-read">
       <div className="message-read__header">
-        <div className="message-read__name">Name: {name}</div>
-        <div className="message-read__email">Email: {email}</div>
+        <div className="message-read__credentials">
+          <div className="message-read__name">Name: {name}</div>
+          <div className="message-read__email">Email: {email}</div>
+        </div>
+
         <div className="message-read__portrait">
           <div className="message-read__portrait--wrap">
             <img
