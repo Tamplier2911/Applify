@@ -38,7 +38,8 @@ const MessageView = ({
   lang,
   deleteMessageStart
 }) => {
-  const locationHref = window.location.href;
+  let locationHref = window.location.href.split("/");
+  locationHref = "".concat(locationHref[0], "//", locationHref[2], "/");
   console.log(locationHref, "location");
   // FIX IMAGE LOADING ALGORITHM
   // ISSUES IS /profile/ find way to rid of profile
@@ -61,9 +62,9 @@ const MessageView = ({
 
   let image = "";
   if (process.env.NODE_ENV === "development" && photo) {
-    image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
+    image = `${locationHref + "api/" + photo}`;
   } else if (photo) {
-    image = `${process.env.REACT_APP_SERVE_IMAGE_PROD + "api/" + photo}`;
+    image = `${locationHref + "api/" + photo}`;
   }
   console.log(image, "image");
 

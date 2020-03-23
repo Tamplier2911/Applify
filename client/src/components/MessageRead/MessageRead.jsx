@@ -42,24 +42,33 @@ const MessageRead = ({ messageObject }) => {
 
   return (
     <div className="message-read">
-      <div>Name: {name}</div>
-      <div>Email: {email}</div>
-      <div>Message: {message}</div>
-      <div>Date: {date}</div>
-      <div>
-        Photo:{" "}
-        <div style={{ width: "10rem", height: "10rem" }}>
-          <img
-            alt="happy user"
-            src={image}
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "block",
-              objectFit: "cover"
-            }}
-          ></img>
+      <div className="message-read__header">
+        <div>Name: {name}</div>
+        <div>Email: {email}</div>
+        <div>
+          <div style={{ width: "10rem", height: "10rem" }}>
+            <img
+              alt="happy user"
+              src={image}
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "block",
+                objectFit: "cover"
+              }}
+            ></img>
+          </div>
         </div>
+      </div>
+      <div>
+        <div>Message: {message}</div>
+      </div>
+      <div>
+        <div>Date: {date}</div>
+      </div>
+      <div>
+        <div>BTN</div>
+        <div>BTN</div>
       </div>
       <GetBack path={"/profile/messages"} />
     </div>
