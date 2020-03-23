@@ -38,12 +38,20 @@ const MessageView = ({
   lang,
   deleteMessageStart
 }) => {
+  const locationHref = window.location.href;
+  console.log(locationHref, "location");
+  // FIX IMAGE LOADING ALGORITHM
+  // ISSUES IS /profile/ find way to rid of profile
+  //                                    \/
+  // https://applify-s.herokuapp.com/profile/api/uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg
+
   let photo = "";
   if (from) {
     photo = from.photo;
   } else {
     photo = "uploads/images/users/default.jpg";
   }
+  console.log(photo, "photo");
 
   const date = new Date(createdAt).toLocaleString("en-us", {
     day: "numeric",
@@ -55,8 +63,9 @@ const MessageView = ({
   if (process.env.NODE_ENV === "development" && photo) {
     image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
   } else if (photo) {
-    image = `${"api/" + photo}`;
+    image = `${process.env.REACT_APP_SERVE_IMAGE_PROD + "api/" + photo}`;
   }
+  console.log(image, "image");
 
   const { messageViewRead, messageViewDelete } = messageViewData[lang];
 
@@ -70,7 +79,9 @@ const MessageView = ({
       <MessageViewContent>
         <MessageViewName>{name}</MessageViewName>
         <MessageViewEmail>{email}</MessageViewEmail>
-        <MessageViewMessage>{message}</MessageViewMessage>
+        <MessageViewMessage>
+          {message.slice(0, 200) + (message[201] ? "..." : "")}
+        </MessageViewMessage>
         <MessageViewDate>{date}</MessageViewDate>
       </MessageViewContent>
       <MessageViewControlls>
