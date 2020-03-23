@@ -14,11 +14,13 @@ import {} from "./MessageReadStyles";
 
 const MessageRead = ({ messageObject }) => {
   const { createdAt, name, email, message, from } = messageObject;
-
-  // FIX MESSAGE LOADING ALGORITHM
+  // FIX IMAGE LOADING ALGORITHM
   // ISSUES IS /profile/ find way to rid of profile
-  //                                    \/
-  // https://applify-s.herokuapp.com/profile/api/uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg
+  //                                    \/      \/
+  // https://applify-s.herokuapp.com/profile/messages/api/uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg
+  // required href - https://applify-s.herokuapp.com/api/...
+  let locationHref = window.location.href.split("/");
+  locationHref = "".concat(locationHref[0], "//", locationHref[2], "/");
 
   let photo = "";
   if (from) {
@@ -43,30 +45,25 @@ const MessageRead = ({ messageObject }) => {
   return (
     <div className="message-read">
       <div className="message-read__header">
-        <div>Name: {name}</div>
-        <div>Email: {email}</div>
-        <div>
-          <div style={{ width: "10rem", height: "10rem" }}>
+        <div className="message-read__name">Name: {name}</div>
+        <div className="message-read__hemail">Email: {email}</div>
+        <div className="message-read__portrait">
+          <div className="message-read__portrait--wrap">
             <img
               alt="happy user"
               src={image}
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "block",
-                objectFit: "cover"
-              }}
+              className="message-read__portrait--img"
             ></img>
           </div>
         </div>
       </div>
-      <div>
-        <div>Message: {message}</div>
+      <div className="message-read__body">
+        <div className="message-read__message">Message: {message}</div>
       </div>
-      <div>
-        <div>Date: {date}</div>
+      <div className="message-read__date">
+        <div className="message-read__date--itself">Date: {date}</div>
       </div>
-      <div>
+      <div className="message-read__date--controlls">
         <div>BTN</div>
         <div>BTN</div>
       </div>

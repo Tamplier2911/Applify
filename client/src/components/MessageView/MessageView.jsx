@@ -38,13 +38,13 @@ const MessageView = ({
   lang,
   deleteMessageStart
 }) => {
-  let locationHref = window.location.href.split("/");
-  locationHref = "".concat(locationHref[0], "//", locationHref[2], "/");
-  console.log(locationHref, "location");
   // FIX IMAGE LOADING ALGORITHM
   // ISSUES IS /profile/ find way to rid of profile
-  //                                    \/
-  // https://applify-s.herokuapp.com/profile/api/uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg
+  //                                    \/      \/
+  // https://applify-s.herokuapp.com/profile/messages/api/uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg
+  // required href - https://applify-s.herokuapp.com/api/...
+  let locationHref = window.location.href.split("/");
+  locationHref = "".concat(locationHref[0], "//", locationHref[2], "/");
 
   let photo = "";
   if (from) {
@@ -52,7 +52,6 @@ const MessageView = ({
   } else {
     photo = "uploads/images/users/default.jpg";
   }
-  console.log(photo, "photo");
 
   const date = new Date(createdAt).toLocaleString("en-us", {
     day: "numeric",
@@ -66,7 +65,6 @@ const MessageView = ({
   } else if (photo) {
     image = `${locationHref + "api/" + photo}`;
   }
-  console.log(image, "image");
 
   const { messageViewRead, messageViewDelete } = messageViewData[lang];
 
