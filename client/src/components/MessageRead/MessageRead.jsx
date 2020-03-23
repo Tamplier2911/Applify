@@ -46,7 +46,7 @@ const MessageRead = ({ messageObject }) => {
     <div className="message-read">
       <div className="message-read__header">
         <div className="message-read__name">Name: {name}</div>
-        <div className="message-read__hemail">Email: {email}</div>
+        <div className="message-read__email">Email: {email}</div>
         <div className="message-read__portrait">
           <div className="message-read__portrait--wrap">
             <img

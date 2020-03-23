@@ -1,3 +1,40 @@
 .message-read {
   display: grid;
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+  }
+
+  &__name {
+    order: 1;
+  }
+  &__email {
+    order: 3;
+  }
+
+  &__portrait {
+    &--wrap {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    &--img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  &__body {
+  }
+  &__message {
+  }
+  &__date {
+    &--itself {
+    }
+  }
+  &__controlls {
+  }
 }
