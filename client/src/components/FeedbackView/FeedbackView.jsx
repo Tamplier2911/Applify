@@ -1,6 +1,9 @@
 // import "./FeedbackView.scss";
 import React from "react";
 
+// transformations
+import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
+
 // JS Rendering CSS
 import {
   FeedbackViewContainer,
@@ -21,15 +24,16 @@ import {
 } from "./FeedbackViewStyles";
 
 export const FeedbackView = ({
-  name,
-  photo,
+  count,
   rating,
   feedback,
-  count,
-  color
+  color,
+  user: { name, photo }
 }) => {
   const even = count % 2 === 0 ? 1 : 0;
   const groundedRating = Math.floor(rating);
+
+  const image = getImageRelativePath(photo);
 
   return (
     <FeedbackViewContainer>
@@ -38,7 +42,7 @@ export const FeedbackView = ({
           <FeedbackViewLeftImgWrap even={even} color={color}>
             <FeedbackViewLeftImg
               alt="happy user"
-              src={photo}
+              src={image}
             ></FeedbackViewLeftImg>
           </FeedbackViewLeftImgWrap>
           <FeedbackViewLeftRatingWrap even={even} color={color}>

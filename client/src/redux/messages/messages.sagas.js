@@ -8,7 +8,7 @@ import {
 } from "../../utils/ErrorFilters/errorFilters";
 
 // transform array to object
-import transformArrayToObject from "../../utils/TransformArrayToObject/transformArrayToObject";
+import transformArrayToObject from "../../utils/DataTransformations/transformArrayToObject";
 
 // messages actions
 import {
@@ -91,7 +91,6 @@ export function* loadMessages() {
       url: "/api/v1/messages"
     });
     const transformedData = transformArrayToObject(res.data.data.data);
-    // console.log(transformedData);
     yield put(loadMessagesSuccess(transformedData));
   } catch (error) {
     const { header, content } = getErrorMessage(error);

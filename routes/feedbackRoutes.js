@@ -13,13 +13,13 @@ const {
 // auth controller
 const { protect, restrictTo } = require("../controllers/authController");
 
+// OPEN
+router.route("/").get(getAllFeedbacks);
+
 // PROTECTED
 router.use(protect);
 
-router
-  .route("/")
-  .get(getAllFeedbacks)
-  .post(createNewFeedback);
+router.route("/").post(createNewFeedback);
 
 // RESTRICTED
 router.use(restrictTo("admin", "owner"));

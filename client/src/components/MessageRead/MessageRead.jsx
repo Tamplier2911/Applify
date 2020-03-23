@@ -1,33 +1,47 @@
-import "./MessageRead.scss";
+// import "./MessageRead.scss";
 import React from "react";
 import { withRouter } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
 import { selectMessage } from "../../redux/messages/messages.selectors";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { deleteMessageStart } from "../../redux/messages/messages.actions";
 
 // components
 import GetBack from "../GetBack/GetBack";
+import Button from "../Button/Button";
+
+// transformations
+import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
 
 // JS Rendering CSS
-import {} from "./MessageReadStyles";
+import {
+  MessageReadContainer,
+  MessageReadHeader,
+  MessageReadCredentials,
+  MessageReadName,
+  MessageReadEmail,
+  MessageReadPortrait,
+  MessageReadWrapper,
+  MessageReadImg,
+  MessageReadBody,
+  MessageReadMessage,
+  MessageReadDateWrap,
+  MessageReadDate,
+  MessageReadControlls,
+  MessageReadNotFound
+} from "./MessageReadStyles";
 
-const MessageRead = ({ messageObject }) => {
-  const { createdAt, name, email, message, from } = messageObject;
-  // FIX IMAGE LOADING ALGORITHM
-  // ISSUES IS /profile/ find way to rid of profile
-  //                                    \/      \/
-  // https://applify-s.herokuapp.com/profile/messages/api/uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg
-  // required href - https://applify-s.herokuapp.com/api/...
-  let locationHref = window.location.href.split("/");
-  locationHref = "".concat(locationHref[0], "//", locationHref[2], "/");
+// component constants
+import messageReadData from "../../utils/ComponentMessageReadConstants/componentMessageReadConstants";
 
-  let photo = "";
-  if (from) {
-    photo = from.photo;
-  } else {
-    photo = "uploads/images/users/default.jpg";
-  }
+const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
+  const { createdAt, name, email, message, from, _id } = messageObject
+    ? messageObject
+    : {};
+
+  let image = getImageRelativePath(from ? from.photo : "");
 
   const date = new Date(createdAt).toLocaleString("en-us", {
     day: "numeric",
@@ -35,48 +49,67 @@ const MessageRead = ({ messageObject }) => {
     year: "numeric"
   });
 
-  let image = "";
-  if (process.env.NODE_ENV === "development" && photo) {
-    image = `${locationHref + "api/" + photo}`;
-  } else if (photo) {
-    image = `${locationHref + "api/" + photo}`;
-  }
+  const sendEmailTo = () => {
+    const to = email;
+    const subject = "applify-tech.com";
+    const emailBody = `Greetings, ${name}!`;
+    document.location = `mailto:${to}?subject=${subject}&body=${emailBody}`;
+  };
 
-  return (
-    <div className="message-read">
-      <div className="message-read__header">
-        <div className="message-read__credentials">
-          <div className="message-read__name">Name: {name}</div>
-          <div className="message-read__email">Email: {email}</div>
-        </div>
+  const deleteMessageAndRedirect = id => {
+    deleteMessageStart(id);
+    history.push("/profile/messages");
+  };
 
-        <div className="message-read__portrait">
-          <div className="message-read__portrait--wrap">
-            <img
-              alt="happy user"
-              src={image}
-              className="message-read__portrait--img"
-            ></img>
-          </div>
-        </div>
-      </div>
-      <div className="message-read__body">
-        <div className="message-read__message">Message: {message}</div>
-      </div>
-      <div className="message-read__date">
-        <div className="message-read__date--itself">Date: {date}</div>
-      </div>
-      <div className="message-read__date--controlls">
-        <div>BTN</div>
-        <div>BTN</div>
-      </div>
+  const {
+    messageReadAnswer,
+    messageReadDelete,
+    messageReadNotFound
+  } = messageReadData[lang];
+
+  return messageObject ? (
+    <MessageReadContainer>
+      <MessageReadHeader>
+        <MessageReadCredentials>
+          <MessageReadName>{name}</MessageReadName>
+          <MessageReadEmail>{email}</MessageReadEmail>
+        </MessageReadCredentials>
+        <MessageReadPortrait>
+          <MessageReadWrapper>
+            <MessageReadImg alt="happy user" src={image} />
+          </MessageReadWrapper>
+        </MessageReadPortrait>
+      </MessageReadHeader>
+      <MessageReadBody>
+        <MessageReadMessage>{message}</MessageReadMessage>
+      </MessageReadBody>
+      <MessageReadDateWrap>
+        <MessageReadDate>{date}</MessageReadDate>
+      </MessageReadDateWrap>
+      <MessageReadControlls>
+        <Button
+          type="button"
+          value={messageReadDelete}
+          click={() => deleteMessageAndRedirect(_id)}
+        />
+        <Button
+          type="button"
+          value={messageReadAnswer}
+          click={() => sendEmailTo()}
+        />
+      </MessageReadControlls>
       <GetBack path={"/profile/messages"} />
-    </div>
+    </MessageReadContainer>
+  ) : (
+    <MessageReadNotFound>{messageReadNotFound}</MessageReadNotFound>
   );
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  messageObject: selectMessage(ownProps.match.params.id)(state)
+  messageObject: selectMessage(ownProps.match.params.id)(state),
+  lang: selectCurrentLanguage(state)
 });
 
-export default withRouter(connect(mapStateToProps)(MessageRead));
+export default withRouter(
+  connect(mapStateToProps, { deleteMessageStart })(MessageRead)
+);

@@ -1,10 +1,12 @@
 // import "./FeedbacksCollection.scss";
-import React, { useState } from "react";
+import React from "react";
 
 // redux
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { selectTotalLoaded } from "../../redux/feedbacks/feedbacks.selectors";
+import { getMoreFeeds } from "../../redux/feedbacks/feedbacks.actions";
 
 // components
 import FeedbackView from "../FeedbackView/FeedbackView";
@@ -16,54 +18,36 @@ import {
   FeedbacksCollectionBtn
 } from "./FeedbacksCollectionStyles";
 
-// temporary DTO
-import feedbacksCollectionData, {
-  feedbacksTemporaryData
-} from "../../utils/ComponentFeedbacksCollectionConstants/componentFeedbacksCollectionConstants";
+// component constants
+import feedbacksCollectionData from "../../utils/ComponentFeedbacksCollectionConstants/componentFeedbacksCollectionConstants";
 
-const reviewData = feedbacksTemporaryData;
-
-const FeedbacksCollection = ({ lang }) => {
+const FeedbacksCollection = ({
+  lang,
+  feedbacks,
+  totalLoaded,
+  getMoreFeeds
+}) => {
   const {
     feedbacksCollectionTitle,
     feedbacksCollectionMore
   } = feedbacksCollectionData[lang];
 
-  const [feedsData, setFeedsData] = useState({
-    currentlyLoadedFeeds: reviewData.slice(0, 4),
-    allFeedsCollection: reviewData,
-    totalFeeds: reviewData.length
-  });
-
-  const { currentlyLoadedFeeds, allFeedsCollection, totalFeeds } = feedsData;
   let count = -1;
 
-  // if all feedbacks loaded - statement is true
-  const allFeedbacksLoaded = currentlyLoadedFeeds.length === totalFeeds ? 1 : 0;
+  const allFeedbacksLoaded = feedbacks.length === totalLoaded ? 1 : 0;
 
   return (
     <FeedbacksCollectionContainer>
       <FeedbacksCollectionTitle>
         {feedbacksCollectionTitle}
       </FeedbacksCollectionTitle>
-      {currentlyLoadedFeeds.map(feedback => {
+      {feedbacks.map(feedback => {
         count++;
-        return <FeedbackView key={feedback.id} {...feedback} count={count} />;
+        return <FeedbackView key={feedback._id} {...feedback} count={count} />;
       })}
       <FeedbacksCollectionBtn
         loaded={allFeedbacksLoaded}
-        onClick={
-          allFeedbacksLoaded
-            ? () => {}
-            : () =>
-                setFeedsData({
-                  ...feedsData,
-                  currentlyLoadedFeeds: [
-                    ...currentlyLoadedFeeds,
-                    ...allFeedsCollection.splice(4, 4)
-                  ]
-                })
-        }
+        onClick={allFeedbacksLoaded ? () => {} : () => getMoreFeeds()}
       >
         {feedbacksCollectionMore}
       </FeedbacksCollectionBtn>
@@ -72,7 +56,8 @@ const FeedbacksCollection = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
+  totalLoaded: selectTotalLoaded
 });
 
-export default connect(mapStateToProps)(FeedbacksCollection);
+export default connect(mapStateToProps, { getMoreFeeds })(FeedbacksCollection);

@@ -1,20 +1,49 @@
 // import "./FeedbackPage.scss";
-import React from "react";
+import React, { useEffect } from "react";
+
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import {
+  selectIsLoading,
+  selectCurrentlyLoadedFeeds
+} from "../../redux/feedbacks/feedbacks.selectors";
+import { loadFeedbacksStart } from "../../redux/feedbacks/feedbacks.actions";
 
 // components
 import FeedbacksCollection from "../../components/FeedbacksCollection/FeedbacksCollection";
 import FeedbackCreate from "../../components/FeedbackCreate/FeedbackCreate";
+import WithSpinnerHOC from "../../components/WithSpinnerHOC/WithSpinnerHOC";
 
 // JS Rendering CSS
 import { FeedbackPageContainer } from "./FeedbackPageStyles";
 
-const FeedbackPage = () => {
+// FeedbacksCollection Buffed With Spinner
+const FeedbacksCollectionWithSpinner = WithSpinnerHOC(FeedbacksCollection);
+
+const FeedbackPage = ({ loadFeedbacksStart, loading, allFeeds }) => {
+  useEffect(() => {
+    if (!allFeeds.length) {
+      loadFeedbacksStart();
+    }
+  }, [loadFeedbacksStart, allFeeds.length]);
+
   return (
     <FeedbackPageContainer>
-      <FeedbacksCollection />
+      <FeedbacksCollectionWithSpinner
+        isLoading={loading}
+        feedbacks={allFeeds}
+      />
       <FeedbackCreate />
     </FeedbackPageContainer>
   );
 };
 
-export default FeedbackPage;
+const mapStateToProps = createStructuredSelector({
+  loading: selectIsLoading,
+  allFeeds: selectCurrentlyLoadedFeeds
+});
+
+export default connect(mapStateToProps, {
+  loadFeedbacksStart
+})(FeedbackPage);

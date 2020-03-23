@@ -1,9 +1,12 @@
 // import "./FeedbackForm.scss";
 import React, { useState } from "react";
 
+// redux
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { sendFeedbackStart } from "../../redux/feedbacks/feedbacks.actions";
+import { openModal } from "../../redux/modal/modal.actions";
 
 // components
 import TextInput from "../TextInput/TextInput";
@@ -23,7 +26,7 @@ import {
 // component constants
 import feedbackFormData from "../../utils/ComponentFeedbackFormConstants/componentFeedbackFormConstants";
 
-export const FeedbackForm = ({ lang }) => {
+export const FeedbackForm = ({ lang, openModal, sendFeedbackStart }) => {
   const [feedback, setFeedback] = useState({
     feedbackMessage: "",
     feedbackRating: "5"
@@ -37,8 +40,24 @@ export const FeedbackForm = ({ lang }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    // validate input
-    // console.log(feedback);
+    if (feedbackMessage.length > 500)
+      return openModal({
+        header: "Attention!",
+        content: "Feedback must not consist of more than 500 characters."
+      });
+    if (feedbackRating.length > 1 || typeof feedbackRating !== "string")
+      return openModal({
+        header: "Attention!",
+        content:
+          "Rating must be defined as a string, rating must not consist of more than one character."
+      });
+    if (!feedbackMessage.length || !feedbackRating.length)
+      return openModal({
+        header: "Attention!",
+        content: "Please, enter your feedback. Use select bar to choose rating."
+      });
+    sendFeedbackStart(feedback);
+    setFeedback({ feedbackMessage: "", feedbackRating: "5" });
   };
 
   const labels = Array.from(new Array(Number(feedbackRating)), (n, i) => i + 1);
@@ -92,4 +111,6 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage
 });
 
-export default connect(mapStateToProps)(FeedbackForm);
+export default connect(mapStateToProps, { sendFeedbackStart, openModal })(
+  FeedbackForm
+);

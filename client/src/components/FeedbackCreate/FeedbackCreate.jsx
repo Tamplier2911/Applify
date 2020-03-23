@@ -5,6 +5,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { selectIsLogged } from "../../redux/auth/auth.selectors";
 
 // components
 import FormHolder from "../FormHolder/FormHolder";
@@ -19,9 +20,7 @@ import {
 // component constants
 import feedbackCreateData from "../../utils/ComponentFeedbackCreateConstants/componentFeedbackCreateConstants";
 
-const loggedIn = true;
-
-const FeedbackCreate = ({ lang }) => {
+const FeedbackCreate = ({ lang, isLogged }) => {
   const {
     feedbackCreateTitle,
     feedbackCreateNotAuthorized
@@ -29,7 +28,7 @@ const FeedbackCreate = ({ lang }) => {
   return (
     <FeedbackCreateContainer>
       <FormHolder type="feedback" title={feedbackCreateTitle}>
-        {loggedIn ? (
+        {isLogged ? (
           <FeedbackForm />
         ) : (
           <FeedbackCreateUnauthorized>
@@ -42,7 +41,8 @@ const FeedbackCreate = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
+  isLogged: selectIsLogged
 });
 
 export default connect(mapStateToProps)(FeedbackCreate);

@@ -28,6 +28,7 @@ export const MessageViewContainer = styled.div`
   padding: 1rem;
   box-shadow: 0rem 0rem 0.5rem var(--cl-darkest-grey);
   transition: box-shadow 0.3s;
+  font-family: var(--font-title);
 
   &:hover {
     box-shadow: 0rem 0rem 0.8rem var(--cl-primary);

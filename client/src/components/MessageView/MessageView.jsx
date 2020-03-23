@@ -10,6 +10,9 @@ import { deleteMessageStart } from "../../redux/messages/messages.actions";
 // components
 import Button from "../Button/Button";
 
+// transformations
+import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
+
 // JS Rendering CSS
 import {
   MessageViewContainer,
@@ -38,33 +41,13 @@ const MessageView = ({
   lang,
   deleteMessageStart
 }) => {
-  // FIX IMAGE LOADING ALGORITHM
-  // ISSUES IS /profile/ find way to rid of profile
-  //                                    \/      \/
-  // https://applify-s.herokuapp.com/profile/messages/api/uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg
-  // required href - https://applify-s.herokuapp.com/api/...
-  let locationHref = window.location.href.split("/");
-  locationHref = "".concat(locationHref[0], "//", locationHref[2], "/");
-
-  let photo = "";
-  if (from) {
-    photo = from.photo;
-  } else {
-    photo = "uploads/images/users/default.jpg";
-  }
+  let image = getImageRelativePath(from ? from.photo : "");
 
   const date = new Date(createdAt).toLocaleString("en-us", {
     day: "numeric",
     month: "long",
     year: "numeric"
   });
-
-  let image = "";
-  if (process.env.NODE_ENV === "development" && photo) {
-    image = `${locationHref + "api/" + photo}`;
-  } else if (photo) {
-    image = `${locationHref + "api/" + photo}`;
-  }
 
   const { messageViewRead, messageViewDelete } = messageViewData[lang];
 

@@ -10,5 +10,5 @@ export const getErrorMessage = error => {
 };
 
 export const successfulResponse = res => {
-  return res.data.status === "success";
+  return res.data.status === "success" || String(res.status).startsWith("2");
 };

@@ -10,6 +10,7 @@ import sidenavReducer from "./sidenav/sidenav.reducer";
 import modalReducer from "./modal/modal.reducer";
 import blogsReducer from "./blogs/blogs.reducer";
 import messagesReducer from "./messages/messages.reducer";
+import feedbacksReducer from "./feedbacks/feedbacks.reducer";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   sidenav: sidenavReducer,
   modal: modalReducer,
   blogs: blogsReducer,
-  messages: messagesReducer
+  messages: messagesReducer,
+  feedbacks: feedbacksReducer
 });
 
 export default rootReducer;
