@@ -5,6 +5,7 @@ import { combineReducers } from "redux";
 import themeReducer from "./theme/theme.reducer";
 import langReducer from "./lang/lang.reducer";
 import authReducer from "./auth/auth.reducer";
+import usersReducer from "./users/users.reducer";
 import projectsReducer from "./projects/projects.reducer";
 import sidenavReducer from "./sidenav/sidenav.reducer";
 import modalReducer from "./modal/modal.reducer";
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   theme: themeReducer,
   lang: langReducer,
   user: authReducer,
+  users: usersReducer,
   projects: projectsReducer,
   sidenav: sidenavReducer,
   modal: modalReducer,
