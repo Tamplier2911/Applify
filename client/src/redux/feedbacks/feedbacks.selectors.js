@@ -1,6 +1,18 @@
 import { createSelector } from "reselect";
+import transformArrayToObject from "../../utils/DataTransformations/transformArrayToObject";
 
 const selectFeedbacks = state => state.feedbacks;
+
+export const selectAllLoadedFeeds = createSelector(
+  [selectFeedbacks],
+  feedbacks => feedbacks.allFeedbacks
+);
+
+export const selectAllLoadedFeedsAsObject = feedbackUrlParam =>
+  createSelector([selectAllLoadedFeeds], loadedFeeds => {
+    const feedsAsObject = transformArrayToObject(loadedFeeds);
+    return feedsAsObject[feedbackUrlParam];
+  });
 
 export const selectCurrentlyLoadedFeeds = createSelector(
   [selectFeedbacks],

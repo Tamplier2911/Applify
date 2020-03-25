@@ -13,15 +13,11 @@ import {
 
 // components
 import WithSpinnerHOC from "../../components/WithSpinnerHOC/WithSpinnerHOC";
+import CollectionHolder from "../CollectionHolder/CollectionHolder";
 import MessagesCollection from "../MessagesCollection/MessagesCollection";
-import Refresher from "../Refresher/Refresher";
 
 // JS Rendering CSS
-import {
-  MessagesHolderContainer,
-  MessagesHolderTitle,
-  MessagesHolderMessages
-} from "./MessagesHolderStyles";
+import { MessagesHolderContainer } from "./MessagesHolderStyles";
 
 // component constants
 import messagesHolderData from "../../utils/ComponentMessagesHolderConstants/componentMessagesHolderConstants";
@@ -39,16 +35,17 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
   const { messagesHolderTitle } = messagesHolderData[lang];
   return (
     <MessagesHolderContainer>
-      <MessagesHolderTitle lang={lang}>
-        {messagesHolderTitle}
-      </MessagesHolderTitle>
-      <MessagesHolderMessages>
+      <CollectionHolder
+        lang={lang}
+        title={messagesHolderTitle}
+        refresher={1}
+        cb={loadMessagesStart}
+      >
         <MessagesCollectionWithSpinner
           isLoading={isLoading}
           messages={messages}
         />
-      </MessagesHolderMessages>
-      <Refresher click={() => loadMessagesStart()} />
+      </CollectionHolder>
     </MessagesHolderContainer>
   );
 };

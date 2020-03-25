@@ -14,8 +14,8 @@ import appendColorsToFeedbackObjects from "../../utils/DataTransformations/appen
 import {
   sendFeedbackSuccess,
   sendFeedbackFailure,
-  //   deleteFeedbackSuccess,
-  //   deleteFeedbackFailure,
+  deleteFeedbackSuccess,
+  deleteFeedbackFailure,
   loadFeedbacksStart,
   loadFeedbacksSuccess,
   loadFeedbacksFailure
@@ -62,7 +62,26 @@ export function* sendFeedback({ payload }) {
 }
 
 export function* deleteFeedback({ payload }) {
-  yield console.log(payload, "delete from saga");
+  try {
+    const res = yield axios({
+      method: "DELETE",
+      url: `/api/v1/feedbacks/${payload}`
+    });
+    yield put(deleteFeedbackSuccess());
+    if (successfulResponse(res)) {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "Feedback successfully deleted."
+        })
+      );
+    }
+    yield put(loadFeedbacksStart());
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(deleteFeedbackFailure(content));
+  }
 }
 
 export function* loadFeedbacks() {

@@ -1,4 +1,4 @@
-import "./WithSpinnerHOC.scss";
+// import "./WithSpinnerHOC.scss";
 import React from "react";
 
 // JS Rendering CSS

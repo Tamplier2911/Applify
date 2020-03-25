@@ -23,6 +23,8 @@ export const MessageReadContainer = styled.div`
   display: grid;
   grid-row-gap: 2rem;
   font-family: var(--font-title);
+
+  margin-bottom: 4rem;
 `;
 
 export const MessageReadHeader = styled.div`

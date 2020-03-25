@@ -17,10 +17,12 @@ const {
 
 const INITIAL_STATE = {
   userObject: {
+    id: "",
     name: "",
     email: "",
     photo: "",
-    about: ""
+    about: "",
+    likedBlogposts: []
   },
   errorMessage: null,
   isLogged: false
@@ -41,10 +43,12 @@ const authReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userObject: {
+          id: "",
           name: "",
           email: "",
           photo: "",
-          about: ""
+          about: "",
+          likedBlogposts: []
         },
         errorMessage: null,
         isLogged: action.payload

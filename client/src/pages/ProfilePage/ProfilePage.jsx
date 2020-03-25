@@ -14,6 +14,10 @@ import {
 import Profile from "../../components/Profile/Profile";
 import MessagesHolder from "../../components/MessagesHolder/MessagesHolder";
 import MessageRead from "../../components/MessageRead/MessageRead";
+import FeedbacksHolder from "../../components/FeedbacksHolder/FeedbacksHolder";
+import FeedbackUpdate from "../../components/FeedbackUpdate/FeedbackUpdate";
+import UsersHolder from "../../components/UsersHolder/UserHolder";
+import BlogsHolder from "../../components/BlogsHolder/BlogsHolder";
 
 // JS Rendering CSS
 import {
@@ -37,9 +41,16 @@ const ProfilePage = ({ isLogged, userObject }) => {
         />
 
         <Route
+          exact
           path={`${match.path}/users`}
           render={() =>
-            showAdminRoutes ? <MessagesHolder /> : <Redirect to="/" />
+            showAdminRoutes ? <UsersHolder /> : <Redirect to="/" />
+          }
+        />
+        <Route
+          path={`${match.path}/users/:id`}
+          render={() =>
+            showAdminRoutes ? <div>User Singular</div> : <Redirect to="/" />
           }
         />
         <Route
@@ -55,17 +66,23 @@ const ProfilePage = ({ isLogged, userObject }) => {
             showAdminRoutes ? <MessageRead /> : <Redirect to="/" />
           }
         />
-
         <Route
           path={`${match.path}/blogs`}
           render={() =>
-            showAdminRoutes ? <MessagesHolder /> : <Redirect to="/" />
+            showAdminRoutes ? <BlogsHolder /> : <Redirect to="/" />
           }
         />
         <Route
+          exact
           path={`${match.path}/feeds`}
           render={() =>
-            showAdminRoutes ? <MessagesHolder /> : <Redirect to="/" />
+            showAdminRoutes ? <FeedbacksHolder /> : <Redirect to="/" />
+          }
+        />
+        <Route
+          path={`${match.path}/feeds/:id`}
+          render={() =>
+            showAdminRoutes ? <FeedbackUpdate /> : <Redirect to="/" />
           }
         />
       </Switch>

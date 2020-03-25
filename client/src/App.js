@@ -7,7 +7,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { openModal } from "./redux/modal/modal.actions";
-import { selectIsLogged } from "./redux/auth/auth.selectors";
+import { selectIsLogged, selectUserId } from "./redux/auth/auth.selectors";
 import { fetchAuthObjectStart } from "./redux/auth/auth.actions";
 
 // components
@@ -32,7 +32,7 @@ import PasswordRestorationPage from "./pages/PasswordRestorationPage/PasswordRes
 // JS rendering CSS
 import { AppContainer, AppMain } from "./AppStyles";
 
-const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
+const App = ({ openModal, fetchAuthObjectStart, isLogged, userId }) => {
   useEffect(() => {
     // openModal({
     //   header: "Attention!",
@@ -58,11 +58,9 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
             exact
             path="/authorization"
             render={() =>
-              isLogged ? <Redirect to="/" /> : <AuthorizationPage />
+              !isLogged ? <AuthorizationPage /> : <Redirect to="/" />
             }
           />
-          {/* <Route exact path="/forgotPassword" component={ForgotPasswordPage} />
-          <Route path="/forgotPassword/:id" component={RestorePasswordPage} /> */}
           <Route exact path="/resume" component={ResumePage} />
           <Route exact path="/portfolio" component={PortfolioPage} />
           <Route exact path="/contacts" component={ContactsPage} />
@@ -71,7 +69,7 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
           <Route path="/restore" component={PasswordRestorationPage} />
           <Route path="/" component={HomePage} />
 
-          <div>Remove this once Back is wired</div>
+          <div>Remove this once Back is wired!</div>
         </Switch>
         <LanguagePannel />
       </AppMain>
@@ -82,24 +80,10 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLogged: selectIsLogged
+  isLogged: selectIsLogged,
+  userId: selectUserId
 });
 
 export default connect(mapStateToProps, { openModal, fetchAuthObjectStart })(
   App
 );
-/*
-<Route
-    exact
-    path="/surveys"
-    render={() =>
-      !currentUser ? <Redirect to="/" /> : <SurveyPage />
-    }
-  />
-  <Route
-    path="/surveys/:id"
-    render={() =>
-      !currentUser ? <Redirect to="/" /> : <SingleSurveyPage />
-    }
-  />
-  */

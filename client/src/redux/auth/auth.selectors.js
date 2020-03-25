@@ -11,6 +11,10 @@ export const selectUserObject = createSelector(
 //   userObject ? userObject.photo : ""
 // );
 
+export const selectUserId = createSelector([selectUserObject], userObject =>
+  userObject ? userObject.id : ""
+);
+
 export const selectIsLogged = createSelector(
   [selectUser],
   user => user.isLogged
