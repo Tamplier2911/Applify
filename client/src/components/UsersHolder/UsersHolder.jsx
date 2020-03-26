@@ -1,4 +1,4 @@
-// import "./FeedbacksHolder.scss";
+// import './usersHolder.scss';
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 
@@ -6,47 +6,47 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
-import { loadFeedbacksStart } from "../../redux/feedbacks/feedbacks.actions";
+import { loadAllUsersStart } from "../../redux/users/users.actions";
 import {
-  selectAllLoadedFeeds,
-  selectIsLoading
-} from "../../redux/feedbacks/feedbacks.selectors";
+  selectAllUsers,
+  selectUsersIsLoading
+} from "../../redux/users/users.selectors";
 
 // components
 import WithSpinnerHOC from "../WithSpinnerHOC/WithSpinnerHOC";
 import CollectionHolder from "../CollectionHolder/CollectionHolder";
 import CollectionForHolder from "../CollectionForHolder/CollectionForHolder";
 import Button from "../Button/Button";
+import UserCard from "../UserCard/UserCard";
 import FormInput from "../FormInput/FormInput";
-import FeedbackCard from "../FeedbackCard/FeedbackCard";
 
-// data formaters
-import { simpleFeedbacksSearch } from "../../utils/DataTransformations/simpleSearches";
+// data transformation
+import { simpleUserSearch } from "../../utils/DataTransformations/simpleSearches";
 
 // JS Rendering CSS
 import {
-  FeedbacksHolderContainer,
-  FeedbacksHolderSearchBarContainer
-} from "./FeedbacksHolderStyles";
+  UsersHolderContainer,
+  UserHolderSearchBarContainer
+} from "./UsersHolderStyles";
 
 // component constants
-import feedbacksHolderData from "../../utils/ComponentFeedbacksHolderConstants/componentFeedbacksHolderConstants";
+import usersHolderData from "../../utils/ComponentUsersHolderConstants/componentUsersHolderConstants";
 
-// buffing collection with spinner
+// buff collection for holder with spinner
 const CollectionForHolderWithSpinner = WithSpinnerHOC(CollectionForHolder);
 
-const FeedbacksHolder = ({
+const UsersHolder = ({
   lang,
   history,
-  loadFeedbacksStart,
-  feedbacks,
+  loadAllUsersStart,
+  users,
   isLoading
 }) => {
   useEffect(() => {
-    if (!feedbacks.length) {
-      loadFeedbacksStart();
+    if (!users.length) {
+      loadAllUsersStart();
     }
-  }, [loadFeedbacksStart, feedbacks.length]);
+  }, [loadAllUsersStart, users.length]);
 
   const [searchInput, setSearchInput] = useState({ search: "" });
   const { search } = searchInput;
@@ -56,57 +56,57 @@ const FeedbacksHolder = ({
     setSearchInput({ ...searchInput, [name]: value });
   };
 
-  const redirectToCreateFeedback = () => {
-    history.push("/feedback");
+  const redirectToCreateUser = () => {
+    history.push("/profile/users/create");
   };
 
-  const {
-    feedsHolderTitle,
-    feedsHolderButton,
-    feedsHolderSearch
-  } = feedbacksHolderData[lang];
+  const usersArray = simpleUserSearch(users, search);
 
-  const feedbacksArray = simpleFeedbacksSearch(feedbacks, search);
+  const {
+    usersHolderTitle,
+    usersHolderButton,
+    usersHolderSearch
+  } = usersHolderData[lang];
 
   return (
-    <FeedbacksHolderContainer>
+    <UsersHolderContainer>
       <Button
         type="button"
-        value={feedsHolderButton}
-        click={redirectToCreateFeedback}
+        value={usersHolderButton}
+        click={redirectToCreateUser}
       />
-      <FeedbacksHolderSearchBarContainer>
+      <UserHolderSearchBarContainer>
         <FormInput
           onInputChange={e => onInputChange(e)}
           value={search}
           name="search"
-          label={feedsHolderSearch}
+          label={usersHolderSearch}
           type="text"
         />
-      </FeedbacksHolderSearchBarContainer>
+      </UserHolderSearchBarContainer>
       <CollectionHolder
         lang={lang}
-        title={feedsHolderTitle}
+        title={usersHolderTitle}
         refresher={1}
-        cb={loadFeedbacksStart}
+        cb={() => loadAllUsersStart()}
       >
         <CollectionForHolderWithSpinner
           isLoading={isLoading}
-          dataCollection={feedbacksArray}
+          dataCollection={usersArray}
         >
-          <FeedbackCard />
+          <UserCard />
         </CollectionForHolderWithSpinner>
       </CollectionHolder>
-    </FeedbacksHolderContainer>
+    </UsersHolderContainer>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
-  feedbacks: selectAllLoadedFeeds,
-  isLoading: selectIsLoading
+  users: selectAllUsers,
+  isLoading: selectUsersIsLoading
 });
 
 export default withRouter(
-  connect(mapStateToProps, { loadFeedbacksStart })(FeedbacksHolder)
+  connect(mapStateToProps, { loadAllUsersStart })(UsersHolder)
 );

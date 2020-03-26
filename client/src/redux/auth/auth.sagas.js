@@ -31,6 +31,9 @@ import {
 // messages actions
 import { cleanUpMessagesFromState } from "../messages/messages.actions";
 
+// users actions
+import { cleanUpUsersFromState } from "../users/users.actions";
+
 // modal actions
 import { openModal } from "../modal/modal.actions";
 
@@ -96,6 +99,7 @@ export function* logUserOut() {
     });
     yield put(logUserOutSuccess(false));
     yield put(cleanUpMessagesFromState());
+    yield put(cleanUpUsersFromState());
     yield put(fetchAuthObjectStart());
   } catch (error) {
     const { header, content } = getErrorMessage(error);

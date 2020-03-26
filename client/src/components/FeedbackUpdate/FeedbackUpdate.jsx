@@ -9,12 +9,14 @@ import { selectAllLoadedFeedsAsObject } from "../../redux/feedbacks/feedbacks.se
 // components
 import GetBack from "../GetBack/GetBack";
 
-// data formater
+// data formaters
 import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
 import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
 
 // JS Rendering CSS
 import {} from "./FeedbackUpdateStyles";
+
+// component constants
 
 const FeedbackUpdate = ({ feedbackObject }) => {
   const { rating, createdAt, _id, feedback, user, color } = feedbackObject

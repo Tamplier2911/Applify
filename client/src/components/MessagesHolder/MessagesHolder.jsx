@@ -1,5 +1,5 @@
 // import "./MessagesHolder.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // redux
 import { connect } from "react-redux";
@@ -15,9 +15,16 @@ import {
 import WithSpinnerHOC from "../../components/WithSpinnerHOC/WithSpinnerHOC";
 import CollectionHolder from "../CollectionHolder/CollectionHolder";
 import MessagesCollection from "../MessagesCollection/MessagesCollection";
+import FormInput from "../FormInput/FormInput";
+
+// data transformations
+import { simpleMessageSearch } from "../../utils/DataTransformations/simpleSearches";
 
 // JS Rendering CSS
-import { MessagesHolderContainer } from "./MessagesHolderStyles";
+import {
+  MessagesHolderContainer,
+  MessageHolderInputBarContainer
+} from "./MessagesHolderStyles";
 
 // component constants
 import messagesHolderData from "../../utils/ComponentMessagesHolderConstants/componentMessagesHolderConstants";
@@ -32,9 +39,28 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
     }
   }, [loadMessagesStart, messages.length]);
 
-  const { messagesHolderTitle } = messagesHolderData[lang];
+  const [searchInput, setSearchInput] = useState({ search: "" });
+  const { search } = searchInput;
+
+  const onInputChange = e => {
+    const { name, value } = e.target;
+    setSearchInput({ ...searchInput, [name]: value });
+  };
+
+  const messagesArray = simpleMessageSearch(messages, search);
+
+  const { messagesHolderTitle, messageHolderSearch } = messagesHolderData[lang];
   return (
     <MessagesHolderContainer>
+      <MessageHolderInputBarContainer>
+        <FormInput
+          onInputChange={e => onInputChange(e)}
+          value={search}
+          name="search"
+          label={messageHolderSearch}
+          type="text"
+        />
+      </MessageHolderInputBarContainer>
       <CollectionHolder
         lang={lang}
         title={messagesHolderTitle}
@@ -43,7 +69,7 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
       >
         <MessagesCollectionWithSpinner
           isLoading={isLoading}
-          messages={messages}
+          messages={messagesArray}
         />
       </CollectionHolder>
     </MessagesHolderContainer>

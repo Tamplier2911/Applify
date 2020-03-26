@@ -16,7 +16,9 @@ import MessagesHolder from "../../components/MessagesHolder/MessagesHolder";
 import MessageRead from "../../components/MessageRead/MessageRead";
 import FeedbacksHolder from "../../components/FeedbacksHolder/FeedbacksHolder";
 import FeedbackUpdate from "../../components/FeedbackUpdate/FeedbackUpdate";
-import UsersHolder from "../../components/UsersHolder/UserHolder";
+import UsersHolder from "../../components/UsersHolder/UsersHolder";
+import UserUpdate from "../../components/UserUpdate/UserUpdate";
+import UserCreate from "../../components/UserCreate/UserCreate";
 import BlogsHolder from "../../components/BlogsHolder/BlogsHolder";
 
 // JS Rendering CSS
@@ -48,9 +50,16 @@ const ProfilePage = ({ isLogged, userObject }) => {
           }
         />
         <Route
+          exact
+          path={`${match.path}/users/create`}
+          render={() =>
+            showAdminRoutes ? <UserCreate /> : <Redirect to="/" />
+          }
+        />
+        <Route
           path={`${match.path}/users/:id`}
           render={() =>
-            showAdminRoutes ? <div>User Singular</div> : <Redirect to="/" />
+            showAdminRoutes ? <UserUpdate /> : <Redirect to="/" />
           }
         />
         <Route
@@ -67,9 +76,16 @@ const ProfilePage = ({ isLogged, userObject }) => {
           }
         />
         <Route
+          exact
           path={`${match.path}/blogs`}
           render={() =>
             showAdminRoutes ? <BlogsHolder /> : <Redirect to="/" />
+          }
+        />
+        <Route
+          path={`${match.path}/blogs/:id`}
+          render={() =>
+            showAdminRoutes ? <div>Singular Blog</div> : <Redirect to="/" />
           }
         />
         <Route

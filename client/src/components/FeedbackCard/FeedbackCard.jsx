@@ -10,7 +10,7 @@ import { deleteFeedbackStart } from "../../redux/feedbacks/feedbacks.actions";
 // components
 import Button from "../Button/Button";
 
-// data formater
+// data formaters
 import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
 import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
 
@@ -37,23 +37,16 @@ import {
 import feedbackCardData from "../../utils/ComponentFeedbackCardConstants/componentFeedbackCardConstants";
 
 const FeedbackCard = ({ data, deleteFeedbackStart, lang }) => {
-  const {
-    rating,
-    createdAt,
-    _id,
-    feedback,
-    user: { photo, name },
-    color
-  } = data;
+  const { rating, createdAt, _id, feedback, user, color } = data ? data : {};
   const long = feedback.slice(0, 80)[79];
   const shortenFeedback = feedback.slice(0, 80);
-  const image = getImageRelativePath(photo);
+  const image = getImageRelativePath(user ? user.photo : "");
   const date = transformDateToLocaleString(createdAt);
   const { feedbackCardDelete, feedbackCardUpdate } = feedbackCardData[lang];
   return (
     <FeedbackCardContainer key={_id}>
       <FeedbackCardHeader>
-        <FeedbackCardHeaderName>{name}</FeedbackCardHeaderName>
+        <FeedbackCardHeaderName>{user.name}</FeedbackCardHeaderName>
       </FeedbackCardHeader>
       <FeedbackCardBody>
         <FeedbackCardBodyImgWrapper color={color}>

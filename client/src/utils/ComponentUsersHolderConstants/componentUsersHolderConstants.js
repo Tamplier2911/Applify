@@ -1,12 +1,18 @@
 const usersHolderData = {
-  eng: { usersHolderTitle: "Users:", usersHolderButton: "Create User" },
+  eng: {
+    usersHolderTitle: "Users:",
+    usersHolderButton: "Create User",
+    usersHolderSearch: "Search"
+  },
   rus: {
     usersHolderTitle: "Пользователи:",
-    usersHolderButton: "Создать пользователя"
+    usersHolderButton: "Создать пользователя",
+    usersHolderSearch: "Поиск"
   },
   ukr: {
     usersHolderTitle: "Користувачі:",
-    usersHolderButton: "Створити користувача"
+    usersHolderButton: "Створити користувача",
+    usersHolderSearch: "Пошук"
   }
 };
 

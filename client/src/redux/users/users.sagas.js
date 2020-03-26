@@ -12,15 +12,13 @@ import {
   loadAllUsersStart,
   loadAllUsersSucess,
   loadAllUsersFailure,
-  createOneUserSuccess,
-  createOneUserFailure,
-  updateOneUserSuccess,
-  updateOneUserFailure,
+  // createOneUserSuccess,
+  // createOneUserFailure,
+  // updateOneUserSuccess,
+  // updateOneUserFailure,
   deleteOneUserSuccess,
   deleteOneUserFailure
 } from "./users.actions";
-
-// IMPLEMENT cleanUpUsersFromState ON USER LOGOUT **************************
 
 // modal actions
 import { openModal } from "../modal/modal.actions";
@@ -36,19 +34,96 @@ const {
 } = usersTypes;
 
 export function* loadAllUsers() {
-  yield console.log("load users from saga");
+  try {
+    const res = yield axios({
+      method: "GET",
+      url: "/api/v1/users"
+    });
+    const users = res.data.data.data;
+    yield put(loadAllUsersSucess(users));
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(loadAllUsersFailure(content));
+  }
 }
 
 export function* createOneUser({ payload }) {
   yield console.log("create one user from saga", payload);
+  //   try {
+  //     // destructure user data
+  //     const {} = payload;
+  //     const res = yield axios({
+  //       method: "POST",
+  //       url: "/api/v1/users",
+  //       data: {} // inser user data
+  //     });
+  //     yield put(createOneUserSuccess());
+  //     if (successfulResponse(res)) {
+  //       yield put(
+  //         openModal({
+  //           header: "Success!",
+  //           content: "New user was successfully created."
+  //         })
+  //       );
+  //     }
+  //     yield put(loadAllUsersSucess());
+  //   } catch (error) {
+  //     const { header, content } = getErrorMessage(error);
+  //     yield put(openModal({ header, content }));
+  //     yield put(createOneUserFailure(content));
+  //   }
 }
 
 export function* updateOneUser({ payload }) {
   yield console.log("update one user from saga", payload);
+  //   try {
+  //     // destructure user data and ID
+  //     const { id } = payload;
+  //     const res = yield axios({
+  //       method: "PATCH",
+  //       url: `/api/v1/users/${id}`,
+  //       data: {} // inser user data
+  //     });
+  //     yield put(updateOneUserSuccess());
+  //     if (successfulResponse(res)) {
+  //       yield put(
+  //         openModal({
+  //           header: "Success!",
+  //           content: "User data was successfully updated."
+  //         })
+  //       );
+  //     }
+  //     yield put(loadAllUsersSucess());
+  //   } catch (error) {
+  //     const { header, content } = getErrorMessage(error);
+  //     yield put(openModal({ header, content }));
+  //     yield put(updateOneUserFailure(content));
+  //   }
 }
 
 export function* deleteOneUser({ payload }) {
   yield console.log("delete one user from sage", payload);
+  try {
+    const res = yield axios({
+      method: "DELETE",
+      url: `/api/v1/users/${payload}`
+    });
+    yield put(deleteOneUserSuccess());
+    if (successfulResponse(res)) {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "User was successfully deleted."
+        })
+      );
+    }
+    yield put(loadAllUsersStart());
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(deleteOneUserFailure(content));
+  }
 }
 
 export function* onLoadUsersStart() {

@@ -1,9 +1,16 @@
 const messagesHolderData = {
   eng: {
-    messagesHolderTitle: "Recent Messages:"
+    messagesHolderTitle: "Recent Messages:",
+    messageHolderSearch: "Search:"
   },
-  rus: { messagesHolderTitle: "Последние сообщения:" },
-  ukr: { messagesHolderTitle: "Останні повідомлення:" }
+  rus: {
+    messagesHolderTitle: "Последние сообщения:",
+    messageHolderSearch: "Поиск:"
+  },
+  ukr: {
+    messagesHolderTitle: "Останні повідомлення:",
+    messageHolderSearch: "Пошук:"
+  }
 };
 
 export default messagesHolderData;
