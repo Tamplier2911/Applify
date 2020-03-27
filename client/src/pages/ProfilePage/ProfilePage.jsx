@@ -83,6 +83,13 @@ const ProfilePage = ({ isLogged, userObject }) => {
           }
         />
         <Route
+          exact
+          path={`${match.path}/blogs/create`}
+          render={() =>
+            showAdminRoutes ? <div>Create Blog Post</div> : <Redirect to="/" />
+          }
+        />
+        <Route
           path={`${match.path}/blogs/:id`}
           render={() =>
             showAdminRoutes ? <div>Singular Blog</div> : <Redirect to="/" />

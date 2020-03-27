@@ -26,4 +26,9 @@ export const simpleMessageSearch = (arr, searchQuery = "") =>
   );
 
 export const simpleBlogsSearch = (arr, searchQuery) =>
-  arr.filter(obj => obj.name.toLowerCase().includes(searchQuery));
+  arr.filter(
+    obj =>
+      obj.title.toLowerCase().includes(searchQuery) ||
+      obj.theme.toLowerCase().includes(searchQuery) ||
+      obj.content.toLowerCase().includes(searchQuery)
+  );

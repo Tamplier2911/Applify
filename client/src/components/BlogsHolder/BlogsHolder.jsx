@@ -6,20 +6,21 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
-// import { loadBlogsStart } from "../../redux/blogs/blogs.actions";
-// import {
-//   selectAllLoadedFeeds,
-//   selectIsLoading
-// } from "../../redux/blogs/blogs.selectors";
+import { loadAllBlogpostsStart } from "../../redux/blogs/blogs.actions";
+import {
+  selectAllBlogposts,
+  selectIsLoading
+} from "../../redux/blogs/blogs.selectors";
 
 // components
 import WithSpinnerHOC from "../WithSpinnerHOC/WithSpinnerHOC";
 import CollectionHolder from "../CollectionHolder/CollectionHolder";
 import CollectionForHolder from "../CollectionForHolder/CollectionForHolder";
+import BlogCard from "../BlogCard/BlogCard";
 import Button from "../Button/Button";
 import FormInput from "../FormInput/FormInput";
 
-// data formaters - "BLOG SEARCH REQUIRES LOGIC MODIFICATION"***********************
+// data formaters
 import { simpleBlogsSearch } from "../../utils/DataTransformations/simpleSearches";
 
 // JS Rendering CSS
@@ -31,8 +32,21 @@ import {
 // component constants
 import blogsHolderData from "../../utils/ComponentBlogsHolderConstants/componentBlogsHolderConstants";
 
-const BlogsHolder = ({ lang, history }) => {
-  useEffect(() => {}, []);
+// buff collection for holder with spinner
+const CollectionForHolderWithSpinner = WithSpinnerHOC(CollectionForHolder);
+
+const BlogsHolder = ({
+  lang,
+  history,
+  loadAllBlogpostsStart,
+  blogposts,
+  isLoading
+}) => {
+  useEffect(() => {
+    if (!blogposts.length) {
+      loadAllBlogpostsStart();
+    }
+  }, [loadAllBlogpostsStart, blogposts.length]);
 
   const [searchInput, setSearchInput] = useState({ search: "" });
   const { search } = searchInput;
@@ -42,10 +56,10 @@ const BlogsHolder = ({ lang, history }) => {
   };
 
   const redirectToCreateBlogpost = () => {
-    history.push("/");
+    history.push("/profile/blogs/create");
   };
 
-  // const blogsArray = simpleBlogsSearch(blogs, search);
+  const blogsArray = simpleBlogsSearch(blogposts, search.toLowerCase());
 
   const {
     blogsHolderTitle,
@@ -73,25 +87,25 @@ const BlogsHolder = ({ lang, history }) => {
         lang={lang}
         title={blogsHolderTitle}
         refresher={1}
-        cb={() => {}}
+        cb={() => loadAllBlogpostsStart()}
       >
-        <CollectionForHolder
-          isLoading={false}
-          dataCollection={[
-            { name: "test", _id: "123" },
-            { name: "test", _id: "213" },
-            { name: "test", _id: "321" }
-          ]}
+        <CollectionForHolderWithSpinner
+          isLoading={isLoading}
+          dataCollection={blogsArray}
         >
-          <div>Singular Blog Post</div>
-        </CollectionForHolder>
+          <BlogCard />
+        </CollectionForHolderWithSpinner>
       </CollectionHolder>
     </BlogsHolderContainer>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
+  blogposts: selectAllBlogposts,
+  isLoading: selectIsLoading
 });
 
-export default withRouter(connect(mapStateToProps)(BlogsHolder));
+export default withRouter(
+  connect(mapStateToProps, { loadAllBlogpostsStart })(BlogsHolder)
+);

@@ -4,12 +4,6 @@ import React from "react";
 // redux
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import {
-  selectCurrentSet,
-  selectAllSets,
-  selectCurrentSlot,
-  selectAllSlots
-} from "../../redux/blogs/blogs.selectors";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import {
   setCurrentSetNext,
@@ -35,15 +29,19 @@ import {
 import blogsCollectionData from "../../utils/ComponentBlogsCollectionConstants/componentBlogsCollectionConstants";
 
 const BlogsCollection = ({
-  currentDataSet,
-  allDataSets,
-  currentDataSlot,
-  allDataSlots,
+  blogsData,
   setCurrentSetNext,
   setCurrentSetPrev,
   setCurrentSetBySlot,
   lang
 }) => {
+  const {
+    currentDataSet,
+    allDataSets,
+    currentDataSlot,
+    allDataSlots
+  } = blogsData;
+
   const { blogsCollectionHeader } = blogsCollectionData[lang];
 
   let count = -1;
@@ -52,9 +50,9 @@ const BlogsCollection = ({
       <BlogsCollectionTitle>{blogsCollectionHeader}</BlogsCollectionTitle>
       <BlogsCollectionBlogs>
         {currentDataSet.map(blog => {
-          const { id } = blog;
+          const { _id } = blog;
           count++;
-          return <BlogPostView {...blog} key={id} pos={count} />;
+          return <BlogPostView blog={blog} key={_id} pos={count} />;
         })}
         <BlogsCollectionNav>
           <BlogsCollectionNavLeft
@@ -98,10 +96,6 @@ const BlogsCollection = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  currentDataSet: selectCurrentSet,
-  allDataSets: selectAllSets,
-  currentDataSlot: selectCurrentSlot,
-  allDataSlots: selectAllSlots,
   lang: selectCurrentLanguage
 });
 

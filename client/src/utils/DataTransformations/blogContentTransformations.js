@@ -1,6 +1,7 @@
 const formUp = (str, replacer) => {
   const container = [];
-  let arr = str.replace(/[&\/\\#+()$~'":*?<>{}]/g, "").split(replacer);
+  let arr = str.replace(/[&#+()$~'":*?<>{}]/g, "").split(replacer);
+  //   let arr = str.replace(/[&\/\\#+()$~'":*?<>{}]/g, "").split(replacer);
   for (let i = 0; i < arr.length; i++) {
     if (!arr[i].startsWith("%") && arr[i][0] !== " ") {
       container.push(arr[i]);
@@ -9,7 +10,7 @@ const formUp = (str, replacer) => {
   return container.filter(el => el !== "");
 };
 
-exports.formBlogpostData = str => {
+const formBlogpostData = str => {
   // %HEADER% - headers
   // %CONTENT% - content
   // %LINK% - links
@@ -24,3 +25,5 @@ exports.formBlogpostData = str => {
   // console.log(dataObject);
   return dataObject;
 };
+
+export default formBlogpostData;

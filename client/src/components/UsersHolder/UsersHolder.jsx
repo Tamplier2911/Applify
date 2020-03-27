@@ -60,7 +60,7 @@ const UsersHolder = ({
     history.push("/profile/users/create");
   };
 
-  const usersArray = simpleUserSearch(users, search);
+  const usersArray = simpleUserSearch(users, search.toLowerCase());
 
   const {
     usersHolderTitle,

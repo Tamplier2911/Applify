@@ -1,19 +1,65 @@
 // import "./BlogPage.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import {
+  selectCurrentSet,
+  selectAllSets,
+  selectCurrentSlot,
+  selectAllSlots,
+  selectIsLoading
+} from "../../redux/blogs/blogs.selectors";
+import { loadAllBlogpostsStart } from "../../redux/blogs/blogs.actions";
 
 // components
 import BlogsCollection from "../../components/BlogsCollection/BlogsCollection";
 import BlogPost from "../../components/BlogPost/BlogPost";
+import WithSpinnerHOC from "../../components/WithSpinnerHOC/WithSpinnerHOC";
 
 // JS Rendering CSS
 import { BlogPageContainer, BlogPagePlaceholder } from "./BlogPageStyles.js";
 
-const BlogPage = ({ match }) => {
+// buff blogs collection with spinner
+const BlogsCollectionWithSpinner = WithSpinnerHOC(BlogsCollection);
+
+const BlogPage = ({
+  match,
+  loadAllBlogpostsStart,
+  isLoading,
+  currentDataSet,
+  allDataSets,
+  currentDataSlot,
+  allDataSlots
+}) => {
+  useEffect(() => {
+    if (!currentDataSet.length) {
+      loadAllBlogpostsStart();
+    }
+  }, [loadAllBlogpostsStart, currentDataSet.length]);
+
+  const blogsData = {
+    currentDataSet,
+    allDataSets,
+    currentDataSlot,
+    allDataSlots
+  };
+
   return (
     <BlogPageContainer>
       <Switch>
-        <Route exact path={`${match.path}`} component={BlogsCollection} />
+        <Route
+          exact
+          path={`${match.path}`}
+          render={() => (
+            <BlogsCollectionWithSpinner
+              isLoading={isLoading}
+              blogsData={blogsData}
+            />
+          )}
+        />
         <Route path={`${match.path}/:id`} component={BlogPost} />
       </Switch>
       <BlogPagePlaceholder />
@@ -21,4 +67,12 @@ const BlogPage = ({ match }) => {
   );
 };
 
-export default BlogPage;
+const mapStateToProps = createStructuredSelector({
+  currentDataSet: selectCurrentSet,
+  allDataSets: selectAllSets,
+  currentDataSlot: selectCurrentSlot,
+  allDataSlots: selectAllSlots,
+  isLoading: selectIsLoading
+});
+
+export default connect(mapStateToProps, { loadAllBlogpostsStart })(BlogPage);

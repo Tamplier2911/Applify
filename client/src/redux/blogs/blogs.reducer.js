@@ -1,29 +1,47 @@
 import blogsTypes from "./blogs.types";
 
-import {
-  temporaryBlogData,
-  blogsDataTransformation
-} from "../../utils/ComponentBlogsCollectionConstants/componentBlogsCollectionConstants";
-
 const {
   SET_CURRENT_SET_NEXT,
   SET_CURRENT_SET_PREV,
-  SET_CURRENT_SET_BY_SLOT
+  SET_CURRENT_SET_BY_SLOT,
+
+  LOAD_ALL_BLOGPOSTS_START,
+  LOAD_ALL_BLOGPOSTS_SUCCESS,
+  LOAD_ALL_BLOGPOSTS_FAILURE,
+
+  CREATE_ONE_BLOGPOST_FAILURE,
+  UPDATE_ONE_BLOGPOST_FAILURE,
+  DELETE_ONE_BLOGPOST_FAILURE,
+  LIKE_ONE_BLOGPOST_FAILURE,
+  DISLIKE_ONE_BLOGPOST_FAILURE
 } = blogsTypes;
 
-const currentData = blogsDataTransformation(temporaryBlogData);
-const totalSetsLength = Object.keys(currentData).length;
-
 const INITIAL_STATE = {
-  currentSet: currentData[1],
-  allSets: currentData,
-  currentSlot: 1,
-  allSlots: totalSetsLength
+  allBlogposts: [],
+  allSets: {},
+  currentSet: [],
+  currentSlot: 0,
+  allSlots: 0,
+  isLoading: false,
+  errorMessage: null
 };
 
 const blogsReducer = (state = INITIAL_STATE, action) => {
   const { currentSlot, allSlots, allSets } = state;
   switch (action.type) {
+    case LOAD_ALL_BLOGPOSTS_START:
+      return { ...state, isLoading: true };
+    case LOAD_ALL_BLOGPOSTS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: null,
+        allBlogposts: action.payload.allBlogposts,
+        allSets: action.payload.allSets,
+        currentSet: action.payload.currentSet,
+        currentSlot: action.payload.currentSlot,
+        allSlots: action.payload.allSlots
+      };
     case SET_CURRENT_SET_NEXT:
       if (currentSlot === allSlots) {
         return state;
@@ -48,6 +66,13 @@ const blogsReducer = (state = INITIAL_STATE, action) => {
         currentSet: allSets[action.payload],
         currentSlot: action.payload
       };
+    case LOAD_ALL_BLOGPOSTS_FAILURE:
+    case CREATE_ONE_BLOGPOST_FAILURE:
+    case UPDATE_ONE_BLOGPOST_FAILURE:
+    case DELETE_ONE_BLOGPOST_FAILURE:
+    case LIKE_ONE_BLOGPOST_FAILURE:
+    case DISLIKE_ONE_BLOGPOST_FAILURE:
+      return { ...state, isLoading: false, errorMessage: action.payload };
     default:
       return state;
   }

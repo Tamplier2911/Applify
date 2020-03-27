@@ -38,15 +38,6 @@ import {
 // component constants
 import userCardData from "../../utils/ComponentUserCardConstants/componentUserCardConstants";
 
-// photo: "uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg"
-// about: "Hey, I love Node.js!"
-// likedBlogposts: (2) ["5e7132b79ce13d35d83cf151", "5e7132b79ce13d35d83cf153"]
-// role: "owner"
-// _id: "5e6e618672e9151d503701ed"
-// name: "Artyom Nikolaiev"
-// email: "artyom.nikolaev@yahoo.com"
-// passwordChangedAt: "2020-03-20T20:36:48.399Z"
-
 const UserCard = ({ data, lang, deleteOneUserStart }) => {
   const { _id, photo, about, role, name, email, passwordChangedAt } = data
     ? data

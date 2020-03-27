@@ -12,7 +12,10 @@ const { getAll, getOne, updateOne, deleteOne } = require("./handlersFactory");
 // Actions to perform by EVERYONE
 
 // Get All Blogposts
-exports.getAllBlogposts = getAll(Blogpost);
+exports.getAllBlogposts = getAll(Blogpost, {
+  path: "author",
+  select: "name photo"
+});
 
 // Get Single Blogpost
 exports.getSingleBlogpost = getOne(Blogpost, {

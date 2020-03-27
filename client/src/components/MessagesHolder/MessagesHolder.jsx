@@ -47,7 +47,7 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
     setSearchInput({ ...searchInput, [name]: value });
   };
 
-  const messagesArray = simpleMessageSearch(messages, search);
+  const messagesArray = simpleMessageSearch(messages, search.toLowerCase());
 
   const { messagesHolderTitle, messageHolderSearch } = messagesHolderData[lang];
   return (

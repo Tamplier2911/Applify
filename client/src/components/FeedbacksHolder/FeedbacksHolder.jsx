@@ -66,7 +66,7 @@ const FeedbacksHolder = ({
     feedsHolderSearch
   } = feedbacksHolderData[lang];
 
-  const feedbacksArray = simpleFeedbacksSearch(feedbacks, search);
+  const feedbacksArray = simpleFeedbacksSearch(feedbacks, search.toLowerCase());
 
   return (
     <FeedbacksHolderContainer>
