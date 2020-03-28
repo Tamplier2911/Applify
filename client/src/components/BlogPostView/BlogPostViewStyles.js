@@ -63,7 +63,7 @@ export const BlogViewContainer = styled(Link)`
 
   min-height: 20rem; // double check
   max-height: 20rem; // double check
-  box-shadow: 0 0.2rem 0.5rem var(--cl-square-shadow);
+  box-shadow: 0rem 0rem 0.5rem var(--cl-square-shadow);
 
   transition: filter 0.5s, box-shadow 0.3s;
   animation: 1s blogFadeIn;
@@ -76,7 +76,8 @@ export const BlogViewContainer = styled(Link)`
 
   &:hover {
     filter: brightness(130%);
-    box-shadow: 0 0.2rem 1rem var(--cl-card-shadow-hover);
+    // box-shadow: 0rem 0rem 1rem var(--cl-card-shadow-hover);
+    box-shadow: 0rem 0rem 1rem var(--cl-primary);
   }
 `;
 

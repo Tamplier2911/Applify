@@ -1,4 +1,5 @@
 import authTypes from "./auth.types";
+import blogsTypes from "../blogs/blogs.types";
 
 const {
   SIGN_USER_UP_SUCCESS,
@@ -14,6 +15,8 @@ const {
   FETCH_AUTH_OBJECT_SUCCESS,
   FETCH_AUTH_OBJECT_FAILURE
 } = authTypes;
+
+const { LIKE_ONE_BLOGPOST_LOCALLY, DISLIKE_ONE_BLOGPOST_LOCALLY } = blogsTypes;
 
 const INITIAL_STATE = {
   userObject: {
@@ -64,6 +67,27 @@ const authReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         errorMessage: action.payload
+      };
+    case LIKE_ONE_BLOGPOST_LOCALLY:
+      return {
+        ...state,
+        userObject: {
+          ...state.userObject,
+          likedBlogposts: [
+            ...state.userObject.likedBlogposts,
+            action.payload.blogpostId
+          ]
+        }
+      };
+    case DISLIKE_ONE_BLOGPOST_LOCALLY:
+      return {
+        ...state,
+        userObject: {
+          ...state.userObject,
+          likedBlogposts: state.userObject.likedBlogposts.filter(
+            id => id !== action.payload.blogpostId
+          )
+        }
       };
     default:
       return state;

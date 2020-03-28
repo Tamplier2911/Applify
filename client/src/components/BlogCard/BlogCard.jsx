@@ -1,6 +1,11 @@
 import "./BlogCard.scss";
 import React from "react";
 
+// 0. move likeDislikeLocally method to separate file.
+// 1. create and style blog card.
+// 2. implement routes and logic for delete and update buttons.
+// 3. add required sagas for blog CRUD operations.
+
 // image: "uploads/images/posts/default.jpg"
 // likes: 0
 // createdAt: "2020-03-27T17:01:02.868Z"

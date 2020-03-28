@@ -4,6 +4,14 @@ import { withRouter } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
+import { selectUserObject } from "../../redux/auth/auth.selectors";
+import { openModal } from "../../redux/modal/modal.actions";
+import {
+  likeOneBlogpostStart,
+  dislikeOneBlogpostStart,
+  likeOneBlogpostLocally,
+  dislikeOneBlogpostLocally
+} from "../../redux/blogs/blogs.actions";
 import { selectAllBlogpostsAsObject } from "../../redux/blogs/blogs.selectors";
 
 // components
@@ -24,6 +32,11 @@ import {
   BlogPostAuthorImg,
   BlogPostAuthorName,
   BlogPostDate,
+  BlogpostTheme,
+  BlogpostLikes,
+  BlogpostLikesCount,
+  BlogpostLikesImage,
+  BlogpostLikeSVG,
   BlogPostImgCont,
   BlogPostImg,
   BlogPostContent,
@@ -31,28 +44,23 @@ import {
   BlogPostContentParagraph
 } from "./BlogPostStyles";
 
-// image: "uploads/images/posts/default.jpg"
-// likes: 0
-// createdAt: "2020-03-27T17:01:02.868Z"
-// title: "Lorem ipsum dolor sit amet."
-// theme: "JavaScript / React"
-// content: ""%HEADER%Lorem ipsum dolor sit amet consectetur.."
-// author:
-// photo: "uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg"
-// _id: "5e6e618672e9151d503701ed"
-// name: "Artyom Nikolaiev"
-
-// for likes user object may have or may not
-// likedBlogposts: (2) ["5e7132b79ce13d35d83cf151", "5e7132b79ce13d35d83cf153"]
-
-const BlogPost = ({ blogObject }) => {
+const BlogPost = ({
+  match,
+  blogObject,
+  user,
+  openModal,
+  likeOneBlogpostStart,
+  dislikeOneBlogpostStart,
+  likeOneBlogpostLocally,
+  dislikeOneBlogpostLocally
+}) => {
   const {
-    // _id,
-    // likes,
+    _id,
+    likes,
     image,
     createdAt,
     title,
-    // theme,
+    theme,
     content,
     author
   } = blogObject ? blogObject : {};
@@ -69,6 +77,33 @@ const BlogPost = ({ blogObject }) => {
 
   const totalSets = Object.keys(titleSet).length;
 
+  // like funcitonality
+  const { likedBlogposts } = user;
+  const isLiked = likedBlogposts && likedBlogposts.includes(_id) ? 1 : 0;
+
+  // const slot =
+  const { id } = match && match.params ? match.params : {};
+  const slot = id.split("-")[1];
+  const index = id.split("-")[2];
+
+  const onLikeClick = e => {
+    e.preventDefault();
+    if (!user.id)
+      return openModal({
+        header: "Unfortunate!",
+        content: "You have to sign in, in order to like a blog post."
+      });
+    isLiked
+      ? dislikeOneBlogpostStart(_id) &&
+        dislikeOneBlogpostLocally({
+          slot: slot,
+          index: index,
+          blogpostId: _id
+        })
+      : likeOneBlogpostStart(_id) &&
+        likeOneBlogpostLocally({ slot: slot, index: index, blogpostId: _id });
+  };
+
   return (
     <BlogPostContainer>
       <BlogPostHeader>
@@ -80,6 +115,13 @@ const BlogPost = ({ blogObject }) => {
           <BlogPostAuthorName>{author ? author.name : ""}</BlogPostAuthorName>
           <BlogPostDate>{blogDate}</BlogPostDate>
         </BlogPostAuthor>
+        <BlogpostTheme>{theme}</BlogpostTheme>
+        <BlogpostLikes>
+          <BlogpostLikesCount>{likes}</BlogpostLikesCount>
+          <BlogpostLikesImage onClick={e => onLikeClick(e)}>
+            <BlogpostLikeSVG liked={isLiked} />
+          </BlogpostLikesImage>
+        </BlogpostLikes>
       </BlogPostHeader>
       <BlogPostImgCont>
         <BlogPostImg alt="blog representation" src={blogImg} />
@@ -104,7 +146,18 @@ const BlogPost = ({ blogObject }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  blogObject: selectAllBlogpostsAsObject(ownProps.match.params.id)(state)
+  blogObject: selectAllBlogpostsAsObject(
+    ownProps.match.params.id.split("-")[0]
+  )(state),
+  user: selectUserObject(state)
 });
 
-export default withRouter(connect(mapStateToProps)(BlogPost));
+export default withRouter(
+  connect(mapStateToProps, {
+    openModal,
+    likeOneBlogpostStart,
+    dislikeOneBlogpostStart,
+    likeOneBlogpostLocally,
+    dislikeOneBlogpostLocally
+  })(BlogPost)
+);

@@ -13,7 +13,10 @@ const {
   UPDATE_ONE_BLOGPOST_FAILURE,
   DELETE_ONE_BLOGPOST_FAILURE,
   LIKE_ONE_BLOGPOST_FAILURE,
-  DISLIKE_ONE_BLOGPOST_FAILURE
+  DISLIKE_ONE_BLOGPOST_FAILURE,
+
+  LIKE_ONE_BLOGPOST_LOCALLY,
+  DISLIKE_ONE_BLOGPOST_LOCALLY
 } = blogsTypes;
 
 const INITIAL_STATE = {
@@ -25,6 +28,28 @@ const INITIAL_STATE = {
   isLoading: false,
   errorMessage: null
 };
+
+function likeDislikeLocally(state, payload, like = true) {
+  const { allSets, currentSet } = state;
+  const { slot, index } = payload;
+
+  // blog
+  const blog = allSets[slot][index];
+  like ? blog.likes++ : blog.likes--;
+  // console.log(blog);
+
+  // set
+  const set = [...currentSet];
+  set[index] = blog;
+  // console.log(set);
+
+  // all sets
+  const sets = { ...allSets };
+  sets[slot] = set;
+  // console.log(sets);
+
+  return { set, sets };
+}
 
 const blogsReducer = (state = INITIAL_STATE, action) => {
   const { currentSlot, allSlots, allSets } = state;
@@ -73,6 +98,16 @@ const blogsReducer = (state = INITIAL_STATE, action) => {
     case LIKE_ONE_BLOGPOST_FAILURE:
     case DISLIKE_ONE_BLOGPOST_FAILURE:
       return { ...state, isLoading: false, errorMessage: action.payload };
+    case LIKE_ONE_BLOGPOST_LOCALLY:
+      const likedObj = likeDislikeLocally(state, action.payload, true);
+      return { ...state, currentSet: likedObj.set, allSets: likedObj.sets };
+    case DISLIKE_ONE_BLOGPOST_LOCALLY:
+      const dislikedObj = likeDislikeLocally(state, action.payload, false);
+      return {
+        ...state,
+        currentSet: dislikedObj.set,
+        allSets: dislikedObj.sets
+      };
     default:
       return state;
   }

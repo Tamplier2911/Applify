@@ -1,0 +1,23 @@
+/*
+
+.blog-placeholder {
+  display: grid;
+
+  &__wrap {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    &:hover .blog-placeholder__svg {
+      fill: var(--cl-primary);
+    }
+  }
+
+  &__svg {
+    width: 4rem;
+    height: 4rem;
+    transition: fill 0.3s;
+  }
+}
+
+*/

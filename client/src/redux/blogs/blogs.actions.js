@@ -22,7 +22,9 @@ const {
   LIKE_ONE_BLOGPOST_FAILURE,
   DISLIKE_ONE_BLOGPOST_START,
   DISLIKE_ONE_BLOGPOST_SUCCESS,
-  DISLIKE_ONE_BLOGPOST_FAILURE
+  DISLIKE_ONE_BLOGPOST_FAILURE,
+  LIKE_ONE_BLOGPOST_LOCALLY,
+  DISLIKE_ONE_BLOGPOST_LOCALLY
 } = blogsTypes;
 
 export const setCurrentSetNext = () => ({
@@ -120,4 +122,14 @@ export const dislikeOneBlogpostSuccess = () => ({
 export const dislikeOneBlogpostFailure = errorMessage => ({
   type: DISLIKE_ONE_BLOGPOST_FAILURE,
   payload: errorMessage
+});
+
+export const likeOneBlogpostLocally = dataObject => ({
+  type: LIKE_ONE_BLOGPOST_LOCALLY,
+  payload: dataObject
+});
+
+export const dislikeOneBlogpostLocally = dataObject => ({
+  type: DISLIKE_ONE_BLOGPOST_LOCALLY,
+  payload: dataObject
 });

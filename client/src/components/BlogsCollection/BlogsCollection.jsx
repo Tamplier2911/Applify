@@ -13,6 +13,7 @@ import {
 
 // components
 import BlogPostView from "../BlogPostView/BlogPostView";
+import BlogPlaceholder from "../BlogPlaceholder/BlogPlaceholder";
 
 // JS Rendering CSS
 import {
@@ -44,15 +45,35 @@ const BlogsCollection = ({
 
   const { blogsCollectionHeader } = blogsCollectionData[lang];
 
+  // if current sent is not empty set of 6 blogposts,
+  // fill current set with fillers to reflect original page look.
+  const dataSetLength = currentDataSet.length;
+  if (dataSetLength > 0 && dataSetLength < 6) {
+    for (let i = dataSetLength; i < 6; i++) {
+      currentDataSet.push({ filler: true, _id: i });
+    }
+  }
+
   let count = -1;
   return (
     <BlogsCollectionContainer>
       <BlogsCollectionTitle>{blogsCollectionHeader}</BlogsCollectionTitle>
       <BlogsCollectionBlogs>
-        {currentDataSet.map(blog => {
+        {currentDataSet.map((blog, i) => {
           const { _id } = blog;
           count++;
-          return <BlogPostView blog={blog} key={_id} pos={count} />;
+          if (!blog.filler) {
+            return (
+              <BlogPostView
+                blog={blog}
+                key={_id}
+                pos={count}
+                slot={currentDataSlot}
+                index={i}
+              />
+            );
+          }
+          return <BlogPlaceholder key={_id} pos={count} />;
         })}
         <BlogsCollectionNav>
           <BlogsCollectionNavLeft

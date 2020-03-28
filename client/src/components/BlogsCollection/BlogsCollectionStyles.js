@@ -42,6 +42,7 @@ export const BlogsCollectionTitle = styled.h2`
 export const BlogsCollectionBlogs = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr) min-content;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
 
@@ -56,6 +57,7 @@ export const BlogsCollectionBlogs = styled.div`
 
 export const BlogsCollectionNav = styled.div`
   grid-column: 1 / -1;
+  grid-row: 7 / 8;
   display: flex;
   flex-wrap: wrap;
   font-weight: bold;

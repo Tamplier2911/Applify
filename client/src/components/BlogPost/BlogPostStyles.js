@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import { ReactComponent as HeartSVG } from "../../assets/svg/heart.svg";
+
 const imageStandartStyles = css`
   width: 100%;
   height: 100%;
@@ -17,6 +19,15 @@ const blogFadeIn = css`
     }
   }
 `;
+
+const getLikeColor = props => {
+  const { liked } = props;
+  if (liked) {
+    return `fill: var(--cl-bpost-liked);`;
+  } else {
+    return `fill: var(--cl-font);;`;
+  }
+};
 
 export const BlogPostContainer = styled.section`
   ${blogFadeIn}
@@ -87,6 +98,45 @@ export const BlogPostAuthorName = styled.div`
 
 export const BlogPostDate = styled.div`
   align-self: start;
+`;
+
+export const BlogpostTheme = styled.div`
+  padding: 1rem;
+  font-size: 1.8rem;
+
+  @media only screen and (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+export const BlogpostLikes = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+`;
+
+export const BlogpostLikesCount = styled.div`
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-size: 1.8rem;
+`;
+
+export const BlogpostLikesImage = styled.div`
+  display: grid;
+  align-items: center;
+  justify-items: center;
+`;
+
+export const BlogpostLikeSVG = styled(HeartSVG)`
+  ${getLikeColor}
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  transition: fill 0.3s;
+  &:hover {
+    fill: var(--cl-bpost-like-hover);
+  }
 `;
 
 export const BlogPostImgCont = styled.div`
