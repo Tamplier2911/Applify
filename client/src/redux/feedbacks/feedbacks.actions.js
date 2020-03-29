@@ -4,6 +4,9 @@ const {
   SEND_FEEDBACK_START,
   SEND_FEEDBACK_SUCCESS,
   SEND_FEEDBACK_FAILURE,
+  UPDATE_FEEDBACK_START,
+  UPDATE_FEEDBACK_SUCCESS,
+  UPDATE_FEEDBACK_FAILURE,
   DELETE_FEEDBACK_START,
   DELETE_FEEDBACK_SUCCESS,
   DELETE_FEEDBACK_FAILURE,
@@ -24,6 +27,20 @@ export const sendFeedbackSuccess = () => ({
 
 export const sendFeedbackFailure = errorMessage => ({
   type: SEND_FEEDBACK_FAILURE,
+  payload: errorMessage
+});
+
+export const updateFeedbackStart = feedbackData => ({
+  type: UPDATE_FEEDBACK_START,
+  payload: feedbackData
+});
+
+export const updateFeedbackSuccess = () => ({
+  type: UPDATE_FEEDBACK_SUCCESS
+});
+
+export const updateFeedbackFailure = errorMessage => ({
+  type: UPDATE_FEEDBACK_FAILURE,
   payload: errorMessage
 });
 

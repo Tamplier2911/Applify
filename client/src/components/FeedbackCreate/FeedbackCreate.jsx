@@ -20,16 +20,20 @@ import {
 // component constants
 import feedbackCreateData from "../../utils/ComponentFeedbackCreateConstants/componentFeedbackCreateConstants";
 
-const FeedbackCreate = ({ lang, isLogged }) => {
+const FeedbackCreate = ({ lang, isLogged, method, updateData }) => {
   const {
     feedbackCreateTitle,
+    feedbackUpdateTitle,
     feedbackCreateNotAuthorized
   } = feedbackCreateData[lang];
   return (
     <FeedbackCreateContainer>
-      <FormHolder type="feedback" title={feedbackCreateTitle}>
+      <FormHolder
+        type="feedback"
+        title={method === "POST" ? feedbackCreateTitle : feedbackUpdateTitle}
+      >
         {isLogged ? (
-          <FeedbackForm />
+          <FeedbackForm method={method} updateData={updateData} />
         ) : (
           <FeedbackCreateUnauthorized>
             {feedbackCreateNotAuthorized}

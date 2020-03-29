@@ -16,6 +16,7 @@ import MessagesHolder from "../../components/MessagesHolder/MessagesHolder";
 import MessageRead from "../../components/MessageRead/MessageRead";
 import FeedbacksHolder from "../../components/FeedbacksHolder/FeedbacksHolder";
 import FeedbackUpdate from "../../components/FeedbackUpdate/FeedbackUpdate";
+import AdminFeedbackCreate from "../../components/AdminFeedbackCreate/AdminFeedbackCreate";
 import UsersHolder from "../../components/UsersHolder/UsersHolder";
 import UserUpdate from "../../components/UserUpdate/UserUpdate";
 import UserCreate from "../../components/UserCreate/UserCreate";
@@ -102,6 +103,13 @@ const ProfilePage = ({ isLogged, userObject }) => {
           path={`${match.path}/feeds`}
           render={() =>
             showAdminRoutes ? <FeedbacksHolder /> : <Redirect to="/" />
+          }
+        />
+        <Route
+          exact
+          path={`${match.path}/feeds/create`}
+          render={() =>
+            showAdminRoutes ? <AdminFeedbackCreate /> : <Redirect to="/" />
           }
         />
         <Route

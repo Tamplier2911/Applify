@@ -1,24 +1,69 @@
 import "./BlogUpdate.scss";
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-// image: "uploads/images/posts/default.jpg"
-// likes: 0
-// createdAt: "2020-03-27T17:01:02.868Z"
-// _id: "5e7e315e57507a02d439e102"
-// title: "Lorem ipsum dolor sit amet."
-// theme: "JavaScript / React"
-// content: ""%HEADER%Lorem ipsum dolor sit amet consectetur Cupiditate?%CONTENT%"
-// author:
-// photo: "uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg"
-// _id: "5e6e618672e9151d503701ed"
-// name: "Artyom Nikolaiev"
+// redux
+import { connect } from "react-redux";
+import { selectAllBlogpostsAsObject } from "../../redux/blogs/blogs.selectors";
 
-const BlogUpdate = () => {
-  return (
+// components
+import GetBack from "../GetBack/GetBack";
+
+// data formaters
+import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
+import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
+
+// JS Rendering CSS
+import {} from "./BlogUpdateStyles";
+
+// component constants
+
+const BlogUpdate = ({ blogObject }) => {
+  // author
+  const { _id, image, likes, createdAt, title, theme, content } = blogObject
+    ? blogObject
+    : {};
+
+  const blogImg = getImageRelativePath(image ? image : "");
+  const blogDate = transformDateToLocaleString(
+    createdAt ? createdAt : new Date()
+  );
+
+  return blogObject ? (
     <div>
-      <div>Singluar Blog</div>
+      <div>ID: {_id}</div>
+      <div>Likes: {likes}</div>
+      <div>Date: {blogDate}</div>
+      <div>Title: {title}</div>
+      <div>Theme: {theme}</div>
+      <div
+        style={{
+          width: "100%",
+          height: "20rem",
+          boxShadow: `0rem 0rem .8rem var(--cl-primary)`
+        }}
+      >
+        <img
+          src={blogImg}
+          alt="happy user"
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "block",
+            objectFit: "cover"
+          }}
+        ></img>
+      </div>
+      <div>Content: {content}</div>
+      <GetBack path={`/profile/blogs`} />
     </div>
+  ) : (
+    <div>Object with that id not found.</div>
   );
 };
 
-export default BlogUpdate;
+const mapStateToProps = (state, ownProps) => ({
+  blogObject: selectAllBlogpostsAsObject(ownProps.match.params.id)(state)
+});
+
+export default withRouter(connect(mapStateToProps)(BlogUpdate));

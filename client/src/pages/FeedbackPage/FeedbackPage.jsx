@@ -34,7 +34,7 @@ const FeedbackPage = ({ loadFeedbacksStart, loading, allFeeds }) => {
         isLoading={loading}
         feedbacks={allFeeds}
       />
-      <FeedbackCreate />
+      <FeedbackCreate method="POST" />
     </FeedbackPageContainer>
   );
 };

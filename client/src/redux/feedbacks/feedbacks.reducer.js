@@ -2,6 +2,7 @@ import feedbacksTypes from "./feedbacks.types";
 
 const {
   SEND_FEEDBACK_FAILURE,
+  UPDATE_FEEDBACK_FAILURE,
   DELETE_FEEDBACK_FAILURE,
   LOAD_FEEDBACKS_START,
   LOAD_FEEDBACKS_SUCCESS,
@@ -39,6 +40,7 @@ const feedbacksReducer = (state = INITIAL_STATE, action) => {
       };
     case LOAD_FEEDBACKS_FAILURE:
     case SEND_FEEDBACK_FAILURE:
+    case UPDATE_FEEDBACK_FAILURE:
     case DELETE_FEEDBACK_FAILURE:
       return { ...state, isLoading: false, errorMessage: action.payload };
     default:

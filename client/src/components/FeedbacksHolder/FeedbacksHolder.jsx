@@ -57,7 +57,7 @@ const FeedbacksHolder = ({
   };
 
   const redirectToCreateFeedback = () => {
-    history.push("/feedback");
+    history.push("/profile/feeds/create");
   };
 
   const {

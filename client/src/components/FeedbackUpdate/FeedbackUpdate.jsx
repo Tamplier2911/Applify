@@ -1,24 +1,37 @@
-import "./FeedbackUpdate.scss";
+// import "./FeedbackUpdate.scss";
 import React from "react";
 import { withRouter } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { selectAllLoadedFeedsAsObject } from "../../redux/feedbacks/feedbacks.selectors";
 
 // components
 import GetBack from "../GetBack/GetBack";
+import FeedbackCreate from "../FeedbackCreate/FeedbackCreate";
 
 // data formaters
 import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
 import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
 
 // JS Rendering CSS
-import {} from "./FeedbackUpdateStyles";
+import {
+  FeedbackUpdateContainer,
+  FeedbackUpdatePostedBy,
+  FeedbackUpdateTitle,
+  FeedbackUpdateUserDetails,
+  FeedbackUpdateDetailsWrap,
+  FeedbackUpdateDetailsName,
+  FeedbackUpdateDetailsDate,
+  FeedbackUpdateImageWrap,
+  FeedbackUpdateImage
+} from "./FeedbackUpdateStyles";
 
 // component constants
+import feedbackUpdateData from "../../utils/ComponentFeedbackUpdateConstants/componentFeedbackUpdateConstants.js";
 
-const FeedbackUpdate = ({ feedbackObject }) => {
+const FeedbackUpdate = ({ feedbackObject, lang }) => {
   const { rating, createdAt, _id, feedback, user, color } = feedbackObject
     ? feedbackObject
     : {};
@@ -26,45 +39,43 @@ const FeedbackUpdate = ({ feedbackObject }) => {
   const image = getImageRelativePath(user ? user.photo : "");
   const date = transformDateToLocaleString(createdAt);
 
+  const updateData = { feedback, rating, _id };
+
+  const {
+    feedbackUpdateTitle,
+    feedbackUpdateName,
+    feedbackUpdateDate,
+    feedbackUpdateNotFound
+  } = feedbackUpdateData[lang];
+
   return feedbackObject ? (
-    <div>
-      <div>
-        Style this later with form, that going to take default vlaues and update
-        on submit.
-      </div>
-      <div>Name: {user ? user.name : ""}</div>
-      <div>ID: {_id}</div>
-      <div>Date: {date}</div>
-      <div
-        style={{
-          width: "10rem",
-          height: "10rem",
-          borderRadius: "50%",
-          overflow: "hidden",
-          boxShadow: `0rem 0rem .8rem ${color}`
-        }}
-      >
-        <img
-          alt="happy user"
-          src={image}
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "block",
-            objectFit: "cover"
-          }}
-        ></img>
-      </div>
-      <div>Feedback: {feedback}</div>
-      <div>Rating: {rating}</div>
+    <FeedbackUpdateContainer>
+      <FeedbackUpdatePostedBy>
+        <FeedbackUpdateTitle>{feedbackUpdateTitle}</FeedbackUpdateTitle>
+        <FeedbackUpdateUserDetails>
+          <FeedbackUpdateDetailsWrap>
+            <FeedbackUpdateDetailsName>
+              {feedbackUpdateName} {user ? user.name : ""}
+            </FeedbackUpdateDetailsName>
+            <FeedbackUpdateDetailsDate>
+              {feedbackUpdateDate} {date}
+            </FeedbackUpdateDetailsDate>
+          </FeedbackUpdateDetailsWrap>
+          <FeedbackUpdateImageWrap color={color}>
+            <FeedbackUpdateImage alt="happy user" src={image} />
+          </FeedbackUpdateImageWrap>
+        </FeedbackUpdateUserDetails>
+      </FeedbackUpdatePostedBy>
+      <FeedbackCreate method="PATCH" updateData={updateData} />
       <GetBack path={"/profile/feeds"} />
-    </div>
+    </FeedbackUpdateContainer>
   ) : (
-    <div>Object with that id not found.</div>
+    <FeedbackUpdateTitle>{feedbackUpdateNotFound}</FeedbackUpdateTitle>
   );
 };
 
 const mapStateToProps = (state, ownProps) => ({
+  lang: selectCurrentLanguage(state),
   feedbackObject: selectAllLoadedFeedsAsObject(ownProps.match.params.id)(state)
 });
 

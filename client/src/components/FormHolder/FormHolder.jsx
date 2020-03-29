@@ -38,7 +38,9 @@ const FormHolder = ({ children, type, title }) => {
             <FormHolderForgotSVG />
           ) : type === "restore" ? (
             <FormHolderRestoreSVG />
-          ) : null}
+          ) : (
+            <FormHolderForgotSVG />
+          )}
         </FormHolderLeft>
         <FormHolderRight>
           <FormHolderFormWrap>{children ? children : null}</FormHolderFormWrap>

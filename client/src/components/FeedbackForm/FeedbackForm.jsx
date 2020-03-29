@@ -5,7 +5,10 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
-import { sendFeedbackStart } from "../../redux/feedbacks/feedbacks.actions";
+import {
+  sendFeedbackStart,
+  updateFeedbackStart
+} from "../../redux/feedbacks/feedbacks.actions";
 import { openModal } from "../../redux/modal/modal.actions";
 
 // components
@@ -26,11 +29,20 @@ import {
 // component constants
 import feedbackFormData from "../../utils/ComponentFeedbackFormConstants/componentFeedbackFormConstants";
 
-export const FeedbackForm = ({ lang, openModal, sendFeedbackStart }) => {
+export const FeedbackForm = ({
+  lang,
+  openModal,
+  sendFeedbackStart,
+  updateFeedbackStart,
+  method,
+  updateData
+}) => {
   const [feedback, setFeedback] = useState({
-    feedbackMessage: "",
-    feedbackRating: "5"
+    feedbackMessage: method === "POST" ? "" : updateData.feedback,
+    feedbackRating: method === "POST" ? "5" : updateData.rating,
+    feedbackId: method === "POST" ? undefined : updateData._id
   });
+
   const { feedbackMessage, feedbackRating } = feedback;
 
   const onInputChange = e => {
@@ -56,8 +68,10 @@ export const FeedbackForm = ({ lang, openModal, sendFeedbackStart }) => {
         header: "Attention!",
         content: "Please, enter your feedback. Use select bar to choose rating."
       });
-    sendFeedbackStart(feedback);
-    setFeedback({ feedbackMessage: "", feedbackRating: "5" });
+    method === "POST"
+      ? sendFeedbackStart(feedback) &&
+        setFeedback({ feedbackMessage: "", feedbackRating: "5" })
+      : updateFeedbackStart(feedback);
   };
 
   const labels = Array.from(new Array(Number(feedbackRating)), (n, i) => i + 1);
@@ -93,7 +107,7 @@ export const FeedbackForm = ({ lang, openModal, sendFeedbackStart }) => {
           ))}
           name={"feedbackRating"}
           onInputChange={e => onInputChange(e)}
-          defaultValue={"5"}
+          defaultValue={method === "POST" ? "5" : feedbackRating}
           options={feedbackFormOptions}
           required
         />
@@ -111,6 +125,8 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage
 });
 
-export default connect(mapStateToProps, { sendFeedbackStart, openModal })(
-  FeedbackForm
-);
+export default connect(mapStateToProps, {
+  sendFeedbackStart,
+  updateFeedbackStart,
+  openModal
+})(FeedbackForm);
