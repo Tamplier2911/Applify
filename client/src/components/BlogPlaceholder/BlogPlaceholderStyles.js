@@ -69,6 +69,7 @@ export const BlogPlaceholderSVG = styled(BlogSVG)`
 `;
 
 export const BlogPlaceholderWrapper = styled.div`
+  grid-row: 1 / -1;
   display: grid;
   align-items: center;
   justify-items: center;

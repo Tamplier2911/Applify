@@ -81,10 +81,11 @@ const BlogPost = ({
   const { likedBlogposts } = user;
   const isLiked = likedBlogposts && likedBlogposts.includes(_id) ? 1 : 0;
 
-  // const slot =
+  // get slot and index for local like / dislike
   const { id } = match && match.params ? match.params : {};
-  const slot = id.split("-")[1];
-  const index = id.split("-")[2];
+  const splitedId = id.split("-");
+  const slot = splitedId[1];
+  const index = splitedId[2];
 
   const onLikeClick = e => {
     e.preventDefault();

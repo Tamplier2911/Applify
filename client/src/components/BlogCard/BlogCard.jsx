@@ -1,29 +1,88 @@
-import "./BlogCard.scss";
+// import "./BlogCard.scss";
 import React from "react";
 
-// 0. move likeDislikeLocally method to separate file.
-// 1. create and style blog card.
-// 2. implement routes and logic for delete and update buttons.
-// 3. add required sagas for blog CRUD operations.
+// redux
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { deleteOneBlogpostStart } from "../../redux/blogs/blogs.actions";
 
-// image: "uploads/images/posts/default.jpg"
-// likes: 0
-// createdAt: "2020-03-27T17:01:02.868Z"
-// _id: "5e7e315e57507a02d439e102"
-// title: "Lorem ipsum dolor sit amet."
-// theme: "JavaScript / React"
-// content: ""%HEADER%Lorem ipsum dolor sit amet consectetur Cupiditate?%CONTENT%Lorem ipsum dolor sit amet consectetur adipisicing elit. Error veniam facilis officiis amet, cumque omnis ullam illo libero maiores unde, distinctio aspernatur quasi corrupti necessitatibus explicabo modi quis, possimus debitis, Lorem ipsum dolor sit amet consectetur adipisicing elit. Error veniam facilis officiis amet, cumque omnis ullam illo libero maiores unde, distinctio aspernatur quasi corrupti necessitatibus explicabo modi quis, possimus debitis.%CONTENT%""
-// author:
-// photo: "uploads/images/users/user-5e6e618672e9151d503701ed-1584642619899.jpeg"
-// _id: "5e6e618672e9151d503701ed"
-// name: "Artyom Nikolaiev"
+// components
+import Button from "../Button/Button";
 
-const BlogCard = () => {
+// data formaters
+import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
+import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
+
+// JS Rendering CSS
+import {
+  BlogCardContainer,
+  BlogCardHeader,
+  BlogCardHeaderTitle,
+  BlogCardHeaderTheme,
+  BlogCardHeaderDate,
+  BlogCardBody,
+  BlogCardBodyImgWrap,
+  BlogCardBodyImg,
+  BlogCardBodyName,
+  BlogCardBodyLikes,
+  BlogCardBodyAmount,
+  BlogCardBodySvgWrap,
+  BlogCardBodySVG,
+  BlogCardControlls,
+  BlogCardControllsLink
+} from "./BlogCardStyles";
+
+// component constants
+import blogCardData from "../../utils/ComponentBlogCardConstants/componentBlogCardConstants";
+
+const BlogCard = ({ data, lang, deleteOneBlogpostStart }) => {
+  const { _id, image, likes, createdAt, title, theme, author } = data
+    ? data
+    : {};
+  const { blogCardDelete, blogCardUpdate } = blogCardData[lang];
+
+  const blogImg = getImageRelativePath(image ? image : "");
+  const blogDate = transformDateToLocaleString(
+    createdAt ? createdAt : new Date()
+  );
+  const authorImg = getImageRelativePath(author ? author.photo : "");
+
   return (
-    <div>
-      <div>Blog Card</div>
-    </div>
+    <BlogCardContainer img={blogImg}>
+      <BlogCardHeader>
+        <BlogCardHeaderTitle>{title}</BlogCardHeaderTitle>
+        <BlogCardHeaderTheme>{theme}</BlogCardHeaderTheme>
+        <BlogCardHeaderDate>{blogDate}</BlogCardHeaderDate>
+      </BlogCardHeader>
+      <BlogCardBody>
+        <BlogCardBodyImgWrap>
+          <BlogCardBodyImg alt="happy author" src={authorImg} />
+        </BlogCardBodyImgWrap>
+        <BlogCardBodyName>{author ? author.name : ""}</BlogCardBodyName>
+        <BlogCardBodyLikes>
+          <BlogCardBodyAmount>{likes}</BlogCardBodyAmount>
+          <BlogCardBodySvgWrap>
+            <BlogCardBodySVG />
+          </BlogCardBodySvgWrap>
+        </BlogCardBodyLikes>
+      </BlogCardBody>
+      <BlogCardControlls>
+        <Button
+          type="button"
+          value={blogCardDelete}
+          click={() => deleteOneBlogpostStart(_id)}
+        />
+        <BlogCardControllsLink to={`/profile/blogs/${_id}`}>
+          {blogCardUpdate}
+        </BlogCardControllsLink>
+      </BlogCardControlls>
+    </BlogCardContainer>
   );
 };
 
-export default BlogCard;
+const mapStateToProps = createStructuredSelector({
+  lang: selectCurrentLanguage
+});
+
+export default connect(mapStateToProps, { deleteOneBlogpostStart })(BlogCard);

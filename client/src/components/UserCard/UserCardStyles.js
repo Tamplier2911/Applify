@@ -80,6 +80,8 @@ export const UserCardBodyAboutLQT = styled.div`
 
 export const UserCardBodyAboutCTN = styled.div`
   padding: 1rem;
+  align-self: center;
+  text-align: center;
 `;
 
 export const UserCardBodyAboutRQT = styled.div`
@@ -106,10 +108,10 @@ export const UserCardControllsLink = styled(Link)`
   &:visited {
     display: grid;
     align-items: center;
+    text-align: center;
     text-decoration: none;
     color: var(--cl-white);
     background-color: var(--cl-font);
-    text-align: center;
 
     transition: background-color 0.3s;
   }

@@ -20,6 +20,8 @@ import UsersHolder from "../../components/UsersHolder/UsersHolder";
 import UserUpdate from "../../components/UserUpdate/UserUpdate";
 import UserCreate from "../../components/UserCreate/UserCreate";
 import BlogsHolder from "../../components/BlogsHolder/BlogsHolder";
+import BlogUpdate from "../../components/BlogUpdate/BlogUpdate";
+import BlogCreate from "../../components/BlogCreate/BlogCreate";
 
 // JS Rendering CSS
 import {
@@ -86,13 +88,13 @@ const ProfilePage = ({ isLogged, userObject }) => {
           exact
           path={`${match.path}/blogs/create`}
           render={() =>
-            showAdminRoutes ? <div>Create Blog Post</div> : <Redirect to="/" />
+            showAdminRoutes ? <BlogCreate /> : <Redirect to="/" />
           }
         />
         <Route
           path={`${match.path}/blogs/:id`}
           render={() =>
-            showAdminRoutes ? <div>Singular Blog</div> : <Redirect to="/" />
+            showAdminRoutes ? <BlogUpdate /> : <Redirect to="/" />
           }
         />
         <Route

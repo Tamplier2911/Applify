@@ -32,7 +32,6 @@ import { openModal } from "../modal/modal.actions";
 
 // blogs types
 import blogsTypes from "./blogs.types";
-import { fetchAuthObjectStart } from "../auth/auth.actions";
 
 const {
   LOAD_ALL_BLOGPOSTS_START,
@@ -70,16 +69,79 @@ export function* loadAllBlogposts() {
   }
 }
 
-export function* createOneBlogpost() {
-  yield console.log("create one bp from saga");
+export function* createOneBlogpost({ payload }) {
+  yield console.log("create one bp from saga", payload);
+  const { data } = payload; // destruct data here
+  try {
+    const res = yield axios({
+      method: "POST",
+      url: "/api/v1/blogposts",
+      data: data // insert data here
+    });
+    yield put(createOneBlogpostSuccess());
+    if (successfulResponse(res)) {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "Post was successfully created."
+        })
+      );
+    }
+    yield put(loadAllBlogpostsStart());
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(createOneBlogpostFailure(content));
+  }
 }
 
-export function* updateOneBlogpost() {
-  yield console.log("update one bp from saga");
+export function* updateOneBlogpost({ payload }) {
+  yield console.log("update one bp from saga", payload);
+  const { _id, data } = payload; // destruct data here including id
+  try {
+    const res = yield axios({
+      method: "PATCH",
+      url: `/api/v1/blogposts/${_id}`,
+      data: data // insert data here
+    });
+    yield put(updateOneBlogpostSuccess());
+    if (successfulResponse(res)) {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "Post was successfully updated."
+        })
+      );
+    }
+    yield put(loadAllBlogpostsStart());
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(updateOneBlogpostFailure(content));
+  }
 }
 
-export function* deleteOneBlogpost() {
-  yield console.log("delete one bp from saga");
+export function* deleteOneBlogpost({ payload }) {
+  try {
+    const res = yield axios({
+      method: "DELETE",
+      url: `/api/v1/blogposts/${payload}`
+    });
+    yield put(deleteOneBlogpostSuccess());
+    if (successfulResponse(res)) {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "Post was successfully deleted."
+        })
+      );
+    }
+    yield put(loadAllBlogpostsStart());
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(deleteOneBlogpostFailure(content));
+  }
 }
 
 export function* likeOneBlogpost({ payload }) {
@@ -90,7 +152,6 @@ export function* likeOneBlogpost({ payload }) {
     });
     yield put(likeOneBlogpostSuccess());
     // yield put(loadAllBlogpostsStart());
-    // yield put(fetchAuthObjectStart());
   } catch (error) {
     const { header, content } = getErrorMessage(error);
     yield put(openModal({ header, content }));
@@ -106,7 +167,6 @@ export function* dislikeOneBlogpost({ payload }) {
     });
     yield put(dislikeOneBlogpostSuccess());
     // yield put(loadAllBlogpostsStart());
-    // yield put(fetchAuthObjectStart());
   } catch (error) {
     const { header, content } = getErrorMessage(error);
     yield put(openModal({ header, content }));
