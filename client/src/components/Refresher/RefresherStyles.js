@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { ReactComponent as RefreshSVG } from "../../assets/svg/refresh.svg";
 
 export const RefresherContainer = styled.div`
+  z-index: 20;
+
   cursor: pointer;
   position: fixed;
   bottom: 4rem;

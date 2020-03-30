@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const BlogCreateContainer = styled.div`
+export const CreateUpdateBlogpostContainer = styled.div`
   display: grid;
 `;

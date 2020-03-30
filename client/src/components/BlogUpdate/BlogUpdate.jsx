@@ -1,4 +1,4 @@
-import "./BlogUpdate.scss";
+// import "./BlogUpdate.scss";
 import React from "react";
 import { withRouter } from "react-router-dom";
 
@@ -8,57 +8,81 @@ import { selectAllBlogpostsAsObject } from "../../redux/blogs/blogs.selectors";
 
 // components
 import GetBack from "../GetBack/GetBack";
+import CreateUpdateBlogpost from "../CreateUpdateBlogpost/CreateUpdateBlogpost";
 
 // data formaters
 import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
 import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
 
 // JS Rendering CSS
-import {} from "./BlogUpdateStyles";
+import {
+  BlogUpdateContainer,
+  BlogUpdateData,
+  BlogUpdateAuthor,
+  BlogUpdateCredit,
+  BlogUpdateName,
+  BlogUpdateDate,
+  BlogUpdateImgWrap,
+  BlogUpdateImg,
+  BlogUpdateLikes,
+  BlogUpdateLikesCount,
+  BlogUpdateSVGWrap,
+  BlogUpdateSVG,
+  BlogUpdateNotFound
+} from "./BlogUpdateStyles";
 
 // component constants
 
 const BlogUpdate = ({ blogObject }) => {
   // author
-  const { _id, image, likes, createdAt, title, theme, content } = blogObject
-    ? blogObject
-    : {};
+  const {
+    _id,
+    image,
+    likes,
+    createdAt,
+    title,
+    theme,
+    content,
+    author
+  } = blogObject ? blogObject : {};
 
   const blogImg = getImageRelativePath(image ? image : "");
   const blogDate = transformDateToLocaleString(
     createdAt ? createdAt : new Date()
   );
 
+  const authorImg = getImageRelativePath(
+    author && author.photo ? author.photo : ""
+  );
+
+  const updateData = { title, theme, content, _id };
+
   return blogObject ? (
-    <div>
-      <div>ID: {_id}</div>
-      <div>Likes: {likes}</div>
-      <div>Date: {blogDate}</div>
-      <div>Title: {title}</div>
-      <div>Theme: {theme}</div>
-      <div
-        style={{
-          width: "100%",
-          height: "20rem",
-          boxShadow: `0rem 0rem .8rem var(--cl-primary)`
-        }}
-      >
-        <img
-          src={blogImg}
-          alt="happy user"
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "block",
-            objectFit: "cover"
-          }}
-        ></img>
-      </div>
-      <div>Content: {content}</div>
+    <BlogUpdateContainer>
+      <BlogUpdateData img={blogImg}>
+        <BlogUpdateAuthor>
+          <BlogUpdateCredit>
+            <BlogUpdateName>
+              {author && author.name ? author.name : ""}
+            </BlogUpdateName>
+            <BlogUpdateDate>{blogDate}</BlogUpdateDate>
+          </BlogUpdateCredit>
+          <BlogUpdateImgWrap>
+            <BlogUpdateImg src={authorImg} alt="happy author" />
+          </BlogUpdateImgWrap>
+        </BlogUpdateAuthor>
+        <BlogUpdateLikes>
+          <BlogUpdateLikesCount>{likes}</BlogUpdateLikesCount>
+          <BlogUpdateSVGWrap>
+            <BlogUpdateSVG />
+          </BlogUpdateSVGWrap>
+        </BlogUpdateLikes>
+      </BlogUpdateData>
+      <CreateUpdateBlogpost method="PATCH" updateData={updateData} />
       <GetBack path={`/profile/blogs`} />
-    </div>
+    </BlogUpdateContainer>
   ) : (
-    <div>Object with that id not found.</div>
+    <BlogUpdateNotFound>Object with that id not found.</BlogUpdateNotFound>
   );
 };
 

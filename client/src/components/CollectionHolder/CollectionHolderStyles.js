@@ -36,7 +36,7 @@ export const CollectionHolderTitle = styled.h2`
   ${getFont}
   font-size: 4rem;
   font-weight: 300;
-  padding: 1rem;
+  padding: 4rem 1rem 4rem 1rem;
   @media only screen and (max-width: 768px) {
     line-height: 1;
   }

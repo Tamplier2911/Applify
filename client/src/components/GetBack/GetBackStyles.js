@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { ReactComponent as ReturnSVG } from "../../assets/svg/return.svg";
 
 export const GetBackContainer = styled.div`
+  z-index: 20;
+
   cursor: pointer;
   position: fixed;
   bottom: 4rem;

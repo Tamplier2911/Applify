@@ -8,6 +8,7 @@ import { selectAllUsersAsObject } from "../../redux/users/users.selectors";
 
 // components
 import GetBack from "../GetBack/GetBack";
+import CreateUpdateUser from "../CreateUpdateUser/CreateUpdateUser";
 
 // data formaters
 import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
@@ -56,6 +57,7 @@ const UserUpdate = ({ userObject }) => {
           }}
         ></img>
       </div>
+      <CreateUpdateUser method="PATCH" />
       <GetBack path={`/profile/users`} />
     </div>
   ) : (

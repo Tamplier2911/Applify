@@ -79,11 +79,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
   return (
     <SignUpFormContainer>
       <SignUpFormTitle>{signUpFormTitle}</SignUpFormTitle>
-      <SignUpFormElement
-        className="signup-form__form"
-        autoComplete="off"
-        onSubmit={e => onSubmit(e)}
-      >
+      <SignUpFormElement autoComplete="off" onSubmit={e => onSubmit(e)}>
         <FormInput
           onInputChange={e => onInputChange(e)}
           value={name}

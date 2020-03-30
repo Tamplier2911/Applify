@@ -70,13 +70,20 @@ export function* loadAllBlogposts() {
 }
 
 export function* createOneBlogpost({ payload }) {
-  yield console.log("create one bp from saga", payload);
-  const { data } = payload; // destruct data here
+  const { blogTitle, blogTheme, blogContent, blogImage } = payload;
+  const form = new FormData();
+
+  // fill up multipart/formdata
+  if (blogTitle) form.append("title", blogTitle);
+  if (blogTheme) form.append("theme", blogTheme);
+  if (blogContent) form.append("content", blogContent);
+  if (blogImage) form.append("image", blogImage);
+
   try {
     const res = yield axios({
       method: "POST",
       url: "/api/v1/blogposts",
-      data: data // insert data here
+      data: form
     });
     yield put(createOneBlogpostSuccess());
     if (successfulResponse(res)) {
@@ -96,13 +103,16 @@ export function* createOneBlogpost({ payload }) {
 }
 
 export function* updateOneBlogpost({ payload }) {
-  yield console.log("update one bp from saga", payload);
-  const { _id, data } = payload; // destruct data here including id
+  const { blogTitle, blogTheme, blogContent, _id } = payload;
   try {
     const res = yield axios({
       method: "PATCH",
       url: `/api/v1/blogposts/${_id}`,
-      data: data // insert data here
+      data: {
+        title: blogTitle,
+        theme: blogTheme,
+        content: blogContent
+      }
     });
     yield put(updateOneBlogpostSuccess());
     if (successfulResponse(res)) {

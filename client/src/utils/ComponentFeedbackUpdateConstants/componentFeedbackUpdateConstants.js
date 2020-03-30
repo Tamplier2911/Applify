@@ -1,6 +1,6 @@
 const feedbackUpdateData = {
   eng: {
-    feedbackUpdateTitle: "This feedback is posted by:",
+    feedbackUpdateTitle: "This feedback is written by:",
     feedbackUpdateName: "Name:",
     feedbackUpdateDate: "Date:",
     feedbackUpdateNotFound: "Object with that id not found."
