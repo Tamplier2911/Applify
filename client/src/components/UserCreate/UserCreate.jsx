@@ -1,17 +1,17 @@
-import "./UserCreate.scss";
+// import "./UserCreate.scss";
 import React from "react";
 
 // components
 import CreateUpdateUser from "../CreateUpdateUser/CreateUpdateUser";
 
 // JS Rendering CSS
-import {} from "./UserCreateStyles";
+import { UserCreateContainer } from "./UserCreateStyles";
 
 const UserCreate = () => {
   return (
-    <div>
+    <UserCreateContainer>
       <CreateUpdateUser method="POST" />
-    </div>
+    </UserCreateContainer>
   );
 };
 

@@ -190,13 +190,14 @@ exports.isLoggedIn = async (req, res, next) => {
 exports.getUserObject = catchAsync(async (req, res, next) => {
   const { user } = req;
   if (user) {
-    const { _id, name, email, photo, about, likedBlogposts } = user;
+    const { _id, name, email, photo, about, role, likedBlogposts } = user;
     const userData = {
       id: _id,
       name: name,
       email: email,
       photo: photo,
       about: about,
+      role: role,
       likedBlogposts: likedBlogposts
     };
     // console.log(userData);

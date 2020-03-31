@@ -32,8 +32,8 @@ import {
 
 const ProfilePage = ({ isLogged, userObject }) => {
   const match = useRouteMatch();
-  const { id } = userObject;
-  const showAdminRoutes = isLogged && id === "5e6e618672e9151d503701ed";
+  const { role } = userObject;
+  const showAdminRoutes = isLogged && (role === "admin" || role === "owner");
 
   return (
     <ProfilePageContainer>

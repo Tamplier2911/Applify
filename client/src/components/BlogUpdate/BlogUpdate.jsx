@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 // redux
 import { connect } from "react-redux";
 import { selectAllBlogpostsAsObject } from "../../redux/blogs/blogs.selectors";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
 import GetBack from "../GetBack/GetBack";
@@ -32,8 +33,9 @@ import {
 } from "./BlogUpdateStyles";
 
 // component constants
+import blogUpdateData from "../../utils/ComponentBlogUpdateConstants/componentBlogUpdateConstants";
 
-const BlogUpdate = ({ blogObject }) => {
+const BlogUpdate = ({ lang, blogObject }) => {
   // author
   const {
     _id,
@@ -56,6 +58,8 @@ const BlogUpdate = ({ blogObject }) => {
   );
 
   const updateData = { title, theme, content, _id };
+
+  const { blogUpdateNotFound } = blogUpdateData[lang];
 
   return blogObject ? (
     <BlogUpdateContainer>
@@ -82,12 +86,13 @@ const BlogUpdate = ({ blogObject }) => {
       <GetBack path={`/profile/blogs`} />
     </BlogUpdateContainer>
   ) : (
-    <BlogUpdateNotFound>Object with that id not found.</BlogUpdateNotFound>
+    <BlogUpdateNotFound>{blogUpdateNotFound}</BlogUpdateNotFound>
   );
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  blogObject: selectAllBlogpostsAsObject(ownProps.match.params.id)(state)
+  blogObject: selectAllBlogpostsAsObject(ownProps.match.params.id)(state),
+  lang: selectCurrentLanguage(state)
 });
 
 export default withRouter(connect(mapStateToProps)(BlogUpdate));

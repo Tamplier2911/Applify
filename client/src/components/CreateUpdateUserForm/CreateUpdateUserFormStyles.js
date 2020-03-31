@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import { ReactComponent as UserSVG } from "../../assets/svg/user.svg";
+import { ReactComponent as AdminSVG } from "../../assets/svg/admin.svg";
+import { ReactComponent as OwnerSVG } from "../../assets/svg/owner.svg";
+
+const sharedSVGStyles = css`
+  width: 5rem;
+  height: 5rem;
+`;
 
 const getFont = props => {
   const { lang } = props;
@@ -34,6 +43,18 @@ export const CreateUpdateUserFormElement = styled.form`
 
 export const CreateUpdateUserFormLength = styled.div`
   display: grid;
+`;
+
+export const CreateUpdateUserFormUserSVG = styled(UserSVG)`
+  ${sharedSVGStyles}
+`;
+
+export const CreateUpdateUserFormAdminSVG = styled(AdminSVG)`
+  ${sharedSVGStyles}
+`;
+
+export const CreateUpdateUserFormOwnerSVG = styled(OwnerSVG)`
+  ${sharedSVGStyles}
 `;
 
 export const CreateUpdateUserFormHolder = styled.div``;

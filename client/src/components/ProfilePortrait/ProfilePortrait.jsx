@@ -11,13 +11,13 @@ import {
   ProfilePortraitImage
 } from "./ProfilePortraitStyles";
 
-const ProfilePortrait = ({ photo, userId }) => {
+const ProfilePortrait = ({ photo, userRole }) => {
   return (
     <ProfilePortraitContainer>
       <ProfilePortraitWrapper>
         <ProfilePortraitImage src={photo} alt="happy user" />
       </ProfilePortraitWrapper>
-      {userId === "5e6e618672e9151d503701ed" ? <AdminBar /> : null}
+      {userRole === "admin" || userRole === "owner" ? <AdminBar /> : null}
     </ProfilePortraitContainer>
   );
 };

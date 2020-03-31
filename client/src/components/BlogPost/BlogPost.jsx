@@ -74,8 +74,25 @@ const BlogPost = ({
   const formatedContent = formBlogpostData(content ? content : "");
   // imageSet, linkSet - all arrays
   const { titleSet, contentSet } = formatedContent;
-
   const totalSets = Object.keys(titleSet).length;
+
+  const parseBlogData = (content = "") => {
+    const blocks = {};
+
+    content
+      .replace(/\r?\n|\r/g, " ")
+      .split("%BLOCK%")
+      .filter(el => el !== "" && el !== " " && el !== "  ")
+      .forEach((str, i) => (blocks[i] = str));
+
+    return blocks;
+  };
+  const data = parseBlogData(content);
+  console.log(data);
+  Object.values(data).forEach(string => {
+    let arr = string.split(" ").filter(el => el !== "");
+    console.log(arr);
+  });
 
   // like funcitonality
   const { likedBlogposts } = user;

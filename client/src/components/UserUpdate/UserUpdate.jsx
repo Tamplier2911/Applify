@@ -1,10 +1,11 @@
-import "./UserUpdate.scss";
+// import "./UserUpdate.scss";
 import React from "react";
 import { withRouter } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
 import { selectAllUsersAsObject } from "../../redux/users/users.selectors";
+import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // components
 import GetBack from "../GetBack/GetBack";
@@ -15,11 +16,27 @@ import getImageRelativePath from "../../utils/PathTransformations/getImageRelati
 import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
 
 // JS Rendering CSS
-import {} from "./UserUpdateStyles";
+import {
+  UserUpdateContainer,
+  UserUpdateInfo,
+  UserUpdateCred,
+  UserUpdateName,
+  UserUpdateEmail,
+  UserUpdateRole,
+  UserUpdateId,
+  UserUpdateChanged,
+  UserUpdatePhoto,
+  UserUpdatePhotoWrap,
+  UserUpdatePhotoImg,
+  UserFieldKey,
+  UserFieldValue,
+  UserUpdateNotFound
+} from "./UserUpdateStyles";
 
 // component constants
+import userUpdateData from "./UserUpdateConstants";
 
-const UserUpdate = ({ userObject }) => {
+const UserUpdate = ({ lang, userObject }) => {
   const { _id, photo, about, role, name, email, passwordChangedAt } = userObject
     ? userObject
     : {};
@@ -29,44 +46,62 @@ const UserUpdate = ({ userObject }) => {
     passwordChangedAt ? passwordChangedAt : ""
   );
 
+  const userData = { _id, name, email, role, about };
+
+  const {
+    userUpdateName,
+    userUpdateEmail,
+    userUpdateRole,
+    userUpdateId,
+    userUpdatePassword,
+    userUpdatePasswordChanged,
+    userUpdateNotFound
+  } = userUpdateData[lang];
+
   return userObject ? (
-    <div className="user-update">
-      <div>Name: {name}</div>
-      <div>Email: {email}</div>
-      <div>Role: {role}</div>
-      <div>About: {about}</div>
-      <div>ID: {_id}</div>
-      <div>Password Changed: {date ? date : "Never changed"}</div>
-      <div
-        style={{
-          width: "10rem",
-          height: "10rem",
-          borderRadius: "50%",
-          overflow: "hidden",
-          boxShadow: `0rem 0rem .8rem var(--cl-primary)`
-        }}
-      >
-        <img
-          src={image}
-          alt="happy user"
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "block",
-            objectFit: "cover"
-          }}
-        ></img>
-      </div>
-      <CreateUpdateUser method="PATCH" />
+    <UserUpdateContainer>
+      <UserUpdateInfo>
+        <UserUpdateCred>
+          <UserUpdateName>
+            <UserFieldKey>{userUpdateName}</UserFieldKey>
+            <UserFieldValue>{name}</UserFieldValue>
+          </UserUpdateName>
+          <UserUpdateEmail>
+            <UserFieldKey>{userUpdateEmail}</UserFieldKey>
+            <UserFieldValue>{email}</UserFieldValue>
+          </UserUpdateEmail>
+          <UserUpdateRole>
+            <UserFieldKey>{userUpdateRole}</UserFieldKey>
+            <UserFieldValue>{role}</UserFieldValue>
+          </UserUpdateRole>
+          <UserUpdateId>
+            <UserFieldKey>{userUpdateId}</UserFieldKey>
+            <UserFieldValue>{_id}</UserFieldValue>
+          </UserUpdateId>
+          <UserUpdateChanged>
+            <UserFieldKey>{userUpdatePassword}</UserFieldKey>
+            <UserFieldValue>
+              {date !== "Invalid Date" ? date : userUpdatePasswordChanged}
+            </UserFieldValue>
+          </UserUpdateChanged>
+        </UserUpdateCred>
+        <UserUpdatePhoto>
+          <UserUpdatePhotoWrap>
+            <UserUpdatePhotoImg src={image} alt="happy user" />
+          </UserUpdatePhotoWrap>
+        </UserUpdatePhoto>
+      </UserUpdateInfo>
+      <CreateUpdateUser method="PATCH" updateData={userData} />
       <GetBack path={`/profile/users`} />
-    </div>
+    </UserUpdateContainer>
   ) : (
-    <div>Object with that id not found.</div>
+    <UserUpdateNotFound>{userUpdateNotFound}</UserUpdateNotFound>
   );
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  userObject: selectAllUsersAsObject(ownProps.match.params.id)(state)
+  userObject: selectAllUsersAsObject(ownProps.match.params.id)(state),
+  lang: selectCurrentLanguage(state)
 });
 
 export default withRouter(connect(mapStateToProps)(UserUpdate));

@@ -132,10 +132,12 @@ export function* updateOneBlogpost({ payload }) {
 }
 
 export function* deleteOneBlogpost({ payload }) {
+  const { _id, image } = payload;
+  console.log(_id, image);
   try {
     const res = yield axios({
       method: "DELETE",
-      url: `/api/v1/blogposts/${payload}`
+      url: `/api/v1/blogposts/${_id}`
     });
     yield put(deleteOneBlogpostSuccess());
     if (successfulResponse(res)) {

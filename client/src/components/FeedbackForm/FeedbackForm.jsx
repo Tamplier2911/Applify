@@ -92,22 +92,22 @@ export const FeedbackForm = ({
       </FeedbackFormTitle>
       <FeedbackFormElement autoComplete="off" onSubmit={e => onSubmit(e)}>
         <TextInput
-          rows="6"
           onInputChange={e => onInputChange(e)}
-          label={feedbackFormFeedback}
-          name="feedbackMessage"
           value={feedbackMessage}
+          name="feedbackMessage"
+          label={feedbackFormFeedback}
+          rows="6"
           max="500"
           //   placeholder="Please, leave me a feedback!"
           required
         />
         <SelectInput
+          onInputChange={e => onInputChange(e)}
+          defaultValue={method === "POST" ? "5" : feedbackRating}
+          name={"feedbackRating"}
           label={labels.map(label => (
             <FeedbackFormRatingSVG key={label} />
           ))}
-          name={"feedbackRating"}
-          onInputChange={e => onInputChange(e)}
-          defaultValue={method === "POST" ? "5" : feedbackRating}
           options={feedbackFormOptions}
           required
         />

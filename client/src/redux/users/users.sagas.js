@@ -12,10 +12,10 @@ import {
   loadAllUsersStart,
   loadAllUsersSucess,
   loadAllUsersFailure,
-  // createOneUserSuccess,
-  // createOneUserFailure,
-  // updateOneUserSuccess,
-  // updateOneUserFailure,
+  createOneUserSuccess,
+  createOneUserFailure,
+  updateOneUserSuccess,
+  updateOneUserFailure,
   deleteOneUserSuccess,
   deleteOneUserFailure
 } from "./users.actions";
@@ -49,65 +49,80 @@ export function* loadAllUsers() {
 }
 
 export function* createOneUser({ payload }) {
-  yield console.log("create one user from saga", payload);
-  //   try {
-  //     // destructure user data
-  //     const {} = payload;
-  //     const res = yield axios({
-  //       method: "POST",
-  //       url: "/api/v1/users",
-  //       data: {} // inser user data
-  //     });
-  //     yield put(createOneUserSuccess());
-  //     if (successfulResponse(res)) {
-  //       yield put(
-  //         openModal({
-  //           header: "Success!",
-  //           content: "New user was successfully created."
-  //         })
-  //       );
-  //     }
-  //     yield put(loadAllUsersSucess());
-  //   } catch (error) {
-  //     const { header, content } = getErrorMessage(error);
-  //     yield put(openModal({ header, content }));
-  //     yield put(createOneUserFailure(content));
-  //   }
+  const {
+    userName,
+    userEmail,
+    userRole,
+    userPassword,
+    userPasswordConfirm
+  } = payload;
+  try {
+    const res = yield axios({
+      method: "POST",
+      url: "/api/v1/users",
+      data: {
+        name: userName,
+        email: userEmail,
+        role: userRole,
+        password: userPassword,
+        passwordConfirm: userPasswordConfirm
+      }
+    });
+    yield put(createOneUserSuccess());
+    if (successfulResponse(res)) {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "New user was successfully created."
+        })
+      );
+    }
+    yield put(loadAllUsersStart());
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(createOneUserFailure(content));
+  }
 }
 
 export function* updateOneUser({ payload }) {
   yield console.log("update one user from saga", payload);
-  //   try {
-  //     // destructure user data and ID
-  //     const { id } = payload;
-  //     const res = yield axios({
-  //       method: "PATCH",
-  //       url: `/api/v1/users/${id}`,
-  //       data: {} // inser user data
-  //     });
-  //     yield put(updateOneUserSuccess());
-  //     if (successfulResponse(res)) {
-  //       yield put(
-  //         openModal({
-  //           header: "Success!",
-  //           content: "User data was successfully updated."
-  //         })
-  //       );
-  //     }
-  //     yield put(loadAllUsersSucess());
-  //   } catch (error) {
-  //     const { header, content } = getErrorMessage(error);
-  //     yield put(openModal({ header, content }));
-  //     yield put(updateOneUserFailure(content));
-  //   }
+  const { userName, userEmail, userRole, userAbout, _id } = payload;
+  try {
+    const res = yield axios({
+      method: "PATCH",
+      url: `/api/v1/users/${_id}`,
+      data: {
+        name: userName,
+        email: userEmail,
+        role: userRole,
+        about: userAbout
+      }
+    });
+    yield put(updateOneUserSuccess());
+    if (successfulResponse(res)) {
+      yield put(
+        openModal({
+          header: "Success!",
+          content: "User data was successfully updated."
+        })
+      );
+    }
+    yield put(loadAllUsersStart());
+  } catch (error) {
+    const { header, content } = getErrorMessage(error);
+    yield put(openModal({ header, content }));
+    yield put(updateOneUserFailure(content));
+  }
 }
 
 export function* deleteOneUser({ payload }) {
-  yield console.log("delete one user from sage", payload);
+  const { _id, photo } = payload;
+  console.log(_id, photo);
   try {
     const res = yield axios({
       method: "DELETE",
-      url: `/api/v1/users/${payload}`
+      url: `/api/v1/users/${_id}`
     });
     yield put(deleteOneUserSuccess());
     if (successfulResponse(res)) {

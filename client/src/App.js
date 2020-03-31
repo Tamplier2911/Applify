@@ -66,7 +66,12 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged, userId }) => {
           <Route exact path="/contacts" component={ContactsPage} />
           <Route exact path="/feedback" component={FeedbackPage} />
           <Route path="/blog" component={BlogPage} />
-          <Route path="/restore" component={PasswordRestorationPage} />
+          <Route
+            path="/restore"
+            render={() =>
+              !isLogged ? <PasswordRestorationPage /> : <Redirect to="/" />
+            }
+          />
           <Route path="/" component={HomePage} />
 
           <div>Remove this once Back is wired!</div>
