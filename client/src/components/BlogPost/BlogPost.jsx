@@ -1,5 +1,5 @@
 // import "./BlogPost.scss";
-import React, { Fragment } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 
 // redux
@@ -20,7 +20,7 @@ import GetBack from "../GetBack/GetBack";
 // data formaters
 import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
 import transformDateToLocaleString from "../../utils/DataTransformations/transformDateToLocaleString";
-import formBlogpostData from "../../utils/DataTransformations/blogContentTransformations";
+import parseBlogData from "../../utils/DataTransformations/blogContentTransformations";
 
 // JS Rendering CSS
 import {
@@ -40,8 +40,15 @@ import {
   BlogPostImgCont,
   BlogPostImg,
   BlogPostContent,
+  BlogPostContentBlock,
   BlogPostContentTitle,
-  BlogPostContentParagraph
+  BlogPostContentParagraph,
+  BlogPostContentLink,
+  BlogPostContentListUl,
+  BlogPostContentListItem,
+  BlogPostContentListSpan,
+  BlogPostContentCode,
+  BlogPostContentCodeDiv
 } from "./BlogPostStyles";
 
 const BlogPost = ({
@@ -71,28 +78,8 @@ const BlogPost = ({
   );
   const authorImg = getImageRelativePath(author ? author.photo : "");
 
-  const formatedContent = formBlogpostData(content ? content : "");
-  // imageSet, linkSet - all arrays
-  const { titleSet, contentSet } = formatedContent;
-  const totalSets = Object.keys(titleSet).length;
-
-  const parseBlogData = (content = "") => {
-    const blocks = {};
-
-    content
-      .replace(/\r?\n|\r/g, " ")
-      .split("%BLOCK%")
-      .filter(el => el !== "" && el !== " " && el !== "  ")
-      .forEach((str, i) => (blocks[i] = str));
-
-    return blocks;
-  };
-  const data = parseBlogData(content);
-  console.log(data);
-  Object.values(data).forEach(string => {
-    let arr = string.split(" ").filter(el => el !== "");
-    console.log(arr);
-  });
+  // parse blog content
+  const blocks = parseBlogData(content);
 
   // like funcitonality
   const { likedBlogposts } = user;
@@ -145,18 +132,82 @@ const BlogPost = ({
         <BlogPostImg alt="blog representation" src={blogImg} />
       </BlogPostImgCont>
       <BlogPostContent>
-        {Array.from(new Array(totalSets ? totalSets : 0), (el, i) => i).map(
-          i => {
-            return (
-              <Fragment key={i}>
-                <BlogPostContentTitle>{titleSet[i]}</BlogPostContentTitle>
-                <BlogPostContentParagraph>
-                  {contentSet[i]}
-                </BlogPostContentParagraph>
-              </Fragment>
-            );
-          }
-        )}
+        {blocks.map((block, i) => {
+          const {
+            headerSet,
+            paragraphSet,
+            linkSet,
+            listItemSet,
+            codeSet
+          } = block;
+          return (
+            <BlogPostContentBlock key={i}>
+              {headerSet.length
+                ? headerSet.map((header, i) => {
+                    return (
+                      <BlogPostContentTitle key={i}>
+                        {header}
+                      </BlogPostContentTitle>
+                    );
+                  })
+                : null}
+              {paragraphSet.length
+                ? paragraphSet.map((parahraph, i) => {
+                    return (
+                      <BlogPostContentParagraph key={i}>
+                        {parahraph}
+                      </BlogPostContentParagraph>
+                    );
+                  })
+                : null}
+              {linkSet.length
+                ? linkSet.map((link, i) => {
+                    const splitedLink = link.split(":");
+                    const url = splitedLink[0];
+                    const text = splitedLink[1];
+                    return (
+                      <BlogPostContentLink
+                        href={`https://${url}`}
+                        key={i}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {text}
+                      </BlogPostContentLink>
+                    );
+                  })
+                : null}
+              {listItemSet.length ? (
+                <BlogPostContentListUl>
+                  {listItemSet.map((listItem, i) => {
+                    return (
+                      <BlogPostContentListItem key={i}>
+                        <BlogPostContentListSpan>
+                          &#x25cf;
+                        </BlogPostContentListSpan>
+                        <BlogPostContentListSpan>
+                          {listItem}
+                        </BlogPostContentListSpan>
+                      </BlogPostContentListItem>
+                    );
+                  })}
+                </BlogPostContentListUl>
+              ) : null}
+
+              {codeSet.length ? (
+                <BlogPostContentCode>
+                  {codeSet.map((code, i) => {
+                    return (
+                      <BlogPostContentCodeDiv key={i}>
+                        {code}
+                      </BlogPostContentCodeDiv>
+                    );
+                  })}
+                </BlogPostContentCode>
+              ) : null}
+            </BlogPostContentBlock>
+          );
+        })}
       </BlogPostContent>
       <GetBack path={`/blog`} />
     </BlogPostContainer>

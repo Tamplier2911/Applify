@@ -160,12 +160,60 @@ export const BlogPostContent = styled.div`
   }
 `;
 
+export const BlogPostContentBlock = styled.div`
+  display: grid;
+  grid-row-gap: 1rem;
+`;
+
 export const BlogPostContentTitle = styled.div`
   justify-self: center;
   font-size: 2.7rem;
   font-weight: 400;
+  text-align: center;
+  margin: 2rem 0rem 2rem 0rem;
 `;
 
 export const BlogPostContentParagraph = styled.div`
   font-size: 2rem;
 `;
+
+export const BlogPostContentLink = styled.a`
+  &:link,
+  &:visited {
+    justify-self: start;
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--cl-github);
+    transition: color 3s;
+  }
+
+  &:hover,
+  &:active {
+    color: var(--cl-primary);
+  }
+`;
+
+export const BlogPostContentListItem = styled.li`
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-column-gap: 1rem;
+  align-items: center;
+  font-size: 1.8rem;
+  color: var(--cl-primary);
+`;
+
+export const BlogPostContentListSpan = styled.span``;
+
+export const BlogPostContentListUl = styled.ul`
+  list-style: none;
+`;
+
+export const BlogPostContentCode = styled.code`
+  display: grid;
+  grid-row-gap: 1rem;
+  background-color: var(--cl-font);
+  color: var(--cl-facebook);
+  padding: 2rem;
+`;
+
+export const BlogPostContentCodeDiv = styled.div``;
