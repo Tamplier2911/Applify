@@ -79,7 +79,7 @@ export const ModalContentBox = styled.div`
   }
 
   @media only screen and (max-width: 200px) {
-    width: 125vw;
+    width: 100vw;
     height: 130vh;
   }
 

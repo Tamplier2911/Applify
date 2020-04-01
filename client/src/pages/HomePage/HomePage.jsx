@@ -9,6 +9,7 @@ import HomeCards from "../../components/HomeCards/HomeCards";
 import { HomePageContainer, HomePagePlaceholder } from "./HomePageStyles";
 
 const HomePage = () => {
+  // throw Error;
   return (
     <HomePageContainer>
       <Hero />

@@ -1,0 +1,31 @@
+/*
+
+.error-boundary {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  background-color: var(--cl-contacts-bg);
+  box-shadow: 0rem 0.1rem 0.4rem var(--cl-square-shadow);
+  padding: 2rem;
+  margin-bottom: 5rem;
+
+  &__text {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    font-family: var(--font-title);
+    font-weight: 300;
+  }
+
+  &__title {
+    line-height: 1;
+    font-size: 5rem;
+    align-self: end;
+  }
+
+  &__cry {
+    align-self: start;
+    font-size: 3rem;
+  }
+}
+
+*/

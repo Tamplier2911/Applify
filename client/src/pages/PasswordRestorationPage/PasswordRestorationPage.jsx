@@ -1,6 +1,6 @@
 // import "./PasswordRestorationPage.scss";
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
@@ -18,13 +18,11 @@ const PasswordRestorationPage = ({ match, isLogged }) => {
   return (
     <PasswordRestorationPageContainer>
       <Switch>
-        {/* <Route exact path={`${match.path}`} component={ForgotPassword} /> */}
         <Route
           exact
           path={`${match.path}`}
           render={() => (isLogged ? <Redirect to="/" /> : <ForgotPassword />)}
         />
-        {/* <Route path={`${match.path}/:id`} component={RestorePassword} /> */}
         <Route
           exact
           path={`${match.path}/:id`}
@@ -39,4 +37,4 @@ const mapStateToProps = createStructuredSelector({
   isLogged: selectIsLogged
 });
 
-export default connect(mapStateToProps)(PasswordRestorationPage);
+export default withRouter(connect(mapStateToProps)(PasswordRestorationPage));
