@@ -34,10 +34,9 @@ class ErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     const { openModal } = this.props;
-    console.log(error.message, "error");
     openModal({
       header: "Error!",
-      content: "You likely experienced connection issues!"
+      content: error.message || "You likely experienced connection issues!"
     });
   }
 

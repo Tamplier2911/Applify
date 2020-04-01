@@ -14,11 +14,12 @@ import FeedbackForm from "../FeedbackForm/FeedbackForm";
 // JS Rendering CSS
 import {
   FeedbackCreateContainer,
-  FeedbackCreateUnauthorized
+  FeedbackCreateUnauthorized,
+  FeedbackCreateLink
 } from "./FeedbackCreateStyles";
 
 // component constants
-import feedbackCreateData from "../../utils/ComponentFeedbackCreateConstants/componentFeedbackCreateConstants";
+import feedbackCreateData from "./FeedbackCreateConstants";
 
 const FeedbackCreate = ({ lang, isLogged, method, updateData }) => {
   const {
@@ -26,6 +27,7 @@ const FeedbackCreate = ({ lang, isLogged, method, updateData }) => {
     feedbackUpdateTitle,
     feedbackCreateNotAuthorized
   } = feedbackCreateData[lang];
+
   return (
     <FeedbackCreateContainer>
       <FormHolder
@@ -36,7 +38,11 @@ const FeedbackCreate = ({ lang, isLogged, method, updateData }) => {
           <FeedbackForm method={method} updateData={updateData} />
         ) : (
           <FeedbackCreateUnauthorized>
-            {feedbackCreateNotAuthorized}
+            {feedbackCreateNotAuthorized[0]}
+            <FeedbackCreateLink to="/authorization">
+              {feedbackCreateNotAuthorized[1]}
+            </FeedbackCreateLink>
+            {feedbackCreateNotAuthorized[2]}
           </FeedbackCreateUnauthorized>
         )}
       </FormHolder>
