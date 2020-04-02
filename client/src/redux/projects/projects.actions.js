@@ -47,10 +47,12 @@ export const getCurrentProject = lang => ({
   payload: lang
 });
 
-export const setCurrentImageNext = () => ({
-  type: SET_CURRENT_IMAGE_NEXT
+export const setCurrentImageNext = screenSize => ({
+  type: SET_CURRENT_IMAGE_NEXT,
+  payload: screenSize
 });
 
-export const setCurrentImagePrev = () => ({
-  type: SET_CURRENT_IMAGE_PREV
+export const setCurrentImagePrev = screenSize => ({
+  type: SET_CURRENT_IMAGE_PREV,
+  payload: screenSize
 });

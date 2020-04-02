@@ -50,8 +50,6 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
     passwordChangedAt ? passwordChangedAt : ""
   );
 
-  const deleteObject = { _id, photo };
-
   const {
     userCardDelete,
     userCardUpdate,
@@ -95,7 +93,7 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
         <Button
           type="button"
           value={userCardDelete}
-          click={() => deleteOneUserStart(deleteObject)}
+          click={() => deleteOneUserStart(_id)}
         />
         <UserCardControllsLink to={`/profile/users/${_id}`}>
           {userCardUpdate}

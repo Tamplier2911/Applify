@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 const multer = require("multer");
 const sharp = require("sharp");
 
@@ -148,4 +151,42 @@ exports.createNewBlogpost = catchAsync(async (req, res, next) => {
 exports.updateBlogpost = updateOne(Blogpost);
 
 // Delete Single Blogpost
-exports.deleteBlogpost = deleteOne(Blogpost);
+exports.deleteBlogpost = catchAsync(async (req, res, next) => {
+  const blogpost = await Blogpost.findById(req.params.id);
+
+  if (!blogpost) {
+    return next(new AppError("No document found with that ID.", 404));
+  }
+
+  // // get image name
+  const blogpostImage = blogpost.image.split("/")[3];
+  console.log(blogpostImage);
+
+  // if its not default image - perform delete on blog image
+  if (blogpostImage && blogpostImage !== "default.jpg") {
+    fs.unlink(
+      path.join(__dirname, "..", "uploads/images/posts", blogpostImage),
+      err => {
+        if (err) throw err;
+        console.log(`${blogpostImage} successfully deleted.`);
+      }
+    );
+  }
+
+  const users = await User.find();
+
+  users.forEach(async user => {
+    user.likedBlogposts = user.likedBlogposts.filter(
+      id => id !== req.params.id
+    );
+    await user.save({ validateBeforeSave: false });
+  });
+
+  // perform blogpost removing from data base
+  await Blogpost.findByIdAndDelete(req.params.id);
+
+  res.status(204).json({
+    status: "success",
+    message: null
+  });
+});

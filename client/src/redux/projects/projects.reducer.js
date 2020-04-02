@@ -1,7 +1,7 @@
 import projectsTypes from "./projects.types";
 
 // projects constants
-import { projectsData } from "../../utils/ComponentProjectsConstants/componentProjectsConstants";
+import projectsData from "./projectsConstants";
 
 const {
   SET_CURRENT_PROJECT_FIRST,
@@ -54,20 +54,22 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
     case GET_CURRENT_PROJECT:
       return { ...state, currentProject: state.allProjects[action.payload][0] };
     case SET_CURRENT_IMAGE_NEXT:
-      if (state.currentImage.id === 109) {
-        return { ...state, currentImage: state.allImages[0] };
+      if (state.currentImage.id === 107) {
+        return { ...state, currentImage: state.allImages[action.payload][0] };
       }
       return {
         ...state,
-        currentImage: state.allImages[state.currentImage.id - 100 + 1]
+        currentImage:
+          state.allImages[action.payload][state.currentImage.id - 100 + 1]
       };
     case SET_CURRENT_IMAGE_PREV:
       if (state.currentImage.id === 100) {
-        return { ...state, currentImage: state.allImages[9] };
+        return { ...state, currentImage: state.allImages[action.payload][7] };
       }
       return {
         ...state,
-        currentImage: state.allImages[state.currentImage.id - 100 - 1]
+        currentImage:
+          state.allImages[action.payload][state.currentImage.id - 100 - 1]
       };
     default:
       return state;

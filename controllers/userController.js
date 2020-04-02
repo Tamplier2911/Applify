@@ -158,4 +158,32 @@ exports.createNewUser = createOne(User);
 exports.updateUser = updateOne(User);
 
 // Delete Single User
-exports.deleteUser = deleteOne(User);
+exports.deleteUser = catchAsync(async (req, res, next) => {
+  const user = await User.findById(eq.params.id);
+
+  if (!user) {
+    return next(new AppError("No document found with that ID.", 404));
+  }
+
+  // grab user image
+  const userPhoto = user.photo.split("/")[3];
+
+  // if its not default image - perform delete on user photo
+  if (userPhoto && userPhoto !== "default.jpg") {
+    fs.unlink(
+      path.join(__dirname, "..", "uploads/images/users", userPhoto),
+      err => {
+        if (err) throw err;
+        console.log(`${userPhoto} successfully deleted.`);
+      }
+    );
+  }
+
+  // perform user removing from data base
+  await User.findByIdAndDelete(req.params.id);
+
+  res.status(204).json({
+    status: "success",
+    message: null
+  });
+});

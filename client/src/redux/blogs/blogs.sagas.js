@@ -4,6 +4,8 @@ import axios from "axios";
 // data transformation
 import transformBlogsArrayToSlotsObject from "../../utils/DataTransformations/transformBlogsArrayToSlotsObject";
 
+import confirmation from "../../utils/Confirmation/confirmation";
+
 // error filter
 import {
   getErrorMessage,
@@ -132,27 +134,31 @@ export function* updateOneBlogpost({ payload }) {
 }
 
 export function* deleteOneBlogpost({ payload }) {
-  const { _id, image } = payload;
-  console.log(_id, image);
-  try {
-    const res = yield axios({
-      method: "DELETE",
-      url: `/api/v1/blogposts/${_id}`
-    });
-    yield put(deleteOneBlogpostSuccess());
-    if (successfulResponse(res)) {
-      yield put(
-        openModal({
-          header: "Success!",
-          content: "Post was successfully deleted."
-        })
-      );
+  if (
+    confirmation(
+      "Are you sure, that you want to delete a blog post? There is no way back!"
+    )
+  ) {
+    try {
+      const res = yield axios({
+        method: "DELETE",
+        url: `/api/v1/blogposts/${payload}`
+      });
+      yield put(deleteOneBlogpostSuccess());
+      if (successfulResponse(res)) {
+        yield put(
+          openModal({
+            header: "Success!",
+            content: "Post was successfully deleted."
+          })
+        );
+      }
+      yield put(loadAllBlogpostsStart());
+    } catch (error) {
+      const { header, content } = getErrorMessage(error);
+      yield put(openModal({ header, content }));
+      yield put(deleteOneBlogpostFailure(content));
     }
-    yield put(loadAllBlogpostsStart());
-  } catch (error) {
-    const { header, content } = getErrorMessage(error);
-    yield put(openModal({ header, content }));
-    yield put(deleteOneBlogpostFailure(content));
   }
 }
 

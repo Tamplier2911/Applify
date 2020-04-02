@@ -48,8 +48,6 @@ const BlogCard = ({ data, lang, deleteOneBlogpostStart }) => {
   );
   const authorImg = getImageRelativePath(author ? author.photo : "");
 
-  const deleteObject = { _id, image };
-
   return (
     <BlogCardContainer img={blogImg}>
       <BlogCardHeader>
@@ -73,7 +71,7 @@ const BlogCard = ({ data, lang, deleteOneBlogpostStart }) => {
         <Button
           type="button"
           value={blogCardDelete}
-          click={() => deleteOneBlogpostStart(deleteObject)}
+          click={() => deleteOneBlogpostStart(_id)}
         />
         <BlogCardControllsLink to={`/profile/blogs/${_id}`}>
           {blogCardUpdate}

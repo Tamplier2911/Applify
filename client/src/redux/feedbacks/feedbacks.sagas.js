@@ -7,6 +7,8 @@ import {
   successfulResponse
 } from "../../utils/ErrorFilters/errorFilters";
 
+import confirmation from "../../utils/Confirmation/confirmation";
+
 // modifiers
 import appendColorsToFeedbackObjects from "../../utils/DataTransformations/appendColorsToFeedbackObjects";
 
@@ -93,25 +95,27 @@ export function* updateFeedback({ payload }) {
 }
 
 export function* deleteFeedback({ payload }) {
-  try {
-    const res = yield axios({
-      method: "DELETE",
-      url: `/api/v1/feedbacks/${payload}`
-    });
-    yield put(deleteFeedbackSuccess());
-    if (successfulResponse(res)) {
-      yield put(
-        openModal({
-          header: "Success!",
-          content: "Feedback successfully deleted."
-        })
-      );
+  if (confirmation("Are you sure, that you want to delete a feedback?")) {
+    try {
+      const res = yield axios({
+        method: "DELETE",
+        url: `/api/v1/feedbacks/${payload}`
+      });
+      yield put(deleteFeedbackSuccess());
+      if (successfulResponse(res)) {
+        yield put(
+          openModal({
+            header: "Success!",
+            content: "Feedback successfully deleted."
+          })
+        );
+      }
+      yield put(loadFeedbacksStart());
+    } catch (error) {
+      const { header, content } = getErrorMessage(error);
+      yield put(openModal({ header, content }));
+      yield put(deleteFeedbackFailure(content));
     }
-    yield put(loadFeedbacksStart());
-  } catch (error) {
-    const { header, content } = getErrorMessage(error);
-    yield put(openModal({ header, content }));
-    yield put(deleteFeedbackFailure(content));
   }
 }
 

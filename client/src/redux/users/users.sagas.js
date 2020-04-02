@@ -7,6 +7,9 @@ import {
   successfulResponse
 } from "../../utils/ErrorFilters/errorFilters";
 
+// confirmation
+import confirmation from "../../utils/Confirmation/confirmation";
+
 // users actions
 import {
   loadAllUsersStart,
@@ -23,7 +26,7 @@ import {
 // modal actions
 import { openModal } from "../modal/modal.actions";
 
-// users tyoes
+// users types
 import usersTypes from "./users.types";
 
 const {
@@ -86,7 +89,6 @@ export function* createOneUser({ payload }) {
 }
 
 export function* updateOneUser({ payload }) {
-  yield console.log("update one user from saga", payload);
   const { userName, userEmail, userRole, userAbout, _id } = payload;
   try {
     const res = yield axios({
@@ -117,27 +119,31 @@ export function* updateOneUser({ payload }) {
 }
 
 export function* deleteOneUser({ payload }) {
-  const { _id, photo } = payload;
-  console.log(_id, photo);
-  try {
-    const res = yield axios({
-      method: "DELETE",
-      url: `/api/v1/users/${_id}`
-    });
-    yield put(deleteOneUserSuccess());
-    if (successfulResponse(res)) {
-      yield put(
-        openModal({
-          header: "Success!",
-          content: "User was successfully deleted."
-        })
-      );
+  if (
+    confirmation(
+      "Are you sure, that you want to delete a user? There is no way back!"
+    )
+  ) {
+    try {
+      const res = yield axios({
+        method: "DELETE",
+        url: `/api/v1/users/${payload}`
+      });
+      yield put(deleteOneUserSuccess());
+      if (successfulResponse(res)) {
+        yield put(
+          openModal({
+            header: "Success!",
+            content: "User was successfully deleted."
+          })
+        );
+      }
+      yield put(loadAllUsersStart());
+    } catch (error) {
+      const { header, content } = getErrorMessage(error);
+      yield put(openModal({ header, content }));
+      yield put(deleteOneUserFailure(content));
     }
-    yield put(loadAllUsersStart());
-  } catch (error) {
-    const { header, content } = getErrorMessage(error);
-    yield put(openModal({ header, content }));
-    yield put(deleteOneUserFailure(content));
   }
 }
 

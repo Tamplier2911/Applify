@@ -17,7 +17,7 @@ import { selectCurrentProject } from "../../redux/projects/projects.selectors";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 
 // projects constants
-import { projectsHeaders } from "../../utils/ComponentProjectsConstants/componentProjectsConstants";
+import projectsHeaders from "./ProjectsConstants";
 
 // JS Rendering CSS
 import {

@@ -2,28 +2,7 @@ import crownclothing from "../../assets/jpeg/crown-clothing-min.jpg";
 import natours from "../../assets/jpeg/natours-min.jpg";
 import clarify from "../../assets/jpeg/clarify-min.jpg";
 
-export const projectsHeaders = {
-  eng: {
-    projectsHeader: "Recent projects:",
-    projectsDescription: "Description:",
-    projectsTechStack: "Technology Stack:",
-    projectsVisit: "Visit"
-  },
-  rus: {
-    projectsHeader: "Недавние проекты:",
-    projectsDescription: "Описание:",
-    projectsTechStack: "Стек Технологий:",
-    projectsVisit: "Посетить"
-  },
-  ukr: {
-    projectsHeader: "Нещодавні проекти:",
-    projectsDescription: "Опис:",
-    projectsTechStack: "Стек Технологій:",
-    projectsVisit: "Відвідати"
-  }
-};
-
-export const projectsData = {
+const projectsData = {
   currentProject: {},
   allProjects: {
     eng: [
@@ -191,48 +170,112 @@ export const projectsData = {
   },
   currentImage: {
     id: 100,
-    image: "https://bit.ly/3cJPx6A"
+    image: "uploads/images/projects/elevation-desktop.jpg"
   },
-  allImages: [
-    {
-      id: 100,
-      image: "https://bit.ly/3cJPx6A"
-    },
-    {
-      id: 101,
-      image: "https://bit.ly/2HBs0Gu"
-    },
-    {
-      id: 102,
-      image: "https://bit.ly/3bT1kPA"
-    },
-    {
-      id: 103,
-      image: "https://bit.ly/2uae7fg"
-    },
-    {
-      id: 104,
-      image: "https://bit.ly/324uKpl"
-    },
-    {
-      id: 105,
-      image: "https://bit.ly/37E3NtB"
-    },
-    {
-      id: 106,
-      image: "https://bit.ly/327qViZ"
-    },
-    {
-      id: 107,
-      image: "https://bit.ly/39Dy4KC"
-    },
-    {
-      id: 108,
-      image: "https://bit.ly/39JEl7n"
-    },
-    {
-      id: 109,
-      image: "https://bit.ly/2P5qr7E"
-    }
-  ]
+  allImages: {
+    phone: [
+      {
+        id: 100,
+        image: "uploads/images/projects/elevation-phone.jpg"
+      },
+      {
+        id: 101,
+        image: "uploads/images/projects/galaxy-phone.jpg"
+      },
+      {
+        id: 102,
+        image: "uploads/images/projects/undrwtr-phone.jpg"
+      },
+      {
+        id: 103,
+        image: "uploads/images/projects/banking-phone.jpg"
+      },
+      {
+        id: 104,
+        image: "uploads/images/projects/dance-phone.jpg"
+      },
+      {
+        id: 105,
+        image: "uploads/images/projects/shoes-phone.jpg"
+      },
+      {
+        id: 106,
+        image: "uploads/images/projects/calendar-phone.jpg"
+      },
+      {
+        id: 107,
+        image: "uploads/images/projects/watch-phone.jpg"
+      }
+    ],
+    tablet: [
+      {
+        id: 100,
+        image: "uploads/images/projects/elevation-tablet.jpg"
+      },
+      {
+        id: 101,
+        image: "uploads/images/projects/galaxy-tablet.jpg"
+      },
+      {
+        id: 102,
+        image: "uploads/images/projects/undrwtr-tablet.jpg"
+      },
+      {
+        id: 103,
+        image: "uploads/images/projects/banking-tablet.jpg"
+      },
+      {
+        id: 104,
+        image: "uploads/images/projects/dance-tablet.jpg"
+      },
+      {
+        id: 105,
+        image: "uploads/images/projects/shoes-tablet.jpg"
+      },
+      {
+        id: 106,
+        image: "uploads/images/projects/calendar-tablet.jpg"
+      },
+      {
+        id: 107,
+        image: "uploads/images/projects/watch-tablet.jpg"
+      }
+    ],
+    desktop: [
+      {
+        id: 100,
+        image: "uploads/images/projects/elevation-desktop.jpg"
+      },
+      {
+        id: 101,
+        image: "uploads/images/projects/galaxy-desktop.jpg"
+      },
+      {
+        id: 102,
+        image: "uploads/images/projects/undrwtr-desktop.jpg"
+      },
+      {
+        id: 103,
+        image: "uploads/images/projects/banking-desktop.jpg"
+      },
+      {
+        id: 104,
+        image: "uploads/images/projects/dance-desktop.jpg"
+      },
+      {
+        id: 105,
+        image: "uploads/images/projects/shoes-desktop.jpg"
+      },
+      {
+        id: 106,
+        image: "uploads/images/projects/calendar-desktop.jpg"
+      },
+      {
+        id: 107,
+        image: "uploads/images/projects/watch-desktop.jpg"
+      }
+    ]
+  }
 };
+
+export default projectsData;

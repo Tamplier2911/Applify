@@ -10,6 +10,9 @@ import {
 // transform array to object
 import transformArrayToObject from "../../utils/DataTransformations/transformArrayToObject";
 
+// confirmation
+import confirmation from "../../utils/Confirmation/confirmation";
+
 // messages actions
 import {
   sendMessageSuccess,
@@ -62,25 +65,27 @@ export function* sendMessage({ payload }) {
 }
 
 export function* deleteMessage({ payload }) {
-  try {
-    const res = yield axios({
-      method: "DELETE",
-      url: `/api/v1/messages/${payload}`
-    });
-    yield put(deleteMessageSuccess());
-    if (successfulResponse(res)) {
-      yield put(
-        openModal({
-          header: "Success!",
-          content: "Message was successfully deleted!"
-        })
-      );
+  if (confirmation("Are you sure, that you want to delete a message?")) {
+    try {
+      const res = yield axios({
+        method: "DELETE",
+        url: `/api/v1/messages/${payload}`
+      });
+      yield put(deleteMessageSuccess());
+      if (successfulResponse(res)) {
+        yield put(
+          openModal({
+            header: "Success!",
+            content: "Message was successfully deleted!"
+          })
+        );
+      }
+      yield put(loadMessagesStart());
+    } catch (error) {
+      const { header, content } = getErrorMessage(error);
+      yield put(openModal({ header, content }));
+      yield put(deleteMessageFailure(content));
     }
-    yield put(loadMessagesStart());
-  } catch (error) {
-    const { header, content } = getErrorMessage(error);
-    yield put(openModal({ header, content }));
-    yield put(deleteMessageFailure(content));
   }
 }
 
