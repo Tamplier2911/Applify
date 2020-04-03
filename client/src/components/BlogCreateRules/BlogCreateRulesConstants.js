@@ -19,7 +19,7 @@ const blogCreateRulesData = {
       "https://www.google.com:Google.com",
       "List item - 1",
       "List item - 2",
-      "console.log('Hello, world!')"
+      "2console.log('Hello, world!') // 2 - spaces"
     ]
   },
   rus: {
@@ -42,7 +42,7 @@ const blogCreateRulesData = {
       "https://www.google.com:Google.com",
       "Элемент списка - 1",
       "Элемент списка - 2",
-      "console.log('Hello, world!')"
+      "2console.log('Hello, world!') // 2 - spaces"
     ]
   },
   ukr: {
@@ -65,7 +65,7 @@ const blogCreateRulesData = {
       "https://www.google.com:Google.com",
       "Елементу списку - 1",
       "Елементу списку - 2",
-      "console.log('Hello, world!')"
+      "2console.log('Hello, world!') // 2 - spaces"
     ]
   }
 };

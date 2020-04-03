@@ -11,7 +11,7 @@ import { selectSidenavHidden } from "../../redux/sidenav/sidenav.selectors";
 import { logUserOutStart } from "../../redux/auth/auth.actions";
 import {
   selectIsLogged,
-  selectUserObject
+  selectUserObject,
 } from "../../redux/auth/auth.selectors";
 
 // JS Rendering CSS
@@ -29,11 +29,11 @@ import {
   SidenavNavigation,
   SidenavUl,
   SidenavLi,
-  SidenavLink
+  SidenavLink,
 } from "./SidenavStyles";
 
 // component constants
-import sidenavData from "../../utils/ComponentSidenavConstants/componentSidenavConstants";
+import sidenavData from "./SidenavConstants";
 
 const Sidenav = ({
   sidenavCondition,
@@ -41,7 +41,7 @@ const Sidenav = ({
   lang,
   isLogged,
   user,
-  logUserOutStart
+  logUserOutStart,
 }) => {
   const { name, email, photo } = user;
   const currentData = sidenavData[lang];
@@ -54,7 +54,7 @@ const Sidenav = ({
     sidenavPortfolio,
     sidenavContacts,
     sidenavFeedback,
-    sidenavBlog
+    sidenavBlog,
   } = currentData;
 
   let image = "";
@@ -66,7 +66,7 @@ const Sidenav = ({
 
   return ReactDOM.createPortal(
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
-      <SidenavContent onClick={e => e.stopPropagation()}>
+      <SidenavContent onClick={(e) => e.stopPropagation()}>
         <SidenavHero>
           {isLogged ? (
             <Fragment>
@@ -141,7 +141,7 @@ const mapStateToProps = createStructuredSelector({
   sidenavCondition: selectSidenavHidden,
   lang: selectCurrentLanguage,
   isLogged: selectIsLogged,
-  user: selectUserObject
+  user: selectUserObject,
 });
 
 export default connect(mapStateToProps, { toggleSideNav, logUserOutStart })(

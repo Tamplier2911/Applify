@@ -47,7 +47,7 @@ import {
   ResumeCorrectSVG,
   ResumeProgressContainer,
   ResumeProgressCircle,
-  ResumeProgressText
+  ResumeProgressText,
 } from "./ResumeStyles";
 
 // resume for download
@@ -56,7 +56,7 @@ import resRus from "../../assets/pdf/Artem_Nikolaiev_CV_RUS.pdf";
 import resUkr from "../../assets/pdf/Artem_Nikolaiev_CV_UKR.pdf";
 
 // component constants
-import resumeData from "../../utils/ComponentResumeConstants/componentResumeConstants";
+import resumeData from "./ResumeConstants";
 
 const Resume = ({ lang }) => {
   const {
@@ -70,9 +70,9 @@ const Resume = ({ lang }) => {
         nationalityTitle,
         nationality,
         addressTitle,
-        address
+        address,
       },
-      contacts: { contactsHeader, email, phone, github, twitter }
+      contacts: { contactsHeader, email, phone, github, twitter },
     },
     main: {
       experience: { experienceHeader, experienceTitle, experienceText },
@@ -81,11 +81,11 @@ const Resume = ({ lang }) => {
         skillsHeaderFront,
         skillListFront,
         skillsHeaderBack,
-        skillListBack
+        skillListBack,
       },
-      interests: { interestsHeader, interestSubjects }
+      interests: { interestsHeader, interestSubjects },
     },
-    downloadLinks: { linkDescriptions }
+    downloadLinks: { linkDescriptions },
   } = resumeData[lang];
 
   return (
@@ -293,7 +293,7 @@ const Resume = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(Resume);

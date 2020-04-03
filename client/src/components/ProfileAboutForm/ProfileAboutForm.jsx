@@ -15,28 +15,28 @@ import Button from "../Button/Button";
 import {
   ProfileAboutFormContainer,
   ProfileAboutFormTitle,
-  ProfileAboutFormElement
+  ProfileAboutFormElement,
 } from "./ProfileAboutFormStyles";
 
 // component constants
-import profileAboutFormData from "../../utils/ComponentProfileAboutFormConstants/componentProfileAboutFormConstants";
+import profileAboutFormData from "./ProfileAboutFormConstants";
 
 const ProfileAboutForm = ({ about, lang, updateUserDataStart }) => {
   const {
     profileAboutFormTitle,
     profileAboutFormAbout,
-    profileAboutFormButton
+    profileAboutFormButton,
   } = profileAboutFormData[lang];
 
   const [aboutMeObj, setAboutMeObj] = useState({ aboutMe: about });
   const { aboutMe } = aboutMeObj;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setAboutMeObj({ ...aboutMeObj, [name]: value });
   };
 
-  const onFormSubmit = e => {
+  const onFormSubmit = (e) => {
     e.preventDefault();
     updateUserDataStart(aboutMeObj);
   };
@@ -52,11 +52,11 @@ const ProfileAboutForm = ({ about, lang, updateUserDataStart }) => {
       </ProfileAboutFormTitle>
       <ProfileAboutFormElement
         autoComplete="off"
-        onSubmit={e => onFormSubmit(e)}
+        onSubmit={(e) => onFormSubmit(e)}
       >
         <TextInput
           rows="6"
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           label={profileAboutFormAbout}
           name="aboutMe"
           value={aboutMe}
@@ -71,7 +71,7 @@ const ProfileAboutForm = ({ about, lang, updateUserDataStart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { updateUserDataStart })(

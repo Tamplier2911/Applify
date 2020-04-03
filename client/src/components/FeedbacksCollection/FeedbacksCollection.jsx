@@ -15,21 +15,21 @@ import FeedbackView from "../FeedbackView/FeedbackView";
 import {
   FeedbacksCollectionContainer,
   FeedbacksCollectionTitle,
-  FeedbacksCollectionBtn
+  FeedbacksCollectionBtn,
 } from "./FeedbacksCollectionStyles";
 
 // component constants
-import feedbacksCollectionData from "../../utils/ComponentFeedbacksCollectionConstants/componentFeedbacksCollectionConstants";
+import feedbacksCollectionData from "./FeedbacksCollectionConstants";
 
 const FeedbacksCollection = ({
   lang,
   feedbacks,
   totalLoaded,
-  getMoreFeeds
+  getMoreFeeds,
 }) => {
   const {
     feedbacksCollectionTitle,
-    feedbacksCollectionMore
+    feedbacksCollectionMore,
   } = feedbacksCollectionData[lang];
 
   let count = -1;
@@ -41,7 +41,7 @@ const FeedbacksCollection = ({
       <FeedbacksCollectionTitle>
         {feedbacksCollectionTitle}
       </FeedbacksCollectionTitle>
-      {feedbacks.map(feedback => {
+      {feedbacks.map((feedback) => {
         count++;
         return <FeedbackView key={feedback._id} {...feedback} count={count} />;
       })}
@@ -57,7 +57,7 @@ const FeedbacksCollection = ({
 
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
-  totalLoaded: selectTotalLoaded
+  totalLoaded: selectTotalLoaded,
 });
 
 export default connect(mapStateToProps, { getMoreFeeds })(FeedbacksCollection);

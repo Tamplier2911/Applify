@@ -17,43 +17,43 @@ import Button from "../Button/Button";
 import {
   RestorePasswordFormContainer,
   RestorePasswordFormTitle,
-  RestorePasswordFormElement
+  RestorePasswordFormElement,
 } from "./RestorePasswordFormStyles";
 
 // component constants
-import restorePasswordFormData from "../../utils/ComponentRestorePasswordFormConstants/componentRestorePasswordFormConstants";
+import restorePasswordFormData from "./RestorePasswordFormConstants";
 
 const RestorePasswordForm = ({
   lang,
   match: {
-    params: { id }
+    params: { id },
   },
   openModal,
-  userRestorePasswordStart
+  userRestorePasswordStart,
 }) => {
   const [userPasswords, setUserPasswords] = useState({
     newPassword: "",
     newPasswordConfirm: "",
-    resetToken: id ? id : ""
+    resetToken: id ? id : "",
   });
   const { newPassword, newPasswordConfirm } = userPasswords;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setUserPasswords({ ...userPasswords, [name]: value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (newPassword.length < 8)
       return openModal({
         header: "Attention!",
-        content: "Password must be at least 8 characters long."
+        content: "Password must be at least 8 characters long.",
       });
     if (newPassword !== newPasswordConfirm)
       return openModal({
         header: "Attention!",
-        content: "Password and Confirm Password fields don't match."
+        content: "Password and Confirm Password fields don't match.",
       });
     userRestorePasswordStart(userPasswords);
   };
@@ -62,7 +62,7 @@ const RestorePasswordForm = ({
     restorePasswordFormTitle,
     restorePasswordFormNewPass,
     restorePasswordFormNewPassConf,
-    restorePasswordFormButton
+    restorePasswordFormButton,
   } = restorePasswordFormData[lang];
 
   return (
@@ -71,11 +71,11 @@ const RestorePasswordForm = ({
         {restorePasswordFormTitle}
       </RestorePasswordFormTitle>
       <RestorePasswordFormElement
-        onSubmit={e => onSubmit(e)}
+        onSubmit={(e) => onSubmit(e)}
         autoComplete="off"
       >
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={newPassword}
           label={restorePasswordFormNewPass}
           name="newPassword"
@@ -83,7 +83,7 @@ const RestorePasswordForm = ({
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={newPasswordConfirm}
           label={restorePasswordFormNewPassConf}
           name="newPasswordConfirm"
@@ -97,7 +97,7 @@ const RestorePasswordForm = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default withRouter(

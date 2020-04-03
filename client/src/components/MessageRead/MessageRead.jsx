@@ -30,11 +30,11 @@ import {
   MessageReadDateWrap,
   MessageReadDate,
   MessageReadControlls,
-  MessageReadNotFound
+  MessageReadNotFound,
 } from "./MessageReadStyles";
 
 // component constants
-import messageReadData from "../../utils/ComponentMessageReadConstants/componentMessageReadConstants";
+import messageReadData from "./MessageReadConstants";
 
 const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
   const { createdAt, name, email, message, from, _id } = messageObject
@@ -46,7 +46,7 @@ const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
   const date = new Date(createdAt).toLocaleString("en-us", {
     day: "numeric",
     month: "long",
-    year: "numeric"
+    year: "numeric",
   });
 
   const sendEmailTo = () => {
@@ -56,7 +56,7 @@ const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
     document.location = `mailto:${to}?subject=${subject}&body=${emailBody}`;
   };
 
-  const deleteMessageAndRedirect = id => {
+  const deleteMessageAndRedirect = (id) => {
     deleteMessageStart(id);
     history.push("/profile/messages");
   };
@@ -64,7 +64,7 @@ const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
   const {
     messageReadAnswer,
     messageReadDelete,
-    messageReadNotFound
+    messageReadNotFound,
   } = messageReadData[lang];
 
   return messageObject ? (
@@ -107,7 +107,7 @@ const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
 
 const mapStateToProps = (state, ownProps) => ({
   messageObject: selectMessage(ownProps.match.params.id)(state),
-  lang: selectCurrentLanguage(state)
+  lang: selectCurrentLanguage(state),
 });
 
 export default withRouter(

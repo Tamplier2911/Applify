@@ -20,6 +20,29 @@ const blogFadeIn = css`
   }
 `;
 
+const getWhitespaces = props => {
+  const { startsWith } = props;
+  if (startsWith === "1") {
+    return `margin-left: 1rem;`;
+  } else if (startsWith === "2") {
+    return `margin-left: 2rem;`;
+  } else if (startsWith === "3") {
+    return `margin-left: 3rem;`;
+  } else if (startsWith === "4") {
+    return `margin-left: 4rem;`;
+  } else if (startsWith === "5") {
+    return `margin-left: 5rem;`;
+  } else if (startsWith === "6") {
+    return `margin-left: 6rem;`;
+  } else if (startsWith === "7") {
+    return `margin-left: 7rem;`;
+  } else if (startsWith === "8") {
+    return `margin-left: 8rem;`;
+  } else if (startsWith === "9") {
+    return `margin-left: 9rem;`;
+  } else return `margin-left: 0rem`;
+};
+
 const getLikeColor = props => {
   const { liked } = props;
   if (liked) {
@@ -216,4 +239,6 @@ export const BlogPostContentCode = styled.code`
   padding: 2rem;
 `;
 
-export const BlogPostContentCodeDiv = styled.div``;
+export const BlogPostContentCodeDiv = styled.div`
+  ${getWhitespaces}
+`;

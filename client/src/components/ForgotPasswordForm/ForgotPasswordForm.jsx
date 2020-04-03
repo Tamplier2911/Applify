@@ -19,27 +19,27 @@ import Button from "../Button/Button";
 import {
   ForgotPasswordFormContainer,
   ForgotPasswordFormTitle,
-  ForgotPasswordFormElement
+  ForgotPasswordFormElement,
 } from "./ForgotPasswordFormStyles";
 
 // component constants
-import forgotPasswordFormData from "../../utils/ComponentForgotPasswordFormConstants/componentForgotPasswordFormConstants";
+import forgotPasswordFormData from "./ForgotPasswordFormConstants";
 
 const ForgotPasswordForm = ({ lang, openModal, userForgotPasswordStart }) => {
   const [userEmailAddress, setUserEmailAddress] = useState({ userEmail: "" });
   const { userEmail } = userEmailAddress;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setUserEmailAddress({ ...userEmailAddress, [name]: value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (!emailValidator(userEmail) || !userEmail)
       return openModal({
         header: "Attention!",
-        content: "Please, enter your email address."
+        content: "Please, enter your email address.",
       });
     userForgotPasswordStart(userEmailAddress);
   };
@@ -47,7 +47,7 @@ const ForgotPasswordForm = ({ lang, openModal, userForgotPasswordStart }) => {
   const {
     forgotPasswordFormTitle,
     forgotPasswordEmail,
-    forgotPasswordFormButton
+    forgotPasswordFormButton,
   } = forgotPasswordFormData[lang];
 
   return (
@@ -55,9 +55,12 @@ const ForgotPasswordForm = ({ lang, openModal, userForgotPasswordStart }) => {
       <ForgotPasswordFormTitle lang={lang}>
         {forgotPasswordFormTitle}
       </ForgotPasswordFormTitle>
-      <ForgotPasswordFormElement onSubmit={e => onSubmit(e)} autoComplete="on">
+      <ForgotPasswordFormElement
+        onSubmit={(e) => onSubmit(e)}
+        autoComplete="on"
+      >
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={userEmail}
           label={forgotPasswordEmail}
           name="userEmail"
@@ -71,7 +74,7 @@ const ForgotPasswordForm = ({ lang, openModal, userForgotPasswordStart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { openModal, userForgotPasswordStart })(

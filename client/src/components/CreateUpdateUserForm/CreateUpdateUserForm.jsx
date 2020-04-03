@@ -8,7 +8,7 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { openModal } from "../../redux/modal/modal.actions";
 import {
   createOneUserStart,
-  updateOneUserStart
+  updateOneUserStart,
 } from "../../redux/users/users.actions";
 
 // validator
@@ -28,11 +28,11 @@ import {
   CreateUpdateUserFormLength,
   CreateUpdateUserFormUserSVG,
   CreateUpdateUserFormAdminSVG,
-  CreateUpdateUserFormOwnerSVG
+  CreateUpdateUserFormOwnerSVG,
 } from "./CreateUpdateUserFormStyles";
 
 // component constants
-import createUpdateUserFormData from "../../utils/ComponentCreateUpdateUserFormConstants/componentCreateUpdateUserFormConstants";
+import createUpdateUserFormData from "./CreateUpdateUserFormConstants";
 
 const CreateUpdateUserForm = ({
   lang,
@@ -40,7 +40,7 @@ const CreateUpdateUserForm = ({
   updateData,
   openModal,
   createOneUserStart,
-  updateOneUserStart
+  updateOneUserStart,
 }) => {
   const isMethodPost = method === "POST";
 
@@ -52,7 +52,7 @@ const CreateUpdateUserForm = ({
     userRole: isMethodPost ? "user" : role,
     userAbout: isMethodPost ? "" : about,
     userPassword: "",
-    userPasswordConfirm: ""
+    userPasswordConfirm: "",
   });
   const {
     userName,
@@ -60,21 +60,21 @@ const CreateUpdateUserForm = ({
     userRole,
     userAbout,
     userPassword,
-    userPasswordConfirm
+    userPasswordConfirm,
   } = userCredentials;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     // validate
     if (!emailValidator(userEmail))
       return openModal({
         header: "Attention!",
-        content: "Please, make sure that email is matching required format."
+        content: "Please, make sure that email is matching required format.",
       });
     if (isMethodPost) {
       if (
@@ -87,17 +87,17 @@ const CreateUpdateUserForm = ({
         return openModal({
           header: "Attention!",
           content:
-            "Please, enter name, email, password, confirm password and choose a role."
+            "Please, enter name, email, password, confirm password and choose a role.",
         });
       if (userPassword !== userPasswordConfirm)
         return openModal({
           header: "Attention!",
-          content: "Password and Confirm Password fields don't match."
+          content: "Password and Confirm Password fields don't match.",
         });
       if (userPassword.length < 8)
         return openModal({
           header: "Attention!",
-          content: "Password must be at least 8 characters long."
+          content: "Password must be at least 8 characters long.",
         });
       createOneUserStart(userCredentials);
       setUserCredentials({
@@ -106,13 +106,13 @@ const CreateUpdateUserForm = ({
         userRole: "user",
         userAbout: "",
         userPassword: "",
-        userPasswordConfirm: ""
+        userPasswordConfirm: "",
       });
     } else {
       if (!userName || !userEmail || !userRole)
         return openModal({
           header: "Attention!",
-          content: "Please, make sure user has a name, email and role."
+          content: "Please, make sure user has a name, email and role.",
         });
       const userCredentialsWithId = { ...userCredentials, _id: _id };
       updateOneUserStart(userCredentialsWithId);
@@ -139,7 +139,7 @@ const CreateUpdateUserForm = ({
     createUpdateUserFormRoleOptions,
     createUpdateUserFormButtonCr,
     createUpdateUserFormButtonUp,
-    createUpdateUserFormLength
+    createUpdateUserFormLength,
   } = createUpdateUserFormData[lang];
 
   return (
@@ -151,10 +151,10 @@ const CreateUpdateUserForm = ({
       </CreateUpdateUserFormTitle>
       <CreateUpdateUserFormElement
         autoComplete="off"
-        onSubmit={e => onSubmit(e)}
+        onSubmit={(e) => onSubmit(e)}
       >
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={userName}
           name="userName"
           label={createUpdateUserFormName}
@@ -162,7 +162,7 @@ const CreateUpdateUserForm = ({
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={userEmail}
           name="userEmail"
           label={createUpdateUserFormEmail}
@@ -172,7 +172,7 @@ const CreateUpdateUserForm = ({
         {isMethodPost ? (
           <React.Fragment>
             <FormInput
-              onInputChange={e => onInputChange(e)}
+              onInputChange={(e) => onInputChange(e)}
               value={userPassword}
               name="userPassword"
               label={createUpdateUserFormPassword}
@@ -180,7 +180,7 @@ const CreateUpdateUserForm = ({
               required
             />
             <FormInput
-              onInputChange={e => onInputChange(e)}
+              onInputChange={(e) => onInputChange(e)}
               value={userPasswordConfirm}
               name="userPasswordConfirm"
               label={createUpdateUserFormPasswordConfirm}
@@ -190,7 +190,7 @@ const CreateUpdateUserForm = ({
           </React.Fragment>
         ) : (
           <TextInput
-            onInputChange={e => onInputChange(e)}
+            onInputChange={(e) => onInputChange(e)}
             value={userAbout}
             name="userAbout"
             label={createUpdateUserFormAbout}
@@ -199,7 +199,7 @@ const CreateUpdateUserForm = ({
           />
         )}
         <SelectInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           defaultValue={isMethodPost ? "user" : userRole}
           label={<CreateUpdateUserFormTextLabel />}
           name="userRole"
@@ -225,11 +225,11 @@ const CreateUpdateUserForm = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, {
   openModal,
   createOneUserStart,
-  updateOneUserStart
+  updateOneUserStart,
 })(CreateUpdateUserForm);

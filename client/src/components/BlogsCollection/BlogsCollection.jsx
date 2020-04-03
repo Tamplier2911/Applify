@@ -8,7 +8,7 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import {
   setCurrentSetNext,
   setCurrentSetPrev,
-  setCurrentSetBySlot
+  setCurrentSetBySlot,
 } from "../../redux/blogs/blogs.actions";
 
 // components
@@ -23,24 +23,24 @@ import {
   BlogsCollectionNav,
   BlogsCollectionNavLeft,
   BlogsCollectionNavNum,
-  BlogsCollectionNavRight
+  BlogsCollectionNavRight,
 } from "./BlogsCollectionStyles";
 
 // component constatns
-import blogsCollectionData from "../../utils/ComponentBlogsCollectionConstants/componentBlogsCollectionConstants";
+import blogsCollectionData from "./BlogsCollectionConstants";
 
 const BlogsCollection = ({
   blogsData,
   setCurrentSetNext,
   setCurrentSetPrev,
   setCurrentSetBySlot,
-  lang
+  lang,
 }) => {
   const {
     currentDataSet,
     allDataSets,
     currentDataSlot,
-    allDataSlots
+    allDataSlots,
   } = blogsData;
 
   const { blogsCollectionHeader } = blogsCollectionData[lang];
@@ -84,7 +84,7 @@ const BlogsCollection = ({
           >
             &#x3c;
           </BlogsCollectionNavLeft>
-          {Object.keys(allDataSets).map(key => {
+          {Object.keys(allDataSets).map((key) => {
             const keyNum = parseInt(key);
             return (
               <BlogsCollectionNavNum
@@ -117,11 +117,11 @@ const BlogsCollection = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, {
   setCurrentSetNext,
   setCurrentSetPrev,
-  setCurrentSetBySlot
+  setCurrentSetBySlot,
 })(BlogsCollection);

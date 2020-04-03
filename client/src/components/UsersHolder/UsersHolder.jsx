@@ -9,7 +9,7 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { loadAllUsersStart } from "../../redux/users/users.actions";
 import {
   selectAllUsers,
-  selectUsersIsLoading
+  selectUsersIsLoading,
 } from "../../redux/users/users.selectors";
 
 // components
@@ -26,11 +26,11 @@ import { simpleUserSearch } from "../../utils/DataTransformations/simpleSearches
 // JS Rendering CSS
 import {
   UsersHolderContainer,
-  UserHolderSearchBarContainer
+  UserHolderSearchBarContainer,
 } from "./UsersHolderStyles";
 
 // component constants
-import usersHolderData from "../../utils/ComponentUsersHolderConstants/componentUsersHolderConstants";
+import usersHolderData from "./UsersHolderConstants";
 
 // buff collection for holder with spinner
 const CollectionForHolderWithSpinner = WithSpinnerHOC(CollectionForHolder);
@@ -40,7 +40,7 @@ const UsersHolder = ({
   history,
   loadAllUsersStart,
   users,
-  isLoading
+  isLoading,
 }) => {
   useEffect(() => {
     if (!users.length) {
@@ -51,7 +51,7 @@ const UsersHolder = ({
   const [searchInput, setSearchInput] = useState({ search: "" });
   const { search } = searchInput;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setSearchInput({ ...searchInput, [name]: value });
   };
@@ -65,7 +65,7 @@ const UsersHolder = ({
   const {
     usersHolderTitle,
     usersHolderButton,
-    usersHolderSearch
+    usersHolderSearch,
   } = usersHolderData[lang];
 
   return (
@@ -77,7 +77,7 @@ const UsersHolder = ({
       />
       <UserHolderSearchBarContainer>
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={search}
           name="search"
           label={usersHolderSearch}
@@ -104,7 +104,7 @@ const UsersHolder = ({
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
   users: selectAllUsers,
-  isLoading: selectUsersIsLoading
+  isLoading: selectUsersIsLoading,
 });
 
 export default withRouter(

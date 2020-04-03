@@ -198,7 +198,7 @@ const BlogPost = ({
                 <BlogPostContentCode>
                   {codeSet.map((code, i) => {
                     return (
-                      <BlogPostContentCodeDiv key={i}>
+                      <BlogPostContentCodeDiv key={i} startsWith={code[0]}>
                         {code}
                       </BlogPostContentCodeDiv>
                     );

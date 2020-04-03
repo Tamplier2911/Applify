@@ -32,11 +32,11 @@ import {
   UserCardBodyPasswordOptions,
   UserCardBodyPasswordChanged,
   UserCardControlls,
-  UserCardControllsLink
+  UserCardControllsLink,
 } from "./UserCardStyles";
 
 // component constants
-import userCardData from "../../utils/ComponentUserCardConstants/componentUserCardConstants";
+import userCardData from "./UserCardConstants";
 
 const UserCard = ({ data, lang, deleteOneUserStart }) => {
   const { _id, photo, about, role, name, email, passwordChangedAt } = data
@@ -55,7 +55,7 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
     userCardUpdate,
     userCardAbout,
     userCardPasswordChangedAt,
-    userCardPasswordNotYet
+    userCardPasswordNotYet,
   } = userCardData[lang];
 
   return (
@@ -104,7 +104,7 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { deleteOneUserStart })(UserCard);

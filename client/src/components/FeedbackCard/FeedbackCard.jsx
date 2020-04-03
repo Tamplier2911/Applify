@@ -30,11 +30,11 @@ import {
   FeedbackCarBodyQueEnd,
   FeedbackCarBodyDate,
   FeedbackCarControlls,
-  FeedbackCarControllsLink
+  FeedbackCarControllsLink,
 } from "./FeedbackCardStyles";
 
 // component constants
-import feedbackCardData from "../../utils/ComponentFeedbackCardConstants/componentFeedbackCardConstants";
+import feedbackCardData from "./FeedbackCardConstants";
 
 const FeedbackCard = ({ data, deleteFeedbackStart, lang }) => {
   const { rating, createdAt, _id, feedback, user, color } = data ? data : {};
@@ -85,7 +85,7 @@ const FeedbackCard = ({ data, deleteFeedbackStart, lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { deleteFeedbackStart })(FeedbackCard);

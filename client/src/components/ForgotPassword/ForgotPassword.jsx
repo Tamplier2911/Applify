@@ -14,7 +14,7 @@ import ForgotPasswordForm from "../ForgotPasswordForm/ForgotPasswordForm";
 import { ForgotPasswordContainer } from "./ForgotPasswordStyles";
 
 // component constants
-import forgotPasswordData from "../../utils/ComponentForgotPasswordConstants/componentForgotPasswordConstants";
+import forgotPasswordData from "./ForgotPasswordConstants";
 
 const ForgotPassword = ({ lang }) => {
   const { forgotPasswordTitle } = forgotPasswordData[lang];
@@ -28,7 +28,7 @@ const ForgotPassword = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(ForgotPassword);

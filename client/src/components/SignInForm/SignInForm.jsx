@@ -16,43 +16,43 @@ import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
 // component constants
-import signInFormData from "../../utils/ComponentSignInFormConstants/componentSignInFormConstants";
+import signInFormData from "./SignInFormConstants";
 
 // JS Rendering CSS
 import {
   SignInFormContainer,
   SignInFormTitle,
   SignInFormElement,
-  SignInFormPasForgot
+  SignInFormPasForgot,
 } from "./SignInFormStyles";
 
 const SignInForm = ({ lang, logUserInStart, openModal }) => {
   const [userCredentials, setUserCredentials] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const { password, email } = userCredentials;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (!emailValidator(email) || !password)
       return openModal({
         header: "Attention!",
         content:
-          "Please, enter email and password. Note: email must match required format."
+          "Please, enter email and password. Note: email must match required format.",
       });
 
     logUserInStart(userCredentials);
     setUserCredentials({
       email: "",
-      password: ""
+      password: "",
     });
   };
 
@@ -61,7 +61,7 @@ const SignInForm = ({ lang, logUserInStart, openModal }) => {
     signInFormEmail,
     signInFormPassword,
     signInFormButton,
-    signInFormForgotPas
+    signInFormForgotPas,
   } = signInFormData[lang];
 
   return (
@@ -69,10 +69,10 @@ const SignInForm = ({ lang, logUserInStart, openModal }) => {
       <SignInFormTitle lang={lang}>{signInFormTitle}</SignInFormTitle>
       <SignInFormElement
         // autoComplete="off"
-        onSubmit={e => onSubmit(e)}
+        onSubmit={(e) => onSubmit(e)}
       >
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={email}
           label={signInFormEmail}
           name="email"
@@ -80,7 +80,7 @@ const SignInForm = ({ lang, logUserInStart, openModal }) => {
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={password}
           label={signInFormPassword}
           name="password"
@@ -97,7 +97,7 @@ const SignInForm = ({ lang, logUserInStart, openModal }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { logUserInStart, openModal })(

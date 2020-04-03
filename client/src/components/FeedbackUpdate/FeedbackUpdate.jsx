@@ -25,11 +25,11 @@ import {
   FeedbackUpdateDetailsName,
   FeedbackUpdateDetailsDate,
   FeedbackUpdateImageWrap,
-  FeedbackUpdateImage
+  FeedbackUpdateImage,
 } from "./FeedbackUpdateStyles";
 
 // component constants
-import feedbackUpdateData from "../../utils/ComponentFeedbackUpdateConstants/componentFeedbackUpdateConstants.js";
+import feedbackUpdateData from "./FeedbackUpdateConstants";
 
 const FeedbackUpdate = ({ feedbackObject, lang }) => {
   const { rating, createdAt, _id, feedback, user, color } = feedbackObject
@@ -45,7 +45,7 @@ const FeedbackUpdate = ({ feedbackObject, lang }) => {
     feedbackUpdateTitle,
     feedbackUpdateName,
     feedbackUpdateDate,
-    feedbackUpdateNotFound
+    feedbackUpdateNotFound,
   } = feedbackUpdateData[lang];
 
   return feedbackObject ? (
@@ -76,7 +76,7 @@ const FeedbackUpdate = ({ feedbackObject, lang }) => {
 
 const mapStateToProps = (state, ownProps) => ({
   lang: selectCurrentLanguage(state),
-  feedbackObject: selectAllLoadedFeedsAsObject(ownProps.match.params.id)(state)
+  feedbackObject: selectAllLoadedFeedsAsObject(ownProps.match.params.id)(state),
 });
 
 export default withRouter(connect(mapStateToProps)(FeedbackUpdate));

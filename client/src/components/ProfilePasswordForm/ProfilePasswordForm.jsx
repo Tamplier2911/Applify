@@ -16,11 +16,11 @@ import Button from "../Button/Button";
 import {
   ProfilePasswordFormContainer,
   ProfilePasswordFormTitle,
-  ProfilePasswordFormElement
+  ProfilePasswordFormElement,
 } from "./ProfilePasswordFormStyles";
 
 // component constants
-import profilePasswordFormData from "../../utils/ComponentProfilePasswordFormConstants/componentProfilePasswordFormConstants";
+import profilePasswordFormData from "./ProfilePasswordFormConstants";
 
 const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
   const {
@@ -28,23 +28,23 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
     profilePasswordFormCurPass,
     profilePasswordFormNewPass,
     profilePasswordFormNewPassConf,
-    profilePasswordFormFileButton
+    profilePasswordFormFileButton,
   } = profilePasswordFormData[lang];
 
   const [userPassword, setUserPassword] = useState({
     currentPassword: "",
     newPassword: "",
-    newPasswordConfirm: ""
+    newPasswordConfirm: "",
   });
 
   const { currentPassword, newPassword, newPasswordConfirm } = userPassword;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setUserPassword({ ...userPassword, [name]: value });
   };
 
-  const onFormSubmit = e => {
+  const onFormSubmit = (e) => {
     e.preventDefault();
     if (
       currentPassword.length < 8 ||
@@ -53,27 +53,27 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
     )
       return openModal({
         header: "Attention!",
-        content: "Password must be at least 8 characters long."
+        content: "Password must be at least 8 characters long.",
       });
 
     if (newPassword !== newPasswordConfirm)
       return openModal({
         header: "Attention!",
-        content: "New Password and Confirm New Password fields don't match."
+        content: "New Password and Confirm New Password fields don't match.",
       });
 
     if (!currentPassword || !newPassword || !newPasswordConfirm)
       return openModal({
         header: "Attention!",
         content:
-          "Please enter current password, new password and confirmation of new password."
+          "Please enter current password, new password and confirmation of new password.",
       });
 
     updateUserPasswordStart(userPassword);
     setUserPassword({
       currentPassword: "",
       newPassword: "",
-      newPasswordConfirm: ""
+      newPasswordConfirm: "",
     });
   };
 
@@ -84,10 +84,10 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
       </ProfilePasswordFormTitle>
       <ProfilePasswordFormElement
         autoComplete="off"
-        onSubmit={e => onFormSubmit(e)}
+        onSubmit={(e) => onFormSubmit(e)}
       >
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={currentPassword}
           label={profilePasswordFormCurPass}
           name="currentPassword"
@@ -95,7 +95,7 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={newPassword}
           label={profilePasswordFormNewPass}
           name="newPassword"
@@ -103,7 +103,7 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={newPasswordConfirm}
           label={profilePasswordFormNewPassConf}
           name="newPasswordConfirm"
@@ -117,7 +117,7 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { openModal, updateUserPasswordStart })(

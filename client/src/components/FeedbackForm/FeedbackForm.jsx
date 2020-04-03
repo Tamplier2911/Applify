@@ -7,7 +7,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import {
   sendFeedbackStart,
-  updateFeedbackStart
+  updateFeedbackStart,
 } from "../../redux/feedbacks/feedbacks.actions";
 import { openModal } from "../../redux/modal/modal.actions";
 
@@ -23,11 +23,11 @@ import {
   FeedbackFormParagraph,
   FeedbackFormElement,
   FeedbackFormRatingSVG,
-  FeedbackFormLength
+  FeedbackFormLength,
 } from "./FeedbackFormStyles";
 
 // component constants
-import feedbackFormData from "../../utils/ComponentFeedbackFormConstants/componentFeedbackFormConstants";
+import feedbackFormData from "./FeebackFormConstants";
 
 export const FeedbackForm = ({
   lang,
@@ -35,38 +35,39 @@ export const FeedbackForm = ({
   sendFeedbackStart,
   updateFeedbackStart,
   method,
-  updateData
+  updateData,
 }) => {
   const [feedback, setFeedback] = useState({
     feedbackMessage: method === "POST" ? "" : updateData.feedback,
     feedbackRating: method === "POST" ? "5" : updateData.rating,
-    feedbackId: method === "POST" ? undefined : updateData._id
+    feedbackId: method === "POST" ? undefined : updateData._id,
   });
 
   const { feedbackMessage, feedbackRating } = feedback;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setFeedback({ ...feedback, [name]: value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (feedbackMessage.length > 500)
       return openModal({
         header: "Attention!",
-        content: "Feedback must not consist of more than 500 characters."
+        content: "Feedback must not consist of more than 500 characters.",
       });
     if (feedbackRating.length > 1 || typeof feedbackRating !== "string")
       return openModal({
         header: "Attention!",
         content:
-          "Rating must be defined as a string, rating must not consist of more than one character."
+          "Rating must be defined as a string, rating must not consist of more than one character.",
       });
     if (!feedbackMessage.length || !feedbackRating.length)
       return openModal({
         header: "Attention!",
-        content: "Please, enter your feedback. Use select bar to choose rating."
+        content:
+          "Please, enter your feedback. Use select bar to choose rating.",
       });
     method === "POST"
       ? sendFeedbackStart(feedback) &&
@@ -81,7 +82,7 @@ export const FeedbackForm = ({
     feedbackFormFeedback,
     feedbackFormSubmit,
     feedbackFormOptions,
-    feedbackFormLength
+    feedbackFormLength,
   } = feedbackFormData[lang];
 
   return (
@@ -90,9 +91,9 @@ export const FeedbackForm = ({
         <FeedbackFormParagraph>{feedbackFormTitle[0]}</FeedbackFormParagraph>
         <FeedbackFormParagraph>{feedbackFormTitle[1]}</FeedbackFormParagraph>
       </FeedbackFormTitle>
-      <FeedbackFormElement autoComplete="off" onSubmit={e => onSubmit(e)}>
+      <FeedbackFormElement autoComplete="off" onSubmit={(e) => onSubmit(e)}>
         <TextInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={feedbackMessage}
           name="feedbackMessage"
           label={feedbackFormFeedback}
@@ -102,10 +103,10 @@ export const FeedbackForm = ({
           required
         />
         <SelectInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           defaultValue={method === "POST" ? "5" : feedbackRating}
           name={"feedbackRating"}
-          label={labels.map(label => (
+          label={labels.map((label) => (
             <FeedbackFormRatingSVG key={label} />
           ))}
           options={feedbackFormOptions}
@@ -122,11 +123,11 @@ export const FeedbackForm = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, {
   sendFeedbackStart,
   updateFeedbackStart,
-  openModal
+  openModal,
 })(FeedbackForm);

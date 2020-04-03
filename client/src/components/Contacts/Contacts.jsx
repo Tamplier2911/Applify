@@ -14,7 +14,7 @@ import ContactsForm from "../ContactsForm/ContactsForm";
 import { ContactsContainer } from "./ContactsStyles";
 
 // component constants
-import contactsData from "../../utils/ComponentContactsConstants/componentContactsConstants";
+import contactsData from "./ContactsConstants";
 
 const Contacts = ({ lang }) => {
   const { contactsHeader } = contactsData[lang];
@@ -28,7 +28,7 @@ const Contacts = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(Contacts);

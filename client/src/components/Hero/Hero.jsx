@@ -18,22 +18,19 @@ import {
   HeroTextbox,
   HeroHeader,
   HeroText,
-  HeroPassiveCTA
+  HeroPassiveCTA,
 } from "./HeroStyles";
 
 // component constants
-import {
-  squares,
-  ctaOptions
-} from "../../utils/SquareConstants/squareConstants";
-import heroData from "../../utils/ComponentHeroConstants/componentHeroConstants";
+import { squares, ctaOptions } from "./HeroSquaresConstants";
+import heroData from "./HeroConstants";
 
 const Hero = ({ lang }) => {
   const currentData = heroData[lang];
   const { companyName, companySlogan, companyCTA } = currentData;
   return (
     <HeroContainer>
-      {squares.map(obj => {
+      {squares.map((obj) => {
         return <Square key={obj.id} options={obj} />;
       })}
       <HeroActiveCTA>
@@ -53,7 +50,7 @@ const Hero = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(Hero);

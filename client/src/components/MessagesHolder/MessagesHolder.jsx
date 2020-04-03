@@ -8,7 +8,7 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { loadMessagesStart } from "../../redux/messages/messages.actions";
 import {
   selectAllMessages,
-  selectIsLoading
+  selectIsLoading,
 } from "../../redux/messages/messages.selectors";
 
 // components
@@ -23,11 +23,11 @@ import { simpleMessageSearch } from "../../utils/DataTransformations/simpleSearc
 // JS Rendering CSS
 import {
   MessagesHolderContainer,
-  MessageHolderInputBarContainer
+  MessageHolderInputBarContainer,
 } from "./MessagesHolderStyles";
 
 // component constants
-import messagesHolderData from "../../utils/ComponentMessagesHolderConstants/componentMessagesHolderConstants";
+import messagesHolderData from "./MessagesHolderConstants";
 
 // Buffing MessagesCollection with Spinner
 const MessagesCollectionWithSpinner = WithSpinnerHOC(MessagesCollection);
@@ -42,7 +42,7 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
   const [searchInput, setSearchInput] = useState({ search: "" });
   const { search } = searchInput;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setSearchInput({ ...searchInput, [name]: value });
   };
@@ -54,7 +54,7 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
     <MessagesHolderContainer>
       <MessageHolderInputBarContainer>
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={search}
           name="search"
           label={messageHolderSearch}
@@ -79,7 +79,7 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
   messages: selectAllMessages,
-  isLoading: selectIsLoading
+  isLoading: selectIsLoading,
 });
 
 export default connect(mapStateToProps, { loadMessagesStart })(MessagesHolder);

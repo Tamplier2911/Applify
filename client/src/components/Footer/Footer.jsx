@@ -15,11 +15,11 @@ import {
   FacebookSVG,
   GitHubSVG,
   LinkedInSVG,
-  FooterTextContainer
+  FooterTextContainer,
 } from "./FooterStyles";
 
 // Component Constants
-import footerData from "../../utils/ComponentFooterConstants/componentFooterConstants";
+import footerData from "./FooterConstants";
 
 const Footer = ({ lang }) => {
   const { footerCopyright, footerAriaLabels } = footerData[lang];
@@ -60,7 +60,7 @@ const Footer = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(Footer);

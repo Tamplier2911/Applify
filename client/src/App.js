@@ -7,7 +7,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { openModal } from "./redux/modal/modal.actions";
-import { selectIsLogged, selectUserId } from "./redux/auth/auth.selectors";
+import { selectIsLogged } from "./redux/auth/auth.selectors";
 import { fetchAuthObjectStart } from "./redux/auth/auth.actions";
 
 // components
@@ -50,7 +50,7 @@ const PasswordRestorationPage = lazy(() =>
   import("./pages/PasswordRestorationPage/PasswordRestorationPage")
 );
 
-const App = ({ openModal, fetchAuthObjectStart, isLogged, userId }) => {
+const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
   useEffect(() => {
     // openModal({
     //   header: "Attention!",
@@ -108,7 +108,6 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged, userId }) => {
 
 const mapStateToProps = createStructuredSelector({
   isLogged: selectIsLogged,
-  userId: selectUserId
 });
 
 export default connect(mapStateToProps, { openModal, fetchAuthObjectStart })(

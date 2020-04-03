@@ -8,7 +8,7 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { openModal } from "../../redux/modal/modal.actions";
 import {
   updateOneBlogpostStart,
-  createOneBlogpostStart
+  createOneBlogpostStart,
 } from "../../redux/blogs/blogs.actions";
 
 // components
@@ -23,11 +23,11 @@ import {
   CreateUpdateBlogpostFormTitle,
   CreateUpdateBlogpostFormElement,
   CreateUpdateBlogpostFormLength,
-  CreateUpdateBlogpostFormHolder
+  CreateUpdateBlogpostFormHolder,
 } from "./CreateUpdateBlogpostFormStyles";
 
 // component constants
-import createUpdateBlogpostFormData from "../../utils/ComponentCreateUpdateBlogpostForm/componentCreateUpdateBlogpostForm";
+import createUpdateBlogpostFormData from "./CreateUpdateBlogpostFormConstants";
 
 const CreateUpdateBlogpostForm = ({
   lang,
@@ -35,7 +35,7 @@ const CreateUpdateBlogpostForm = ({
   updateData,
   openModal,
   updateOneBlogpostStart,
-  createOneBlogpostStart
+  createOneBlogpostStart,
 }) => {
   const isMethodPost = method === "POST";
 
@@ -43,11 +43,11 @@ const CreateUpdateBlogpostForm = ({
     blogTitle: isMethodPost ? "" : updateData.title,
     blogTheme: isMethodPost ? "" : updateData.theme,
     blogContent: isMethodPost ? "" : updateData.content,
-    blogImage: ""
+    blogImage: "",
   });
   const { blogTitle, blogTheme, blogContent, blogImage } = blogData;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "blogImage") {
       const [file] = e.target.files;
@@ -57,17 +57,17 @@ const CreateUpdateBlogpostForm = ({
     }
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (blogTitle.length > 80)
       return openModal({
         header: "Attention!",
-        content: "Post Title must not consist of more than 80 characters."
+        content: "Post Title must not consist of more than 80 characters.",
       });
     if (blogTheme.length > 80)
       return openModal({
         header: "Attention!",
-        content: "Post Subject must not consist of more than 80 characters."
+        content: "Post Subject must not consist of more than 80 characters.",
       });
     if (blogImage) {
       if (
@@ -77,7 +77,7 @@ const CreateUpdateBlogpostForm = ({
         return openModal({
           header: "Attention!",
           content:
-            "File must be type of 'image'. Note: max allowed file size - 5mb."
+            "File must be type of 'image'. Note: max allowed file size - 5mb.",
         });
       }
     }
@@ -85,20 +85,20 @@ const CreateUpdateBlogpostForm = ({
       return openModal({
         header: "Attention!",
         content:
-          "Please, enter blog title, subject, content and choose an image."
+          "Please, enter blog title, subject, content and choose an image.",
       });
     if (isMethodPost) {
       if (!blogImage)
         return openModal({
           header: "Attention!",
-          content: "Please, choose an image."
+          content: "Please, choose an image.",
         });
       createOneBlogpostStart(blogData);
       setBlogData({
         blogTitle: "",
         blogTheme: "",
         blogContent: "",
-        blogImage: ""
+        blogImage: "",
       });
     } else {
       const data = { ...blogData, _id: updateData._id };
@@ -115,7 +115,7 @@ const CreateUpdateBlogpostForm = ({
     createUpdateBlogpostFormBtnCr,
     createUpdateBlogpostFormBtnUp,
     createUpdateBlogpostFormNote,
-    createUpdateBlogpostFormLength
+    createUpdateBlogpostFormLength,
   } = createUpdateBlogpostFormData[lang];
 
   return (
@@ -125,10 +125,10 @@ const CreateUpdateBlogpostForm = ({
       </CreateUpdateBlogpostFormTitle>
       <CreateUpdateBlogpostFormElement
         autoComplete="off"
-        onSubmit={e => onSubmit(e)}
+        onSubmit={(e) => onSubmit(e)}
       >
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={blogTitle}
           name="blogTitle"
           label={createUpdateBlogpostFormTitleLabel}
@@ -136,7 +136,7 @@ const CreateUpdateBlogpostForm = ({
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={blogTheme}
           name="blogTheme"
           label={createUpdateBlogpostFormSubjectLabel}
@@ -145,7 +145,7 @@ const CreateUpdateBlogpostForm = ({
         />
         <TextInput
           rows="10"
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={blogContent}
           name="blogContent"
           label={createUpdateBlogpostFormContentLabel}
@@ -154,7 +154,7 @@ const CreateUpdateBlogpostForm = ({
         />
         {isMethodPost ? (
           <FileInput
-            onInputChange={e => onInputChange(e)}
+            onInputChange={(e) => onInputChange(e)}
             image={blogImage ? 1 : 0}
             name="blogImage"
             type="file"
@@ -186,11 +186,11 @@ const CreateUpdateBlogpostForm = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, {
   openModal,
   updateOneBlogpostStart,
-  createOneBlogpostStart
+  createOneBlogpostStart,
 })(CreateUpdateBlogpostForm);

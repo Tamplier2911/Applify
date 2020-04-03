@@ -14,12 +14,12 @@ import CreateUpdateBlogpostForm from "../CreateUpdateBlogpostForm/CreateUpdateBl
 import { CreateUpdateBlogpostContainer } from "./CreateUpdateBlogpostStyles";
 
 // component constants
-import createUpdateBlogpostData from "../../utils/ComponentCreateUpdateBlogpost/componentCreateUpdateBlogpost";
+import createUpdateBlogpostData from "./CreateUpdateBlogpostConstants";
 
 const CreateUpdateBlogpost = ({ lang, method, updateData }) => {
   const {
     createUpdateBlogpostTitleCr,
-    createUpdateBlogpostTitleUp
+    createUpdateBlogpostTitleUp,
   } = createUpdateBlogpostData[lang];
 
   return (
@@ -39,7 +39,7 @@ const CreateUpdateBlogpost = ({ lang, method, updateData }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(CreateUpdateBlogpost);

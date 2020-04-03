@@ -14,13 +14,13 @@ import CreateUpdateUserForm from "../CreateUpdateUserForm/CreateUpdateUserForm";
 import { CreateUpdateUserContainer } from "./CreateUpdateUserStyle";
 
 // component constants
-import createUpdateUserData from "../../utils/ComponentCreateUpdateUserConstants/componentCreateUpdateUserConstants";
+import createUpdateUserData from "./CreateUpdateUserConstants";
 
 const CreateUpdateUser = ({ lang, method, updateData }) => {
   const isMethodPost = method === "POST";
   const {
     createUpdateUserTitleCr,
-    createUpdateUserTitleUp
+    createUpdateUserTitleUp,
   } = createUpdateUserData[lang];
 
   return (
@@ -36,7 +36,7 @@ const CreateUpdateUser = ({ lang, method, updateData }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(CreateUpdateUser);

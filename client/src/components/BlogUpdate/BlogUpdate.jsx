@@ -29,11 +29,11 @@ import {
   BlogUpdateLikesCount,
   BlogUpdateSVGWrap,
   BlogUpdateSVG,
-  BlogUpdateNotFound
+  BlogUpdateNotFound,
 } from "./BlogUpdateStyles";
 
 // component constants
-import blogUpdateData from "../../utils/ComponentBlogUpdateConstants/componentBlogUpdateConstants";
+import blogUpdateData from "./BlogUpdateConstants";
 
 const BlogUpdate = ({ lang, blogObject }) => {
   // author
@@ -45,7 +45,7 @@ const BlogUpdate = ({ lang, blogObject }) => {
     title,
     theme,
     content,
-    author
+    author,
   } = blogObject ? blogObject : {};
 
   const blogImg = getImageRelativePath(image ? image : "");
@@ -92,7 +92,7 @@ const BlogUpdate = ({ lang, blogObject }) => {
 
 const mapStateToProps = (state, ownProps) => ({
   blogObject: selectAllBlogpostsAsObject(ownProps.match.params.id)(state),
-  lang: selectCurrentLanguage(state)
+  lang: selectCurrentLanguage(state),
 });
 
 export default withRouter(connect(mapStateToProps)(BlogUpdate));

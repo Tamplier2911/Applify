@@ -19,11 +19,11 @@ import Button from "../Button/Button";
 import {
   SignUpFormContainer,
   SignUpFormTitle,
-  SignUpFormElement
+  SignUpFormElement,
 } from "./SignUpFormStyles";
 
 // component constants
-import signUpFormData from "../../utils/ComponentSignUpFormConstants/componentSignUpFormConstants";
+import signUpFormData from "./SignUpFormConstants";
 
 const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
   const {
@@ -32,56 +32,56 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
     signUpFormEmail,
     signUpFormPassword,
     signUpFormPasswordConfirm,
-    signUpFormButton
+    signUpFormButton,
   } = signUpFormData[lang];
 
   const [userCredentials, setUserCredentials] = useState({
     name: "",
     email: "",
     password: "",
-    passwordConfirm: ""
+    passwordConfirm: "",
   });
 
   const { name, email, password, passwordConfirm } = userCredentials;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (password.length < 8)
       return openModal({
         header: "Attention!",
-        content: "Password must be at least 8 characters long."
+        content: "Password must be at least 8 characters long.",
       });
     if (password !== passwordConfirm)
       return openModal({
         header: "Attention!",
-        content: "Password and Confirm Password fields don't match."
+        content: "Password and Confirm Password fields don't match.",
       });
     if (!emailValidator(email) || !name || !password || !passwordConfirm)
       return openModal({
         header: "Attention!",
         content:
-          "Please, enter your name, email and password. Note: email must match required format."
+          "Please, enter your name, email and password. Note: email must match required format.",
       });
     signUserUpStart(userCredentials);
     setUserCredentials({
       name: "",
       email: "",
       password: "",
-      passwordConfirm: ""
+      passwordConfirm: "",
     });
   };
 
   return (
     <SignUpFormContainer>
       <SignUpFormTitle>{signUpFormTitle}</SignUpFormTitle>
-      <SignUpFormElement autoComplete="off" onSubmit={e => onSubmit(e)}>
+      <SignUpFormElement autoComplete="off" onSubmit={(e) => onSubmit(e)}>
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={name}
           label={signUpFormName}
           name="name"
@@ -89,7 +89,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={email}
           label={signUpFormEmail}
           name="email"
@@ -97,7 +97,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={password}
           label={signUpFormPassword}
           name="password"
@@ -105,7 +105,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={passwordConfirm}
           label={signUpFormPasswordConfirm}
           name="passwordConfirm"
@@ -119,7 +119,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { signUserUpStart, openModal })(

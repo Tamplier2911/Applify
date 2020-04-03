@@ -13,13 +13,13 @@ import Card from "../Card/Card";
 import { HomeCardContainer } from "./HomeCardsStyles";
 
 // component constats
-import homeCardsData from "../../utils/ComponentHomeCardsConstants/componentHeroCardsConstants";
+import homeCardsData from "./HomeCardConstants";
 
 export const HomeCards = ({ lang }) => {
   const currentData = homeCardsData[lang];
   return (
     <HomeCardContainer>
-      {currentData.map(card => {
+      {currentData.map((card) => {
         const { icon, title, text, gradient, svg, id } = card;
         return (
           <Card
@@ -39,7 +39,7 @@ export const HomeCards = ({ lang }) => {
 
 const mapStateToProps = () =>
   createStructuredSelector({
-    lang: selectCurrentLanguage
+    lang: selectCurrentLanguage,
   });
 
 export default connect(mapStateToProps)(HomeCards);

@@ -11,7 +11,7 @@ import FormHolder from "../FormHolder/FormHolder";
 import SignInForm from "../SignInForm/SignInForm";
 
 // component constants
-import signInConstants from "../../utils/ComponentSignInConstants/componentSignInConstants";
+import signInConstants from "./SignInConstants";
 
 // JS Rendering CSS
 import { SignInContainer } from "./SignInStyles";
@@ -28,7 +28,7 @@ const SignIn = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(SignIn);

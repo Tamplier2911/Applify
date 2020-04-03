@@ -30,11 +30,11 @@ import {
   BlogCardBodySvgWrap,
   BlogCardBodySVG,
   BlogCardControlls,
-  BlogCardControllsLink
+  BlogCardControllsLink,
 } from "./BlogCardStyles";
 
 // component constants
-import blogCardData from "../../utils/ComponentBlogCardConstants/componentBlogCardConstants";
+import blogCardData from "./BlogCardConstants";
 
 const BlogCard = ({ data, lang, deleteOneBlogpostStart }) => {
   const { _id, image, likes, createdAt, title, theme, author } = data
@@ -82,7 +82,7 @@ const BlogCard = ({ data, lang, deleteOneBlogpostStart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { deleteOneBlogpostStart })(BlogCard);

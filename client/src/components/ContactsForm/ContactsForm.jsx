@@ -21,37 +21,37 @@ import {
   ContactsFormContainer,
   ContactsFormTitle,
   ContactsFormItself,
-  ContactsFormLength
+  ContactsFormLength,
 } from "./ContactsFormStyles";
 
 // component constants
-import contactsFormData from "../../utils/ComponentContactsFormConstants/componentContactsFormConstants";
+import contactsFormData from "./ContactsFormConstants";
 
 const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
   const [contactsInfo, setContactsInfo] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
   const { name, email, message } = contactsInfo;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setContactsInfo({ ...contactsInfo, [name]: value });
   };
 
-  const onFormSubmit = e => {
+  const onFormSubmit = (e) => {
     e.preventDefault();
     if (name.length < 1 || name.length > 40)
       return openModal({
         header: "Attention!",
-        content: "Name must not consist of more than 40 characters."
+        content: "Name must not consist of more than 40 characters.",
       });
     if (!emailValidator(email) || !name || !message)
       return openModal({
         header: "Attention!",
         content:
-          "Please, enter your name, email and message. Note: email must match required format."
+          "Please, enter your name, email and message. Note: email must match required format.",
       });
     sendMessageStart(contactsInfo);
     setContactsInfo({ name: "", email: "", message: "" });
@@ -63,15 +63,15 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
     contactsFormEmailField,
     contactsFormMsgField,
     contactsFormSubmitField,
-    contactsFormMsgLength
+    contactsFormMsgLength,
   } = contactsFormData[lang];
 
   return (
     <ContactsFormContainer>
       <ContactsFormTitle lang={lang}>{contactsFormTitle}</ContactsFormTitle>
-      <ContactsFormItself autoComplete="off" onSubmit={e => onFormSubmit(e)}>
+      <ContactsFormItself autoComplete="off" onSubmit={(e) => onFormSubmit(e)}>
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={name}
           label={contactsFormNameField}
           name="name"
@@ -79,7 +79,7 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={email}
           label={contactsFormEmailField}
           name="email"
@@ -88,7 +88,7 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
         />
         <TextInput
           rows="6"
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           label={contactsFormMsgField}
           name="message"
           value={message}
@@ -107,7 +107,7 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { openModal, sendMessageStart })(

@@ -20,11 +20,11 @@ import Button from "../Button/Button";
 import {
   ProfileInfoFormContainer,
   ProfileInfoFormTitle,
-  ProfileInfoFormElement
+  ProfileInfoFormElement,
 } from "./ProfileInfoFormStyles";
 
 // component constants
-import profileInfoFormData from "../../utils/ComponentProfileInfoFormConstants/componentProfileInfoFormConstants";
+import profileInfoFormData from "./ProfileInfoFormConstants";
 
 const ProfileInfoForm = ({
   name,
@@ -32,21 +32,21 @@ const ProfileInfoForm = ({
   photo,
   lang,
   openModal,
-  updateUserDataStart
+  updateUserDataStart,
 }) => {
   const {
     profileInfoFormTitle,
     profileInfoFormName,
     profileInfoFormEmail,
     profileInfoFormFileUpload,
-    profileInfoFormFileButton
+    profileInfoFormFileButton,
   } = profileInfoFormData[lang];
 
   const [profileInfo, setProfileInfo] = useState({
     profileName: "",
     profileEmail: "",
     profileImage: null,
-    profileOldImage: photo
+    profileOldImage: photo,
   });
 
   const { profileName, profileEmail, profileImage } = profileInfo;
@@ -56,11 +56,11 @@ const ProfileInfoForm = ({
       profileName: name,
       profileEmail: email,
       profileImage: null,
-      profileOldImage: photo
+      profileOldImage: photo,
     });
   }, [email, name, photo]);
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "profileImage") {
       const [file] = e.target.files;
@@ -70,14 +70,14 @@ const ProfileInfoForm = ({
     }
   };
 
-  const onFormSubmit = e => {
+  const onFormSubmit = (e) => {
     e.preventDefault();
     // validate data
     // validate type of image to be type: "image/..."
     if (!emailValidator(profileEmail) || !profileName)
       return openModal({
         header: "Attention!",
-        content: "In order to update user data, please, enter name and email."
+        content: "In order to update user data, please, enter name and email.",
       });
 
     if (profileImage) {
@@ -88,7 +88,7 @@ const ProfileInfoForm = ({
         return openModal({
           header: "Attention!",
           content:
-            "File must be type of 'image'. Note: max allowed file size - 5mb."
+            "File must be type of 'image'. Note: max allowed file size - 5mb.",
         });
       }
     }
@@ -102,10 +102,10 @@ const ProfileInfoForm = ({
       </ProfileInfoFormTitle>
       <ProfileInfoFormElement
         autoComplete="off"
-        onSubmit={e => onFormSubmit(e)}
+        onSubmit={(e) => onFormSubmit(e)}
       >
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={profileName}
           label={profileInfoFormName}
           name="profileName"
@@ -113,7 +113,7 @@ const ProfileInfoForm = ({
           required
         />
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={profileEmail}
           label={profileInfoFormEmail}
           name="profileEmail"
@@ -121,7 +121,7 @@ const ProfileInfoForm = ({
           required
         />
         <FileInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           label={profileInfoFormFileUpload}
           image={profileImage ? 1 : 0}
           name="profileImage"
@@ -135,7 +135,7 @@ const ProfileInfoForm = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { openModal, updateUserDataStart })(

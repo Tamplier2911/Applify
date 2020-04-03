@@ -25,11 +25,11 @@ import {
   MessageViewMessage,
   MessageViewDate,
   MessageViewControlls,
-  MessageViewLink
+  MessageViewLink,
 } from "./MessageViewStyles";
 
 // component constants
-import messageViewData from "../../utils/ComponentMessageViewConstants/componentMessageViewConstants";
+import messageViewData from "./MessageViewConstants";
 
 const MessageView = ({
   createdAt,
@@ -39,14 +39,14 @@ const MessageView = ({
   message,
   from,
   lang,
-  deleteMessageStart
+  deleteMessageStart,
 }) => {
   let image = getImageRelativePath(from ? from.photo : "");
 
   const date = new Date(createdAt).toLocaleString("en-us", {
     day: "numeric",
     month: "long",
-    year: "numeric"
+    year: "numeric",
   });
 
   const { messageViewRead, messageViewDelete } = messageViewData[lang];
@@ -81,7 +81,7 @@ const MessageView = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { deleteMessageStart })(MessageView);

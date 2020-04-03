@@ -14,7 +14,7 @@ import SignUpForm from "../SignUpForm/SignUpForm";
 import { SignUpContainer } from "./SignUpStyles.js";
 
 // component constants
-import signUpData from "../../utils/ComponentSignUpConstants/componentSignUpConstants";
+import signUpData from "./SignUpConstants";
 
 const SignUp = ({ lang }) => {
   const { signUpTitle } = signUpData[lang];
@@ -28,7 +28,7 @@ const SignUp = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(SignUp);

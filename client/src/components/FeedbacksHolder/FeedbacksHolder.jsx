@@ -9,7 +9,7 @@ import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import { loadFeedbacksStart } from "../../redux/feedbacks/feedbacks.actions";
 import {
   selectAllLoadedFeeds,
-  selectIsLoading
+  selectIsLoading,
 } from "../../redux/feedbacks/feedbacks.selectors";
 
 // components
@@ -26,11 +26,11 @@ import { simpleFeedbacksSearch } from "../../utils/DataTransformations/simpleSea
 // JS Rendering CSS
 import {
   FeedbacksHolderContainer,
-  FeedbacksHolderSearchBarContainer
+  FeedbacksHolderSearchBarContainer,
 } from "./FeedbacksHolderStyles";
 
 // component constants
-import feedbacksHolderData from "../../utils/ComponentFeedbacksHolderConstants/componentFeedbacksHolderConstants";
+import feedsHolderData from "./FeedbacksHolderConstants";
 
 // buffing collection with spinner
 const CollectionForHolderWithSpinner = WithSpinnerHOC(CollectionForHolder);
@@ -40,7 +40,7 @@ const FeedbacksHolder = ({
   history,
   loadFeedbacksStart,
   feedbacks,
-  isLoading
+  isLoading,
 }) => {
   useEffect(() => {
     if (!feedbacks.length) {
@@ -51,7 +51,7 @@ const FeedbacksHolder = ({
   const [searchInput, setSearchInput] = useState({ search: "" });
   const { search } = searchInput;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setSearchInput({ ...searchInput, [name]: value });
   };
@@ -63,8 +63,8 @@ const FeedbacksHolder = ({
   const {
     feedsHolderTitle,
     feedsHolderButton,
-    feedsHolderSearch
-  } = feedbacksHolderData[lang];
+    feedsHolderSearch,
+  } = feedsHolderData[lang];
 
   const feedbacksArray = simpleFeedbacksSearch(feedbacks, search.toLowerCase());
 
@@ -77,7 +77,7 @@ const FeedbacksHolder = ({
       />
       <FeedbacksHolderSearchBarContainer>
         <FormInput
-          onInputChange={e => onInputChange(e)}
+          onInputChange={(e) => onInputChange(e)}
           value={search}
           name="search"
           label={feedsHolderSearch}
@@ -104,7 +104,7 @@ const FeedbacksHolder = ({
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
   feedbacks: selectAllLoadedFeeds,
-  isLoading: selectIsLoading
+  isLoading: selectIsLoading,
 });
 
 export default withRouter(

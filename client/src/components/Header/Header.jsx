@@ -20,11 +20,11 @@ import {
   HeaderLink,
   HeaderLogout,
   HeaderLogoLink,
-  HeaderLogoSVG
+  HeaderLogoSVG,
 } from "./HeaderStyles";
 
 // Component Constants
-import headerData from "../../utils/ComponentHeaderConstants/componentHeaderConstants";
+import headerData from "./HeaderConstants";
 
 const Header = ({ toggleSideNav, lang, isLogged, logUserOutStart }) => {
   const currentData = headerData[lang];
@@ -60,7 +60,7 @@ const Header = ({ toggleSideNav, lang, isLogged, logUserOutStart }) => {
 
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
-  isLogged: selectIsLogged
+  isLogged: selectIsLogged,
 });
 
 export default connect(mapStateToProps, { toggleSideNav, logUserOutStart })(

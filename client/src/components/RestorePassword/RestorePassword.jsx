@@ -14,7 +14,7 @@ import RestorePasswordForm from "../RestorePasswordForm/RestorePasswordForm";
 import { RestorePasswordContainer } from "./RestorePasswordStyles";
 
 // component constants
-import restorePasswordData from "../../utils/ComponentRestorePasswordConstants/componentRestorePasswordConstants";
+import restorePasswordData from "./RestorePasswordConstatns";
 
 const RestorePassword = ({ lang }) => {
   const { restorePasswordTitle } = restorePasswordData[lang];
@@ -29,7 +29,7 @@ const RestorePassword = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(RestorePassword);

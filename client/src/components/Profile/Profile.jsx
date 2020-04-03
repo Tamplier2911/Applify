@@ -17,11 +17,11 @@ import ProfilePasswordForm from "../ProfilePasswordForm/ProfilePasswordForm";
 import {
   ProfileContainer,
   ProfileTitle,
-  ProfileContent
+  ProfileContent,
 } from "./ProfileStyles";
 
 // component constants
-import profileData from "../../utils/ComponentProfileConstants/componentProfileConstants";
+import profileData from "./ProfileConstants";
 
 const Profile = ({ lang, user }) => {
   const { name, email, photo, about, role } = user;
@@ -49,7 +49,7 @@ const Profile = ({ lang, user }) => {
 
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
-  user: selectUserObject
+  user: selectUserObject,
 });
 
 export default connect(mapStateToProps)(Profile);
