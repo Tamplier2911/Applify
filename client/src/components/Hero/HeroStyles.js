@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import bg from "../../assets/jpeg/tabletbg-min.jpg";
 
+import ScrollAnimation from "react-animate-on-scroll";
+
 const fadeInHeroComponent = css`
   @keyframes heroFadeIn {
     0% {
@@ -43,7 +45,7 @@ export const HeroContainer = styled.div`
   }
 `;
 
-export const HeroActiveCTA = styled.div`
+export const HeroActiveCTA = styled(ScrollAnimation)`
   @media only screen and (max-width: 720px) {
     display: none;
   }
@@ -81,7 +83,7 @@ export const HeroContent = styled.div`
   }
 `;
 
-export const HeroTextbox = styled.div`
+export const HeroTextbox = styled(ScrollAnimation)`
   display: grid;
   justify-items: center;
 `;

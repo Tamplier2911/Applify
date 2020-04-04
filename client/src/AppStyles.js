@@ -10,6 +10,8 @@ export const HomepageContainer = styled.canvas`
 */
 
 export const AppContainer = styled.div`
+  overflow: hidden;
+
   display: grid;
   // grid-template-rows: 10rem calc(100vh - (12rem + 8rem)) 8rem;
   grid-template-columns:

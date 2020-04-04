@@ -14,7 +14,7 @@ import {
   FormHolderContactsSVG,
   FormHolderForgotSVG,
   FormHolderRestoreSVG,
-  FormHolderFormWrap
+  FormHolderFormWrap,
 } from "./FormHolderStyles";
 
 // Form Holder component expects FORM as a child
@@ -25,7 +25,7 @@ const FormHolder = ({ children, type, title }) => {
     <FormHolderContainer>
       <FormHolderTitle>{title}</FormHolderTitle>
       <FormHolderComp>
-        <FormHolderLeft>
+        <FormHolderLeft animateIn={"bounceInRight"} animateOnce={true}>
           {type === "signIn" ? (
             <FormHolderSignInSVG />
           ) : type === "signUp" ? (
@@ -42,7 +42,7 @@ const FormHolder = ({ children, type, title }) => {
             <FormHolderForgotSVG />
           )}
         </FormHolderLeft>
-        <FormHolderRight>
+        <FormHolderRight animateIn={"bounceInLeft"} animateOnce={true}>
           <FormHolderFormWrap>{children ? children : null}</FormHolderFormWrap>
         </FormHolderRight>
       </FormHolderComp>

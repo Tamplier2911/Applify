@@ -3,7 +3,17 @@ import { Link } from "react-router-dom";
 import { ReactComponent as MenuSVG } from "../../assets/svg/menu.svg";
 import { ReactComponent as LogoSVG } from "../../assets/svg/logo-min.svg";
 
+const getBoxShadow = (props) => {
+  const { shadow } = props;
+  if (shadow) {
+    return `box-shadow: 0 0.2rem 0.8rem var(--cl-shadow);`;
+  } else {
+    return `box-shadow: 0 0.2rem 0.8rem transparent;`;
+  }
+};
+
 export const HeaderContainer = styled.div`
+  ${getBoxShadow}
   display: grid;
   /* grid-template-columns: subgrid; */
   grid-template-columns:
@@ -24,8 +34,6 @@ export const HeaderContainer = styled.div`
 
   // align-items: center;
   // justify-items: end;
-
-  box-shadow: 0 0.2rem 0.8rem var(--cl-shadow);
 `;
 
 export const HeaderContent = styled.div`

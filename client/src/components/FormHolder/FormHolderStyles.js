@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
 // svg
 import { ReactComponent as ContactsSVG } from "../../assets/svg/web_developer.svg";
@@ -24,7 +25,7 @@ const SVGStyles = css`
   }
 `;
 
-const getFont = props => {
+const getFont = (props) => {
   const { lang } = props;
   if (lang === "eng") {
     return `font-family: var(--font-title);`;
@@ -77,7 +78,7 @@ export const FormHolderComp = styled.div`
   }
 `;
 
-export const FormHolderLeft = styled.div`
+export const FormHolderLeft = styled(ScrollAnimation)`
   position: relative;
   grid-area: 2 / 1 / 10 / 5;
   z-index: 5;
@@ -139,7 +140,7 @@ export const FormHolderRestoreSVG = styled(RestoreSVG)`
   ${SVGStyles}
 `;
 
-export const FormHolderRight = styled.div`
+export const FormHolderRight = styled(ScrollAnimation)`
   grid-area: 1 / 2 / -1 / -1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

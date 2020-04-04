@@ -33,13 +33,13 @@ const Hero = ({ lang }) => {
       {squares.map((obj) => {
         return <Square key={obj.id} options={obj} />;
       })}
-      <HeroActiveCTA>
+      <HeroActiveCTA animateIn={"bounceInLeft"} animateOnce={true}>
         <HeroActiveCTALink to="/contacts">
           <Square options={ctaOptions} text={companyCTA} />
         </HeroActiveCTALink>
       </HeroActiveCTA>
       <HeroContent>
-        <HeroTextbox>
+        <HeroTextbox animateIn={"bounceInRight"} animateOnce={true}>
           <HeroHeader>{companyName}</HeroHeader>
           <HeroText>{companySlogan}</HeroText>
         </HeroTextbox>

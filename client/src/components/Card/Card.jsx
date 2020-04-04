@@ -7,12 +7,20 @@ import {
   CardIconWrapper,
   CardContent,
   CardContentTitle,
-  CardContentText
+  CardContentText,
 } from "./CardStyles";
+
+// component motions
+import cardMotions from "./CardMotions";
 
 const Card = ({ title, text, gradient, SVG, id }) => {
   return (
-    <CardContainer val={id} cl={{ left: gradient[0], right: gradient[1] }}>
+    <CardContainer
+      val={id}
+      cl={{ left: gradient[0], right: gradient[1] }}
+      animateIn={cardMotions[id]}
+      animateOnce={true}
+    >
       <CardIconWrapper>
         <SVG style={{ fill: gradient[0] }} />
       </CardIconWrapper>

@@ -1,5 +1,16 @@
 import styled, { css } from "styled-components";
 
+const messageReadFadeIn = css`
+  @keyframes messageFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
 const sharedMessageReadStyles = css`
   width: 50rem;
   white-space: nowrap;
@@ -20,9 +31,11 @@ const sharedMessageReadStyles = css`
 `;
 
 export const MessageReadContainer = styled.div`
+  ${messageReadFadeIn}
   display: grid;
   grid-row-gap: 2rem;
   font-family: var(--font-title);
+  animation: messageFadeIn 1s;
 
   margin-bottom: 4rem;
 `;

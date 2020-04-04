@@ -1,5 +1,6 @@
 // import "./App.scss";
 // import React, {useEffect, lazy, Suspense} from "react";
+import "animate.css/animate.min.css";
 import React, { useEffect, Suspense, lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
