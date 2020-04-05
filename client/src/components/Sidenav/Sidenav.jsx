@@ -21,6 +21,8 @@ import {
   SidenavContainer,
   SidenavContent,
   SidenavTheme,
+  SidenavSunSVG,
+  SidenavMoonSVG,
   SidenavHero,
   SidenavHeroImgContainer,
   SidenavImage,
@@ -76,7 +78,7 @@ const Sidenav = ({
         <SidenavTheme
           onClick={() => (theme === "light" ? setThemeDark() : setThemeLight())}
         >
-          {/* SVG HERE */}
+          {theme === "light" ? <SidenavMoonSVG /> : <SidenavSunSVG />}
         </SidenavTheme>
         <SidenavHero>
           {isLogged ? (

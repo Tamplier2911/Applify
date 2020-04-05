@@ -29,6 +29,8 @@ const ImageAnimation = css`
 
 const ArrowStyles = css`
   align-self: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 `;
 
 const ArrowSVGStyles = css`
@@ -100,6 +102,7 @@ export const ProjectsGalleryTitle = styled.h2`
   font-family: var(--font-title);
   font-size: 4rem;
   font-weight: 300;
+  line-height: 1;
   padding: 1rem;
 `;
 
@@ -110,6 +113,7 @@ export const ProjectsGalleryComposition = styled.div`
 `;
 
 export const ProjectsGalleryArrow = styled.div`
+  display: grid;
   ${ArrowStyles}
 `;
 

@@ -5,6 +5,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { selectCurrentTheme } from "../../redux/theme/theme.selectors";
 
 // components
 import Card from "../Card/Card";
@@ -15,11 +16,11 @@ import { HomeCardContainer } from "./HomeCardsStyles";
 // component constats
 import homeCardsData from "./HomeCardConstants";
 
-export const HomeCards = ({ lang }) => {
+export const HomeCards = ({ lang, theme }) => {
   const currentData = homeCardsData[lang];
   return (
     <HomeCardContainer>
-      {currentData.map((card) => {
+      {currentData[theme].map((card) => {
         const { icon, title, text, gradient, svg, id } = card;
         return (
           <Card
@@ -40,6 +41,7 @@ export const HomeCards = ({ lang }) => {
 const mapStateToProps = () =>
   createStructuredSelector({
     lang: selectCurrentLanguage,
+    theme: selectCurrentTheme,
   });
 
 export default connect(mapStateToProps)(HomeCards);

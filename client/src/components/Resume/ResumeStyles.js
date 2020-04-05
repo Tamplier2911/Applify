@@ -28,29 +28,29 @@ const getProgressPercentage = (props) => {
   let { percentage } = props;
   percentage = Number(percentage);
   if (percentage === 100) {
-    return `background-image: -webkit-linear-gradient(left, #028cd5 50%, transparent 50%), -webkit-linear-gradient(right, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(left, var(--cl-primary) 50%, transparent 50%), -webkit-linear-gradient(right, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 90 && percentage <= 100) {
-    return `background-image: -webkit-linear-gradient(left, #028cd5 50%, transparent 50%), -webkit-linear-gradient(144deg, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(left, var(--cl-primary) 50%, transparent 50%), -webkit-linear-gradient(144deg, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 70 && percentage <= 80) {
-    return `background-image: -webkit-linear-gradient(left, #028cd5 50%, transparent 50%), -webkit-linear-gradient(108deg, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(left, var(--cl-primary) 50%, transparent 50%), -webkit-linear-gradient(108deg, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 60 && percentage <= 70) {
-    return `background-image: -webkit-linear-gradient(left, #028cd5 50%, transparent 50%), -webkit-linear-gradient(72deg, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(left, var(--cl-primary) 50%, transparent 50%), -webkit-linear-gradient(72deg, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 50 && percentage <= 60) {
-    return `background-image: -webkit-linear-gradient(left, #028cd5 50%, transparent 50%), -webkit-linear-gradient(36deg, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(left, var(--cl-primary) 50%, transparent 50%), -webkit-linear-gradient(36deg, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 40 && percentage <= 50) {
-    return `background-image: -webkit-linear-gradient(right, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(right, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 30 && percentage <= 40) {
-    return `background-image: -webkit-linear-gradient(144deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(144deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 20 && percentage <= 30) {
-    return `background-image: -webkit-linear-gradient(108deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(108deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 10 && percentage <= 20) {
-    return `background-image: -webkit-linear-gradient(72deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(72deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage > 0 && percentage <= 10) {
-    return `background-image: -webkit-linear-gradient(36deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(36deg, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, var(--cl-primary) 50%, #ddd 50%);`;
   } else if (percentage === 0) {
-    return `background-image: -webkit-linear-gradient(left, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(left, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, var(--cl-primary) 50%, #ddd 50%);`;
   } else {
-    return `background-image: -webkit-linear-gradient(left, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, #028cd5 50%, #ddd 50%);`;
+    return `background-image: -webkit-linear-gradient(left, #ddd 50%, transparent 50%), -webkit-linear-gradient(left, var(--cl-primary) 50%, #ddd 50%);`;
   }
 };
 

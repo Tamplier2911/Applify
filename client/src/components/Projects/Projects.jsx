@@ -15,6 +15,7 @@ import {
 } from "../../redux/projects/projects.actions";
 import { selectCurrentProject } from "../../redux/projects/projects.selectors";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { selectCurrentTheme } from "../../redux/theme/theme.selectors";
 
 // projects constants
 import projectsHeaders from "./ProjectsConstants";
@@ -50,6 +51,7 @@ const Projects = ({
   setCurrentProjectNext,
   getCurrentProject,
   lang,
+  theme,
   // setCurrentProjectPrev
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -132,6 +134,7 @@ const Projects = ({
             <ProjectsContentLink
               href={`${url}`}
               color={color}
+              theme={theme}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -148,6 +151,7 @@ const mapStateToProps = () =>
   createStructuredSelector({
     currentProject: selectCurrentProject,
     lang: selectCurrentLanguage,
+    theme: selectCurrentTheme,
   });
 
 export default connect(mapStateToProps, {

@@ -45,7 +45,7 @@ const Footer = ({ lang }) => {
             <GitHubSVG />
           </FooterLink>
           <FooterLink
-            href="https://github.com/Tamplier2911"
+            href="http://linkedin.com/in/artem-nikolaiev-946755198"
             target="_blank"
             rel="noopener noreferrer"
             aria-label={footerAriaLabels[2]}

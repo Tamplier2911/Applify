@@ -15,6 +15,46 @@ const fadeInHeroComponent = css`
   }
 `;
 
+const getPassiveCTAColors = (props) => {
+  const { theme } = props;
+  if (theme === "dark") {
+    return `
+      background-color: var(--cl-font);
+      color: var(--cl-white);
+      &:hover,
+      &:active {
+        color: var(--cl-font);
+        background-color: var(--cl-hero-passive-link);
+      }
+    `;
+  } else {
+    return `
+      background-color: var(--cl-tiles-2);
+      color: var(--cl-white);
+      &:hover,
+      &:active {
+        color: var(--cl-tiles-2);
+        background-color: var(--cl-white);
+      }
+    `;
+  }
+};
+
+const getBackgroundGradient = (props) => {
+  const { theme } = props;
+  if (theme === "dark") {
+    return `
+      background-image: linear-gradient(to bottom right, var(--cl-gradient-start), var(--cl-gradient-end)),
+      url(${bg});
+    `;
+  } else {
+    return `
+      background-image: linear-gradient(to bottom right,var(--cl-gradient-start), var(--cl-gradient-end)),
+      url(${bg});
+    `;
+  }
+};
+
 export const HeroContainer = styled.div`
   ${fadeInHeroComponent}
   animation: 1s heroFadeIn;
@@ -26,8 +66,7 @@ export const HeroContainer = styled.div`
 
   @media only screen and (max-width: 720px) {
     grid-template-columns: min-content;
-    background-image: linear-gradient(to bottom right, #fffffffb, #ffffff2c),
-      url(${bg});
+    ${getBackgroundGradient}
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -131,9 +170,7 @@ export const HeroPassiveCTA = styled(Link)`
   &:link,
   &:visited {
     text-decoration: none;
-    background-color: var(--cl-tiles-2);
     padding: 1rem 5rem;
-    color: var(--cl-white);
     font-size: 1.5rem;
     border: 0.1rem solid var(--cl-tiles-2);
     box-shadow: 0 0.2rem 0.4rem var(--cl-shadow);
@@ -148,10 +185,5 @@ export const HeroPassiveCTA = styled(Link)`
       padding: 1rem 4rem;
     }
   }
-
-  &:hover,
-  &:active {
-    color: var(--cl-tiles-2);
-    background-color: var(--cl-white);
-  }
+  ${getPassiveCTAColors}
 `;

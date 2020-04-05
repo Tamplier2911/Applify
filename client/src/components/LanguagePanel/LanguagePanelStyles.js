@@ -91,6 +91,17 @@ export const LanguagePanelImage = styled.img`
   object-fit: cover;
 `;
 
+export const LanguagePanelSVG = styled(LangPannelSVG)`
+  fill: var(--cl-font);
+  width: 4rem;
+  height: 4rem;
+  transition: fill 0.3s;
+
+  &:hover {
+    fill: var(--cl-primary);
+  }
+`;
+
 export const LanguagePanelWrap = styled.div`
   position: relative;
   cursor: pointer;
@@ -111,15 +122,8 @@ export const LanguagePanelWrap = styled.div`
   &:hover .language-panel__svg {
     fill: var(--cl-primary);
   }
-`;
 
-export const LanguagePanelSVG = styled(LangPannelSVG)`
-  fill: var(--cl-font);
-  width: 4rem;
-  height: 4rem;
-  transition: fill 0.3s;
-
-  &:hover {
+  &:hover ${LanguagePanelSVG} {
     fill: var(--cl-primary);
   }
 `;

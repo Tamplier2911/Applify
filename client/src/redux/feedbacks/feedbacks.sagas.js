@@ -1,10 +1,10 @@
-import { takeLatest, put, all, call } from "redux-saga/effects";
+import { takeLatest, put, all, call, select } from "redux-saga/effects";
 import axios from "axios";
 
 // error filter
 import {
   getErrorMessage,
-  successfulResponse
+  successfulResponse,
 } from "../../utils/ErrorFilters/errorFilters";
 
 import confirmation from "../../utils/Confirmation/confirmation";
@@ -22,7 +22,7 @@ import {
   deleteFeedbackFailure,
   loadFeedbacksStart,
   loadFeedbacksSuccess,
-  loadFeedbacksFailure
+  loadFeedbacksFailure,
 } from "./feedbacks.actions";
 
 // modal actions
@@ -35,8 +35,10 @@ const {
   SEND_FEEDBACK_START,
   UPDATE_FEEDBACK_START,
   DELETE_FEEDBACK_START,
-  LOAD_FEEDBACKS_START
+  LOAD_FEEDBACKS_START,
 } = feedbacksTypes;
+
+export const getTheme = (state) => state.theme;
 
 export function* sendFeedback({ payload }) {
   try {
@@ -46,15 +48,15 @@ export function* sendFeedback({ payload }) {
       url: "/api/v1/feedbacks",
       data: {
         feedback: feedbackMessage,
-        rating: feedbackRating
-      }
+        rating: feedbackRating,
+      },
     });
     yield put(sendFeedbackSuccess());
     if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
-          content: "Feedback successfully sent!"
+          content: "Feedback successfully sent!",
         })
       );
     }
@@ -74,15 +76,15 @@ export function* updateFeedback({ payload }) {
       url: `/api/v1/feedbacks/${feedbackId}`,
       data: {
         feedback: feedbackMessage,
-        rating: feedbackRating
-      }
+        rating: feedbackRating,
+      },
     });
     yield put(updateFeedbackSuccess());
     if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
-          content: "Feedback was successfully updated."
+          content: "Feedback was successfully updated.",
         })
       );
     }
@@ -99,14 +101,14 @@ export function* deleteFeedback({ payload }) {
     try {
       const res = yield axios({
         method: "DELETE",
-        url: `/api/v1/feedbacks/${payload}`
+        url: `/api/v1/feedbacks/${payload}`,
       });
       yield put(deleteFeedbackSuccess());
       if (successfulResponse(res)) {
         yield put(
           openModal({
             header: "Success!",
-            content: "Feedback successfully deleted."
+            content: "Feedback successfully deleted.",
           })
         );
       }
@@ -120,12 +122,16 @@ export function* deleteFeedback({ payload }) {
 }
 
 export function* loadFeedbacks() {
+  const { currentTheme } = yield select(getTheme);
   try {
     const res = yield axios({
       method: "GET",
-      url: "/api/v1/feedbacks"
+      url: "/api/v1/feedbacks",
     });
-    const feedbacks = appendColorsToFeedbackObjects(res.data.data.data);
+    const feedbacks = appendColorsToFeedbackObjects(
+      res.data.data.data,
+      currentTheme
+    );
     yield put(loadFeedbacksSuccess(feedbacks));
   } catch (error) {
     const { header, content } = getErrorMessage(error);
@@ -155,6 +161,6 @@ export function* feedbacksSagas() {
     call(onSendFeedbackStart),
     call(onUpdateFeedbackStart),
     call(onDeleteFeedbackStart),
-    call(onLoadFeedbacksStart)
+    call(onLoadFeedbacksStart),
   ]);
 }

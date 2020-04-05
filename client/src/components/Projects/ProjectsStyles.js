@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import ScrollAnimation from "react-animate-on-scroll";
 
 /*
+
 // before projects animation was faked using this mechanic:
 // new projects pops in every 15 second via set interval
 // this animation runs 15 second 0-20% fade in 20-100% resting state. 
@@ -21,7 +22,17 @@ const projectsAnimation = css`
     }
   }
 `;
+
 */
+
+const getThemeColorForLink = (props) => {
+  const { theme } = props;
+  if (theme === "dark") {
+    return `color: var(--cl-font);`;
+  } else {
+    return `color: var(--cl-white);`;
+  }
+};
 
 const fadeInProject = (props) => {
   const { load } = props;
@@ -220,9 +231,9 @@ export const ProjectsContentDate = styled.div``;
 
 export const ProjectsContentLink = styled.a`
   background-color: ${getLinkColor};
+  ${getThemeColorForLink}
   padding: 0.5rem 5rem;
   font-family: var(--font-title);
-  color: var(--cl-white);
   text-decoration: none;
 
   transition: 0.3s background-color;

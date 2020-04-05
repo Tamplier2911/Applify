@@ -1,6 +1,9 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
+import { ReactComponent as SunSVG } from "../../assets/svg/sun.svg";
+import { ReactComponent as MoonSVG } from "../../assets/svg/moon.svg";
+
 const showSidenavContentAnimation = css`
   @keyframes showSidenavContent {
     0% {
@@ -47,6 +50,14 @@ const dynamicDataStyles = css`
   @media only screen and (max-width: 300px) {
     width: 15rem;
   }
+`;
+
+const svgSharedStyles = css`
+  width: 3rem;
+  height: 3rem;
+
+  fill: var(--cl-font);
+  transition: fill 0.3s;
 `;
 
 const displaySidenav = (props) => {
@@ -120,9 +131,21 @@ export const SidenavContent = styled.div`
   ${showSidenavAnimation}
 `;
 
+export const SidenavSunSVG = styled(SunSVG)`
+  ${svgSharedStyles}
+`;
+
+export const SidenavMoonSVG = styled(MoonSVG)`
+  ${svgSharedStyles}
+`;
+
 export const SidenavTheme = styled.div`
   position: absolute;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 5rem;
   height: 5rem;
   background-color: var(--white);
@@ -134,6 +157,14 @@ export const SidenavTheme = styled.div`
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  &:hover ${SidenavSunSVG} {
+    fill: var(--cl-primary);
+  }
+
+  &:hover ${SidenavMoonSVG} {
+    fill: var(--cl-primary);
   }
 `;
 

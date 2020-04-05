@@ -52,6 +52,7 @@ export const HeaderContent = styled.div`
 `;
 
 export const HeaderMenu = styled(MenuSVG)`
+  fill: var(--cl-font);
   cursor: pointer;
   transition: fill 0.3s;
   &:hover {

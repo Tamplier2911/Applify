@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const getColumnsAmount = props => {
+const getColumnsAmount = (props) => {
   const { columns } = props;
   return `grid-template-columns: repeat(${columns}, min-content);`;
 };
@@ -41,7 +41,7 @@ export const SelectInputElement = styled.select`
   }
 
   & option {
-    color: var(--cl-font);
+    color: var(--cl-select);
   }
 
   & option:checked {

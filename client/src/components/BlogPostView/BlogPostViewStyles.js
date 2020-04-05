@@ -55,7 +55,7 @@ export const BlogViewContainer = styled(Link)`
   display: grid;
   grid-template-rows: repeat(2, 1fr);
 
-  color: var(--cl-white);
+  color: var(--cl-blogview-desc);
   text-decoration: none;
   font-weight: 300;
   font-family: var(--font-title);

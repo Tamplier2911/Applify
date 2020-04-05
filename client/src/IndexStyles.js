@@ -11,32 +11,34 @@ const getTheme = (props) => {
             --font-cyrillic: "Roboto", sans-serif;
         
             // COLOR PALET
-            --cl-font: #002a38;
-            --cl-primary: #1a73e8;
+            --cl-font: #DBDBDB;
+            --cl-primary: #4ecca3;
             --cl-black: #000;
-            --cl-white: #fff;
-            --cl-grey: #eeeeee;
+            --cl-white: #1E1E1E;
+            --cl-grey: #1E1E1E;
             --cl-dark-grey: #a0a0a0;
             --cl-darkest-grey: #747474;
         
+            --cl-bg-dark: #121212;
+
             --cl-shadow: rgba(0, 0, 0, 0.623);
-            --cl-header: #ffffffec;
-        
+            --cl-header: #272727f8;
+
             // SIDE NAV
-            --cl-sidenav: hsla(0, 0%, 100%, 0.568);
+            --cl-sidenav: #4ecca25b;
             --cl-sidenav-shadow: rgba(0, 0, 0, 0.603);
         
             // LANGUAGE PANNEL
             --cl-langpan-shadow: rgba(0, 0, 0, 0.623);
         
             // MAIN HOVERS
-            --cl-mainhover: #1a73e8;
+            --cl-mainhover: #4ecca3;
         
             // SCROLL BAR
             --cl-scrollbar-bg: #2834930c;
             --cl-scroll-shadow: #00000028;
-            --cl-scrollThumb-bg1: #fff;
-            --cl-scrollThumb-bg2: #1a73e8;
+            --cl-scrollThumb-bg1: #121212;
+            --cl-scrollThumb-bg2: #4ecca3;
         
             // TILE COLORS
             --cl-tiles-1: #00a8a9;
@@ -47,10 +49,15 @@ const getTheme = (props) => {
             --cl-tiles-6: #c0c1c3;
             --cl-tiles-7: #d6d7d9;
             --cl-square-shadow: #00000086;
-        
+
+            // HERO GRADIENT
+            --cl-gradient-start: rgba(52, 232, 157, 0.904);
+            --cl-gradient-end:  rgb(15, 52, 67);
+            --cl-hero-passive-link: #0f3443;
+
             // HOME PAGE CARDS
             --cl-card-shadow: rgba(0, 0, 0, 0.616);
-            --cl-card-shadow-hover: #fe3e2da1;
+            --cl-card-shadow-hover: #4ecca25b;
         
             // PORTFOLIO PROJECTS CIRCLES
             --cl-circle-0: #000;
@@ -62,32 +69,36 @@ const getTheme = (props) => {
         
             // PROJECTS GALLERY
             --cl-projects-gal-bg-col: rgb(243, 243, 243);
-            --cl-projects-gal-pulse: rgba(26, 115, 232, 0.4);
+            --cl-projects-gal-pulse: #4ecca25b;
             --cl-projects-gal-pulse-shadow: rgba(204, 169, 44, 0);
         
             // RESUME PAGE
-            --cl-font-resume: #1a73e8;
+            --cl-font-resume: #55c57a;
             --cl-progress-resume: #ddd;
         
             // CONTACTS PAGE
-            --cl-contacts-bg: #ececec;
+            --cl-contacts-bg: #1E1E1E;
         
             // BLOG POST VIEW
             --cl-bpost-view-shadow: rgba(0, 0, 0, 0.432);
             --cl-bpost-liked: #eb4646;
             --cl-bpost-like-hover: #fa2020;
-        
+            --cl-blogview-desc: #fff;
+
             // FEEDBACK VIEW
             --cl-feedback-view-shadow: rgba(0, 0, 0, 0.459);
         
             // FEEDBACK COLLECTION
             --cl-button-disabled-bg: rgb(231, 231, 231);
             --cl-button-disabled-text: rgb(112, 112, 112);
+
+            // SELECT INPUT
+            --cl-select: #1E1E1E;
         
             // FOOTER LINKS
-            --cl-facebook: #fe3f2d;
-            --cl-github: #00a8a9;
-            --cl-linkedin: #ffaa2d;
+            --cl-facebook:#DBDBDB;
+            --cl-github: #DBDBDB;
+            --cl-linkedin: #DBDBDB;
         
             // BREAKPOINTS
             --bp-tablet: 48em;
@@ -124,7 +135,7 @@ const getTheme = (props) => {
         html {
             box-sizing: border-box;
             font-size: 62.5%;
-            background-color: #333;
+            background-color: var(--cl-bg-dark);
 
             @media only screen and (max-width: 48em) {
                 font-size: 56.25%;
@@ -238,6 +249,10 @@ const getTheme = (props) => {
             --cl-tiles-7: #d6d7d9;
             --cl-square-shadow: #00000086;
         
+            // HERO GRADIENT
+            --cl-gradient-start: rgba(255, 255, 255, 0.984);;
+            --cl-gradient-end:  rgba(255, 255, 255, 0.173);
+
             // HOME PAGE CARDS
             --cl-card-shadow: rgba(0, 0, 0, 0.616);
             --cl-card-shadow-hover: #fe3e2da1;
@@ -266,6 +281,7 @@ const getTheme = (props) => {
             --cl-bpost-view-shadow: rgba(0, 0, 0, 0.432);
             --cl-bpost-liked: #eb4646;
             --cl-bpost-like-hover: #fa2020;
+            --cl-blogview-desc: #fff;
         
             // FEEDBACK VIEW
             --cl-feedback-view-shadow: rgba(0, 0, 0, 0.459);
@@ -274,6 +290,9 @@ const getTheme = (props) => {
             --cl-button-disabled-bg: rgb(231, 231, 231);
             --cl-button-disabled-text: rgb(112, 112, 112);
         
+            // SELECT INPUT
+            --cl-select:  #002a38;
+
             // FOOTER LINKS
             --cl-facebook: #fe3f2d;
             --cl-github: #00a8a9;

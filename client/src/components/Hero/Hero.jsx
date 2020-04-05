@@ -5,6 +5,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
+import { selectCurrentTheme } from "../../redux/theme/theme.selectors";
 
 // components
 import Square from "../Square/Square";
@@ -25,17 +26,18 @@ import {
 import { squares, ctaOptions } from "./HeroSquaresConstants";
 import heroData from "./HeroConstants";
 
-const Hero = ({ lang }) => {
+const Hero = ({ lang, theme }) => {
   const currentData = heroData[lang];
   const { companyName, companySlogan, companyCTA } = currentData;
+
   return (
-    <HeroContainer>
-      {squares.map((obj) => {
+    <HeroContainer theme={theme}>
+      {squares[theme].map((obj) => {
         return <Square key={obj.id} options={obj} />;
       })}
       <HeroActiveCTA>
         <HeroActiveCTALink to="/contacts">
-          <Square options={ctaOptions} text={companyCTA} />
+          <Square options={ctaOptions[theme]} text={companyCTA} />
         </HeroActiveCTALink>
       </HeroActiveCTA>
       <HeroContent>
@@ -43,7 +45,9 @@ const Hero = ({ lang }) => {
           <HeroHeader>{companyName}</HeroHeader>
           <HeroText>{companySlogan}</HeroText>
         </HeroTextbox>
-        <HeroPassiveCTA to="/contacts">{companyCTA}</HeroPassiveCTA>
+        <HeroPassiveCTA to="/contacts" theme={theme}>
+          {companyCTA}
+        </HeroPassiveCTA>
       </HeroContent>
     </HeroContainer>
   );
@@ -51,6 +55,7 @@ const Hero = ({ lang }) => {
 
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
+  theme: selectCurrentTheme,
 });
 
 export default connect(mapStateToProps)(Hero);
