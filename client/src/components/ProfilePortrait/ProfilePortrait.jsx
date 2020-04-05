@@ -8,12 +8,12 @@ import AdminBar from "../AdminBar/AdminBar";
 import {
   ProfilePortraitContainer,
   ProfilePortraitWrapper,
-  ProfilePortraitImage
+  ProfilePortraitImage,
 } from "./ProfilePortraitStyles";
 
 const ProfilePortrait = ({ photo, userRole }) => {
   return (
-    <ProfilePortraitContainer>
+    <ProfilePortraitContainer animateIn="bounceInRight" animateOnce={true}>
       <ProfilePortraitWrapper>
         <ProfilePortraitImage src={photo} alt="happy user" />
       </ProfilePortraitWrapper>

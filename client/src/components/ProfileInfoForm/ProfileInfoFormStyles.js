@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
-const getFont = props => {
+const getFont = (props) => {
   const { lang } = props;
   if (lang === "eng") {
     return `font-family: var(--font-title);`;
@@ -10,7 +11,7 @@ const getFont = props => {
   return `font-family: var(--font-title);`;
 };
 
-export const ProfileInfoFormContainer = styled.div`
+export const ProfileInfoFormContainer = styled(ScrollAnimation)`
   display: grid;
   grid-row-gap: 4rem;
   grid-auto-rows: min-content;

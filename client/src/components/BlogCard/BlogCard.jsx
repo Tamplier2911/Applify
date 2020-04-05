@@ -49,7 +49,7 @@ const BlogCard = ({ data, lang, deleteOneBlogpostStart }) => {
   const authorImg = getImageRelativePath(author ? author.photo : "");
 
   return (
-    <BlogCardContainer img={blogImg}>
+    <BlogCardContainer img={blogImg} animateIn={"flipInY"} animateOnce={true}>
       <BlogCardHeader>
         <BlogCardHeaderTitle>{title}</BlogCardHeaderTitle>
         <BlogCardHeaderTheme>{theme}</BlogCardHeaderTheme>

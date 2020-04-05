@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const DisabledOpacity = css`
   opacity: 0.4;
 `;
 
-const getSelectedColor = props => {
+const getSelectedColor = (props) => {
   const { selected } = props;
   if (selected) {
     return `color: var(--cl-primary);`;
@@ -12,7 +13,7 @@ const getSelectedColor = props => {
   return ``;
 };
 
-const isDisabledLeft = props => {
+const isDisabledLeft = (props) => {
   const { disabled } = props;
   if (disabled) {
     return `${DisabledOpacity}`;
@@ -21,7 +22,7 @@ const isDisabledLeft = props => {
   }
 };
 
-const isDisabledRight = props => {
+const isDisabledRight = (props) => {
   const { disabled } = props;
   if (disabled) {
     return `${DisabledOpacity}`;
@@ -39,7 +40,7 @@ export const BlogsCollectionTitle = styled.h2`
   padding: 1rem;
 `;
 
-export const BlogsCollectionBlogs = styled.div`
+export const BlogsCollectionBlogs = styled(ScrollAnimation)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr) min-content;

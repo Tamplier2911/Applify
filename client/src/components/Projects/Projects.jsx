@@ -10,7 +10,7 @@ import {
   setCurrentProjectThird,
   setCurrentProjectFourth,
   setCurrentProjectNext,
-  getCurrentProject
+  getCurrentProject,
   // setCurrentProjectPrev
 } from "../../redux/projects/projects.actions";
 import { selectCurrentProject } from "../../redux/projects/projects.selectors";
@@ -38,7 +38,7 @@ import {
   ProjectsContentDescText,
   ProjectsContentBottom,
   ProjectsContentDate,
-  ProjectsContentLink
+  ProjectsContentLink,
 } from "./ProjectsStyles";
 
 const Projects = ({
@@ -49,7 +49,7 @@ const Projects = ({
   setCurrentProjectFourth,
   setCurrentProjectNext,
   getCurrentProject,
-  lang
+  lang,
   // setCurrentProjectPrev
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -77,19 +77,19 @@ const Projects = ({
     projectsHeader,
     projectsDescription,
     projectsTechStack,
-    projectsVisit
+    projectsVisit,
   } = projectsHeaders[lang];
 
   date = date
     ? date.toLocaleString("en-us", {
         day: "numeric",
         month: "long",
-        year: "numeric"
+        year: "numeric",
       })
     : undefined;
 
   return (
-    <ProjectsContainer>
+    <ProjectsContainer animateIn={"bounceInRight"} animateOnce={true}>
       <ProjecstTitle>{projectsHeader}</ProjecstTitle>
       <ProjectsCircles>
         <ProjectsCircleZero
@@ -147,7 +147,7 @@ const Projects = ({
 const mapStateToProps = () =>
   createStructuredSelector({
     currentProject: selectCurrentProject,
-    lang: selectCurrentLanguage
+    lang: selectCurrentLanguage,
   });
 
 export default connect(mapStateToProps, {
@@ -156,6 +156,6 @@ export default connect(mapStateToProps, {
   setCurrentProjectThird,
   setCurrentProjectFourth,
   setCurrentProjectNext,
-  getCurrentProject
+  getCurrentProject,
   // setCurrentProjectPrev
 })(Projects);

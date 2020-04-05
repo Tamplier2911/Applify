@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
 /*
 // before projects animation was faked using this mechanic:
@@ -22,7 +23,7 @@ const projectsAnimation = css`
 `;
 */
 
-const fadeInProject = props => {
+const fadeInProject = (props) => {
   const { load } = props;
   if (!load) {
     return `opacity: 0;`;
@@ -42,28 +43,28 @@ const circlesSharedStyle = css`
   transition: background-color 0.3s;
 `;
 
-const getLinkColor = props => {
+const getLinkColor = (props) => {
   return props.color ? `${props.color}` : `var(--cl-tiles-2)`;
 };
 
-const getTitleColors = props => {
+const getTitleColors = (props) => {
   return props.color ? `${props.color}` : `var(--cl-tiles-2)`;
 };
 
-const getCircleColorZero = props => {
+const getCircleColorZero = (props) => {
   return props.id === 0 ? "var(--cl-circle-0)" : "var(--cl-circle-transit)";
 };
-const getCircleColorOne = props => {
+const getCircleColorOne = (props) => {
   return props.id === 1 ? "var(--cl-cirlce-1)" : "var(--cl-circle-transit)";
 };
-const getCircleColorTwo = props => {
+const getCircleColorTwo = (props) => {
   return props.id === 2 ? "var(--cl-circle-2)" : "var(--cl-circle-transit)";
 };
-const getCircleColorThree = props => {
+const getCircleColorThree = (props) => {
   return props.id === 3 ? "var(--cl-circle-3)" : "var(--cl-circle-transit)";
 };
 
-export const ProjectsContainer = styled.div`
+export const ProjectsContainer = styled(ScrollAnimation)`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, min-content);

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
 // PROPS REQUIRED FOR COMPONENT
 // all calculations in rems
@@ -17,7 +18,7 @@ const SquareSharedStyles = css`
   z-index: 10;
 `;
 
-const calcWidthAndHeight = props => {
+const calcWidthAndHeight = (props) => {
   const { width, height } = props;
   return `
         width: calc(${width}rem / 3);
@@ -25,7 +26,7 @@ const calcWidthAndHeight = props => {
   `;
 };
 
-const calcWidthAndHeightTablet = props => {
+const calcWidthAndHeightTablet = (props) => {
   const { width, height } = props;
   return `
         width: calc(${width / 1.5}rem / 3);
@@ -33,7 +34,7 @@ const calcWidthAndHeightTablet = props => {
   `;
 };
 
-const getSizeColorAndShadow = props => {
+const getSizeColorAndShadow = (props) => {
   const { width, height, color, shadow } = props;
   return `
         width: ${width}rem;
@@ -47,7 +48,7 @@ const getSizeColorAndShadow = props => {
     `;
 };
 
-const getSizeColorAndShadowTablet = props => {
+const getSizeColorAndShadowTablet = (props) => {
   const { width, height, color, shadow } = props;
   return `
         width: ${width / 1.5}rem;
@@ -61,7 +62,7 @@ const getSizeColorAndShadowTablet = props => {
     `;
 };
 
-const getSizeAndPosition = props => {
+const getSizeAndPosition = (props) => {
   const { width, height, posX, posY } = props;
   return `
         width: ${width}rem;
@@ -71,7 +72,7 @@ const getSizeAndPosition = props => {
     `;
 };
 
-const getSizeAndPositionTablet = props => {
+const getSizeAndPositionTablet = (props) => {
   const { width, height, posX, posY } = props;
   return `
         width: ${width / 1.5}rem;
@@ -81,7 +82,7 @@ const getSizeAndPositionTablet = props => {
     `;
 };
 
-export const SquareContainer = styled.div`
+export const SquareContainer = styled(ScrollAnimation)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 

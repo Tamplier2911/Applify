@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
 import { ReactComponent as ChevronLeftSVG } from "../../assets/svg/chevron-left.svg";
 import { ReactComponent as ChevronRightSVG } from "../../assets/svg/chevron-right.svg";
 
-const fadeInImage = props => {
+const fadeInImage = (props) => {
   const { load } = props;
   if (!load) {
     return `opacity: 0;`;
@@ -91,7 +92,7 @@ export const ArrowsAnimation = css`
   }
 `;
 
-export const ProjectsGalleryContainer = styled.div`
+export const ProjectsGalleryContainer = styled(ScrollAnimation)`
   display: grid;
 `;
 

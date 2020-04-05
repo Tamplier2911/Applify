@@ -13,11 +13,14 @@ import {
   selectIsLogged,
   selectUserObject,
 } from "../../redux/auth/auth.selectors";
+import { setThemeDark, setThemeLight } from "../../redux/theme/theme.actions";
+import { selectCurrentTheme } from "../../redux/theme/theme.selectors";
 
 // JS Rendering CSS
 import {
   SidenavContainer,
   SidenavContent,
+  SidenavTheme,
   SidenavHero,
   SidenavHeroImgContainer,
   SidenavImage,
@@ -42,6 +45,9 @@ const Sidenav = ({
   isLogged,
   user,
   logUserOutStart,
+  theme,
+  setThemeDark,
+  setThemeLight,
 }) => {
   const { name, email, photo } = user;
   const currentData = sidenavData[lang];
@@ -67,6 +73,11 @@ const Sidenav = ({
   return ReactDOM.createPortal(
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
       <SidenavContent onClick={(e) => e.stopPropagation()}>
+        <SidenavTheme
+          onClick={() => (theme === "light" ? setThemeDark() : setThemeLight())}
+        >
+          {/* SVG HERE */}
+        </SidenavTheme>
         <SidenavHero>
           {isLogged ? (
             <Fragment>
@@ -142,8 +153,12 @@ const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
   isLogged: selectIsLogged,
   user: selectUserObject,
+  theme: selectCurrentTheme,
 });
 
-export default connect(mapStateToProps, { toggleSideNav, logUserOutStart })(
-  Sidenav
-);
+export default connect(mapStateToProps, {
+  toggleSideNav,
+  logUserOutStart,
+  setThemeDark,
+  setThemeLight,
+})(Sidenav);

@@ -58,7 +58,7 @@ const BlogsCollection = ({
   return (
     <BlogsCollectionContainer>
       <BlogsCollectionTitle>{blogsCollectionHeader}</BlogsCollectionTitle>
-      <BlogsCollectionBlogs>
+      <BlogsCollectionBlogs animateIn="bounceInUp" animateOnce={true}>
         {currentDataSet.map((blog, i) => {
           const { _id } = blog;
           count++;

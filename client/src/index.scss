@@ -1,3 +1,5 @@
+/*
+
 :root {
   // TYPOGRAPHY
   --font-title: "Josefin Sans", sans-serif;
@@ -118,6 +120,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  // background-color: #333;
 
   @media only screen and (max-width: 48em) {
     font-size: 56.25%;
@@ -176,7 +179,7 @@ body {
 
 ::selection {
   // background-color: var(--cl-primary);
-  background-color: #002a38;
+  background-color: var(--cl-font);
   color: var(--cl-white);
 }
 
@@ -192,6 +195,10 @@ code {
     clear: both;
   }
 }
+
+*/
+
+// END
 
 /*
 

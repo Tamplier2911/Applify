@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 // svg
 import { ReactComponent as HeartSVG } from "../../assets/svg/heart.svg";
@@ -15,12 +16,12 @@ const sharedStylesTextOverflow = css`
   overflow: hidden;
 `;
 
-const getBackgroundImage = props => {
+const getBackgroundImage = (props) => {
   const { img } = props;
   return `background: center / cover no-repeat url(${img});`;
 };
 
-export const BlogCardContainer = styled.div`
+export const BlogCardContainer = styled(ScrollAnimation)`
   display: grid;
   grid-template-rows: 2.5fr 2fr 1fr;
   font-family: var(--font-title);

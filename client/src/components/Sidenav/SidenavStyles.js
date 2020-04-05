@@ -49,7 +49,7 @@ const dynamicDataStyles = css`
   }
 `;
 
-const displaySidenav = props => {
+const displaySidenav = (props) => {
   const { hidden } = props;
   if (hidden) {
     return `
@@ -118,6 +118,23 @@ export const SidenavContent = styled.div`
   }
 
   ${showSidenavAnimation}
+`;
+
+export const SidenavTheme = styled.div`
+  position: absolute;
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--white);
+  top: 2rem;
+  right: 2rem;
+  border-radius: 50%;
+  box-shadow: 0rem 0rem 0.4rem var(--cl-shadow);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const SidenavHero = styled.div`

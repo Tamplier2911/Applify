@@ -10,6 +10,7 @@ import { getMoreFeeds } from "../../redux/feedbacks/feedbacks.actions";
 
 // components
 import FeedbackView from "../FeedbackView/FeedbackView";
+import FeedbackCreate from "../../components/FeedbackCreate/FeedbackCreate";
 
 // JS Rendering CSS
 import {
@@ -51,6 +52,7 @@ const FeedbacksCollection = ({
       >
         {feedbacksCollectionMore}
       </FeedbacksCollectionBtn>
+      <FeedbackCreate method="POST" />
     </FeedbacksCollectionContainer>
   );
 };

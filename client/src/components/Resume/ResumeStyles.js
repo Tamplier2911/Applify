@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
 import { ReactComponent as MailSVG } from "../../assets/svg/resume-mail.svg";
 import { ReactComponent as PhoneSVG } from "../../assets/svg/resume-telephone.svg";
@@ -23,7 +24,7 @@ const SVGStyles = css`
   width: 2.5rem;
 `;
 
-const getProgressPercentage = props => {
+const getProgressPercentage = (props) => {
   let { percentage } = props;
   percentage = Number(percentage);
   if (percentage === 100) {
@@ -53,7 +54,7 @@ const getProgressPercentage = props => {
   }
 };
 
-const getFont = props => {
+const getFont = (props) => {
   const { lang } = props;
   if (lang === "eng") {
     return `font-family: var(--font-title);`;
@@ -86,7 +87,7 @@ export const ResumeContainer = styled.div`
   }
 `;
 
-export const ResumeHeader = styled.div`
+export const ResumeHeader = styled(ScrollAnimation)`
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -159,7 +160,7 @@ export const ResumeHeaderOccupation = styled.h4`
   }
 `;
 
-export const ResumeInfo = styled.div`
+export const ResumeInfo = styled(ScrollAnimation)`
   grid-column: 1 / 2;
   display: grid;
   grid-auto-rows: min-content;
@@ -234,7 +235,7 @@ export const ResumeInfoContacsLink = styled.a`
   }
 `;
 
-export const ResumeMain = styled.div`
+export const ResumeMain = styled(ScrollAnimation)`
   grid-column: 2 / -1;
   display: grid;
   grid-row-gap: 3rem;
@@ -322,7 +323,7 @@ export const ResumeMainInterestsWrapper = styled.div`
   grid-column-gap: 1rem;
 `;
 
-export const ResumeLinksContainer = styled.div`
+export const ResumeLinksContainer = styled(ScrollAnimation)`
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

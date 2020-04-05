@@ -33,7 +33,7 @@ const Hero = ({ lang }) => {
       {squares.map((obj) => {
         return <Square key={obj.id} options={obj} />;
       })}
-      <HeroActiveCTA animateIn={"bounceInLeft"} animateOnce={true}>
+      <HeroActiveCTA>
         <HeroActiveCTALink to="/contacts">
           <Square options={ctaOptions} text={companyCTA} />
         </HeroActiveCTALink>

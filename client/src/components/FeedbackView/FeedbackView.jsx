@@ -20,7 +20,7 @@ import {
   FeedbackViewRightCont,
   FeedbackViewRightQLeft,
   FeedbackViewRightText,
-  FeedbackViewRightQRight
+  FeedbackViewRightQRight,
 } from "./FeedbackViewStyles";
 
 export const FeedbackView = ({
@@ -28,7 +28,7 @@ export const FeedbackView = ({
   rating,
   feedback,
   color,
-  user: { name, photo }
+  user: { name, photo },
 }) => {
   const even = count % 2 === 0 ? 1 : 0;
   const groundedRating = Math.floor(rating);
@@ -36,7 +36,11 @@ export const FeedbackView = ({
   const image = getImageRelativePath(photo);
 
   return (
-    <FeedbackViewContainer>
+    <FeedbackViewContainer
+      {...(even
+        ? { animateIn: "bounceInRight", animateOnce: true }
+        : { animateIn: "bounceInLeft", animateOnce: true })}
+    >
       <FeedbackViewLeft even={even}>
         <FeedbackViewLeftCont>
           <FeedbackViewLeftImgWrap even={even} color={color}>
@@ -49,7 +53,7 @@ export const FeedbackView = ({
             <FeedbackViewLeftName even={even}>{name}</FeedbackViewLeftName>
             <FeedbackViewLeftRating even={even}>
               {Array.from(new Array(groundedRating), (el, i) => i + 1).map(
-                el => {
+                (el) => {
                   return <FeedbackViewLeftSVG key={el} />;
                 }
               )}

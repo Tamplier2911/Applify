@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
-export const ProfilePortraitContainer = styled.div`
+export const ProfilePortraitContainer = styled(ScrollAnimation)`
   display: grid;
   box-shadow: 0 0.1rem 0.5rem var(--cl-font);
   padding: 2rem;

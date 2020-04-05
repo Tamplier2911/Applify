@@ -1,14 +1,15 @@
 import styled, { css } from "styled-components";
+import ScrollAnimation from "react-animate-on-scroll";
 
 // svg
 import { ReactComponent as StarSVG } from "../../assets/svg/star.svg";
 
-const getQuoteColor = props => {
+const getQuoteColor = (props) => {
   const { color } = props;
   return `color ${color};`;
 };
 
-const getOrder = props => {
+const getOrder = (props) => {
   const { even } = props;
   if (even) {
     return `order: 2;
@@ -38,7 +39,7 @@ const ImageWrapSharedStyles = css`
   }
 `;
 
-const getImageWrapStyles = props => {
+const getImageWrapStyles = (props) => {
   const { even, color } = props;
   if (even) {
     return `border: 0.3rem solid ${color};
@@ -66,7 +67,7 @@ const RatingWrapSharedStyles = css`
   }
 `;
 
-const getRatingWrapStyles = props => {
+const getRatingWrapStyles = (props) => {
   const { even, color } = props;
   if (even) {
     return `grid-template-columns: repeat(5, 1fr);
@@ -153,7 +154,7 @@ const FeedbackNameSharedStyles = css`
   }
 `;
 
-const getFeedbackNameStyles = props => {
+const getFeedbackNameStyles = (props) => {
   const { even } = props;
   if (even) {
     return `grid-column: 1 / 5;
@@ -175,7 +176,7 @@ const FeedbackRatingSharedStyles = css`
   justify-self: center;
 `;
 
-const getFeedbackRatingStyles = props => {
+const getFeedbackRatingStyles = (props) => {
   const { even } = props;
   if (even) {
     return `grid-column: 1 / 5;
@@ -209,7 +210,7 @@ const TriangleSharedStyles = css`
   }
 `;
 
-const getTriangleStyles = props => {
+const getTriangleStyles = (props) => {
   const { even, color } = props;
   if (even) {
     return `
@@ -222,7 +223,7 @@ const getTriangleStyles = props => {
   }
 };
 
-export const FeedbackViewContainer = styled.div`
+export const FeedbackViewContainer = styled(ScrollAnimation)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2rem;

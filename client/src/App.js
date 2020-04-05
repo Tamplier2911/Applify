@@ -10,6 +10,7 @@ import { createStructuredSelector } from "reselect";
 import { openModal } from "./redux/modal/modal.actions";
 import { selectIsLogged } from "./redux/auth/auth.selectors";
 import { fetchAuthObjectStart } from "./redux/auth/auth.actions";
+import { selectCurrentTheme } from "./redux/theme/theme.selectors";
 
 // components
 import Header from "./components/Header/Header";
@@ -33,6 +34,9 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 // import BlogPage from "./pages/BlogPage/BlogPage";
 // import PasswordRestorationPage from "./pages/PasswordRestorationPage/PasswordRestorationPage";
 
+// GLOBAL STYLE
+import { GlobalStyle } from "./IndexStyles";
+
 // JS rendering CSS
 import { AppContainer, AppMain } from "./AppStyles";
 
@@ -51,18 +55,14 @@ const PasswordRestorationPage = lazy(() =>
   import("./pages/PasswordRestorationPage/PasswordRestorationPage")
 );
 
-const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
+const App = ({ openModal, fetchAuthObjectStart, isLogged, theme }) => {
   useEffect(() => {
-    // openModal({
-    //   header: "Attention!",
-    //   content:
-    //     "App is currently in development, back-end is wired up partially."
-    // });
     fetchAuthObjectStart();
   }, [openModal, fetchAuthObjectStart]);
 
   return (
     <AppContainer>
+      <GlobalStyle theme={theme} />
       <Header />
       <Sidenav />
       <Modal />
@@ -109,8 +109,10 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged }) => {
 
 const mapStateToProps = createStructuredSelector({
   isLogged: selectIsLogged,
+  theme: selectCurrentTheme,
 });
 
-export default connect(mapStateToProps, { openModal, fetchAuthObjectStart })(
-  App
-);
+export default connect(mapStateToProps, {
+  openModal,
+  fetchAuthObjectStart,
+})(App);

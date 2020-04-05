@@ -6,14 +6,14 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import {
   selectIsLoading,
-  selectCurrentlyLoadedFeeds
+  selectCurrentlyLoadedFeeds,
 } from "../../redux/feedbacks/feedbacks.selectors";
 import { loadFeedbacksStart } from "../../redux/feedbacks/feedbacks.actions";
 
 // components
 import FeedbacksCollection from "../../components/FeedbacksCollection/FeedbacksCollection";
-import FeedbackCreate from "../../components/FeedbackCreate/FeedbackCreate";
 import WithSpinnerHOC from "../../components/WithSpinnerHOC/WithSpinnerHOC";
+// import FeedbackCreate from "../../components/FeedbackCreate/FeedbackCreate";
 
 // JS Rendering CSS
 import { FeedbackPageContainer } from "./FeedbackPageStyles";
@@ -34,16 +34,16 @@ const FeedbackPage = ({ loadFeedbacksStart, loading, allFeeds }) => {
         isLoading={loading}
         feedbacks={allFeeds}
       />
-      <FeedbackCreate method="POST" />
+      {/* <FeedbackCreate method="POST" /> */}
     </FeedbackPageContainer>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
   loading: selectIsLoading,
-  allFeeds: selectCurrentlyLoadedFeeds
+  allFeeds: selectCurrentlyLoadedFeeds,
 });
 
 export default connect(mapStateToProps, {
-  loadFeedbacksStart
+  loadFeedbacksStart,
 })(FeedbackPage);

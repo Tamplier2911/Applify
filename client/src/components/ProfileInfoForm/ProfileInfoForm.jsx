@@ -96,7 +96,7 @@ const ProfileInfoForm = ({
   };
 
   return (
-    <ProfileInfoFormContainer>
+    <ProfileInfoFormContainer animateIn="bounceInRight" animateOnce={true}>
       <ProfileInfoFormTitle lang={lang}>
         {profileInfoFormTitle}
       </ProfileInfoFormTitle>

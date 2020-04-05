@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-
 import { Link } from "react-router-dom";
 
 // svg
@@ -22,7 +21,7 @@ const blogFadeInAnimation = css`
   }
 `;
 
-const getLikeColor = props => {
+const getLikeColor = (props) => {
   const { liked } = props;
   if (liked) {
     return `fill: var(--cl-bpost-liked);`;
@@ -31,7 +30,7 @@ const getLikeColor = props => {
   }
 };
 
-const bigOrSmall = props => {
+const bigOrSmall = (props) => {
   const { big } = props;
   if (big) {
     return `grid-column: span 2;

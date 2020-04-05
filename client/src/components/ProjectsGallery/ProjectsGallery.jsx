@@ -8,7 +8,7 @@ import { selectCurrentImage } from "../../redux/projects/projects.selectors";
 import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
 import {
   setCurrentImageNext,
-  setCurrentImagePrev
+  setCurrentImagePrev,
 } from "../../redux/projects/projects.actions";
 
 // data transformations
@@ -23,7 +23,7 @@ import {
   ProjectsGalleryArrowLeftSVG,
   ProjectsGalleryArrowRightSVG,
   ProjectsGalleryImageContainer,
-  ProjectsGalleryImage
+  ProjectsGalleryImage,
 } from "./ProjectsGalleryStyles";
 
 // component constants
@@ -34,7 +34,7 @@ const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
   return {
     width,
-    height
+    height,
   };
 };
 
@@ -42,7 +42,7 @@ const ProjectsGallery = ({
   currentImage,
   setCurrentImageNext,
   setCurrentImagePrev,
-  lang
+  lang,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState(
@@ -79,7 +79,7 @@ const ProjectsGallery = ({
       : "desktop";
 
   return (
-    <ProjectsGalleryContainer>
+    <ProjectsGalleryContainer animateIn={"bounceInLeft"} animateOnce={true}>
       <ProjectsGalleryTitle>{projectsGalleryHeader}</ProjectsGalleryTitle>
       <ProjectsGalleryComposition>
         <ProjectsGalleryArrow onClick={() => setCurrentImagePrev(device)}>
@@ -103,10 +103,10 @@ const ProjectsGallery = ({
 
 const mapStateToProps = createStructuredSelector({
   currentImage: selectCurrentImage,
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, {
   setCurrentImageNext,
-  setCurrentImagePrev
+  setCurrentImagePrev,
 })(ProjectsGallery);

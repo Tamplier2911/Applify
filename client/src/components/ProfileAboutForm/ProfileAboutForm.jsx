@@ -46,7 +46,7 @@ const ProfileAboutForm = ({ about, lang, updateUserDataStart }) => {
   }, [about]);
 
   return (
-    <ProfileAboutFormContainer>
+    <ProfileAboutFormContainer animateIn="bounceInLeft" animateOnce={true}>
       <ProfileAboutFormTitle lang={lang}>
         {profileAboutFormTitle}
       </ProfileAboutFormTitle>

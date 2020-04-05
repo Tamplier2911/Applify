@@ -78,7 +78,7 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
   };
 
   return (
-    <ProfilePasswordFormContainer>
+    <ProfilePasswordFormContainer animateIn={"bounceInLeft"} animateOnce={true}>
       <ProfilePasswordFormTitle lang={lang}>
         {profilePasswordFormTitle}
       </ProfilePasswordFormTitle>

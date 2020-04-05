@@ -45,7 +45,7 @@ export const HeroContainer = styled.div`
   }
 `;
 
-export const HeroActiveCTA = styled(ScrollAnimation)`
+export const HeroActiveCTA = styled.div`
   @media only screen and (max-width: 720px) {
     display: none;
   }

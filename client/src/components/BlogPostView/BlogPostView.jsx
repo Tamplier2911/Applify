@@ -9,7 +9,7 @@ import {
   likeOneBlogpostStart,
   dislikeOneBlogpostStart,
   likeOneBlogpostLocally,
-  dislikeOneBlogpostLocally
+  dislikeOneBlogpostLocally,
 } from "../../redux/blogs/blogs.actions";
 import { openModal } from "../../redux/modal/modal.actions";
 
@@ -25,7 +25,7 @@ import {
   BlogViewContentDate,
   BlogViewContentLikeWrap,
   BlogViewContentLike,
-  BlogViewContentLikeSVG
+  BlogViewContentLikeSVG,
 } from "./BlogPostViewStyles";
 
 // data transformations
@@ -42,7 +42,7 @@ const BlogPostView = ({
   dislikeOneBlogpostLocally,
   openModal,
   slot,
-  index
+  index,
 }) => {
   const { _id, title, theme, createdAt, likes, image } = blog ? blog : {};
   const { likedBlogposts } = user;
@@ -57,19 +57,19 @@ const BlogPostView = ({
     createdAt ? createdAt : new Date()
   );
 
-  const onLikeClick = e => {
+  const onLikeClick = (e) => {
     e.preventDefault();
     if (!user.id)
       return openModal({
         header: "Unfortunate!",
-        content: "You have to sign in, in order to like a blog post."
+        content: "You have to sign in, in order to like a blog post.",
       });
     isLiked
       ? dislikeOneBlogpostStart(_id) &&
         dislikeOneBlogpostLocally({
           slot: slot,
           index: index,
-          blogpostId: _id
+          blogpostId: _id,
         })
       : likeOneBlogpostStart(_id) &&
         likeOneBlogpostLocally({ slot: slot, index: index, blogpostId: _id });
@@ -84,7 +84,7 @@ const BlogPostView = ({
           <BlogViewContentTitle>{title}</BlogViewContentTitle>
           <BlogViewContentDateWrap>
             <BlogViewContentDate>{blogDate}</BlogViewContentDate>
-            <BlogViewContentLikeWrap onClick={e => onLikeClick(e)}>
+            <BlogViewContentLikeWrap onClick={(e) => onLikeClick(e)}>
               <BlogViewContentLike>{likes}</BlogViewContentLike>
               <BlogViewContentLikeSVG liked={isLiked} />
             </BlogViewContentLikeWrap>
@@ -96,7 +96,7 @@ const BlogPostView = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  user: selectUserObject
+  user: selectUserObject,
 });
 
 export default connect(mapStateToProps, {
@@ -104,5 +104,5 @@ export default connect(mapStateToProps, {
   dislikeOneBlogpostStart,
   likeOneBlogpostLocally,
   dislikeOneBlogpostLocally,
-  openModal
+  openModal,
 })(BlogPostView);

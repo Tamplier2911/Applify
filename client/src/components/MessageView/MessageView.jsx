@@ -52,7 +52,7 @@ const MessageView = ({
   const { messageViewRead, messageViewDelete } = messageViewData[lang];
 
   return (
-    <MessageViewContainer>
+    <MessageViewContainer animateIn={"flipInX"} animateOnce={true}>
       <MessageViewPortrait>
         <MessageViewImageWrap>
           <MessageViewImage alt="happy user" src={`${image}`} />

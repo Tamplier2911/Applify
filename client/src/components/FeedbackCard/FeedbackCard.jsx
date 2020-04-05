@@ -44,7 +44,7 @@ const FeedbackCard = ({ data, deleteFeedbackStart, lang }) => {
   const date = transformDateToLocaleString(createdAt);
   const { feedbackCardDelete, feedbackCardUpdate } = feedbackCardData[lang];
   return (
-    <FeedbackCardContainer key={_id}>
+    <FeedbackCardContainer key={_id} animateIn={"flipInY"} animateOnce={true}>
       <FeedbackCardHeader>
         <FeedbackCardHeaderName>{user.name}</FeedbackCardHeaderName>
       </FeedbackCardHeader>

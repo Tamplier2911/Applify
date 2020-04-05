@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const MessageViewContentSharedStyles = css`
   width: 50rem;
@@ -20,7 +21,7 @@ const MessageViewContentSharedStyles = css`
   }
 `;
 
-export const MessageViewContainer = styled.div`
+export const MessageViewContainer = styled(ScrollAnimation)`
   display: grid;
   grid-template-columns: min-content 1fr;
   grid-column-gap: 1rem;

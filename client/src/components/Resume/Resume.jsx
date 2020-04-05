@@ -90,7 +90,7 @@ const Resume = ({ lang }) => {
 
   return (
     <ResumeContainer lang={lang}>
-      <ResumeHeader>
+      <ResumeHeader animateIn={"bounceInUp"} animateOnce={true}>
         <ResumeHeaderImgContainer>
           <ResumeHeaderImg alt="author" src={image} />
         </ResumeHeaderImgContainer>
@@ -99,7 +99,7 @@ const Resume = ({ lang }) => {
           <ResumeHeaderOccupation>{occupation}</ResumeHeaderOccupation>
         </ResumeHeaderTitle>
       </ResumeHeader>
-      <ResumeInfo>
+      <ResumeInfo animateIn={"bounceInRight"} animateOnce={true}>
         <ResumeInfoAbout>
           <ResumeBlackHeader>{aboutHeader}</ResumeBlackHeader>
           <ResumeSubTitle>{aboutText}</ResumeSubTitle>
@@ -152,7 +152,7 @@ const Resume = ({ lang }) => {
           </ResumeInfoContacstWrapper>
         </ResumeInfoContacts>
       </ResumeInfo>
-      <ResumeMain>
+      <ResumeMain animateIn={"bounceInLeft"} animateOnce={true}>
         <ResumeMainExperience>
           <ResumeBlackHeader>{experienceHeader}</ResumeBlackHeader>
           <ResumeBlueHeader>{experienceTitle}</ResumeBlueHeader>
@@ -277,7 +277,7 @@ const Resume = ({ lang }) => {
           </ResumeMainInterestsCover>
         </ResumeMainInterests>
       </ResumeMain>
-      <ResumeLinksContainer>
+      <ResumeLinksContainer animateIn={"bounceInDown"} animateOnce={true}>
         <ResumeDownloadLink href={resEng} download>
           {linkDescriptions[0].text}
         </ResumeDownloadLink>

@@ -59,7 +59,7 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
   } = userCardData[lang];
 
   return (
-    <UserCardContainer>
+    <UserCardContainer animateIn={"flipInY"} animateOnce={true}>
       <UserCardHeader>
         <UserCardHeaderName>{name}</UserCardHeaderName>
         <UserCardHeaderEmail>{email}</UserCardHeaderEmail>

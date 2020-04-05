@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const fieldSharedStyles = css`
   text-align: center;
@@ -9,7 +10,7 @@ const fieldSharedStyles = css`
   text-overflow: ellipsis;
 `;
 
-export const UserCardContainer = styled.div`
+export const UserCardContainer = styled(ScrollAnimation)`
   display: grid;
   grid-template-rows: 5fr 5fr 1fr;
   grid-row-gap: 1rem;

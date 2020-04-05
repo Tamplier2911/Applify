@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 // SVG
 import { ReactComponent as StartSVG } from "../../assets/svg/star.svg";
@@ -9,17 +10,17 @@ const quoteSharedStyles = css`
   font-size: 6rem;
 `;
 
-const getColor = props => {
+const getColor = (props) => {
   const { color } = props;
   return `color: ${color};`;
 };
 
-const getBoxShadow = props => {
+const getBoxShadow = (props) => {
   const { color } = props;
   return `box-shadow: 0rem 0rem 0.8rem ${color};`;
 };
 
-export const FeedbackCardContainer = styled.div`
+export const FeedbackCardContainer = styled(ScrollAnimation)`
   display: grid;
   grid-template-rows: 4fr 6fr 1fr;
   box-shadow: 0rem 0rem 0.8rem var(--cl-font);

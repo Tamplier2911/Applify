@@ -12,13 +12,26 @@ import {
   SquareMaskSix,
   SquareMaskSeven,
   SquareMaskEight,
-  SquareMaskNine
+  SquareMaskNine,
 } from "./SquareStyles";
 
 const Square = ({ options, text }) => {
   const properties = { ...options, id: null };
+
+  const getAnimationStyle = () => {
+    return ["fadeInLeft", "fadeInRight", "fadeInUp", "fadeInDown"].splice(
+      Math.floor(Math.random() * 4),
+      1
+    )[0];
+  };
+
   return (
-    <SquareContainer {...properties}>
+    <SquareContainer
+      {...properties}
+      animateIn={getAnimationStyle()}
+      duration={2}
+      animateOnce={true}
+    >
       <SquareMaskOne {...properties} />
       <SquareMaskTwo {...properties} />
       <SquareMaskThree {...properties} />
