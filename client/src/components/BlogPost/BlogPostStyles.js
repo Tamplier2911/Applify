@@ -20,7 +20,7 @@ const blogFadeIn = css`
   }
 `;
 
-const getWhitespaces = props => {
+const getWhitespaces = (props) => {
   const { startsWith } = props;
   if (startsWith === "1") {
     return `margin-left: 1rem;`;
@@ -43,13 +43,39 @@ const getWhitespaces = props => {
   } else return `margin-left: 0rem`;
 };
 
-const getLikeColor = props => {
+const getLikeColor = (props) => {
   const { liked } = props;
   if (liked) {
     return `fill: var(--cl-bpost-liked);`;
   } else {
     return `fill: var(--cl-font);;`;
   }
+};
+
+const getCodeColors = (props) => {
+  const { theme } = props;
+  if (theme === "dark")
+    return `
+      background-color: var(--cl-header);
+      color: var(--cl-primary);
+    `;
+  return `
+    background-color: var(--cl-font);
+    color: var(--cl-facebook);
+  `;
+};
+
+const getLinkColors = (props) => {
+  const { theme } = props;
+  if (theme === "dark")
+    return `
+      color: var(--cl-font);
+      text-decoration: underline;
+    `;
+  return `
+    color: var(--cl-github);
+    text-decoration: none;
+  `;
 };
 
 export const BlogPostContainer = styled.section`
@@ -203,11 +229,10 @@ export const BlogPostContentParagraph = styled.div`
 export const BlogPostContentLink = styled.a`
   &:link,
   &:visited {
+    ${getLinkColors}
     justify-self: start;
     font-size: 2rem;
-    text-decoration: none;
-    color: var(--cl-github);
-    transition: color 3s;
+    transition: color 0.3s;
   }
 
   &:hover,
@@ -232,10 +257,9 @@ export const BlogPostContentListUl = styled.ul`
 `;
 
 export const BlogPostContentCode = styled.code`
+  ${getCodeColors}
   display: grid;
   grid-row-gap: 1rem;
-  background-color: var(--cl-font);
-  color: var(--cl-facebook);
   padding: 2rem;
 `;
 

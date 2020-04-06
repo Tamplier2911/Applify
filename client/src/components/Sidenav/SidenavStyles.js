@@ -152,7 +152,7 @@ export const SidenavTheme = styled.div`
   top: 2rem;
   right: 2rem;
   border-radius: 50%;
-  box-shadow: 0rem 0rem 0.4rem var(--cl-shadow);
+  box-shadow: 0rem 0rem 0.4rem var(--cl-primary);
   transition: transform 0.3s;
 
   &:hover {

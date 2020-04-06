@@ -5,9 +5,6 @@ import App from "./App";
 
 import * as serviceWorker from "./serviceWorker";
 
-// JS Rendering CSS Global Style
-// import { GlobalStyle } from "./IndexStyles";
-
 // router
 import { BrowserRouter } from "react-router-dom";
 
@@ -18,7 +15,6 @@ import { store } from "./redux/store";
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      {/* <GlobalStyle /> */}
       <App />
     </BrowserRouter>
   </Provider>,

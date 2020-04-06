@@ -24,6 +24,9 @@ const getTheme = (props) => {
             --cl-shadow: rgba(0, 0, 0, 0.623);
             --cl-header: #272727f8;
 
+            // ILLUSTRATIONS
+            --cl-illustration: #4ecca3;
+
             // SIDE NAV
             --cl-sidenav: #4ecca25b;
             --cl-sidenav-shadow: rgba(0, 0, 0, 0.603);
@@ -223,6 +226,9 @@ const getTheme = (props) => {
             --cl-shadow: rgba(0, 0, 0, 0.623);
             --cl-header: #ffffffec;
         
+            // ILLUSTRATIONS
+            --cl-illustration: #002a38;
+
             // SIDE NAV
             --cl-sidenav: hsla(0, 0%, 100%, 0.568);
             --cl-sidenav-shadow: rgba(0, 0, 0, 0.603);

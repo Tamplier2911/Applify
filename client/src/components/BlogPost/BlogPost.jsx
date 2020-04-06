@@ -10,9 +10,10 @@ import {
   likeOneBlogpostStart,
   dislikeOneBlogpostStart,
   likeOneBlogpostLocally,
-  dislikeOneBlogpostLocally
+  dislikeOneBlogpostLocally,
 } from "../../redux/blogs/blogs.actions";
 import { selectAllBlogpostsAsObject } from "../../redux/blogs/blogs.selectors";
+import { selectCurrentTheme } from "../../redux/theme/theme.selectors";
 
 // components
 import GetBack from "../GetBack/GetBack";
@@ -48,10 +49,11 @@ import {
   BlogPostContentListItem,
   BlogPostContentListSpan,
   BlogPostContentCode,
-  BlogPostContentCodeDiv
+  BlogPostContentCodeDiv,
 } from "./BlogPostStyles";
 
 const BlogPost = ({
+  colorTheme,
   match,
   blogObject,
   user,
@@ -59,7 +61,7 @@ const BlogPost = ({
   likeOneBlogpostStart,
   dislikeOneBlogpostStart,
   likeOneBlogpostLocally,
-  dislikeOneBlogpostLocally
+  dislikeOneBlogpostLocally,
 }) => {
   const {
     _id,
@@ -69,7 +71,7 @@ const BlogPost = ({
     title,
     theme,
     content,
-    author
+    author,
   } = blogObject ? blogObject : {};
 
   const blogImg = getImageRelativePath(image ? image : "");
@@ -91,19 +93,19 @@ const BlogPost = ({
   const slot = splitedId[1];
   const index = splitedId[2];
 
-  const onLikeClick = e => {
+  const onLikeClick = (e) => {
     e.preventDefault();
     if (!user.id)
       return openModal({
         header: "Unfortunate!",
-        content: "You have to sign in, in order to like a blog post."
+        content: "You have to sign in, in order to like a blog post.",
       });
     isLiked
       ? dislikeOneBlogpostStart(_id) &&
         dislikeOneBlogpostLocally({
           slot: slot,
           index: index,
-          blogpostId: _id
+          blogpostId: _id,
         })
       : likeOneBlogpostStart(_id) &&
         likeOneBlogpostLocally({ slot: slot, index: index, blogpostId: _id });
@@ -123,7 +125,7 @@ const BlogPost = ({
         <BlogpostTheme>{theme}</BlogpostTheme>
         <BlogpostLikes>
           <BlogpostLikesCount>{likes}</BlogpostLikesCount>
-          <BlogpostLikesImage onClick={e => onLikeClick(e)}>
+          <BlogpostLikesImage onClick={(e) => onLikeClick(e)}>
             <BlogpostLikeSVG liked={isLiked} />
           </BlogpostLikesImage>
         </BlogpostLikes>
@@ -138,7 +140,7 @@ const BlogPost = ({
             paragraphSet,
             linkSet,
             listItemSet,
-            codeSet
+            codeSet,
           } = block;
           return (
             <BlogPostContentBlock key={i}>
@@ -171,6 +173,7 @@ const BlogPost = ({
                         key={i}
                         target="_blank"
                         rel="noopener noreferrer"
+                        theme={colorTheme}
                       >
                         {text}
                       </BlogPostContentLink>
@@ -195,7 +198,7 @@ const BlogPost = ({
               ) : null}
 
               {codeSet.length ? (
-                <BlogPostContentCode>
+                <BlogPostContentCode theme={colorTheme}>
                   {codeSet.map((code, i) => {
                     return (
                       <BlogPostContentCodeDiv key={i} startsWith={code[0]}>
@@ -218,7 +221,8 @@ const mapStateToProps = (state, ownProps) => ({
   blogObject: selectAllBlogpostsAsObject(
     ownProps.match.params.id.split("-")[0]
   )(state),
-  user: selectUserObject(state)
+  user: selectUserObject(state),
+  colorTheme: selectCurrentTheme(state),
 });
 
 export default withRouter(
@@ -227,6 +231,6 @@ export default withRouter(
     likeOneBlogpostStart,
     dislikeOneBlogpostStart,
     likeOneBlogpostLocally,
-    dislikeOneBlogpostLocally
+    dislikeOneBlogpostLocally,
   })(BlogPost)
 );

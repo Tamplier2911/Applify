@@ -104,6 +104,7 @@ export const ResumeHeaderImgContainer = styled.div`
   border-radius: 50%;
   overflow: hidden;
   display: flex;
+  box-shadow: 0rem 0rem 1.2rem var(--cl-primary);
 
   @media only screen and (max-width: 540px) {
     height: 12rem;
