@@ -61,6 +61,10 @@ const Projects = ({
       getCurrentProject(lang);
     }
 
+    if (id === 1) setCurrentProjectSecond(lang);
+    if (id === 2) setCurrentProjectThird(lang);
+    if (id === 3) setCurrentProjectFourth(lang);
+
     // animation state
     setIsLoaded(false);
     setTimeout(() => {
@@ -73,7 +77,15 @@ const Projects = ({
       setCurrentProjectNext(lang);
     }, 15000);
     return () => clearInterval(slider);
-  }, [setCurrentProjectNext, getCurrentProject, lang, id]);
+  }, [
+    setCurrentProjectNext,
+    setCurrentProjectSecond,
+    setCurrentProjectThird,
+    setCurrentProjectFourth,
+    getCurrentProject,
+    lang,
+    id,
+  ]);
 
   const {
     projectsHeader,

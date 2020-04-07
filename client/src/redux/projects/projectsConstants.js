@@ -1,3 +1,4 @@
+import applify from "../../assets/jpeg/applify-min.jpg";
 import crownclothing from "../../assets/jpeg/crown-clothing-min.jpg";
 import natours from "../../assets/jpeg/natours-min.jpg";
 import clarify from "../../assets/jpeg/clarify-min.jpg";
@@ -8,6 +9,18 @@ const projectsData = {
     eng: [
       {
         id: 0,
+        image: applify,
+        name: "Applify",
+        description: "Digital Studio / Small-Medium IT Company App.",
+        techStack:
+          "Fully fletched IT Company application using MERN stack. Designed mockups. Front-end covered by React, Redux, Redux-Saga. Express server handles back-end. Optimized SEO. Deployed on Heroku. SSL sertification by letsencrypt.",
+        date: new Date("April 7, 2020 03:24:00"),
+        url: "https://applify-tech.com",
+        active: true,
+        color: "#265545",
+      },
+      {
+        id: 1,
         image: crownclothing,
         name: "Crown Clothing",
         description:
@@ -17,10 +30,10 @@ const projectsData = {
         date: new Date("January 21, 2020 03:24:00"),
         url: "https://crwn-clothing-s.herokuapp.com/",
         active: true,
-        color: "#000"
+        color: "#000",
       },
       {
-        id: 1,
+        id: 2,
         image: natours,
         name: "Natours",
         description:
@@ -30,10 +43,10 @@ const projectsData = {
         date: new Date("October 18, 2019 03:24:00"),
         url: "https://natours-live-s.herokuapp.com/",
         active: true,
-        color: "#55C57A"
+        color: "#55C57A",
       },
       {
-        id: 2,
+        id: 3,
         image: clarify,
         name: "Clarify",
         description:
@@ -43,25 +56,24 @@ const projectsData = {
         date: new Date("August 12, 2019 03:24:00"),
         url: "https://clarify-s.herokuapp.com/",
         active: true,
-        color: "#DD4F4F"
+        color: "#DD4F4F",
       },
-      {
-        id: 3,
-        image: crownclothing,
-        name: "Crown Clothing",
-        description:
-          "E-commerce platform. Comprehensive online-shop with graceful, sophisticated design.",
-        techStack:
-          "Front-end purely created with React and Redux as a state managemnet lib. Therefore back-end handled by firebase back-end as a service. Node server is running in order to handle Stripe payments.",
-        date: new Date("May 21, 2019 03:24:00"),
-        url: "https://crwn-clothing-s.herokuapp.com/",
-        active: true,
-        color: "#000"
-      }
     ],
     rus: [
       {
         id: 0,
+        image: applify,
+        name: "Applify",
+        description: "Приложение для Веб Студии или небольшой IT Компании.",
+        techStack:
+          "Приложение реализовано посредством технологий MERN стека. Спроектированы макеты. Фронт написан на React, Redux, Redux-Saga. Бэк на Node.js Express. Оптимизирован SEO. Приложение развернуто на Heroku. SSL сертификация letsencrypt.",
+        date: new Date("April 7, 2020 03:24:00"),
+        url: "https://applify-tech.com",
+        active: true,
+        color: "#265545",
+      },
+      {
+        id: 1,
         image: crownclothing,
         name: "Crown Clothing",
         description:
@@ -71,10 +83,10 @@ const projectsData = {
         date: new Date("January 21, 2020 03:24:00"),
         url: "https://crwn-clothing-s.herokuapp.com/",
         active: true,
-        color: "#000"
+        color: "#000",
       },
       {
-        id: 1,
+        id: 2,
         image: natours,
         name: "Natours",
         description:
@@ -84,10 +96,10 @@ const projectsData = {
         date: new Date("October 18, 2019 03:24:00"),
         url: "https://natours-live-s.herokuapp.com/",
         active: true,
-        color: "#55C57A"
+        color: "#55C57A",
       },
       {
-        id: 2,
+        id: 3,
         image: clarify,
         name: "Clarify",
         description:
@@ -97,25 +109,24 @@ const projectsData = {
         date: new Date("August 12, 2019 03:24:00"),
         url: "https://clarify-s.herokuapp.com/",
         active: true,
-        color: "#DD4F4F"
+        color: "#DD4F4F",
       },
-      {
-        id: 3,
-        image: crownclothing,
-        name: "Crown Clothing",
-        description:
-          "Платформа электронной коммерции. Комплексный интернет-магазин с изящным, утонченным дизайном.",
-        techStack:
-          "Front-end создан исключительно с помощью библиотеки React, Redux в качестве библиотеки управления стейтом. Back-end обрабатывается Firebase (back-end as a service). Node сервер обрабатывает платежи при помощи сервиса Stripe.",
-        date: new Date("May 21, 2019 03:24:00"),
-        url: "https://crwn-clothing-s.herokuapp.com/",
-        active: true,
-        color: "#000"
-      }
     ],
     ukr: [
       {
         id: 0,
+        image: applify,
+        name: "Applify",
+        description: "Додаток для Веб Студії або невеликої IT Компанії.",
+        techStack:
+          "Додаток реалізовано за допомогою технологій MERN стека. Спроектовані макети. Фронт написаний на React, Redux, Redux-Saga. Бек на Node.js Express. Оптимізовано SEO. Додаток розгорнуто на Heroku. SSL сертифікація letsencrypt.",
+        date: new Date("April 7, 2020 03:24:00"),
+        url: "https://applify-tech.com",
+        active: true,
+        color: "#265545",
+      },
+      {
+        id: 1,
         image: crownclothing,
         name: "Crown Clothing",
         description:
@@ -125,10 +136,10 @@ const projectsData = {
         date: new Date("January 21, 2020 03:24:00"),
         url: "https://crwn-clothing-s.herokuapp.com/",
         active: true,
-        color: "#000"
+        color: "#000",
       },
       {
-        id: 1,
+        id: 2,
         image: natours,
         name: "Natours",
         description:
@@ -138,10 +149,10 @@ const projectsData = {
         date: new Date("October 18, 2019 03:24:00"),
         url: "https://natours-live-s.herokuapp.com/",
         active: true,
-        color: "#55C57A"
+        color: "#55C57A",
       },
       {
-        id: 2,
+        id: 3,
         image: clarify,
         name: "Clarify",
         description:
@@ -151,131 +162,118 @@ const projectsData = {
         date: new Date("August 12, 2019 03:24:00"),
         url: "https://clarify-s.herokuapp.com/",
         active: true,
-        color: "#DD4F4F"
+        color: "#DD4F4F",
       },
-      {
-        id: 3,
-        image: crownclothing,
-        name: "Crown Clothing",
-        description:
-          "Платформа електронної комерції. Комплексний інтернет-магазин з елегантними, витонченим дизайном.",
-        techStack:
-          "Front-end створений виключно за допомогою бібліотеки React, Redux як бібліотеки управління Стейт. Back-end обробляється Firebase (back-end as a service). Node сервер обробляє платежі за допомогою сервісу Stripe.",
-        date: new Date("May 21, 2019 03:24:00"),
-        url: "https://crwn-clothing-s.herokuapp.com/",
-        active: true,
-        color: "#000"
-      }
-    ]
+    ],
   },
   currentImage: {
     id: 100,
-    image: "uploads/images/projects/elevation-desktop.jpg"
+    image: "uploads/images/projects/elevation-desktop.jpg",
   },
   allImages: {
     phone: [
       {
         id: 100,
-        image: "uploads/images/projects/elevation-phone.jpg"
+        image: "uploads/images/projects/elevation-phone.jpg",
       },
       {
         id: 101,
-        image: "uploads/images/projects/galaxy-phone.jpg"
+        image: "uploads/images/projects/galaxy-phone.jpg",
       },
       {
         id: 102,
-        image: "uploads/images/projects/undrwtr-phone.jpg"
+        image: "uploads/images/projects/undrwtr-phone.jpg",
       },
       {
         id: 103,
-        image: "uploads/images/projects/banking-phone.jpg"
+        image: "uploads/images/projects/banking-phone.jpg",
       },
       {
         id: 104,
-        image: "uploads/images/projects/dance-phone.jpg"
+        image: "uploads/images/projects/dance-phone.jpg",
       },
       {
         id: 105,
-        image: "uploads/images/projects/shoes-phone.jpg"
+        image: "uploads/images/projects/shoes-phone.jpg",
       },
       {
         id: 106,
-        image: "uploads/images/projects/calendar-phone.jpg"
+        image: "uploads/images/projects/calendar-phone.jpg",
       },
       {
         id: 107,
-        image: "uploads/images/projects/watch-phone.jpg"
-      }
+        image: "uploads/images/projects/watch-phone.jpg",
+      },
     ],
     tablet: [
       {
         id: 100,
-        image: "uploads/images/projects/elevation-tablet.jpg"
+        image: "uploads/images/projects/elevation-tablet.jpg",
       },
       {
         id: 101,
-        image: "uploads/images/projects/galaxy-tablet.jpg"
+        image: "uploads/images/projects/galaxy-tablet.jpg",
       },
       {
         id: 102,
-        image: "uploads/images/projects/undrwtr-tablet.jpg"
+        image: "uploads/images/projects/undrwtr-tablet.jpg",
       },
       {
         id: 103,
-        image: "uploads/images/projects/banking-tablet.jpg"
+        image: "uploads/images/projects/banking-tablet.jpg",
       },
       {
         id: 104,
-        image: "uploads/images/projects/dance-tablet.jpg"
+        image: "uploads/images/projects/dance-tablet.jpg",
       },
       {
         id: 105,
-        image: "uploads/images/projects/shoes-tablet.jpg"
+        image: "uploads/images/projects/shoes-tablet.jpg",
       },
       {
         id: 106,
-        image: "uploads/images/projects/calendar-tablet.jpg"
+        image: "uploads/images/projects/calendar-tablet.jpg",
       },
       {
         id: 107,
-        image: "uploads/images/projects/watch-tablet.jpg"
-      }
+        image: "uploads/images/projects/watch-tablet.jpg",
+      },
     ],
     desktop: [
       {
         id: 100,
-        image: "uploads/images/projects/elevation-desktop.jpg"
+        image: "uploads/images/projects/elevation-desktop.jpg",
       },
       {
         id: 101,
-        image: "uploads/images/projects/galaxy-desktop.jpg"
+        image: "uploads/images/projects/galaxy-desktop.jpg",
       },
       {
         id: 102,
-        image: "uploads/images/projects/undrwtr-desktop.jpg"
+        image: "uploads/images/projects/undrwtr-desktop.jpg",
       },
       {
         id: 103,
-        image: "uploads/images/projects/banking-desktop.jpg"
+        image: "uploads/images/projects/banking-desktop.jpg",
       },
       {
         id: 104,
-        image: "uploads/images/projects/dance-desktop.jpg"
+        image: "uploads/images/projects/dance-desktop.jpg",
       },
       {
         id: 105,
-        image: "uploads/images/projects/shoes-desktop.jpg"
+        image: "uploads/images/projects/shoes-desktop.jpg",
       },
       {
         id: 106,
-        image: "uploads/images/projects/calendar-desktop.jpg"
+        image: "uploads/images/projects/calendar-desktop.jpg",
       },
       {
         id: 107,
-        image: "uploads/images/projects/watch-desktop.jpg"
-      }
-    ]
-  }
+        image: "uploads/images/projects/watch-desktop.jpg",
+      },
+    ],
+  },
 };
 
 export default projectsData;

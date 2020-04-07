@@ -12,7 +12,7 @@ const {
   SET_CURRENT_PROJECT_PREV,
   GET_CURRENT_PROJECT,
   SET_CURRENT_IMAGE_NEXT,
-  SET_CURRENT_IMAGE_PREV
+  SET_CURRENT_IMAGE_PREV,
 } = projectsTypes;
 
 const INITIAL_STATE = projectsData;
@@ -31,25 +31,25 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
       if (state.currentProject.id === 3) {
         return {
           ...state,
-          currentProject: state.allProjects[action.payload][0]
+          currentProject: state.allProjects[action.payload][0],
         };
       }
       return {
         ...state,
         currentProject:
-          state.allProjects[action.payload][state.currentProject.id + 1]
+          state.allProjects[action.payload][state.currentProject.id + 1],
       };
     case SET_CURRENT_PROJECT_PREV:
       if (state.currentProject.id === 0) {
         return {
           ...state,
-          currentProject: state.allProjects[action.payload][3]
+          currentProject: state.allProjects[action.payload][3],
         };
       }
       return {
         ...state,
         currentProject:
-          state.allProjects[action.payload][state.currentProject.id - 1]
+          state.allProjects[action.payload][state.currentProject.id - 1],
       };
     case GET_CURRENT_PROJECT:
       return { ...state, currentProject: state.allProjects[action.payload][0] };
@@ -60,7 +60,7 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentImage:
-          state.allImages[action.payload][state.currentImage.id - 100 + 1]
+          state.allImages[action.payload][state.currentImage.id - 100 + 1],
       };
     case SET_CURRENT_IMAGE_PREV:
       if (state.currentImage.id === 100) {
@@ -69,7 +69,7 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentImage:
-          state.allImages[action.payload][state.currentImage.id - 100 - 1]
+          state.allImages[action.payload][state.currentImage.id - 100 - 1],
       };
     default:
       return state;

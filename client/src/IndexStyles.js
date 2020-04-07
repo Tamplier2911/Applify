@@ -22,13 +22,13 @@ const getTheme = (props) => {
             --cl-bg-dark: #121212;
 
             --cl-shadow: rgba(0, 0, 0, 0.623);
-            --cl-header: #272727f8;
+            --cl-header: rgba(39, 39, 39, 0.973);
 
             // ILLUSTRATIONS
             --cl-illustration: #4ecca3;
 
             // SIDE NAV
-            --cl-sidenav: #4ecca25b;
+            --cl-sidenav: rgba(78, 204, 162, 0.357);
             --cl-sidenav-shadow: rgba(0, 0, 0, 0.603);
         
             // LANGUAGE PANNEL
@@ -38,8 +38,8 @@ const getTheme = (props) => {
             --cl-mainhover: #4ecca3;
         
             // SCROLL BAR
-            --cl-scrollbar-bg: #2834930c;
-            --cl-scroll-shadow: #00000028;
+            --cl-scrollbar-bg: rgba(40, 52, 147, 0.047);
+            --cl-scroll-shadow: rgba(0, 0, 0, 0.157);
             --cl-scrollThumb-bg1: #121212;
             --cl-scrollThumb-bg2: #4ecca3;
         
@@ -51,7 +51,7 @@ const getTheme = (props) => {
             --cl-tiles-5: #ffaa2d;
             --cl-tiles-6: #c0c1c3;
             --cl-tiles-7: #d6d7d9;
-            --cl-square-shadow: #00000086;
+            --cl-square-shadow: rgba(0, 0, 0, 0.525);
 
             // HERO GRADIENT
             --cl-gradient-start: rgba(52, 232, 157, 0.904);
@@ -60,19 +60,19 @@ const getTheme = (props) => {
 
             // HOME PAGE CARDS
             --cl-card-shadow: rgba(0, 0, 0, 0.616);
-            --cl-card-shadow-hover: #4ecca25b;
+            --cl-card-shadow-hover: rgba(78, 204, 162, 0.357);
         
             // PORTFOLIO PROJECTS CIRCLES
-            --cl-circle-0: #000;
-            --cl-cirlce-1: #55c57a;
-            --cl-circle-2: #dd4f4f;
-            --cl-circle-3: #000;
+            --cl-circle-0: #265545;
+            --cl-cirlce-1: #000;
+            --cl-circle-2: #55c57a;
+            --cl-circle-3: #dd4f4f;
             --cl-circle-hover: #002a38;
             --cl-circle-transit: #747474;
         
             // PROJECTS GALLERY
             --cl-projects-gal-bg-col: rgb(243, 243, 243);
-            --cl-projects-gal-pulse: #4ecca25b;
+            --cl-projects-gal-pulse: rgba(78, 204, 162, 0.357);
             --cl-projects-gal-pulse-shadow: rgba(204, 169, 44, 0);
         
             // RESUME PAGE
@@ -224,7 +224,7 @@ const getTheme = (props) => {
             --cl-darkest-grey: #747474;
         
             --cl-shadow: rgba(0, 0, 0, 0.623);
-            --cl-header: #ffffffec;
+            --cl-header: rgba(255, 255, 255, 0.925);
         
             // ILLUSTRATIONS
             --cl-illustration: #002a38;
@@ -240,8 +240,8 @@ const getTheme = (props) => {
             --cl-mainhover: #1a73e8;
         
             // SCROLL BAR
-            --cl-scrollbar-bg: #2834930c;
-            --cl-scroll-shadow: #00000028;
+            --cl-scrollbar-bg: rgba(40, 52, 147, 0.047);
+            --cl-scroll-shadow: rgba(0, 0, 0, 0.157);
             --cl-scrollThumb-bg1: #fff;
             --cl-scrollThumb-bg2: #1a73e8;
         
@@ -253,7 +253,7 @@ const getTheme = (props) => {
             --cl-tiles-5: #ffaa2d;
             --cl-tiles-6: #c0c1c3;
             --cl-tiles-7: #d6d7d9;
-            --cl-square-shadow: #00000086;
+            --cl-square-shadow: rgba(0, 0, 0, 0.525);
         
             // HERO GRADIENT
             --cl-gradient-start: rgba(255, 255, 255, 0.984);;
@@ -261,13 +261,13 @@ const getTheme = (props) => {
 
             // HOME PAGE CARDS
             --cl-card-shadow: rgba(0, 0, 0, 0.616);
-            --cl-card-shadow-hover: #fe3e2da1;
+            --cl-card-shadow-hover: rgba(254, 64, 47, 0.631);
         
             // PORTFOLIO PROJECTS CIRCLES
-            --cl-circle-0: #000;
-            --cl-cirlce-1: #55c57a;
-            --cl-circle-2: #dd4f4f;
-            --cl-circle-3: #000;
+            --cl-circle-0: #265545;
+            --cl-cirlce-1: #000;
+            --cl-circle-2: #55c57a;
+            --cl-circle-3: #dd4f4f;
             --cl-circle-hover: #002a38;
             --cl-circle-transit: #747474;
         
