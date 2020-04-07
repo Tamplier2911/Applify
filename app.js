@@ -70,7 +70,7 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
-  message: "Too many requests from this IP, please try again in a hour."
+  message: "Too many requests from this IP, please try again in a hour.",
 });
 app.use("/api", limiter);
 
@@ -103,7 +103,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(compression());
 
   // enforce https whenever http are made
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  // app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
   // serving static files
   app.use(express.static(path.join(__dirname, "client/build")));
