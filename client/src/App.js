@@ -84,7 +84,9 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged, theme }) => {
                   !isLogged ? <AuthorizationPage /> : <Redirect to="/" />
                 }
               />
+              {/* hide me later */}
               <Route exact path="/resume" component={ResumePage} />
+              {/* hide me later */}
               <Route exact path="/portfolio" component={PortfolioPage} />
               <Route exact path="/contacts" component={ContactsPage} />
               <Route exact path="/feedback" component={FeedbackPage} />

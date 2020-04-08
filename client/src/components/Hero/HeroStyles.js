@@ -163,6 +163,7 @@ export const HeroText = styled.h3`
 `;
 
 export const HeroPassiveCTA = styled(Link)`
+  white-space: nowrap;
   @media only screen and (min-width: 721px) {
     display: none;
   }

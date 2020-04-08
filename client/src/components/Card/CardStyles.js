@@ -45,6 +45,7 @@ ${getCardRsponsiveness}
   background-position: center;
   background-size: cover;
   min-height: 40rem;
+  max-height: 40rem;
 
   box-shadow: 0rem 0.1rem 1rem var(--cl-card-shadow);
   transition: box-shadow 0.3s;
@@ -69,6 +70,10 @@ export const CardContent = styled.div`
   background-color: var(--cl-white);
 `;
 
-export const CardContentTitle = styled.h4``;
+export const CardContentTitle = styled.h4`
+  white-space: nowrap;
+`;
 
-export const CardContentText = styled.div``;
+export const CardContentText = styled.div`
+  white-space: nowrap;
+`;

@@ -117,11 +117,13 @@ const Sidenav = ({
                 {sidenavHome}
               </SidenavLink>
             </SidenavLi>
+            {/* hide me later */}
             <SidenavLi>
               <SidenavLink to="/resume" onClick={toggleSideNav}>
                 {sidenavResume}
               </SidenavLink>
             </SidenavLi>
+            {/* hide me later */}
             <SidenavLi>
               <SidenavLink to="/portfolio" onClick={toggleSideNav}>
                 {sidenavPortfolio}

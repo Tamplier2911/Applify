@@ -453,7 +453,7 @@ module.exports = (user, url, data) => {
                 <tr>
                   <td class="email-masthead">
                     <a
-                      href="https://example.com"
+                      href="https://applify-tech.com"
                       class="f-fallback email-masthead_name"
                     >
                       Applify
