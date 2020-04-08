@@ -14,13 +14,13 @@ const {
   getOne,
   createOne,
   updateOne,
-  deleteOne
+  deleteOne,
 } = require("./handlersFactory");
 
 const filterObject = (obj, ...allowedFields) => {
   const filtered = {};
 
-  Object.keys(obj).forEach(field => {
+  Object.keys(obj).forEach((field) => {
     if (allowedFields.includes(field)) {
       filtered[field] = obj[field];
     }
@@ -52,7 +52,7 @@ const multerFilter = (req, file, cb) => {
 // user properties for upload
 const upload = multer({
   storage: multerStorage,
-  fileFilter: multerFilter
+  fileFilter: multerFilter,
 });
 
 // Photo upload middleware for /updateMe route
@@ -106,7 +106,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     if (filename && filename !== "default.jpg") {
       fs.unlink(
         path.join(__dirname, "..", "uploads/images/users", filename),
-        err => {
+        (err) => {
           if (err) throw err;
           console.log(`${filename} successfully deleted.`);
         }
@@ -118,7 +118,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   const userID = req.user._id;
   const updatedUser = await User.findByIdAndUpdate(userID, filteredBody, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 
   const { photo, name, email, about, _id } = updatedUser;
@@ -128,8 +128,8 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: {
-      user: updatedUserObject
-    }
+      user: updatedUserObject,
+    },
   });
 });
 
@@ -139,7 +139,7 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 
   res.status(204).json({
     status: "success",
-    data: null
+    data: null,
   });
 });
 
@@ -159,7 +159,7 @@ exports.updateUser = updateOne(User);
 
 // Delete Single User
 exports.deleteUser = catchAsync(async (req, res, next) => {
-  const user = await User.findById(eq.params.id);
+  const user = await User.findById(req.params.id);
 
   if (!user) {
     return next(new AppError("No document found with that ID.", 404));
@@ -172,7 +172,7 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
   if (userPhoto && userPhoto !== "default.jpg") {
     fs.unlink(
       path.join(__dirname, "..", "uploads/images/users", userPhoto),
-      err => {
+      (err) => {
         if (err) throw err;
         console.log(`${userPhoto} successfully deleted.`);
       }
@@ -184,6 +184,6 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
 
   res.status(204).json({
     status: "success",
-    message: null
+    message: null,
   });
 });

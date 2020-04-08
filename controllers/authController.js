@@ -9,9 +9,9 @@ const AppError = require("../utils/appError");
 // email class
 const Email = require("../utils/email");
 
-const signToken = id => {
+const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
 
@@ -23,7 +23,7 @@ const createSendToken = (user, statusCode, req, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     // secure: true
-    httpOnly: true
+    httpOnly: true,
   };
 
   // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
@@ -40,9 +40,9 @@ const createSendToken = (user, statusCode, req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        photo: user.photo
-      }
-    }
+        photo: user.photo,
+      },
+    },
   });
 };
 
@@ -51,14 +51,14 @@ exports.signup = catchAsync(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm
+    passwordConfirm: req.body.passwordConfirm,
   });
 
   // defining url
   // const url = `${req.protocol}://${req.get("host")}/user`;
   const url =
     process.env.NODE_ENV === "production"
-      ? `https://applify-s.herokuapp.com/profile`
+      ? `https://www.applify-tech.com/profile`
       : `http://localhost:3000/profile`;
 
   // creating instance of Email with current user, url and data obj
@@ -95,12 +95,12 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.logout = (req, res) => {
   res.cookie("jwt", "", {
     expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
+    httpOnly: true,
   });
 
   res.status(200).json({
     status: "success",
-    msg: "You have logged out securely."
+    msg: "You have logged out securely.",
   });
 };
 
@@ -198,22 +198,22 @@ exports.getUserObject = catchAsync(async (req, res, next) => {
       photo: photo,
       about: about,
       role: role,
-      likedBlogposts: likedBlogposts
+      likedBlogposts: likedBlogposts,
     };
     // console.log(userData);
     return res.status(200).json({
       status: "success",
       data: {
-        userObject: userData
-      }
+        userObject: userData,
+      },
     });
   } else {
     // return next(new AppError("You have to login, to access this route.", 401));
     return res.status(200).json({
       status: "success",
       data: {
-        userObject: ""
-      }
+        userObject: "",
+      },
     });
   }
 });
@@ -247,7 +247,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     // const url = `${req.protocol}://${req.get("host")}/reset`;
     const url =
       process.env.NODE_ENV === "production"
-        ? `https://applify-s.herokuapp.com/restore/${resetToken}`
+        ? `https://www.applify-tech.com/restore/${resetToken}`
         : `http://localhost:3000/restore/${resetToken}`;
 
     try {
@@ -259,7 +259,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
       res.status(200).json({
         status: "success",
-        message: "Reset token was sent to your email!"
+        message: "Reset token was sent to your email!",
       });
     } catch (err) {
       currentUser.passwordResetToken = undefined;
@@ -282,7 +282,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   const currentUser = await User.findOne({
     passwordResetToken: hashedToken,
-    passwordResetExpired: { $gt: Date.now() }
+    passwordResetExpired: { $gt: Date.now() },
   });
 
   // Set new password if token not expired and user exists
