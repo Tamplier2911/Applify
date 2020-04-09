@@ -106,7 +106,20 @@ if (process.env.NODE_ENV === "production") {
   // app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
   // serving static files
-  app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(
+    express.static(path.join(__dirname, "client/build"), {
+      etag: true,
+      lastModified: true,
+      setHeaders: (res, path) => {
+        const hashRegExp = new RegExp("\\.[0-9a-f]{8}\\.");
+        if (path.endsWith(".html")) {
+          res.setHeader("Cache-Control", "no-cache");
+        } else if (hashRegExp.test(path)) {
+          res.setHeader("Cache-Control", "max-age=31536000");
+        }
+      },
+    })
+  );
 
   // on request to any route that is not covered - send index html
   app.get("*", (req, res) => {

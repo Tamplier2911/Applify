@@ -201,6 +201,8 @@ exports.getUserObject = catchAsync(async (req, res, next) => {
       likedBlogposts: likedBlogposts,
     };
     // console.log(userData);
+    // res.set('Cache-Control', 'private, max-age=31557600');
+    res.set("Cache-Control", "no-cache");
     return res.status(200).json({
       status: "success",
       data: {
