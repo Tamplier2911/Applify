@@ -36,7 +36,7 @@ const resumeData = {
         experienceHeader: "Professional Experience",
         experienceTitle: "Junior Front-end Engineer",
         experienceText:
-          "My experience in web development mainly comes from self-education and independant projects, that I love to challenge myself with. Having 12+ month of experience studing and building web solutions, I have developed a strong passion for this domain. To demonstrate my learning curve, below I have provided a git link, which you can use to review the projects I have built along the way. This is my first application for Junior Front-end dev. position, and I am excited to put my skill to the test as a part of growing, ambitious team.",
+          "My experience in web development mainly comes from self-education and independant projects, that I love to challenge myself with. Having 12+ month of experience studying and building web solutions, I have developed a strong passion for this domain. To demonstrate my learning curve, below I have provided a git link, which you can use to review the projects I have built along the way. This is my first application for Junior Front-end dev. position, and I am excited to put my skill to the test as a part of growing, ambitious team.",
       },
       education: {
         educationHeader: "Education",
