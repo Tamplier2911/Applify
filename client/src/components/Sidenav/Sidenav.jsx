@@ -34,11 +34,28 @@ import {
   SidenavNavigation,
   SidenavUl,
   SidenavLi,
+  AnimateWrapper,
   SidenavLink,
 } from "./SidenavStyles";
 
 // component constants
 import sidenavData from "./SidenavConstants";
+
+// component motions
+import sidenavMotions from "./SidenavMotions.js";
+
+const BuffedLink = ({ children, direction, delay }) => {
+  const variants = sidenavMotions(delay);
+  return (
+    <AnimateWrapper
+      initial="hidden"
+      animate="visible"
+      variants={variants[direction]}
+    >
+      {children ? children : null}
+    </AnimateWrapper>
+  );
+};
 
 const Sidenav = ({
   sidenavCondition,
@@ -74,79 +91,95 @@ const Sidenav = ({
 
   return ReactDOM.createPortal(
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
-      <SidenavContent onClick={(e) => e.stopPropagation()}>
-        <SidenavTheme
-          onClick={() => (theme === "light" ? setThemeDark() : setThemeLight())}
-        >
-          {theme === "light" ? <SidenavMoonSVG /> : <SidenavSunSVG />}
-        </SidenavTheme>
-        <SidenavHero>
-          {isLogged ? (
-            <Fragment>
-              <SidenavHeroImgContainer>
-                <SidenavImage src={image} alt="Happy user." />
-              </SidenavHeroImgContainer>
+      {sidenavCondition ? null : (
+        <SidenavContent onClick={(e) => e.stopPropagation()}>
+          <SidenavTheme
+            onClick={() =>
+              theme === "light" ? setThemeDark() : setThemeLight()
+            }
+          >
+            {theme === "light" ? <SidenavMoonSVG /> : <SidenavSunSVG />}
+          </SidenavTheme>
+          <SidenavHero>
+            {isLogged ? (
+              <Fragment>
+                <SidenavHeroImgContainer>
+                  <SidenavImage src={image} alt="Happy user." />
+                </SidenavHeroImgContainer>
+                <SidenavUserData>
+                  <SidenavUserName>{name}</SidenavUserName>
+                  <SidenavUserEmail>{email}</SidenavUserEmail>
+                  <SidenavUserLinks to="/profile" onClick={toggleSideNav}>
+                    {sidenavProfile}
+                  </SidenavUserLinks>
+                  <SidenavLogout
+                    onClick={() => {
+                      logUserOutStart();
+                      toggleSideNav();
+                    }}
+                  >
+                    {sidenavLogOut}
+                  </SidenavLogout>
+                </SidenavUserData>
+              </Fragment>
+            ) : (
               <SidenavUserData>
-                <SidenavUserName>{name}</SidenavUserName>
-                <SidenavUserEmail>{email}</SidenavUserEmail>
-                <SidenavUserLinks to="/profile" onClick={toggleSideNav}>
-                  {sidenavProfile}
+                <SidenavUserLinks to="/authorization" onClick={toggleSideNav}>
+                  {sidenavLogIn}
                 </SidenavUserLinks>
-                <SidenavLogout
-                  onClick={() => {
-                    logUserOutStart();
-                    toggleSideNav();
-                  }}
-                >
-                  {sidenavLogOut}
-                </SidenavLogout>
               </SidenavUserData>
-            </Fragment>
-          ) : (
-            <SidenavUserData>
-              <SidenavUserLinks to="/authorization" onClick={toggleSideNav}>
-                {sidenavLogIn}
-              </SidenavUserLinks>
-            </SidenavUserData>
-          )}
-        </SidenavHero>
-        <SidenavNavigation>
-          <SidenavUl>
-            <SidenavLi>
-              <SidenavLink to="/" onClick={toggleSideNav}>
-                {sidenavHome}
-              </SidenavLink>
-            </SidenavLi>
-            {/* hide me later */}
-            <SidenavLi>
-              <SidenavLink to="/resume" onClick={toggleSideNav}>
-                {sidenavResume}
-              </SidenavLink>
-            </SidenavLi>
-            {/* hide me later */}
-            <SidenavLi>
-              <SidenavLink to="/portfolio" onClick={toggleSideNav}>
-                {sidenavPortfolio}
-              </SidenavLink>
-            </SidenavLi>
-            <SidenavLi>
-              <SidenavLink to="/contacts" onClick={toggleSideNav}>
-                {sidenavContacts}
-              </SidenavLink>
-            </SidenavLi>
-            <SidenavLi>
-              <SidenavLink to="/feedback" onClick={toggleSideNav}>
-                {sidenavFeedback}
-              </SidenavLink>
-            </SidenavLi>
-            <SidenavLi>
-              <SidenavLink to="/blog" onClick={toggleSideNav}>
-                {sidenavBlog}
-              </SidenavLink>
-            </SidenavLi>
-          </SidenavUl>
-        </SidenavNavigation>
-      </SidenavContent>
+            )}
+          </SidenavHero>
+          <SidenavNavigation>
+            <SidenavUl>
+              <SidenavLi>
+                <BuffedLink direction="left" delay={0}>
+                  <SidenavLink to="/" onClick={toggleSideNav}>
+                    {sidenavHome}
+                  </SidenavLink>
+                </BuffedLink>
+              </SidenavLi>
+              {/* hide me later */}
+              <SidenavLi>
+                <BuffedLink direction="right" delay={0.2}>
+                  <SidenavLink to="/resume" onClick={toggleSideNav}>
+                    {sidenavResume}
+                  </SidenavLink>
+                </BuffedLink>
+              </SidenavLi>
+              {/* hide me later */}
+              <SidenavLi>
+                <BuffedLink direction="left" delay={0.4}>
+                  <SidenavLink to="/portfolio" onClick={toggleSideNav}>
+                    {sidenavPortfolio}
+                  </SidenavLink>
+                </BuffedLink>
+              </SidenavLi>
+              <SidenavLi>
+                <BuffedLink direction="right" delay={0.6}>
+                  <SidenavLink to="/contacts" onClick={toggleSideNav}>
+                    {sidenavContacts}
+                  </SidenavLink>
+                </BuffedLink>
+              </SidenavLi>
+              <SidenavLi>
+                <BuffedLink direction="left" delay={0.8}>
+                  <SidenavLink to="/feedback" onClick={toggleSideNav}>
+                    {sidenavFeedback}
+                  </SidenavLink>
+                </BuffedLink>
+              </SidenavLi>
+              <SidenavLi>
+                <BuffedLink direction="right" delay={1}>
+                  <SidenavLink to="/blog" onClick={toggleSideNav}>
+                    {sidenavBlog}
+                  </SidenavLink>
+                </BuffedLink>
+              </SidenavLi>
+            </SidenavUl>
+          </SidenavNavigation>
+        </SidenavContent>
+      )}
     </SidenavContainer>,
     document.querySelector("#sidenav")
   );

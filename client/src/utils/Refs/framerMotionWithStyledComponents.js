@@ -55,6 +55,19 @@ const cardMotionsForFramer = {
 
 /*
 
+<motion.div
+  animate={{ x: 100, y: 100, opacity: 1 }}
+  transition={{
+    delay: 1,
+    x: { type: "spring", stiffness: 100 },
+    default: { duration: 2 },
+  }}
+/>
+
+*/
+
+/*
+
 import * as React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { ReactComponent as SunSVG } from "../../assets/svg/sun.svg";
 import { ReactComponent as MoonSVG } from "../../assets/svg/moon.svg";
@@ -268,6 +269,8 @@ export const SidenavLi = styled.li`
   display: grid;
   justify-items: center;
 `;
+
+export const AnimateWrapper = styled(motion.div)``;
 
 export const SidenavLink = styled(Link)`
   font-size: 1.7rem;
