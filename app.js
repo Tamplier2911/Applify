@@ -55,17 +55,11 @@ app.enable("trust proxy");
 
 // cross-origin-requests
 // https://github.com/expressjs/cors
-const whitelist = [
-  "https://www.applify-tech.com",
-  "https://applify-s.herokuapp.com",
-  "http://www.applify-tech.com",
-  "http://applify-s.herokuapp.com",
-];
-const corsOptions = { origin: "http://www.applify-tech.com" };
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
-// app.use(cors());
-// app.options("*", cors());
+// const corsOptions = { origin: "https://www.applify-tech.com/" };
+// app.use(cors(corsOptions));
+// app.options("*", cors(corsOptions));
+app.use(cors());
+app.options("*", cors());
 
 // app.use(express.static(path.join(__dirname, "uploads")));
 // app.use("/uploads", express.static("uploads"));
