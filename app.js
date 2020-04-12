@@ -55,11 +55,11 @@ app.enable("trust proxy");
 
 // cross-origin-requests
 // https://github.com/expressjs/cors
-// const corsOptions = { origin: "https://www.applify-tech.com/" };
-// app.use(cors(corsOptions));
-// app.options("*", cors(corsOptions));
-app.use(cors());
-app.options("*", cors());
+const corsOptions = { origin: "https://www.applify-tech.com/" };
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+// app.use(cors());
+// app.options("*", cors());
 
 // app.use(express.static(path.join(__dirname, "uploads")));
 // app.use("/uploads", express.static("uploads"));
