@@ -61,17 +61,7 @@ const whitelist = [
   "http://www.applify-tech.com",
   "http://applify-s.herokuapp.com",
 ];
-const corsOptions = {
-  origin: (origin, cb) => {
-    console.log(
-      origin,
-      "ORIGIN*******************************************************"
-    );
-    whitelist.includes(origin)
-      ? cb(null, true)
-      : cb(new Error("Not allowed by CORS"));
-  },
-};
+const corsOptions = { origin: "http://www.applify-tech.com" };
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 // app.use(cors());
