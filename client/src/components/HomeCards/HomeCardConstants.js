@@ -12,7 +12,8 @@ const homeCardsData = {
         id: 201,
         gradient: ["rgb(240, 152, 25)", "rgb(237, 223, 94)"],
         title: "Rapid Development",
-        text: "I value your time",
+        // text: "I value your time",
+        text: "We value your time",
         svg: IconTimeSVG,
       },
       {
@@ -42,7 +43,8 @@ const homeCardsData = {
         id: 201,
         gradient: ["rgb(240, 152, 25)", "rgb(237, 223, 94)"],
         title: "Rapid Development",
-        text: "I value your time",
+        // text: "I value your time",
+        text: "We value your time",
         svg: IconTimeSVG,
       },
       {
@@ -74,7 +76,8 @@ const homeCardsData = {
         id: 201,
         gradient: ["rgb(240, 152, 25)", "rgb(237, 223, 94)"],
         title: "Молниеносная Разработка",
-        text: "Я ценю ваше время",
+        // text: "Я ценю ваше время",
+        text: "Мы ценим ваше время",
         svg: IconTimeSVG,
       },
       {
@@ -104,7 +107,8 @@ const homeCardsData = {
         id: 201,
         gradient: ["rgb(240, 152, 25)", "rgb(237, 223, 94)"],
         title: "Молниеносная Разработка",
-        text: "Я ценю ваше время",
+        // text: "Я ценю ваше время",
+        text: "Мы ценим ваше время",
         svg: IconTimeSVG,
       },
       {
@@ -136,7 +140,8 @@ const homeCardsData = {
         id: 201,
         gradient: ["rgb(240, 152, 25)", "rgb(237, 223, 94)"],
         title: "Блискавична Розробка",
-        text: "Я ціную ваш час",
+        // text: "Я цінуємо ваш час",
+        text: "Ми цінуємо ваш час",
         svg: IconTimeSVG,
       },
       {
@@ -166,7 +171,8 @@ const homeCardsData = {
         id: 201,
         gradient: ["rgb(240, 152, 25)", "rgb(237, 223, 94)"],
         title: "Блискавична Розробка",
-        text: "Я ціную ваш час",
+        // text: "Я цінуємо ваш час",
+        text: "Ми цінуємо ваш час",
         svg: IconTimeSVG,
       },
       {

@@ -30,13 +30,9 @@ import {
 import galleryData from "./ProjectsGalleryConstants";
 
 // get window dimensions
-const getWindowDimensions = () => {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height,
-  };
-};
+import getWindowDimensions from "../../utils/WindowCaptions/getWindowDimensions";
+// get device value
+import getDeviceValue from "../../utils/WindowCaptions/getDeviceValue";
 
 const ProjectsGallery = ({
   currentImage,
@@ -69,14 +65,7 @@ const ProjectsGallery = ({
   // define image path
   const projectPortrait = getImageRelativePath(image || "");
   // get divice value
-  const device =
-    width <= 425
-      ? "phone"
-      : width >= 426 && width <= 720
-      ? "tablet"
-      : width >= 721
-      ? "desktop"
-      : "desktop";
+  const device = getDeviceValue(width);
 
   return (
     <ProjectsGalleryContainer animateIn={"bounceInLeft"} animateOnce={true}>

@@ -1,8 +1,10 @@
 const feedbackFormData = {
   eng: {
     feedbackFormTitle: [
-      "Please, describe what did you like about my services, and what you didn't.",
-      "How could I improve?",
+      // "Please, describe what did you like about my services, and what you didn't.",
+      "Please, describe what did you like about our services, and what you didn't.",
+      // "How could I improve?",
+      "How could we improve?",
     ],
     feedbackFormFeedback: "Feedback",
     feedbackFormSubmit: "Submit",
@@ -17,7 +19,9 @@ const feedbackFormData = {
   },
   rus: {
     feedbackFormTitle: [
-      "Поделитесь вашим опытом использования моих услуг.",
+      // "Поделитесь вашим опытом использования моих услуг.",
+      "Поделитесь вашим опытом использования наших услуг.",
+      // "Над чем стоит поработать?",
       "Над чем стоит поработать?",
     ],
     feedbackFormFeedback: "Отзыв",
@@ -33,7 +37,9 @@ const feedbackFormData = {
   },
   ukr: {
     feedbackFormTitle: [
-      "Поділіться вашим досвідом використання моїх послуг.",
+      // "Поділіться вашим досвідом використання моїх послуг.",
+      "Поділіться вашим досвідом використання наших послуг.",
+      // "Над чим варто попрацювати?",
       "Над чим варто попрацювати?",
     ],
     feedbackFormFeedback: "Відгук",
