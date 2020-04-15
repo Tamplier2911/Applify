@@ -2,4 +2,4 @@
 
 ## Deployment
 
-https://applify-s.herokuapp.com/
+https://applify-tech.com/

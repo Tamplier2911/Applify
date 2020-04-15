@@ -12,7 +12,7 @@ const sidenavMotions = (delay) => ({
         stiffness: 20,
       },
     },
-    hidden: { opacity: 0, x: -300 },
+    hidden: { opacity: 0.4, x: -300 },
   },
   right: {
     visible: {
@@ -27,7 +27,7 @@ const sidenavMotions = (delay) => ({
         stiffness: 20,
       },
     },
-    hidden: { opacity: 0, x: 300 },
+    hidden: { opacity: 0.4, x: 300 },
   },
 });
 

@@ -38,6 +38,9 @@ import {
   SidenavLink,
 } from "./SidenavStyles";
 
+// transforms
+import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath.js";
+
 // component constants
 import sidenavData from "./SidenavConstants";
 
@@ -82,12 +85,7 @@ const Sidenav = ({
     sidenavBlog,
   } = currentData;
 
-  let image = "";
-  if (process.env.NODE_ENV === "development" && photo) {
-    image = `${process.env.REACT_APP_SERVE_IMAGE_DEV + "api/" + photo}`;
-  } else if (photo) {
-    image = `${"api/" + photo}`;
-  }
+  let image = getImageRelativePath(photo ? photo : "");
 
   return ReactDOM.createPortal(
     <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
@@ -156,21 +154,21 @@ const Sidenav = ({
                 </BuffedLink>
               </SidenavLi>
               <SidenavLi>
-                <BuffedLink direction="right" delay={0.6}>
+                <BuffedLink direction="right" delay={0.4}>
                   <SidenavLink to="/contacts" onClick={toggleSideNav}>
                     {sidenavContacts}
                   </SidenavLink>
                 </BuffedLink>
               </SidenavLi>
               <SidenavLi>
-                <BuffedLink direction="left" delay={0.8}>
+                <BuffedLink direction="left" delay={0.2}>
                   <SidenavLink to="/feedback" onClick={toggleSideNav}>
                     {sidenavFeedback}
                   </SidenavLink>
                 </BuffedLink>
               </SidenavLi>
               <SidenavLi>
-                <BuffedLink direction="right" delay={1}>
+                <BuffedLink direction="right" delay={0}>
                   <SidenavLink to="/blog" onClick={toggleSideNav}>
                     {sidenavBlog}
                   </SidenavLink>
