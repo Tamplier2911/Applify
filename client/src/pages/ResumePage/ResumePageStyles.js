@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ResumePageContainer = styled.div`
+export const ResumePageContainer = styled.section`
   display: grid;
 
   @media only screen and (max-width: 768px) {

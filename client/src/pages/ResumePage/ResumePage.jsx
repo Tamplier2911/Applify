@@ -9,8 +9,8 @@ import { ResumePageContainer } from "./ResumePageStyles";
 
 const ResumePage = () => {
   return (
-    <ResumePageContainer>
-      <Resume />
+    <ResumePageContainer data-test="resume-page">
+      <Resume data-test="resume-page-child" />
     </ResumePageContainer>
   );
 };
