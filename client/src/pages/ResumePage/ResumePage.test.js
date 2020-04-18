@@ -1,58 +1,37 @@
 import React from "react";
-import { shallow, render } from "enzyme";
+// import { Provider } from "react-redux";
 
 // component
 import ResumePage from "./ResumePage";
 
-// initial store
-import { Provider } from "react-redux";
-import configureStore from "redux-mock-store";
-
-const middlewares = [];
-const mockStore = configureStore(middlewares);
-
-const store = mockStore({
-  lang: {
-    languagePanelHidden: true,
-    currentLanguage: "eng",
-  },
-});
-
-/**
- * Factory function for ResumePage Shallow Wrapper
- * @function setup
- * @param {any} state - Component initial state
- * @param {object} props - Component props specific to the setup
- * @returns {ShallowWRapper}
- */
-const setup = (state = null, props = {}) => {
-  const wrapper = shallow(<ResumePage {...props} />);
-  if (state) wrapper.setState(state);
-  return wrapper;
-};
-
-/**
- * @function findByTestAttr
- * @param {ShallowWRapper} wrapper - Component shallow wrapper
- * @param {string} val - String value to match
- * @returns {ShallowWRapper}
- */
-const findByTestAttr = (wrapper, val) => wrapper.find(`[data-test="${val}"]`);
+// utils
+import {
+  findByTestAttr,
+  setShallow,
+  // setRender,
+  // setMount,
+  // createStore,
+} from "../../tests/testUtils";
 
 describe("<ResumePage /> -- shallow", () => {
   it("renders without error", () => {
-    const wrapper = setup();
+    const wrapper = setShallow(<ResumePage />);
     const resumePage = findByTestAttr(wrapper, "resume-page");
     expect(resumePage.length).toBe(1);
   });
 
   it("renders children", () => {
-    // const wrapper = render(
+    // const store = createStore({
+    //   lang: {
+    //     languagePanelHidden: true,
+    //     currentLanguage: "eng",
+    //   },
+    // });
+    // const wrapper = setRender(
     //   <Provider store={store}>
     //     <ResumePage />
     //   </Provider>
     // );
-    // console.log(wrapper.children());
     // expect(wrapper.children.length).toBeTruthy();
   });
 
@@ -79,7 +58,7 @@ describe("<ResumePage /> -- shallow", () => {
   });
 
   it("matches snapshot", () => {
-    const wrapper = setup();
+    const wrapper = setShallow(<ResumePage />);
     const resumePage = findByTestAttr(wrapper, "resume-page");
     expect(resumePage).toMatchSnapshot();
   });
