@@ -18,6 +18,7 @@ const ResumePage = () => {
 
 ResumePage.propTypes = {
   success: PropTypes.bool,
+  // success: PropTypes.bool.isRequired,
 };
 
 export default ResumePage;
