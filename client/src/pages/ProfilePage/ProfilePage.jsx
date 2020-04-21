@@ -1,5 +1,6 @@
 // import "./ProfilePage.scss";
 import React from "react";
+import PropTypes from "prop-types";
 import { Redirect, Switch, Route, useRouteMatch } from "react-router-dom";
 
 // redux
@@ -7,7 +8,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import {
   selectIsLogged,
-  selectUserObject
+  selectUserObject,
 } from "../../redux/auth/auth.selectors";
 
 // components
@@ -27,7 +28,7 @@ import BlogCreate from "../../components/BlogCreate/BlogCreate";
 // JS Rendering CSS
 import {
   ProfilePageContainer,
-  ProfilePagePlaceholder
+  ProfilePagePlaceholder,
 } from "./ProfilePageStyles";
 
 const ProfilePage = ({ isLogged, userObject }) => {
@@ -125,7 +126,12 @@ const ProfilePage = ({ isLogged, userObject }) => {
 
 const mapStateToProps = createStructuredSelector({
   isLogged: selectIsLogged,
-  userObject: selectUserObject
+  userObject: selectUserObject,
 });
+
+ProfilePage.propTypes = {
+  isLogged: PropTypes.bool,
+  userObject: PropTypes.object,
+};
 
 export default connect(mapStateToProps)(ProfilePage);

@@ -8,14 +8,14 @@ import ProjectsGallery from "../../components/ProjectsGallery/ProjectsGallery";
 // JS Rendering CSS
 import {
   PortfolioPageContainer,
-  PortfolioPagePlaceholder
+  PortfolioPagePlaceholder,
 } from "./PortfolioPageStyles";
 
 const PortfolioPage = () => {
   return (
-    <PortfolioPageContainer>
-      <Projects />
-      <ProjectsGallery />
+    <PortfolioPageContainer data-test="portfolio-page">
+      <Projects data-test="portfolio-page-projects" />
+      <ProjectsGallery data-test="portfolio-page-gallery" />
       <PortfolioPagePlaceholder />
     </PortfolioPageContainer>
   );
