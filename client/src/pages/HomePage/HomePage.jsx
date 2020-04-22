@@ -11,9 +11,9 @@ import { HomePageContainer, HomePagePlaceholder } from "./HomePageStyles";
 const HomePage = () => {
   // throw Error;
   return (
-    <HomePageContainer>
-      <Hero />
-      <HomeCards />
+    <HomePageContainer data-test="home-page">
+      <Hero data-test="home-page-hero" />
+      <HomeCards data-test="home-page-cards" />
       <HomePagePlaceholder />
     </HomePageContainer>
   );

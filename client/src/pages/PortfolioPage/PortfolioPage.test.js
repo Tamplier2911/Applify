@@ -7,15 +7,17 @@ import PortfolioPage from "./PortfolioPage";
 import { setShallow, findByTestAttr } from "../../tests/testUtils";
 
 describe("<PortfolioPage />", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = setShallow(<PortfolioPage />);
+  });
+
   it("renders without error", () => {
-    const wrapper = setShallow(<PortfolioPage />);
     const portfolioPage = findByTestAttr(wrapper, "portfolio-page");
     expect(portfolioPage.length).toBe(1);
   });
 
   it("renders childrens", () => {
-    const wrapper = setShallow(<PortfolioPage />);
-
     const projects = findByTestAttr(wrapper, "portfolio-page-projects");
     expect(projects.length).toBe(1);
 
@@ -24,7 +26,6 @@ describe("<PortfolioPage />", () => {
   });
 
   it("matches snapshot", () => {
-    const wrapper = setShallow(<PortfolioPage />);
     const portfolioPage = findByTestAttr(wrapper, "porfolio-page");
     expect(portfolioPage).toMatchSnapshot();
   });

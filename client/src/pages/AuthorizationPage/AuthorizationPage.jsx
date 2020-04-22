@@ -8,15 +8,15 @@ import SignUp from "../../components/SignUp/SignUp";
 // JS Rendering CSS
 import {
   AuthPageContainer,
-  AuthPagePlaceholder
+  AuthPagePlaceholder,
 } from "./AuthorizationPageStyles";
 
 const AuthorizationPage = () => {
   return (
-    <AuthPageContainer>
+    <AuthPageContainer data-test="auth-page">
       <AuthPagePlaceholder />
-      <SignIn />
-      <SignUp />
+      <SignIn data-test="auth-page-signin" />
+      <SignUp data-test="auth-page-signup" />
     </AuthPageContainer>
   );
 };

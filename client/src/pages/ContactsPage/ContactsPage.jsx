@@ -7,13 +7,13 @@ import Contacts from "../../components/Contacts/Contacts";
 // JS Rendering CSS
 import {
   ContactsPageContainer,
-  ContactsPagePlaceholder
+  ContactsPagePlaceholder,
 } from "./ContactsPageStyles";
 
 const ContactsPage = () => {
   return (
-    <ContactsPageContainer>
-      <Contacts />
+    <ContactsPageContainer data-test="contacts-page">
+      <Contacts data-test="contacts-page-cp" />
       <ContactsPagePlaceholder />
     </ContactsPageContainer>
   );

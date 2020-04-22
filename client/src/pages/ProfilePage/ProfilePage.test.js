@@ -23,18 +23,24 @@ describe("<ProfilePage />", () => {
     },
   };
   const store = createStore(initialStore);
-  it("renders without error", () => {
-    const wrapper = setShallow(
+
+  let wrapper;
+  beforeEach(() => {
+    wrapper = setShallow(
       <Provider store={store}>
         <ProfilePage />
       </Provider>
     );
+  });
+
+  it("renders without error", () => {
     const profilePage = wrapper.find(ProfilePage);
     expect(profilePage.length).toBe(1);
   });
 
   it("recieves correct props", () => {
     const expectedLogin = { isLogged: false };
+
     const logginErr = checkProps(ProfilePage, expectedLogin, "isLogged");
     expect(logginErr).toBeUndefined();
 
@@ -44,11 +50,6 @@ describe("<ProfilePage />", () => {
   });
 
   it("matches snapshot", () => {
-    const wrapper = setShallow(
-      <Provider store={store}>
-        <ProfilePage />
-      </Provider>
-    );
     const profilePage = wrapper.find(ProfilePage);
     expect(profilePage).toMatchSnapshot();
   });

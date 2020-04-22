@@ -1,5 +1,4 @@
 import React from "react";
-// import { Provider } from "react-redux";
 
 // component
 import ResumePage from "./ResumePage";
@@ -15,14 +14,17 @@ import {
 } from "../../tests/testUtils";
 
 describe("<ResumePage />", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = setShallow(<ResumePage />);
+  });
+
   it("renders without error", () => {
-    const wrapper = setShallow(<ResumePage />);
     const resumePage = findByTestAttr(wrapper, "resume-page");
     expect(resumePage.length).toBe(1);
   });
 
   it("renders children", () => {
-    const wrapper = setShallow(<ResumePage />);
     const resumePageChild = findByTestAttr(wrapper, "resume-page-child");
     expect(resumePageChild.length).toBe(1);
   });
@@ -34,7 +36,6 @@ describe("<ResumePage />", () => {
   });
 
   it("matches snapshot", () => {
-    const wrapper = setShallow(<ResumePage />);
     const resumePage = findByTestAttr(wrapper, "resume-page");
     expect(resumePage).toMatchSnapshot();
   });
