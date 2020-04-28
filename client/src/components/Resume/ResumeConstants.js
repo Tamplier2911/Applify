@@ -34,9 +34,9 @@ const resumeData = {
     main: {
       experience: {
         experienceHeader: "Professional Experience",
-        experienceTitle: "Junior Front-end Engineer",
+        experienceTitle: "Front-end Engineer",
         experienceText:
-          "My experience in web development mainly comes from self-education and independant projects, that I love to challenge myself with. Having 12+ month of experience studying and building web solutions, I have developed a strong passion for this domain. To demonstrate my learning curve, below I have provided a git link, which you can use to review the projects I have built along the way. This is my first application for Junior Front-end dev. position, and I am excited to put my skill to the test as a part of growing, ambitious team.",
+          "My experience in web development mainly comes from self-education and independant projects, that I love to challenge myself with. Having 12+ month of experience studying and building web solutions, I have developed a strong passion for this domain. To demonstrate my learning curve, below I have provided a git link, which you can use to review the projects I have built along the way. This is my first application for Front-end dev. position, and I am excited to put my skill to the test as a part of growing, ambitious team.",
       },
       education: {
         educationHeader: "Education",
@@ -127,9 +127,9 @@ const resumeData = {
     main: {
       experience: {
         experienceHeader: "Профессиональный Опыт",
-        experienceTitle: "Младший Фронтенд Инженер",
+        experienceTitle: "Фронтенд Инженер",
         experienceText:
-          "Мой опыт в разработке, прежде всего, основан на самообразовании и самостоятельных проектах. За более чем 12+ месяцев опыта реализации веб-решений, я обрел необходимые навыки и способности, востребованные в этой сфере. Чтобы продемонстрировать процесс своего обучения, ниже, я приведу ссылку на мой гит аккаунт, где вы можете ознакомиться с проектами над которыми я работал. Это моя первая заявка на позицию Младшего Фронтенд Инженера, и я готов испытать себя став частью быстрорастущей, амбициозной команды.",
+          "Мой опыт в разработке, прежде всего, основан на самообразовании и самостоятельных проектах. За более чем 12+ месяцев опыта реализации веб-решений, я обрел необходимые навыки и способности, востребованные в этой сфере. Чтобы продемонстрировать процесс своего обучения, ниже, я приведу ссылку на мой гит аккаунт, где вы можете ознакомиться с проектами над которыми я работал. Это моя первая заявка на позицию Фронтенд Инженера, и я готов испытать себя став частью быстрорастущей, амбициозной команды.",
       },
       education: {
         educationHeader: "Образование",
@@ -222,9 +222,9 @@ const resumeData = {
     main: {
       experience: {
         experienceHeader: "Професійний Досвід",
-        experienceTitle: "Молодший Фронтенд Розробник",
+        experienceTitle: "Фронтенд Розробник",
         experienceText:
-          "Мій досвід в розробці, перш за все, заснований на самоосвіті та самостійних проектах. За більш ніж 12 місяців досвіду реалізації веб-рішень, я виробив в собі сильну пристрасть до розробки і самонавчання. Щоб продемонструвати процес свого навчання, нижче, я приведу адресу мого гіт аккаунта, де ви можете ознайомитися з проектами над якими я працював в період навчання. Це моя перша заявка на позицію Молодшого Фронтенд Розробника, і я з задоволенням готовий випробувати себе ставши частиною швидкозростаючої, амбітної команди.",
+          "Мій досвід в розробці, перш за все, заснований на самоосвіті та самостійних проектах. За більш ніж 12 місяців досвіду реалізації веб-рішень, я виробив в собі сильну пристрасть до розробки і самонавчання. Щоб продемонструвати процес свого навчання, нижче, я приведу адресу мого гіт аккаунта, де ви можете ознайомитися з проектами над якими я працював в період навчання. Це моя перша заявка на позицію Фронтенд Розробника, і я з задоволенням готовий випробувати себе ставши частиною швидкозростаючої, амбітної команди.",
       },
       education: {
         educationHeader: "Освіта",
