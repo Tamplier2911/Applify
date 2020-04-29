@@ -26,12 +26,12 @@ describe("theme.actions", () => {
 });
 
 describe("theme.reducer", () => {
-  it("no action returns default state", () => {
+  it("returns default state if no action type matched", () => {
     const state = themeReducer(defaultState, {});
     expect(state).toEqual(defaultState);
   });
 
-  it("perform  changes to state depends on action type", () => {
+  it("perform changes to state depends on action type", () => {
     const state = themeReducer(defaultState, setThemeDark());
     expect(state).toEqual({
       currentTheme: "dark",
