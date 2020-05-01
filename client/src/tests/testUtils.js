@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 // Enzyme
 import { shallow, mount, render } from "enzyme";
@@ -11,13 +12,25 @@ import configureStore from "redux-mock-store";
 const middlewares = [];
 const mockStore = configureStore(middlewares);
 
+// Root Reducer
+import { createStore } from "redux";
+import rootReducer from "../redux/root.reducer";
+
 /**
- * Factory function to create mock store.
+ * Factory function to create mock store utilzing redux-mock-store.
  * @function createStore
  * @param {object} state - Initial state value.
  * @returns {object} - Store mock.
  */
-export const createStore = (state) => mockStore(state);
+// export const createStore = (state) => mockStore(state);
+
+/**
+ * Factory function to create mock store untilizing redux.
+ * @function storeFactory
+ * @param {object} state - Initial state value.
+ * @returns {object} - Store mock.
+ */
+export const storeFactory = (state) => createStore(rootReducer, state);
 
 /**
  * Factory function for search by certain data-test.
@@ -56,6 +69,37 @@ export const setShallow = (component, state = null, props = {}) =>
   !state
     ? shallow(React.cloneElement(component, { ...props }))
     : shallow(React.cloneElement(component, { ...props })).setState(state);
+
+/**
+ * Factory function for Shallow Render component that wrapped with following HOC's
+ * withRouter(connect()(Component)).
+ * @function setShallowWRC
+ * @param {JSX} component - React component.
+ * @param {any} state - Component initial state.
+ * @param {object} props - Component props specific to the setup.
+ * @returns {ShallowWRapper} - Shallow wrapper of the component.
+ */
+
+export const setShallowWRC = (component, state = null, props = {}) => {
+  return !state
+    ? shallow(<Router>{React.cloneElement(component, { ...props })}</Router>)
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+    : shallow(<Router>{React.cloneElement(component, { ...props })}</Router>)
+        .setState(state)
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive();
+};
 
 /**
  * Factory function for Mount Render.

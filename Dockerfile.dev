@@ -1,0 +1,27 @@
+# set base image
+# FROM node:12.9.1-alpine
+FROM node:alpine
+
+# create project dir
+RUN mkdir /app
+
+# select working dir
+WORKDIR /app
+
+# copy package.json
+COPY package.json ./
+
+# install dependencies
+RUN npm install
+
+# copy rest of the files
+COPY ./ ./
+
+# startup command
+CMD ["npm", "run", "server"]
+
+# mac http://127.0.0.1:3000/
+# docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
+
+# win http://192.168.99.100:3000/
+# winpty docker run -it -p 3000:3000 -v /app/node_modules -v "/$(PWD)":/app -e CHOKIDAR_USEPOLLING=true <image_id>

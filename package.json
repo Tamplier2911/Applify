@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "ndb": "^1.1.5"
+    "ndb": "^1.1.5",
+    "nodemon": "^2.0.3"
   }
 }

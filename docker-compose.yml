@@ -1,0 +1,51 @@
+version: "3"
+services:
+  server:
+    image: tamplier2911/applify-server
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV
+      - PORT
+      - DB
+      - DB_LOCAL
+      - DB_PASSWORD
+      - DB_USERNAME
+      - JWT_SECRET
+      - JWT_EXPIRES_IN
+      - JWT_COOKIE_EXPIRES_IN
+      - EMAIL_FROM
+      - EMAIL_USERNAME
+      - EMAIL_PASSWORD
+      - EMAIL_HOST
+      - EMAIL_PORT
+      - SENDGRID_USERNAME
+      - SENDGRID_PASSWORD
+    # volumes:
+    #   - /app/node_modules
+    #   - ./:/app
+    stdin_open: true
+
+  client:
+    image: tamplier2911/applify-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    env_file:
+      - ./client/.env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_SERVE_IMAGE_DEV
+      - REACT_APP_SERVE_IMAGE_PROD
+    # volumes:
+    #   - /app/node_modules
+    #   - ./client:/app
+    stdin_open: true

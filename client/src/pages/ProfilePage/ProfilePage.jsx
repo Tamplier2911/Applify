@@ -1,7 +1,12 @@
 // import "./ProfilePage.scss";
 import React from "react";
-import PropTypes from "prop-types";
-import { Redirect, Switch, Route, useRouteMatch } from "react-router-dom";
+import {
+  Redirect,
+  Switch,
+  Route,
+  // useRouteMatch,
+  withRouter,
+} from "react-router-dom";
 
 // redux
 import { connect } from "react-redux";
@@ -31,19 +36,20 @@ import {
   ProfilePagePlaceholder,
 } from "./ProfilePageStyles";
 
-const ProfilePage = ({ isLogged, userObject }) => {
-  const match = useRouteMatch();
+const ProfilePage = ({ isLogged, userObject, match }) => {
+  // const match = useRouteMatch();
   const { role } = userObject;
   const showAdminRoutes = isLogged && (role === "admin" || role === "owner");
 
   return (
-    <ProfilePageContainer>
+    <ProfilePageContainer data-test="profile-page">
       <ProfilePagePlaceholder />
       <Switch>
         <Route
           exact
           path={`${match.path}`}
           render={() => (isLogged ? <Profile /> : <Redirect to="/" />)}
+          data-test="profile-page-exact"
         />
 
         <Route
@@ -52,6 +58,7 @@ const ProfilePage = ({ isLogged, userObject }) => {
           render={() =>
             showAdminRoutes ? <UsersHolder /> : <Redirect to="/" />
           }
+          data-test="profile-page-users"
         />
         <Route
           exact
@@ -59,12 +66,14 @@ const ProfilePage = ({ isLogged, userObject }) => {
           render={() =>
             showAdminRoutes ? <UserCreate /> : <Redirect to="/" />
           }
+          data-test="profile-page-users-create"
         />
         <Route
           path={`${match.path}/users/:id`}
           render={() =>
             showAdminRoutes ? <UserUpdate /> : <Redirect to="/" />
           }
+          data-test="profile-page-users-id"
         />
         <Route
           exact
@@ -72,12 +81,14 @@ const ProfilePage = ({ isLogged, userObject }) => {
           render={() =>
             showAdminRoutes ? <MessagesHolder /> : <Redirect to="/" />
           }
+          data-test="profile-page-messages"
         />
         <Route
           path={`${match.path}/messages/:id`}
           render={() =>
             showAdminRoutes ? <MessageRead /> : <Redirect to="/" />
           }
+          data-test="profile-page-messages-id"
         />
         <Route
           exact
@@ -85,6 +96,7 @@ const ProfilePage = ({ isLogged, userObject }) => {
           render={() =>
             showAdminRoutes ? <BlogsHolder /> : <Redirect to="/" />
           }
+          data-test="profile-page-blogs"
         />
         <Route
           exact
@@ -92,12 +104,14 @@ const ProfilePage = ({ isLogged, userObject }) => {
           render={() =>
             showAdminRoutes ? <BlogCreate /> : <Redirect to="/" />
           }
+          data-test="profile-page-blogs-create"
         />
         <Route
           path={`${match.path}/blogs/:id`}
           render={() =>
             showAdminRoutes ? <BlogUpdate /> : <Redirect to="/" />
           }
+          data-test="profile-page-blogs-id"
         />
         <Route
           exact
@@ -105,6 +119,7 @@ const ProfilePage = ({ isLogged, userObject }) => {
           render={() =>
             showAdminRoutes ? <FeedbacksHolder /> : <Redirect to="/" />
           }
+          data-test="profile-page-feeds"
         />
         <Route
           exact
@@ -112,12 +127,14 @@ const ProfilePage = ({ isLogged, userObject }) => {
           render={() =>
             showAdminRoutes ? <AdminFeedbackCreate /> : <Redirect to="/" />
           }
+          data-test="profile-page-feeds-create"
         />
         <Route
           path={`${match.path}/feeds/:id`}
           render={() =>
             showAdminRoutes ? <FeedbackUpdate /> : <Redirect to="/" />
           }
+          data-test="profile-page-feeds-id"
         />
       </Switch>
     </ProfilePageContainer>
@@ -129,9 +146,4 @@ const mapStateToProps = createStructuredSelector({
   userObject: selectUserObject,
 });
 
-ProfilePage.propTypes = {
-  isLogged: PropTypes.bool,
-  userObject: PropTypes.object,
-};
-
-export default connect(mapStateToProps)(ProfilePage);
+export default withRouter(connect(mapStateToProps)(ProfilePage));

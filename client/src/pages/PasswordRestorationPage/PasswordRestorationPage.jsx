@@ -16,17 +16,19 @@ import { PasswordRestorationPageContainer } from "./PasswordRestorationPageStyle
 
 const PasswordRestorationPage = ({ match, isLogged }) => {
   return (
-    <PasswordRestorationPageContainer>
+    <PasswordRestorationPageContainer data-test="password-restoration-page">
       <Switch>
         <Route
           exact
           path={`${match.path}`}
           render={() => (isLogged ? <Redirect to="/" /> : <ForgotPassword />)}
+          data-test="password-restoration-page-forgot"
         />
         <Route
           exact
           path={`${match.path}/:id`}
           render={() => (isLogged ? <Redirect to="/" /> : <RestorePassword />)}
+          data-test="password-restoration-page-restore"
         />
       </Switch>
     </PasswordRestorationPageContainer>
@@ -34,7 +36,7 @@ const PasswordRestorationPage = ({ match, isLogged }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLogged: selectIsLogged
+  isLogged: selectIsLogged,
 });
 
 export default withRouter(connect(mapStateToProps)(PasswordRestorationPage));
