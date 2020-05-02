@@ -1,21 +1,30 @@
 # set base image
-# FROM node:12.9.1-alpine
-FROM node:alpine
+FROM node
+
+# install nodemon globally
+RUN npm install -g nodemon
 
 # create project dir
-RUN mkdir /app
+# RUN mkdir /app
+RUN mkdir -p /app/server
 
 # select working dir
-WORKDIR /app
+# WORKDIR /app
+WORKDIR /app/server
+
+# copy package-lock.json
+COPY package-lock.json /app/server/
 
 # copy package.json
-COPY package.json ./
+# COPY package*.json ./
+COPY package*.json /app/server/
 
 # install dependencies
 RUN npm install
 
 # copy rest of the files
-COPY ./ ./
+# COPY ./ ./
+COPY ./ /app/server/
 
 # startup command
 CMD ["npm", "run", "server"]

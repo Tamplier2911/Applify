@@ -1,23 +1,25 @@
 # set base image
-# FROM node:12.9.1-alpine
-FROM node:alpine
+FROM node
 
 # create project dir
-RUN mkdir /app
+RUN mkdir -p /app/client
 
 # select working dir
-WORKDIR /app
+WORKDIR /app/client
+
+# copy package-lock.json
+COPY package-lock.json /app/client/
 
 # copy package.json
-COPY package.json ./
+COPY package*.json /app/client/
 
 # install dependencies
 RUN npm install
 
 # copy rest of the files
-COPY ./ ./
+COPY ./ /app/client/
 
-# startup command
+# Runs the client
 CMD ["npm", "run", "start"]
 
 # mac http://127.0.0.1:3000/
