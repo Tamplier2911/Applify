@@ -102,6 +102,27 @@ export const setShallowWRC = (component, state = null, props = {}) => {
 };
 
 /**
+ * Factory function for Shallow Render component that wrapped with following HOC's
+ * connect()(Component).
+ * @function setShallowC
+ * @param {JSX} component - React component.
+ * @param {any} state - Component initial state.
+ * @param {object} props - Component props specific to the setup.
+ * @returns {ShallowWRapper} - Shallow wrapper of the component.
+ */
+
+export const setShallowC = (component, state = null, props = {}) => {
+  return !state
+    ? shallow(React.cloneElement(component, { ...props }))
+        .dive()
+        .dive()
+    : shallow(React.cloneElement(component, { ...props }))
+        .setState(state)
+        .dive()
+        .dive();
+};
+
+/**
  * Factory function for Mount Render.
  * @function setMount
  * @param {JSX} component - React component.

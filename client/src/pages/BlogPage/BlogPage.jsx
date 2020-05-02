@@ -10,7 +10,7 @@ import {
   selectAllSets,
   selectCurrentSlot,
   selectAllSlots,
-  selectIsLoading
+  selectIsLoading,
 } from "../../redux/blogs/blogs.selectors";
 import { loadAllBlogpostsStart } from "../../redux/blogs/blogs.actions";
 
@@ -32,7 +32,7 @@ const BlogPage = ({
   currentDataSet,
   allDataSets,
   currentDataSlot,
-  allDataSlots
+  allDataSlots,
 }) => {
   useEffect(() => {
     if (!currentDataSet.length) {
@@ -44,11 +44,11 @@ const BlogPage = ({
     currentDataSet,
     allDataSets,
     currentDataSlot,
-    allDataSlots
+    allDataSlots,
   };
 
   return (
-    <BlogPageContainer>
+    <BlogPageContainer data-test="blog-page">
       <Switch>
         <Route
           exact
@@ -59,10 +59,15 @@ const BlogPage = ({
               blogsData={blogsData}
             />
           )}
+          data-test="blog-page-route-cl"
         />
-        <Route path={`${match.path}/:id`} component={BlogPost} />
+        <Route
+          path={`${match.path}/:id`}
+          component={BlogPost}
+          data-test="blog-page-route-id"
+        />
       </Switch>
-      <BlogPagePlaceholder />
+      <BlogPagePlaceholder data-test="blog-page-placeholder" />
     </BlogPageContainer>
   );
 };
@@ -72,7 +77,7 @@ const mapStateToProps = createStructuredSelector({
   allDataSets: selectAllSets,
   currentDataSlot: selectCurrentSlot,
   allDataSlots: selectAllSlots,
-  isLoading: selectIsLoading
+  isLoading: selectIsLoading,
 });
 
 export default connect(mapStateToProps, { loadAllBlogpostsStart })(BlogPage);

@@ -29,10 +29,11 @@ const FeedbackPage = ({ loadFeedbacksStart, loading, allFeeds }) => {
   }, [loadFeedbacksStart, allFeeds.length]);
 
   return (
-    <FeedbackPageContainer>
+    <FeedbackPageContainer data-test="feedback-page">
       <FeedbacksCollectionWithSpinner
         isLoading={loading}
         feedbacks={allFeeds}
+        data-test="feedback-page-with-spinner"
       />
       {/* <FeedbackCreate method="POST" /> */}
     </FeedbackPageContainer>

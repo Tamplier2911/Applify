@@ -4,14 +4,7 @@ import React from "react";
 import ResumePage from "./ResumePage";
 
 // utils
-import {
-  findByTestAttr,
-  setShallow,
-  // setRender,
-  // setMount,
-  checkProps,
-  // createStore,
-} from "../../tests/testUtils";
+import { findByTestAttr, setShallow, checkProps } from "../../tests/testUtils";
 
 describe("<ResumePage />", () => {
   let wrapper;
