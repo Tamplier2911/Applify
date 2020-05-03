@@ -6,7 +6,7 @@ const shrink = css`
   color: var(--cl-font);
 `;
 
-const ShrinkOnInput = props => {
+const ShrinkOnInput = (props) => {
   return props.inputlength ? shrink : null;
 };
 
@@ -54,7 +54,9 @@ export const FormInputBar = styled.input`
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    /*THIS IS THE ONE \/*/
     -webkit-text-fill-color: var(--cl-primary) !important;
+    /*THIS IS THE ONE \/*/
     transition: background-color 5000s ease-in-out 0s;
   }
 

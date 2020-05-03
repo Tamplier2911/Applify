@@ -10,30 +10,42 @@ import {
   ProfilePortraitAdminUsersSVG,
   ProfilePortraitAdminMessagesSVG,
   ProfilePortraitAdminPostsSVG,
-  ProfilePortraitAdminFeedsSVG
+  ProfilePortraitAdminFeedsSVG,
 } from "./AdminBarStyles.js";
 
 const AdminBar = () => {
   return (
-    <ProfilePortraitAdminBar>
+    <ProfilePortraitAdminBar data-test="admin-bar">
       <ProfilePortraitAdminUL>
         <ProfilePortraitAdminLI>
-          <ProfilePortraitAdminLink to="profile/users">
+          <ProfilePortraitAdminLink
+            to="profile/users"
+            data-test="admin-bar-users"
+          >
             <ProfilePortraitAdminUsersSVG />
           </ProfilePortraitAdminLink>
         </ProfilePortraitAdminLI>
         <ProfilePortraitAdminLI>
-          <ProfilePortraitAdminLink to="profile/messages">
+          <ProfilePortraitAdminLink
+            to="profile/messages"
+            data-test="admin-bar-messages"
+          >
             <ProfilePortraitAdminMessagesSVG />
           </ProfilePortraitAdminLink>
         </ProfilePortraitAdminLI>
         <ProfilePortraitAdminLI>
-          <ProfilePortraitAdminLink to="profile/blogs">
+          <ProfilePortraitAdminLink
+            to="profile/blogs"
+            data-test="admin-bar-blogs"
+          >
             <ProfilePortraitAdminPostsSVG />
           </ProfilePortraitAdminLink>
         </ProfilePortraitAdminLI>
         <ProfilePortraitAdminLI>
-          <ProfilePortraitAdminLink to="profile/feeds">
+          <ProfilePortraitAdminLink
+            to="profile/feeds"
+            data-test="admin-bar-feeds"
+          >
             <ProfilePortraitAdminFeedsSVG />
           </ProfilePortraitAdminLink>
         </ProfilePortraitAdminLI>

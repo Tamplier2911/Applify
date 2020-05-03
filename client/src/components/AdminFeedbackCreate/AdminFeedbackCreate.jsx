@@ -9,8 +9,8 @@ import { AdminFeedbackCreateContainer } from "./AdminFeedbackCreateStyles";
 
 const AdminFeedbackCreate = () => {
   return (
-    <AdminFeedbackCreateContainer>
-      <FeedbackCreate method="POST" />
+    <AdminFeedbackCreateContainer data-test="admin-fb-create">
+      <FeedbackCreate method="POST" data-test="admin-fb-create-child" />
     </AdminFeedbackCreateContainer>
   );
 };
