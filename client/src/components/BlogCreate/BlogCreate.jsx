@@ -10,9 +10,9 @@ import { BlogCreateContainer } from "./BlogCreateStyles";
 
 const BlogCreate = () => {
   return (
-    <BlogCreateContainer>
-      <BlogCreateRules />
-      <CreateUpdateBlogpost method="POST" />
+    <BlogCreateContainer data-test="blog-create">
+      <BlogCreateRules data-test="blog-create-rules" />
+      <CreateUpdateBlogpost method="POST" data-test="blog-create-cub" />
     </BlogCreateContainer>
   );
 };
