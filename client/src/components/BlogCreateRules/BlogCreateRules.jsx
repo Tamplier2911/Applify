@@ -17,7 +17,7 @@ import {
   BlogCreateRulesCode,
   BlogCreateRulesSection,
   BlogCreateRulesCodeSelector,
-  BlogCreateRulesCodeSample
+  BlogCreateRulesCodeSample,
 } from "./BlogCreateRulesStyles";
 
 // component constants
@@ -28,10 +28,10 @@ const BlogCreateRules = ({ lang }) => {
     blogRulesTitles,
     blogRulesSelectors,
     blogRulesDescriptors,
-    blogRulesCode
+    blogRulesCode,
   } = blogCreateRulesData[lang];
   return (
-    <BlogCreateRulesContainer>
+    <BlogCreateRulesContainer data-test="blog-create-rules">
       <BlogCreateRulesTitle>{blogRulesTitles[0]}</BlogCreateRulesTitle>
       <BlogCreateRulesUl>
         <BlogCreateRulesLi>
@@ -165,7 +165,7 @@ const BlogCreateRules = ({ lang }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps)(BlogCreateRules);

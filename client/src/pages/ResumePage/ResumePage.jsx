@@ -1,6 +1,5 @@
 // import "./ResumePage.scss";
 import React from "react";
-import PropTypes from "prop-types";
 
 // components
 import Resume from "../../components/Resume/Resume";
@@ -14,11 +13,6 @@ const ResumePage = () => {
       <Resume data-test="resume-page-child" />
     </ResumePageContainer>
   );
-};
-
-ResumePage.propTypes = {
-  success: PropTypes.bool,
-  // success: PropTypes.bool.isRequired,
 };
 
 export default ResumePage;

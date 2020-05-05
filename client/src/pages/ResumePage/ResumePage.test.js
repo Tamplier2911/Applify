@@ -4,7 +4,7 @@ import React from "react";
 import ResumePage from "./ResumePage";
 
 // utils
-import { findByTestAttr, setShallow, checkProps } from "../../tests/testUtils";
+import { findByTestAttr, setShallow } from "../../tests/testUtils";
 
 describe("<ResumePage />", () => {
   let wrapper;
@@ -20,12 +20,6 @@ describe("<ResumePage />", () => {
   it("renders children", () => {
     const resumePageChild = findByTestAttr(wrapper, "resume-page-child");
     expect(resumePageChild.length).toBe(1);
-  });
-
-  it("recieves correct props", () => {
-    const expectedProps = { success: true };
-    const err = checkProps(ResumePage, expectedProps, "success");
-    expect(err).toBeUndefined();
   });
 
   it("matches snapshot", () => {
