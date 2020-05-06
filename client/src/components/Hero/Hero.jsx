@@ -30,6 +30,8 @@ import heroData from "./HeroConstants";
 import getWindowDimensions from "../../utils/WindowCaptions/getWindowDimensions";
 // get device value
 import getDeviceValue from "../../utils/WindowCaptions/getDeviceValue";
+// debouncer
+import { debounce } from "../../utils/Debounce/debounce";
 
 const Hero = ({ lang, theme }) => {
   const currentData = heroData[lang];
@@ -41,9 +43,15 @@ const Hero = ({ lang, theme }) => {
   const { width } = windowDimensions;
 
   useEffect(() => {
-    const handleResize = () => setWindowDimensions(getWindowDimensions());
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const debounced = debounce(
+      () => setWindowDimensions(getWindowDimensions()),
+      250
+    );
+    window.addEventListener("resize", debounced);
+    return () => window.removeEventListener("resize", debounced);
+    // const handleResize = () => setWindowDimensions(getWindowDimensions());
+    // window.addEventListener("resize", handleResize);
+    // return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // get divice value

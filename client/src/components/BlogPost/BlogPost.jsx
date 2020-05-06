@@ -89,9 +89,9 @@ const BlogPost = ({
 
   // get slot and index for local like / dislike
   const { id } = match && match.params ? match.params : {};
-  const splitedId = id.split("-");
-  const slot = splitedId[1];
-  const index = splitedId[2];
+  const splitedId = id ? id.split("-") : id;
+  const slot = splitedId ? splitedId[1] : splitedId;
+  const index = splitedId ? splitedId[2] : splitedId;
 
   const onLikeClick = (e) => {
     e.preventDefault();
@@ -112,7 +112,7 @@ const BlogPost = ({
   };
 
   return (
-    <BlogPostContainer>
+    <BlogPostContainer data-test="blog-post">
       <BlogPostHeader>
         <BlogPostTitle>{title}</BlogPostTitle>
         <BlogPostAuthor>
@@ -133,7 +133,7 @@ const BlogPost = ({
       <BlogPostImgCont>
         <BlogPostImg alt="blog representation" src={blogImg} />
       </BlogPostImgCont>
-      <BlogPostContent>
+      <BlogPostContent data-test="blog-post-content">
         {blocks.map((block, i) => {
           const {
             headerSet,
@@ -219,7 +219,9 @@ const BlogPost = ({
 
 const mapStateToProps = (state, ownProps) => ({
   blogObject: selectAllBlogpostsAsObject(
-    ownProps.match.params.id.split("-")[0]
+    ownProps.match.params.id
+      ? ownProps.match.params.id.split("-")[0]
+      : ownProps.match.params.id
   )(state),
   user: selectUserObject(state),
   colorTheme: selectCurrentTheme(state),

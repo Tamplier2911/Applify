@@ -33,6 +33,8 @@ import galleryData from "./ProjectsGalleryConstants";
 import getWindowDimensions from "../../utils/WindowCaptions/getWindowDimensions";
 // get device value
 import getDeviceValue from "../../utils/WindowCaptions/getDeviceValue";
+// debouncer
+import { debounce } from "../../utils/Debounce/debounce";
 
 const ProjectsGallery = ({
   currentImage,
@@ -54,9 +56,16 @@ const ProjectsGallery = ({
     // 400
 
     // handle resize
-    const handleResize = () => setWindowDimensions(getWindowDimensions());
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const debounced = debounce(
+      () => setWindowDimensions(getWindowDimensions()),
+      250
+    );
+    window.addEventListener("resize", debounced);
+
+    // const handleResize = () => setWindowDimensions(getWindowDimensions());
+    // window.addEventListener("resize", handleResize);
+    // return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", debounced);
   }, [currentImage]);
 
   const { projectsGalleryHeader } = galleryData[lang];
