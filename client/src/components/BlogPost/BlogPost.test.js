@@ -34,7 +34,6 @@ describe("<BlogPost />", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setShallowWRC(<BlogPost store={store} />);
-    console.log(wrapper.debug());
   });
 
   it("renders without error", () => {

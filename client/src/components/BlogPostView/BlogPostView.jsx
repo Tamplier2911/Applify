@@ -1,5 +1,6 @@
 // import "./BlogPostView.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -76,9 +77,13 @@ const BlogPostView = ({
   };
 
   return (
-    <BlogViewContainer to={`blog/${_id}-${slot}-${index}`} big={isBig}>
+    <BlogViewContainer
+      to={`blog/${_id}-${slot}-${index}`}
+      big={isBig}
+      data-test="blog-post-view"
+    >
       <BlogViewImg alt="blog post presentation" src={`${blogImg}`} />
-      <BlogViewContent>
+      <BlogViewContent data-test="blog-post-view-content">
         <BlogViewContentWrap>
           <BlogViewContentTheme>{theme}</BlogViewContentTheme>
           <BlogViewContentTitle>{title}</BlogViewContentTitle>
@@ -98,6 +103,25 @@ const BlogPostView = ({
 const mapStateToProps = createStructuredSelector({
   user: selectUserObject,
 });
+
+BlogPostView.propTypes = {
+  blog: PropTypes.shape({
+    author: PropTypes.shape({
+      photo: PropTypes.string,
+      _id: PropTypes.string,
+      name: PropTypes.string,
+    }),
+    content: PropTypes.string,
+    createdAt: PropTypes.string,
+    image: PropTypes.string,
+    likes: PropTypes.number,
+    theme: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  pos: PropTypes.number,
+  slot: PropTypes.number,
+  index: PropTypes.number,
+};
 
 export default connect(mapStateToProps, {
   likeOneBlogpostStart,

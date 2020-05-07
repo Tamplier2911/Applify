@@ -1,5 +1,6 @@
 // import "./BlogsCollection.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -41,13 +42,13 @@ const BlogsCollection = ({
     allDataSets,
     currentDataSlot,
     allDataSlots,
-  } = blogsData;
+  } = blogsData ? blogsData : {};
 
   const { blogsCollectionHeader } = blogsCollectionData[lang];
 
   // if current sent is not empty set of 6 blogposts,
   // fill current set with fillers to reflect original page look.
-  const dataSetLength = currentDataSet.length;
+  const dataSetLength = currentDataSet ? currentDataSet.length : 0;
   if (dataSetLength > 0 && dataSetLength < 6) {
     for (let i = dataSetLength; i < 6; i++) {
       currentDataSet.push({ filler: true, _id: i });
@@ -56,25 +57,31 @@ const BlogsCollection = ({
 
   let count = -1;
   return (
-    <BlogsCollectionContainer>
+    <BlogsCollectionContainer data-test="blogs-collection">
       <BlogsCollectionTitle>{blogsCollectionHeader}</BlogsCollectionTitle>
-      <BlogsCollectionBlogs animateIn="bounceInUp" animateOnce={true}>
-        {currentDataSet.map((blog, i) => {
-          const { _id } = blog;
-          count++;
-          if (!blog.filler) {
-            return (
-              <BlogPostView
-                blog={blog}
-                key={_id}
-                pos={count}
-                slot={currentDataSlot}
-                index={i}
-              />
-            );
-          }
-          return <BlogPlaceholder key={_id} pos={count} />;
-        })}
+      <BlogsCollectionBlogs
+        animateIn="bounceInUp"
+        animateOnce={true}
+        data-test="blog-collection-blogs"
+      >
+        {currentDataSet
+          ? currentDataSet.map((blog, i) => {
+              const { _id } = blog;
+              count++;
+              if (!blog.filler) {
+                return (
+                  <BlogPostView
+                    blog={blog}
+                    key={_id}
+                    pos={count}
+                    slot={currentDataSlot}
+                    index={i}
+                  />
+                );
+              }
+              return <BlogPlaceholder key={_id} pos={count} />;
+            })
+          : null}
         <BlogsCollectionNav>
           <BlogsCollectionNavLeft
             {...(currentDataSlot === 1 ? { disabled: 1 } : { disabled: 0 })}
@@ -84,20 +91,22 @@ const BlogsCollection = ({
           >
             &#x3c;
           </BlogsCollectionNavLeft>
-          {Object.keys(allDataSets).map((key) => {
-            const keyNum = parseInt(key);
-            return (
-              <BlogsCollectionNavNum
-                key={key}
-                {...(currentDataSlot === keyNum
-                  ? { selected: 1 }
-                  : { selected: 0 })}
-                onClick={() => setCurrentSetBySlot(keyNum)}
-              >
-                {key}
-              </BlogsCollectionNavNum>
-            );
-          })}
+          {allDataSets
+            ? Object.keys(allDataSets).map((key) => {
+                const keyNum = parseInt(key);
+                return (
+                  <BlogsCollectionNavNum
+                    key={key}
+                    {...(currentDataSlot === keyNum
+                      ? { selected: 1 }
+                      : { selected: 0 })}
+                    onClick={() => setCurrentSetBySlot(keyNum)}
+                  >
+                    {key}
+                  </BlogsCollectionNavNum>
+                );
+              })
+            : null}
           <BlogsCollectionNavRight
             {...(currentDataSlot === allDataSlots
               ? { disabled: 1 }
@@ -114,6 +123,15 @@ const BlogsCollection = ({
       </BlogsCollectionBlogs>
     </BlogsCollectionContainer>
   );
+};
+
+BlogsCollection.propTypes = {
+  blogsData: PropTypes.shape({
+    allDataSets: PropTypes.object,
+    allDataSlots: PropTypes.number,
+    currentDataSet: PropTypes.array,
+    currentDataSlot: PropTypes.number,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({
