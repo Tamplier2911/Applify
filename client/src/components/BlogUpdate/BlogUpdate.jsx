@@ -62,8 +62,8 @@ const BlogUpdate = ({ lang, blogObject }) => {
   const { blogUpdateNotFound } = blogUpdateData[lang];
 
   return blogObject ? (
-    <BlogUpdateContainer>
-      <BlogUpdateData img={blogImg}>
+    <BlogUpdateContainer data-test="blog-update">
+      <BlogUpdateData img={blogImg} data-test="blog-update-data">
         <BlogUpdateAuthor>
           <BlogUpdateCredit>
             <BlogUpdateName>
@@ -86,7 +86,9 @@ const BlogUpdate = ({ lang, blogObject }) => {
       <GetBack path={`/profile/blogs`} />
     </BlogUpdateContainer>
   ) : (
-    <BlogUpdateNotFound>{blogUpdateNotFound}</BlogUpdateNotFound>
+    <BlogUpdateNotFound data-test="blog-update-not-found">
+      {blogUpdateNotFound}
+    </BlogUpdateNotFound>
   );
 };
 

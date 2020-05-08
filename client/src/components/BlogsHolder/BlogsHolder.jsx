@@ -68,13 +68,13 @@ const BlogsHolder = ({
   } = blogsHolderData[lang];
 
   return (
-    <BlogsHolderContainer>
+    <BlogsHolderContainer data-test="blogs-holder">
       <Button
         type="button"
         value={blogsHolderButton}
         click={redirectToCreateBlogpost}
       />
-      <BlogsHolderInputBarContainer>
+      <BlogsHolderInputBarContainer data-test="blogs-holder-search">
         <FormInput
           onInputChange={(e) => onInputChange(e)}
           value={search}
@@ -88,6 +88,7 @@ const BlogsHolder = ({
         title={blogsHolderTitle}
         refresher={1}
         cb={() => loadAllBlogpostsStart()}
+        data-test="blogs-holder-collection"
       >
         <CollectionForHolderWithSpinner
           isLoading={isLoading}
