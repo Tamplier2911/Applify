@@ -19,8 +19,12 @@ import contactsData from "./ContactsConstants";
 const Contacts = ({ lang }) => {
   const { contactsHeader } = contactsData[lang];
   return (
-    <ContactsContainer>
-      <FormHolder type={"contact"} title={contactsHeader}>
+    <ContactsContainer data-test="contacts">
+      <FormHolder
+        type={"contact"}
+        title={contactsHeader}
+        data-test="contacts-form-holder"
+      >
         <ContactsForm />
       </FormHolder>
     </ContactsContainer>

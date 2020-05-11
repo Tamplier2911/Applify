@@ -67,9 +67,13 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
   } = contactsFormData[lang];
 
   return (
-    <ContactsFormContainer>
+    <ContactsFormContainer data-test="contacts-form">
       <ContactsFormTitle lang={lang}>{contactsFormTitle}</ContactsFormTitle>
-      <ContactsFormItself autoComplete="off" onSubmit={(e) => onFormSubmit(e)}>
+      <ContactsFormItself
+        autoComplete="off"
+        onSubmit={(e) => onFormSubmit(e)}
+        data-test="contacts-form-element"
+      >
         <FormInput
           onInputChange={(e) => onInputChange(e)}
           value={name}
@@ -77,6 +81,7 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
           name="name"
           type="text"
           required
+          data-test="contacts-form-input"
         />
         <FormInput
           onInputChange={(e) => onInputChange(e)}
@@ -85,6 +90,7 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
           name="email"
           type="email"
           required
+          data-test="contacts-form-input"
         />
         <TextInput
           rows="6"
@@ -95,8 +101,13 @@ const ContactsForm = ({ lang, openModal, sendMessageStart }) => {
           max="2000"
           //   placeholder="Don't be shy, share your ideas with me!"
           required
+          data-test="contacts-form-input"
         />
-        <Button type="submit" value={contactsFormSubmitField} />
+        <Button
+          type="submit"
+          value={contactsFormSubmitField}
+          data-test="contacts-form-submit"
+        />
       </ContactsFormItself>
       <ContactsFormLength>
         {contactsFormMsgLength + " "}
