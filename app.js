@@ -85,14 +85,10 @@ app.use(
         "'self'",
         "'unsafe-inline'",
         "'unsafe-eval'",
-        "sha256-GDUfxAiaE5lVgQ6z2nbmzD2HvviBuHsUsSnoHzDvfdo=",
+        "'sha256-GDUfxAiaE5lVgQ6z2nbmzD2HvviBuHsUsSnoHzDvfdo='",
+        "storage.googleapis.com",
       ],
       fontSrc: ["'self'", "fonts.googleapis.com", "fonts.gstatic.com"],
-      styleSrc: [
-        "'unsafe-inline'",
-        "applify-tech.com",
-        "applify-s.herokuapp.com",
-      ],
       objectSrc: ["'self'"],
     },
   })
