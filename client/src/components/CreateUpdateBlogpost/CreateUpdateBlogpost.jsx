@@ -1,5 +1,6 @@
 // import "./CreateUpdateBlogpost.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -23,8 +24,9 @@ const CreateUpdateBlogpost = ({ lang, method, updateData }) => {
   } = createUpdateBlogpostData[lang];
 
   return (
-    <CreateUpdateBlogpostContainer>
+    <CreateUpdateBlogpostContainer data-test="create-update-bp">
       <FormHolder
+        data-test="create-update-bp-form-holder"
         type="update-create-blog"
         title={
           method === "POST"
@@ -32,10 +34,19 @@ const CreateUpdateBlogpost = ({ lang, method, updateData }) => {
             : createUpdateBlogpostTitleUp
         }
       >
-        <CreateUpdateBlogpostForm method={method} updateData={updateData} />
+        <CreateUpdateBlogpostForm
+          data-test="create-update-bp-form"
+          method={method}
+          updateData={updateData}
+        />
       </FormHolder>
     </CreateUpdateBlogpostContainer>
   );
+};
+
+CreateUpdateBlogpost.propTypes = {
+  method: PropTypes.string,
+  updateData: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

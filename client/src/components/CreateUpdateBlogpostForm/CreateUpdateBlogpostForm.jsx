@@ -1,5 +1,6 @@
 // import "./CreateUpdateBlogpostForm.scss";
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -119,15 +120,17 @@ const CreateUpdateBlogpostForm = ({
   } = createUpdateBlogpostFormData[lang];
 
   return (
-    <CreateUpdateBlogpostFormContainer>
+    <CreateUpdateBlogpostFormContainer data-test="create-update-bp-form">
       <CreateUpdateBlogpostFormTitle lang={lang}>
         {createUpdateBlogpostFormTitle}
       </CreateUpdateBlogpostFormTitle>
       <CreateUpdateBlogpostFormElement
+        data-test="create-update-bp-form-elem"
         autoComplete="off"
         onSubmit={(e) => onSubmit(e)}
       >
         <FormInput
+          data-test="create-update-bp-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={blogTitle}
           name="blogTitle"
@@ -136,6 +139,7 @@ const CreateUpdateBlogpostForm = ({
           required
         />
         <FormInput
+          data-test="create-update-bp-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={blogTheme}
           name="blogTheme"
@@ -144,6 +148,7 @@ const CreateUpdateBlogpostForm = ({
           required
         />
         <TextInput
+          data-test="create-update-bp-form-input"
           rows="10"
           onInputChange={(e) => onInputChange(e)}
           value={blogContent}
@@ -178,11 +183,17 @@ const CreateUpdateBlogpostForm = ({
           </CreateUpdateBlogpostFormHolder>
         ) : null}
         <CreateUpdateBlogpostFormHolder>
-          {createUpdateBlogpostFormLength + " "} {100000 - blogContent.length}
+          {createUpdateBlogpostFormLength + " "}{" "}
+          {100000 - blogContent ? blogContent.length : 0}
         </CreateUpdateBlogpostFormHolder>
       </CreateUpdateBlogpostFormLength>
     </CreateUpdateBlogpostFormContainer>
   );
+};
+
+CreateUpdateBlogpostForm.propTypes = {
+  method: PropTypes.string,
+  updateData: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

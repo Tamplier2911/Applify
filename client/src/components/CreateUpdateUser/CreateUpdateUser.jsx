@@ -1,5 +1,6 @@
 // import "./CreateUpdateUser.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -24,15 +25,25 @@ const CreateUpdateUser = ({ lang, method, updateData }) => {
   } = createUpdateUserData[lang];
 
   return (
-    <CreateUpdateUserContainer>
+    <CreateUpdateUserContainer data-test="create-update-user">
       <FormHolder
+        data-test="create-update-user-form-holder"
         type="update-create-user"
         title={isMethodPost ? createUpdateUserTitleCr : createUpdateUserTitleUp}
       >
-        <CreateUpdateUserForm method={method} updateData={updateData} />
+        <CreateUpdateUserForm
+          data-test="create-update-user-form"
+          method={method}
+          updateData={updateData}
+        />
       </FormHolder>
     </CreateUpdateUserContainer>
   );
+};
+
+CreateUpdateUser.propTypes = {
+  method: PropTypes.string,
+  updateData: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
