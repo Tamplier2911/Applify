@@ -10,6 +10,12 @@ const path = require("path");
 const rateLimit = require("express-rate-limit");
 // helps secure your express apps by setting various HTTP headers
 const helmet = require("helmet");
+// content security policy - prevents unwanted content being injected into webpages
+const csp = require("helmet-csp");
+// restrict access to browser features our website do not use
+const featurePolicy = require("feature-policy");
+// lets us controll refferer header whenever we navigate to another site via link
+const referrerPolicy = require("referrer-policy");
 // sanitizes user-supplied data to prevent MongoDB operator injection
 const mongoSanitize = require("express-mongo-sanitize");
 // sanitize user input coming from POST body, GET queries, and url params
@@ -66,6 +72,44 @@ app.options("*", cors(corsOptions));
 app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(helmet());
+app.use(
+  csp({
+    directives: {
+      defaultSrc: ["'self'", "www.applify-tech.com"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      fontSrc: ["'self'", "fonts.googleapis.com"],
+    },
+  })
+);
+app.use(
+  featurePolicy({
+    features: {
+      fullscreen: ["'self'"],
+      vibrate: ["'none'"],
+      payment: ["'none'"],
+      syncXhr: ["'none'"],
+      accelerometer: ["'none'"],
+      ambientLightSensor: ["'none'"],
+      autoplay: ["'none'"],
+      camera: ["'none'"],
+      geolocation: ["'self'"],
+      gyroscope: ["'none'"],
+      magnetometer: ["'none'"],
+      microphone: ["'none'"],
+      usb: ["'none'"],
+      vr: ["'none'"],
+      speaker: ["'none'"],
+      midi: ["'none'"],
+      pictureInPicture: ["'none'"],
+      syncXhr: ["'none'"],
+    },
+  })
+);
+app.use(
+  referrerPolicy({
+    policy: "no-referrer",
+  })
+);
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
@@ -118,7 +162,12 @@ if (process.env.NODE_ENV === "production") {
           res.setHeader("Cache-Control", "no-cache");
         } else if (hashRegExp.test(path)) {
           res.setHeader("Cache-Control", "max-age=31536000");
-        } else if (path.endsWith(".ico") || path.endsWith(".png")) {
+        } else if (
+          path.endsWith(".ico") ||
+          path.endsWith(".png") ||
+          path.endsWith(".jpg") ||
+          path.endsWith(".jpeg")
+        ) {
           res.setHeader("Cache-Control", "max-age=31536000");
         }
       },
