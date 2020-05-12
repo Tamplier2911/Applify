@@ -75,8 +75,8 @@ app.use(helmet());
 app.use(
   csp({
     directives: {
-      defaultSrc: ["'self'", "www.applify-tech.com"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
+      defaultSrc: ["'self'", "www.applify-tech.com", "fonts.googleapis.com"],
+      scriptSrc: ["'self'"],
       fontSrc: ["'self'", "fonts.googleapis.com"],
     },
   })
