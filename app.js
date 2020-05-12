@@ -81,13 +81,19 @@ app.use(
         "applify-s.herokuapp.com",
         "fonts.googleapis.com",
       ],
-      scriptSrc: ["'self'", "'unsafe-inline'", "''unsafe-eval''"],
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "'unsafe-eval'",
+        "sha256-GDUfxAiaE5lVgQ6z2nbmzD2HvviBuHsUsSnoHzDvfdo=",
+      ],
       fontSrc: ["'self'", "fonts.googleapis.com", "fonts.gstatic.com"],
       styleSrc: [
         "'unsafe-inline'",
         "applify-tech.com",
         "applify-s.herokuapp.com",
       ],
+      objectSrc: ["'self'"],
     },
   })
 );
