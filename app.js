@@ -77,13 +77,15 @@ app.use(
     directives: {
       defaultSrc: [
         "'self'",
+        "'unsafe-inline'",
+        "''unsafe-eval''",
         "applify-tech.com",
         "applify-s.herokuapp.com",
         "fonts.googleapis.com",
         "fonts.gstatic.com",
       ],
       scriptSrc: ["'self'"],
-      fontSrc: ["'self'", "fonts.googleapis.com"],
+      fontSrc: ["'self'", "fonts.googleapis.com", "fonts.gstatic.com"],
     },
   })
 );
