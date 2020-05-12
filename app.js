@@ -75,12 +75,12 @@ app.use(helmet());
 app.use(
   csp({
     directives: {
-      // defaultSrc: [
-      //   "'self'",
-      //   "applify-tech.com",
-      //   "applify-s.herokuapp.com",
-      //   "fonts.googleapis.com",
-      // ],
+      defaultSrc: [
+        "'self'",
+        "applify-tech.com",
+        "applify-s.herokuapp.com",
+        "fonts.googleapis.com",
+      ],
       // scriptSrc: [
       //   "'self'",
       //   "'unsafe-inline'",
