@@ -85,6 +85,7 @@ app.use(
         "'self'",
         "'unsafe-inline'",
         "'unsafe-eval'",
+        "'sha256-GDUfxAiaE5lVgQ6z2nbmzD2HvviBuHsUsSnoHzDvfdo='",
         "storage.googleapis.com",
         "applify-tech.com",
         "applify-s.herokuapp.com",
