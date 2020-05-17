@@ -1,5 +1,6 @@
 // import "./FeedbackCreate.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -15,7 +16,7 @@ import FeedbackForm from "../FeedbackForm/FeedbackForm";
 import {
   FeedbackCreateContainer,
   FeedbackCreateUnauthorized,
-  FeedbackCreateLink
+  FeedbackCreateLink,
 } from "./FeedbackCreateStyles";
 
 // component constants
@@ -25,19 +26,23 @@ const FeedbackCreate = ({ lang, isLogged, method, updateData }) => {
   const {
     feedbackCreateTitle,
     feedbackUpdateTitle,
-    feedbackCreateNotAuthorized
+    feedbackCreateNotAuthorized,
   } = feedbackCreateData[lang];
 
   return (
-    <FeedbackCreateContainer>
+    <FeedbackCreateContainer date-test="feedback-create">
       <FormHolder
         type="feedback"
         title={method === "POST" ? feedbackCreateTitle : feedbackUpdateTitle}
       >
         {isLogged ? (
-          <FeedbackForm method={method} updateData={updateData} />
+          <FeedbackForm
+            method={method}
+            updateData={updateData}
+            data-test="feedback-create-form"
+          />
         ) : (
-          <FeedbackCreateUnauthorized>
+          <FeedbackCreateUnauthorized data-test="feedback-create-not-authorized">
             {feedbackCreateNotAuthorized[0]}
             <FeedbackCreateLink to="/authorization">
               {feedbackCreateNotAuthorized[1]}
@@ -50,9 +55,18 @@ const FeedbackCreate = ({ lang, isLogged, method, updateData }) => {
   );
 };
 
+FeedbackCreate.propTypes = {
+  method: PropTypes.string,
+  updateData: PropTypes.shape({
+    feedback: PropTypes.string,
+    rating: PropTypes.string,
+    _id: PropTypes.string,
+  }),
+};
+
 const mapStateToProps = createStructuredSelector({
   lang: selectCurrentLanguage,
-  isLogged: selectIsLogged
+  isLogged: selectIsLogged,
 });
 
 export default connect(mapStateToProps)(FeedbackCreate);

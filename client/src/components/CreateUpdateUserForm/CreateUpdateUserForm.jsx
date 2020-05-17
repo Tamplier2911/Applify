@@ -1,5 +1,6 @@
 // import "./CreateUpdateUserForm.scss";
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -143,17 +144,19 @@ const CreateUpdateUserForm = ({
   } = createUpdateUserFormData[lang];
 
   return (
-    <CreateUpdateUserFormContainer>
+    <CreateUpdateUserFormContainer data-test="create-update-user-form">
       <CreateUpdateUserFormTitle lang={lang}>
         {isMethodPost
           ? createUpdateUserFormTitleCr
           : createUpdateUserFormTitleUp}
       </CreateUpdateUserFormTitle>
       <CreateUpdateUserFormElement
+        data-test="create-update-user-form-element"
         autoComplete="off"
         onSubmit={(e) => onSubmit(e)}
       >
         <FormInput
+          data-test="create-update-user-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={userName}
           name="userName"
@@ -162,6 +165,7 @@ const CreateUpdateUserForm = ({
           required
         />
         <FormInput
+          data-test="create-update-user-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={userEmail}
           name="userEmail"
@@ -199,6 +203,7 @@ const CreateUpdateUserForm = ({
           />
         )}
         <SelectInput
+          data-test="create-update-user-form-input"
           onInputChange={(e) => onInputChange(e)}
           defaultValue={isMethodPost ? "user" : userRole}
           label={<CreateUpdateUserFormTextLabel />}
@@ -217,11 +222,17 @@ const CreateUpdateUserForm = ({
       </CreateUpdateUserFormElement>
       {isMethodPost ? null : (
         <CreateUpdateUserFormLength>
-          {createUpdateUserFormLength + " "} {700 - userAbout.length}
+          {createUpdateUserFormLength + " "}
+          {700 - userAbout.length}
         </CreateUpdateUserFormLength>
       )}
     </CreateUpdateUserFormContainer>
   );
+};
+
+CreateUpdateUserForm.propTypes = {
+  method: PropTypes.string,
+  updateData: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

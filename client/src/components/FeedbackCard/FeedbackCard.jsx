@@ -1,5 +1,6 @@
 // import "./FeedbackCard.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -44,11 +45,16 @@ const FeedbackCard = ({ data, deleteFeedbackStart, lang }) => {
   const date = transformDateToLocaleString(createdAt);
   const { feedbackCardDelete, feedbackCardUpdate } = feedbackCardData[lang];
   return (
-    <FeedbackCardContainer key={_id} animateIn={"flipInY"} animateOnce={true}>
+    <FeedbackCardContainer
+      data-test="feedback-card"
+      key={_id}
+      animateIn={"flipInY"}
+      animateOnce={true}
+    >
       <FeedbackCardHeader>
         <FeedbackCardHeaderName>{user.name}</FeedbackCardHeaderName>
       </FeedbackCardHeader>
-      <FeedbackCardBody>
+      <FeedbackCardBody data-test="feedback-card-body">
         <FeedbackCardBodyImgWrapper color={color}>
           <FeedbackCardBodyImage src={`${image}`} alt="happy user" />
         </FeedbackCardBodyImgWrapper>
@@ -70,7 +76,7 @@ const FeedbackCard = ({ data, deleteFeedbackStart, lang }) => {
         </FeedbackCarBodyFeedback>
         <FeedbackCarBodyDate>{date}</FeedbackCarBodyDate>
       </FeedbackCardBody>
-      <FeedbackCarControlls>
+      <FeedbackCarControlls data-test="feedback-card-controlls">
         <Button
           type="button"
           value={feedbackCardDelete}
@@ -82,6 +88,17 @@ const FeedbackCard = ({ data, deleteFeedbackStart, lang }) => {
       </FeedbackCarControlls>
     </FeedbackCardContainer>
   );
+};
+
+FeedbackCard.propTypes = {
+  data: PropTypes.shape({
+    color: PropTypes.string,
+    createdAt: PropTypes.string,
+    feedback: PropTypes.string,
+    rating: PropTypes.string,
+    user: PropTypes.object,
+    _id: PropTypes.string,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -1,5 +1,6 @@
 // import "./FeedbackForm.scss";
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -42,7 +43,6 @@ export const FeedbackForm = ({
     feedbackRating: method === "POST" ? "5" : updateData.rating,
     feedbackId: method === "POST" ? undefined : updateData._id,
   });
-
   const { feedbackMessage, feedbackRating } = feedback;
 
   const onInputChange = (e) => {
@@ -86,13 +86,18 @@ export const FeedbackForm = ({
   } = feedbackFormData[lang];
 
   return (
-    <FeedbackFormContainer>
+    <FeedbackFormContainer data-test="feedback-form">
       <FeedbackFormTitle lang={lang}>
         <FeedbackFormParagraph>{feedbackFormTitle[0]}</FeedbackFormParagraph>
         <FeedbackFormParagraph>{feedbackFormTitle[1]}</FeedbackFormParagraph>
       </FeedbackFormTitle>
-      <FeedbackFormElement autoComplete="off" onSubmit={(e) => onSubmit(e)}>
+      <FeedbackFormElement
+        data-test="feedback-form-element"
+        autoComplete="off"
+        onSubmit={(e) => onSubmit(e)}
+      >
         <TextInput
+          data-test="feedback-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={feedbackMessage}
           name="feedbackMessage"
@@ -103,6 +108,7 @@ export const FeedbackForm = ({
           required
         />
         <SelectInput
+          data-test="feedback-form-input"
           onInputChange={(e) => onInputChange(e)}
           defaultValue={method === "POST" ? "5" : feedbackRating}
           name={"feedbackRating"}
@@ -120,6 +126,15 @@ export const FeedbackForm = ({
       </FeedbackFormLength>
     </FeedbackFormContainer>
   );
+};
+
+FeedbackForm.propTypes = {
+  method: PropTypes.string,
+  updateData: PropTypes.shape({
+    feedback: PropTypes.string,
+    rating: PropTypes.string,
+    _id: PropTypes.string,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({

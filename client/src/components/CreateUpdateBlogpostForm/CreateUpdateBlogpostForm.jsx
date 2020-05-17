@@ -183,8 +183,8 @@ const CreateUpdateBlogpostForm = ({
           </CreateUpdateBlogpostFormHolder>
         ) : null}
         <CreateUpdateBlogpostFormHolder>
-          {createUpdateBlogpostFormLength + " "}{" "}
-          {100000 - blogContent ? blogContent.length : 0}
+          {createUpdateBlogpostFormLength + " "}
+          {100000 - blogContent.length}
         </CreateUpdateBlogpostFormHolder>
       </CreateUpdateBlogpostFormLength>
     </CreateUpdateBlogpostFormContainer>

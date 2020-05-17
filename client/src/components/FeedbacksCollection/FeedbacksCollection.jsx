@@ -1,5 +1,6 @@
 // import "./FeedbacksCollection.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -38,7 +39,7 @@ const FeedbacksCollection = ({
   const allFeedbacksLoaded = feedbacks.length === totalLoaded ? 1 : 0;
 
   return (
-    <FeedbacksCollectionContainer>
+    <FeedbacksCollectionContainer data-test="feedbacks-collection">
       <FeedbacksCollectionTitle>
         {feedbacksCollectionTitle}
       </FeedbacksCollectionTitle>
@@ -47,6 +48,7 @@ const FeedbacksCollection = ({
         return <FeedbackView key={feedback._id} {...feedback} count={count} />;
       })}
       <FeedbacksCollectionBtn
+        data-test="feedbacks-collection-controlls"
         loaded={allFeedbacksLoaded}
         onClick={allFeedbacksLoaded ? () => {} : () => getMoreFeeds()}
       >
@@ -55,6 +57,10 @@ const FeedbacksCollection = ({
       <FeedbackCreate method="POST" />
     </FeedbacksCollectionContainer>
   );
+};
+
+FeedbacksCollection.propTypes = {
+  feedbacks: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({

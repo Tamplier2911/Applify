@@ -23,7 +23,7 @@ describe("<CreateUpdateBlogpostForm />", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setShallowC(
-      <CreateUpdateBlogpostForm store={store} updateData={{}} />
+      <CreateUpdateBlogpostForm store={store} method="POST" />
     );
   });
 

@@ -69,13 +69,13 @@ const FeedbacksHolder = ({
   const feedbacksArray = simpleFeedbacksSearch(feedbacks, search.toLowerCase());
 
   return (
-    <FeedbacksHolderContainer>
+    <FeedbacksHolderContainer data-test="feedbacks-holder">
       <Button
         type="button"
         value={feedsHolderButton}
         click={redirectToCreateFeedback}
       />
-      <FeedbacksHolderSearchBarContainer>
+      <FeedbacksHolderSearchBarContainer data-test="feedbacks-holder-search">
         <FormInput
           onInputChange={(e) => onInputChange(e)}
           value={search}
@@ -85,12 +85,14 @@ const FeedbacksHolder = ({
         />
       </FeedbacksHolderSearchBarContainer>
       <CollectionHolder
+        data-test="feedbacks-holder-component"
         lang={lang}
         title={feedsHolderTitle}
         refresher={1}
         cb={loadFeedbacksStart}
       >
         <CollectionForHolderWithSpinner
+          data-test="feedbacks-holder-collection"
           isLoading={isLoading}
           dataCollection={feedbacksArray}
         >

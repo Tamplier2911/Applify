@@ -27,7 +27,6 @@ describe("<BlogPage />", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setShallowC(<BlogPage store={store} match={{ path: "/" }} />);
-    console.log(wrapper.debug());
   });
 
   it("renders without error", () => {

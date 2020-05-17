@@ -13,7 +13,7 @@ import {
   ErrorBoundaryErrorSVG,
   ErrorBoundaryText,
   ErrorBoundaryTitle,
-  ErrorBoundaryCry
+  ErrorBoundaryCry,
 } from "./ErrorBoundaryStyles";
 
 // component constants
@@ -24,7 +24,7 @@ class ErrorBoundary extends Component {
     super(props);
 
     this.state = {
-      hasErrored: false
+      hasErrored: false,
     };
   }
 
@@ -36,7 +36,7 @@ class ErrorBoundary extends Component {
     const { openModal } = this.props;
     openModal({
       header: "Error!",
-      content: error.message || "You likely experienced connection issues!"
+      content: error.message || "You likely experienced connection issues!",
     });
   }
 
@@ -46,9 +46,9 @@ class ErrorBoundary extends Component {
     const { errorBoundaryTitle, errorBoundaryCry } = errorBoundaryData[lang];
     if (hasErrored) {
       return (
-        <ErrorBoundaryContainer>
+        <ErrorBoundaryContainer data-test="error-boundary">
           <ErrorBoundaryErrorSVG />
-          <ErrorBoundaryText>
+          <ErrorBoundaryText data-test="error-boundary-text">
             <ErrorBoundaryTitle>{errorBoundaryTitle}</ErrorBoundaryTitle>
             <ErrorBoundaryCry>{errorBoundaryCry}</ErrorBoundaryCry>
           </ErrorBoundaryText>
@@ -61,7 +61,7 @@ class ErrorBoundary extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  lang: selectCurrentLanguage
+  lang: selectCurrentLanguage,
 });
 
 export default connect(mapStateToProps, { openModal })(ErrorBoundary);
