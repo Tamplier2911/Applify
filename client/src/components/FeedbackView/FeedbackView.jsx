@@ -1,5 +1,6 @@
 // import "./FeedbackView.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // transformations
 import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath";
@@ -37,11 +38,12 @@ export const FeedbackView = ({
 
   return (
     <FeedbackViewContainer
+      data-test="feedback-view"
       {...(even
         ? { animateIn: "bounceInRight", animateOnce: true }
         : { animateIn: "bounceInLeft", animateOnce: true })}
     >
-      <FeedbackViewLeft even={even}>
+      <FeedbackViewLeft data-test="feedback-view-left" even={even}>
         <FeedbackViewLeftCont>
           <FeedbackViewLeftImgWrap even={even} color={color}>
             <FeedbackViewLeftImg
@@ -62,7 +64,7 @@ export const FeedbackView = ({
           <FeedbackViewLeftTriangle even={even} color={color} />
         </FeedbackViewLeftCont>
       </FeedbackViewLeft>
-      <FeedbackViewRight>
+      <FeedbackViewRight data-test="feedback-view-right">
         <FeedbackViewRightCont>
           <FeedbackViewRightQLeft color={color}>&ldquo;</FeedbackViewRightQLeft>
           <FeedbackViewRightText>{feedback}</FeedbackViewRightText>
@@ -73,6 +75,14 @@ export const FeedbackView = ({
       </FeedbackViewRight>
     </FeedbackViewContainer>
   );
+};
+
+FeedbackView.propTypes = {
+  count: PropTypes.number,
+  rating: PropTypes.string,
+  feedback: PropTypes.string,
+  color: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default FeedbackView;

@@ -47,9 +47,8 @@ const FeedbackUpdate = ({ feedbackObject, lang }) => {
     feedbackUpdateDate,
     feedbackUpdateNotFound,
   } = feedbackUpdateData[lang];
-
   return feedbackObject ? (
-    <FeedbackUpdateContainer>
+    <FeedbackUpdateContainer data-test="feedback-update">
       <FeedbackUpdatePostedBy>
         <FeedbackUpdateTitle>{feedbackUpdateTitle}</FeedbackUpdateTitle>
         <FeedbackUpdateUserDetails>
@@ -66,11 +65,17 @@ const FeedbackUpdate = ({ feedbackObject, lang }) => {
           </FeedbackUpdateImageWrap>
         </FeedbackUpdateUserDetails>
       </FeedbackUpdatePostedBy>
-      <FeedbackCreate method="PATCH" updateData={updateData} />
+      <FeedbackCreate
+        method="PATCH"
+        updateData={updateData}
+        data-test="feedback-update-form"
+      />
       <GetBack path={"/profile/feeds"} />
     </FeedbackUpdateContainer>
   ) : (
-    <FeedbackUpdateTitle>{feedbackUpdateNotFound}</FeedbackUpdateTitle>
+    <FeedbackUpdateTitle data-test="feedback-update-fallback">
+      {feedbackUpdateNotFound}
+    </FeedbackUpdateTitle>
   );
 };
 
