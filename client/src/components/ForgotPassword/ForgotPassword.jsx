@@ -19,9 +19,13 @@ import forgotPasswordData from "./ForgotPasswordConstants";
 const ForgotPassword = ({ lang }) => {
   const { forgotPasswordTitle } = forgotPasswordData[lang];
   return (
-    <ForgotPasswordContainer>
-      <FormHolder type="forgot" title={forgotPasswordTitle}>
-        <ForgotPasswordForm />
+    <ForgotPasswordContainer data-test="forgot-password">
+      <FormHolder
+        data-test="forgot-password-holder"
+        type="forgot"
+        title={forgotPasswordTitle}
+      >
+        <ForgotPasswordForm data-test="forgot-password-form" />
       </FormHolder>
     </ForgotPasswordContainer>
   );

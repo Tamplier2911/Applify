@@ -25,9 +25,9 @@ const Footer = ({ lang }) => {
   const { footerCopyright, footerAriaLabels } = footerData[lang];
 
   return (
-    <FooterContainer>
+    <FooterContainer data-test="footer">
       <FooterContent>
-        <FooterSVGContainer>
+        <FooterSVGContainer data-test="footer-links">
           <FooterLink
             href="https://www.facebook.com/artyom.nikolayev"
             target="_blank"
@@ -53,7 +53,9 @@ const Footer = ({ lang }) => {
             <LinkedInSVG />
           </FooterLink>
         </FooterSVGContainer>
-        <FooterTextContainer>{footerCopyright}</FooterTextContainer>
+        <FooterTextContainer data-test="footer-copy">
+          {footerCopyright}
+        </FooterTextContainer>
       </FooterContent>
     </FooterContainer>
   );
