@@ -51,11 +51,12 @@ const ForgotPasswordForm = ({ lang, openModal, userForgotPasswordStart }) => {
   } = forgotPasswordFormData[lang];
 
   return (
-    <ForgotPasswordFormContainer>
+    <ForgotPasswordFormContainer data-test="forgot-password-form">
       <ForgotPasswordFormTitle lang={lang}>
         {forgotPasswordFormTitle}
       </ForgotPasswordFormTitle>
       <ForgotPasswordFormElement
+        data-test="forgot-password-form-element"
         onSubmit={(e) => onSubmit(e)}
         autoComplete="on"
       >

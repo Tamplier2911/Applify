@@ -1,5 +1,6 @@
 // import "./FormHolder.scss";
-import React from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 // JS Rendering CSS
 import {
@@ -17,14 +18,18 @@ import {
   FormHolderFormWrap,
 } from "./FormHolderStyles";
 
-// Form Holder component expects FORM as a child
-// Expects type of a form  as props - signIn / signUp / contact / feedback etc..
-// Expects title as a props to be displayed
+/**
+ * @JSXComponent - Requires children as a form JSX Component
+ * @param {Component} children - form holder is a wrapper that require form itself
+ * @param {string} type - type required for different images to be rendered
+ * @param {string} title - title required to display some guideline about current form
+ */
+
 const FormHolder = ({ children, type, title }) => {
   return (
-    <FormHolderContainer>
+    <FormHolderContainer data-test="form-holder">
       <FormHolderTitle>{title}</FormHolderTitle>
-      <FormHolderComp>
+      <FormHolderComp data-test="form-holder-composition">
         <FormHolderLeft animateIn={"bounceInRight"} animateOnce={true}>
           {type === "signIn" ? (
             <FormHolderSignInSVG />
@@ -43,11 +48,19 @@ const FormHolder = ({ children, type, title }) => {
           )}
         </FormHolderLeft>
         <FormHolderRight animateIn={"bounceInLeft"} animateOnce={true}>
-          <FormHolderFormWrap>{children ? children : null}</FormHolderFormWrap>
+          <FormHolderFormWrap data-test="form-holder-formwrap">
+            {children ? children : null}
+          </FormHolderFormWrap>
         </FormHolderRight>
       </FormHolderComp>
     </FormHolderContainer>
   );
+};
+
+FormHolder.propTypes = {
+  children: PropTypes.object,
+  type: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default FormHolder;
