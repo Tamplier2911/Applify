@@ -7,8 +7,11 @@ import { GetBackContainer, GetBackSVG } from "./GetBackStyles";
 
 const GetBack = ({ history, path }) => {
   return (
-    <GetBackContainer onClick={() => history.push(`${path}`)}>
-      <GetBackSVG />
+    <GetBackContainer
+      data-test="get-back"
+      onClick={() => history.push(`${path}`)}
+    >
+      <GetBackSVG data-test="get-back-svg" />
     </GetBackContainer>
   );
 };

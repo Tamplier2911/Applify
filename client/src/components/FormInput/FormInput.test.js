@@ -10,14 +10,31 @@ describe("<FormInput />", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setShallow(<FormInput />);
-    // console.log(wrapper.debug());
   });
 
-  it("renders without an error", () => {});
+  it("renders without an error", () => {
+    const formInput = findByTestAttr(wrapper, "form-input");
+    expect(formInput.length).toBe(1);
+  });
 
-  it("renders label when prop is passed", () => {});
+  it("renders label when prop is passed", () => {
+    wrapper = setShallow(<FormInput label="Labelicious" value="some length" />);
+    const formInputLabel = findByTestAttr(wrapper, "form-input-label");
+    expect(formInputLabel.length).toBe(1);
+  });
 
-  it("recieves expected props", () => {});
+  it("recieves expected props", () => {
+    const expectedProps = {
+      onInputChange: () => {},
+      label: "Labelicious",
+      otherProps: {},
+    };
+    const err = checkProps(FormInput, expectedProps, "props");
+    expect(err).toBeUndefined();
+  });
 
-  it("matches snapshot", () => {});
+  it("matches snapshot", () => {
+    const formInput = findByTestAttr(wrapper, "form-input");
+    expect(formInput).toMatchSnapshot();
+  });
 });

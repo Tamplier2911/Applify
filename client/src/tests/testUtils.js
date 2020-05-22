@@ -123,6 +123,33 @@ export const setShallowC = (component, state = null, props = {}) => {
 };
 
 /**
+ * Factory function for Shallow Render component that wrapped with following HOC's
+ * withRouter(Component).
+ * @function setShallowR
+ * @param {JSX} component - React component.
+ * @param {any} state - Component initial state.
+ * @param {object} props - Component props specific to the setup.
+ * @returns {ShallowWRapper} - Shallow wrapper of the component.
+ */
+
+export const setShallowR = (component, state = null, props = {}) => {
+  return !state
+    ? shallow(<Router>{React.cloneElement(component, { ...props })}</Router>)
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+    : shallow(<Router>{React.cloneElement(component, { ...props })}</Router>)
+        .setState(state)
+        .dive()
+        .dive()
+        .dive()
+        .dive()
+        .dive();
+};
+
+/**
  * Factory function for Mount Render.
  * @function setMount
  * @param {JSX} component - React component.
