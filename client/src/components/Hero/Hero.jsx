@@ -58,23 +58,23 @@ const Hero = ({ lang, theme }) => {
   const device = getDeviceValue(width);
 
   return (
-    <HeroContainer theme={theme}>
+    <HeroContainer theme={theme} data-test="hero">
       {device === "desktop"
         ? squares[theme].map((obj) => {
             return <Square key={obj.id} options={obj} />;
           })
         : null}
-      <HeroActiveCTA>
+      <HeroActiveCTA data-test="hero-cta">
         <HeroActiveCTALink to="/contacts">
           <Square options={ctaOptions[theme]} text={companyCTA} />
         </HeroActiveCTALink>
       </HeroActiveCTA>
-      <HeroContent>
+      <HeroContent data-test="hero-content">
         <HeroTextbox animateIn={"bounceInRight"} animateOnce={true}>
           <HeroHeader>{companyName}</HeroHeader>
           <HeroText>{companySlogan}</HeroText>
         </HeroTextbox>
-        <HeroPassiveCTA to="/contacts" theme={theme}>
+        <HeroPassiveCTA data-test="hero-cta" to="/contacts" theme={theme}>
           {companyCTA}
         </HeroPassiveCTA>
       </HeroContent>

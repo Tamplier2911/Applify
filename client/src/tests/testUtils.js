@@ -7,14 +7,17 @@ import { shallow, mount, render } from "enzyme";
 // Check Prop Types
 import checkPropTypes from "check-prop-types";
 
-// Redux Mock Store
-import configureStore from "redux-mock-store";
-const middlewares = [];
-const mockStore = configureStore(middlewares);
+// Thunk
+import ReduxThunk from "redux-thunk";
 
 // Root Reducer
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import rootReducer from "../redux/root.reducer";
+
+// Redux Mock Store
+import configureStore from "redux-mock-store";
+const middlewares = [ReduxThunk];
+const mockStore = configureStore(middlewares);
 
 /**
  * Factory function to create mock store utilzing redux-mock-store.
@@ -30,7 +33,8 @@ import rootReducer from "../redux/root.reducer";
  * @param {object} state - Initial state value.
  * @returns {object} - Store mock.
  */
-export const storeFactory = (state) => createStore(rootReducer, state);
+export const storeFactory = (state) =>
+  createStore(rootReducer, state, applyMiddleware(...middlewares));
 
 /**
  * Factory function for search by certain data-test.

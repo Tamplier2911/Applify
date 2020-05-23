@@ -30,30 +30,37 @@ import headerData from "./HeaderConstants";
 const Header = ({ toggleSideNav, lang, isLogged, logUserOutStart }) => {
   const currentData = headerData[lang];
   const { headerLogOut, headerLogIn, headerSignUp } = currentData;
-
   return (
-    <HeaderContainer shadow={1}>
+    <HeaderContainer shadow={1} data-test="header">
       <HeaderContent>
         <HeaderLinksWrapper>
           {isLogged ? (
-            <HeaderLogout onClick={() => logUserOutStart()}>
+            <HeaderLogout
+              data-test="header-logout-btn"
+              onClick={() => logUserOutStart()}
+            >
               {headerLogOut}
             </HeaderLogout>
           ) : (
             <Fragment>
-              <HeaderLink to="/authorization">{headerLogIn}</HeaderLink> /{" "}
-              <HeaderLink to="/authorization">{headerSignUp}</HeaderLink>
+              <HeaderLink data-test="header-login-link" to="/authorization">
+                {headerLogIn}
+              </HeaderLink>{" "}
+              /{" "}
+              <HeaderLink data-test="header-signup-link" to="/authorization">
+                {headerSignUp}
+              </HeaderLink>
             </Fragment>
           )}
         </HeaderLinksWrapper>
-        <HeaderLogoLink to="/">
+        <HeaderLogoLink data-test="header-logo-link" to="/">
           <HeaderLogoSVG />
           {/* <HeaderLogoImage
             src={logo}
             alt="logo in shape of rocket"
           ></HeaderLogoImage> */}
         </HeaderLogoLink>
-        <HeaderMenu onClick={toggleSideNav} />
+        <HeaderMenu data-test="header-menu-btn" onClick={toggleSideNav} />
       </HeaderContent>
     </HeaderContainer>
   );
