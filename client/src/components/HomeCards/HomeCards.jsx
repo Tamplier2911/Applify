@@ -19,7 +19,7 @@ import homeCardsData from "./HomeCardConstants";
 export const HomeCards = ({ lang, theme }) => {
   const currentData = homeCardsData[lang];
   return (
-    <HomeCardContainer>
+    <HomeCardContainer data-test="home-cards">
       {currentData[theme].map((card) => {
         const { icon, title, text, gradient, svg, id } = card;
         return (

@@ -4,7 +4,7 @@ import React from "react";
 // JS Rendering CSS
 import {
   LazzySpinnerContainer,
-  LazzySpinnerSquare
+  LazzySpinnerSquare,
 } from "./LazzySpinnerStyles";
 
 const LazzySpinner = () => {

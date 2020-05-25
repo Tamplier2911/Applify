@@ -8,7 +8,7 @@ import {
   setLanguageEng,
   setLanguageRus,
   setLanguageUkr,
-  toggleLanguagePanel
+  toggleLanguagePanel,
 } from "../../redux/lang/lang.actions";
 import { selectLanguagePanelHidden } from "../../redux/lang/lang.selectors";
 
@@ -26,7 +26,7 @@ import {
   LanguagePanelLangUkr,
   LanguagePanelImage,
   LanguagePanelWrap,
-  LanguagePanelSVG
+  LanguagePanelSVG,
 } from "./LanguagePanelStyles";
 
 const LanguagePanel = ({
@@ -34,24 +34,36 @@ const LanguagePanel = ({
   setLanguageEng,
   setLanguageRus,
   setLanguageUkr,
-  toggleLanguagePanel
+  toggleLanguagePanel,
 }) => {
   return (
-    <LanguagePanelContainer>
+    <LanguagePanelContainer data-test="language-panel">
       {panelHidden ? null : (
-        <LanguagePanelLanguages>
-          <LanguagePanelLangEng onClick={() => setLanguageEng()}>
+        <LanguagePanelLanguages data-test="language-panel-languages">
+          <LanguagePanelLangEng
+            data-test="language-panel-lang-eng"
+            onClick={() => setLanguageEng()}
+          >
             <LanguagePanelImage alt="great britain flag" src={langEng} />
           </LanguagePanelLangEng>
-          <LanguagePanelLangRus onClick={() => setLanguageUkr()}>
+          <LanguagePanelLangRus
+            data-test="language-panel-lang-ukr"
+            onClick={() => setLanguageUkr()}
+          >
             <LanguagePanelImage alt="ukrainian flag" src={langUkr} />
           </LanguagePanelLangRus>
-          <LanguagePanelLangUkr onClick={() => setLanguageRus()}>
+          <LanguagePanelLangUkr
+            data-test="language-panel-lang-rus"
+            onClick={() => setLanguageRus()}
+          >
             <LanguagePanelImage alt="russian flag" src={langRus} />
           </LanguagePanelLangUkr>
         </LanguagePanelLanguages>
       )}
-      <LanguagePanelWrap onClick={() => toggleLanguagePanel()}>
+      <LanguagePanelWrap
+        data-test="language-panel-toggle-btn"
+        onClick={() => toggleLanguagePanel()}
+      >
         <LanguagePanelSVG>Language Pannel</LanguagePanelSVG>
       </LanguagePanelWrap>
     </LanguagePanelContainer>
@@ -59,12 +71,12 @@ const LanguagePanel = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  panelHidden: selectLanguagePanelHidden
+  panelHidden: selectLanguagePanelHidden,
 });
 
 export default connect(mapStateToProps, {
   setLanguageEng,
   setLanguageRus,
   setLanguageUkr,
-  toggleLanguagePanel
+  toggleLanguagePanel,
 })(LanguagePanel);
