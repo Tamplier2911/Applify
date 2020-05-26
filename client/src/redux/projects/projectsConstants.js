@@ -168,109 +168,118 @@ const projectsData = {
   },
   currentImage: {
     id: 100,
-    image: "uploads/images/projects/elevation-desktop.jpg",
+    image: "uploads/images/projects/audit-desktop.jpg",
   },
   allImages: {
     phone: [
       {
         id: 100,
-        image: "uploads/images/projects/elevation-phone.jpg",
+        image: "uploads/images/projects/audit-phone.jpg",
       },
       {
         id: 101,
-        image: "uploads/images/projects/galaxy-phone.jpg",
+        image: "uploads/images/projects/security-phone.jpg",
       },
       {
         id: 102,
-        image: "uploads/images/projects/undrwtr-phone.jpg",
+        image: "uploads/images/projects/performance-phone.jpg",
       },
       {
         id: 103,
-        image: "uploads/images/projects/banking-phone.jpg",
+        // image: "uploads/images/projects/banking-phone.jpg",
+        image: "uploads/images/projects/elevation-phone.jpg",
       },
       {
         id: 104,
-        image: "uploads/images/projects/dance-phone.jpg",
+        image: "uploads/images/projects/galaxy-phone.jpg",
       },
       {
         id: 105,
-        image: "uploads/images/projects/shoes-phone.jpg",
+        image: "uploads/images/projects/undrwtr-phone.jpg",
       },
       {
         id: 106,
-        image: "uploads/images/projects/calendar-phone.jpg",
+        // image: "uploads/images/projects/calendar-phone.jpg",
+        image: "uploads/images/projects/dance-phone.jpg",
       },
       {
         id: 107,
-        image: "uploads/images/projects/watch-phone.jpg",
+        // image: "uploads/images/projects/watch-phone.jpg",
+        image: "uploads/images/projects/shoes-phone.jpg",
       },
     ],
     tablet: [
       {
         id: 100,
-        image: "uploads/images/projects/elevation-tablet.jpg",
+        image: "uploads/images/projects/audit-tablet.jpg",
       },
       {
         id: 101,
-        image: "uploads/images/projects/galaxy-tablet.jpg",
+        image: "uploads/images/projects/security-tablet.jpg",
       },
       {
         id: 102,
-        image: "uploads/images/projects/undrwtr-tablet.jpg",
+        image: "uploads/images/projects/performance-tablet.jpg",
       },
       {
         id: 103,
-        image: "uploads/images/projects/banking-tablet.jpg",
+        // image: "uploads/images/projects/banking-tablet.jpg",
+        image: "uploads/images/projects/elevation-tablet.jpg",
       },
       {
         id: 104,
-        image: "uploads/images/projects/dance-tablet.jpg",
+        image: "uploads/images/projects/galaxy-tablet.jpg",
       },
       {
         id: 105,
-        image: "uploads/images/projects/shoes-tablet.jpg",
+        image: "uploads/images/projects/undrwtr-tablet.jpg",
       },
       {
         id: 106,
-        image: "uploads/images/projects/calendar-tablet.jpg",
+        // image: "uploads/images/projects/calendar-tablet.jpg",
+        image: "uploads/images/projects/dance-tablet.jpg",
       },
       {
         id: 107,
-        image: "uploads/images/projects/watch-tablet.jpg",
+        // image: "uploads/images/projects/watch-tablet.jpg",
+        image: "uploads/images/projects/shoes-tablet.jpg",
       },
     ],
     desktop: [
       {
         id: 100,
-        image: "uploads/images/projects/elevation-desktop.jpg",
+        image: "uploads/images/projects/audit-desktop.jpg",
       },
       {
         id: 101,
-        image: "uploads/images/projects/galaxy-desktop.jpg",
+        image: "uploads/images/projects/security-desktop.jpg",
       },
       {
         id: 102,
-        image: "uploads/images/projects/undrwtr-desktop.jpg",
+        image: "uploads/images/projects/performance-desktop.jpg",
       },
       {
         id: 103,
-        image: "uploads/images/projects/banking-desktop.jpg",
+        // image: "uploads/images/projects/banking-desktop.jpg",
+        image: "uploads/images/projects/elevation-desktop.jpg",
       },
       {
         id: 104,
-        image: "uploads/images/projects/dance-desktop.jpg",
+        image: "uploads/images/projects/galaxy-desktop.jpg",
       },
       {
         id: 105,
-        image: "uploads/images/projects/shoes-desktop.jpg",
+        image: "uploads/images/projects/undrwtr-desktop.jpg",
       },
       {
         id: 106,
-        image: "uploads/images/projects/calendar-desktop.jpg",
+        // image: "uploads/images/projects/calendar-desktop.jpg",
+        image: "uploads/images/projects/dance-desktop.jpg",
       },
       {
         id: 107,
-        image: "uploads/images/projects/watch-desktop.jpg",
+        // image: "uploads/images/projects/watch-desktop.jpg",
+        image: "uploads/images/projects/shoes-desktop.jpg",
       },
     ],
   },
