@@ -36,6 +36,17 @@ import {
 // component constants
 import messageReadData from "./MessageReadConstants";
 
+/**
+ * MessageRead - complex component, renders certain message by its ID, if message
+ * is not found, fallback is rendered instead.
+ * @param {object} messageObject - object with message properties
+ * @param {string} lang - string representing current language e.g. "eng"
+ * @param {function} deleteMessageStart - action creator takes _id as a param
+ * @param {object} history - router history object provided by withRouter
+ * @param {string} test - string of object dummy object id that we pass in
+ * allMessages object FOR TESTING PURPOSES ONLY!
+ */
+
 const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
   const { createdAt, name, email, message, from, _id } = messageObject
     ? messageObject
@@ -68,7 +79,7 @@ const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
   } = messageReadData[lang];
 
   return messageObject ? (
-    <MessageReadContainer>
+    <MessageReadContainer data-test="message-read">
       <MessageReadHeader>
         <MessageReadCredentials>
           <MessageReadName>{name}</MessageReadName>
@@ -80,33 +91,41 @@ const MessageRead = ({ messageObject, lang, deleteMessageStart, history }) => {
           </MessageReadWrapper>
         </MessageReadPortrait>
       </MessageReadHeader>
-      <MessageReadBody>
+      <MessageReadBody data-test="message-read-body">
         <MessageReadMessage>{message}</MessageReadMessage>
       </MessageReadBody>
       <MessageReadDateWrap>
         <MessageReadDate>{date}</MessageReadDate>
       </MessageReadDateWrap>
-      <MessageReadControlls>
+      <MessageReadControlls data-test="message-read-controlls">
         <Button
           type="button"
           value={messageReadDelete}
           click={() => deleteMessageAndRedirect(_id)}
+          data-test="message-read-delete"
         />
         <Button
           type="button"
           value={messageReadAnswer}
           click={() => sendEmailTo()}
+          data-test="message-read-email"
         />
       </MessageReadControlls>
       <GetBack path={"/profile/messages"} />
     </MessageReadContainer>
   ) : (
-    <MessageReadNotFound>{messageReadNotFound}</MessageReadNotFound>
+    <MessageReadNotFound data-test="message-read-fallback">
+      {messageReadNotFound}
+    </MessageReadNotFound>
   );
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  messageObject: selectMessage(ownProps.match.params.id)(state),
+  messageObject: selectMessage(
+    ownProps.testMessageId
+      ? ownProps.testMessageId
+      : ownProps?.match?.params?.id
+  )(state),
   lang: selectCurrentLanguage(state),
 });
 

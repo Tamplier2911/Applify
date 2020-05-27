@@ -9,8 +9,8 @@ import {
 
 const LazzySpinner = () => {
   return (
-    <LazzySpinnerContainer>
-      <LazzySpinnerSquare />
+    <LazzySpinnerContainer data-test="lazzy-spinner">
+      <LazzySpinnerSquare data-test="lazzy-spinner-square" />
     </LazzySpinnerContainer>
   );
 };
