@@ -1,5 +1,6 @@
 // import "./MessageView.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -50,15 +51,18 @@ const MessageView = ({
   });
 
   const { messageViewRead, messageViewDelete } = messageViewData[lang];
-
   return (
-    <MessageViewContainer animateIn={"flipInX"} animateOnce={true}>
+    <MessageViewContainer
+      data-test="message-view"
+      animateIn={"flipInX"}
+      animateOnce={true}
+    >
       <MessageViewPortrait>
         <MessageViewImageWrap>
           <MessageViewImage alt="happy user" src={`${image}`} />
         </MessageViewImageWrap>
       </MessageViewPortrait>
-      <MessageViewContent>
+      <MessageViewContent data-test="message-view-content">
         <MessageViewName>{name}</MessageViewName>
         <MessageViewEmail>{email}</MessageViewEmail>
         <MessageViewMessage>
@@ -66,7 +70,7 @@ const MessageView = ({
         </MessageViewMessage>
         <MessageViewDate>{date}</MessageViewDate>
       </MessageViewContent>
-      <MessageViewControlls>
+      <MessageViewControlls data-test="message-view-controls">
         <Button
           type="button"
           value={messageViewDelete}
@@ -78,6 +82,15 @@ const MessageView = ({
       </MessageViewControlls>
     </MessageViewContainer>
   );
+};
+
+MessageView.propTypes = {
+  createdAt: PropTypes.string,
+  _id: PropTypes.string,
+  name: PropTypes.string,
+  email: PropTypes.string,
+  message: PropTypes.string,
+  from: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

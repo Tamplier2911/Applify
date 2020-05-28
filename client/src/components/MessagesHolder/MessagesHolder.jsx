@@ -51,8 +51,8 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
 
   const { messagesHolderTitle, messageHolderSearch } = messagesHolderData[lang];
   return (
-    <MessagesHolderContainer>
-      <MessageHolderInputBarContainer>
+    <MessagesHolderContainer data-test="messages-holder">
+      <MessageHolderInputBarContainer data-test="messages-holder-search">
         <FormInput
           onInputChange={(e) => onInputChange(e)}
           value={search}
@@ -66,8 +66,10 @@ const MessagesHolder = ({ lang, loadMessagesStart, messages, isLoading }) => {
         title={messagesHolderTitle}
         refresher={1}
         cb={loadMessagesStart}
+        data-test="messages-holder-collection-holder"
       >
         <MessagesCollectionWithSpinner
+          data-test="messages-holder-collection"
           isLoading={isLoading}
           messages={messagesArray}
         />
