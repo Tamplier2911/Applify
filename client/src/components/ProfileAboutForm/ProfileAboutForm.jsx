@@ -1,5 +1,6 @@
 // import "./ProfileAboutForm.scss";
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -46,11 +47,16 @@ const ProfileAboutForm = ({ about, lang, updateUserDataStart }) => {
   }, [about]);
 
   return (
-    <ProfileAboutFormContainer animateIn="bounceInLeft" animateOnce={true}>
+    <ProfileAboutFormContainer
+      data-test="profile-about-form"
+      animateIn="bounceInLeft"
+      animateOnce={true}
+    >
       <ProfileAboutFormTitle lang={lang}>
         {profileAboutFormTitle}
       </ProfileAboutFormTitle>
       <ProfileAboutFormElement
+        data-test="profile-about-form-element"
         autoComplete="off"
         onSubmit={(e) => onFormSubmit(e)}
       >
@@ -68,6 +74,10 @@ const ProfileAboutForm = ({ about, lang, updateUserDataStart }) => {
       </ProfileAboutFormElement>
     </ProfileAboutFormContainer>
   );
+};
+
+ProfileAboutForm.propTypes = {
+  about: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({

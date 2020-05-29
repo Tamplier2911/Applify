@@ -78,11 +78,16 @@ const ProfilePasswordForm = ({ lang, openModal, updateUserPasswordStart }) => {
   };
 
   return (
-    <ProfilePasswordFormContainer animateIn={"bounceInLeft"} animateOnce={true}>
+    <ProfilePasswordFormContainer
+      data-test="profile-password-form"
+      animateIn={"bounceInLeft"}
+      animateOnce={true}
+    >
       <ProfilePasswordFormTitle lang={lang}>
         {profilePasswordFormTitle}
       </ProfilePasswordFormTitle>
       <ProfilePasswordFormElement
+        data-test="profile-password-form-element"
         autoComplete="off"
         onSubmit={(e) => onFormSubmit(e)}
       >

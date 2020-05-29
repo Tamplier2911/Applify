@@ -1,5 +1,6 @@
 // import "./ProfileInfoForm.scss";
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 // validator
 import emailValidator from "../../utils/EmailValidator/emailValidator";
@@ -96,11 +97,16 @@ const ProfileInfoForm = ({
   };
 
   return (
-    <ProfileInfoFormContainer animateIn="bounceInRight" animateOnce={true}>
+    <ProfileInfoFormContainer
+      data-test="profile-info-form"
+      animateIn="bounceInRight"
+      animateOnce={true}
+    >
       <ProfileInfoFormTitle lang={lang}>
         {profileInfoFormTitle}
       </ProfileInfoFormTitle>
       <ProfileInfoFormElement
+        data-test="profile-info-form-element"
         autoComplete="off"
         onSubmit={(e) => onFormSubmit(e)}
       >
@@ -132,6 +138,12 @@ const ProfileInfoForm = ({
       </ProfileInfoFormElement>
     </ProfileInfoFormContainer>
   );
+};
+
+ProfileInfoForm.propTypes = {
+  name: PropTypes.string,
+  email: PropTypes.string,
+  photo: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({

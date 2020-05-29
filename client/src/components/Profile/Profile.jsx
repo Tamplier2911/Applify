@@ -35,9 +35,9 @@ const Profile = ({ lang, user }) => {
   }
 
   return (
-    <ProfileContainer>
+    <ProfileContainer data-test="profile">
       <ProfileTitle>{profileTitle}</ProfileTitle>
-      <ProfileContent>
+      <ProfileContent data-test="profile-content">
         <ProfilePortrait photo={image} userRole={role} />
         <ProfileAboutFrom about={about} />
         <ProfileInfoForm name={name} email={email} photo={photo} />
