@@ -103,22 +103,30 @@ const Projects = ({
     : undefined;
 
   return (
-    <ProjectsContainer animateIn={"bounceInRight"} animateOnce={true}>
+    <ProjectsContainer
+      data-test="projects"
+      animateIn={"bounceInRight"}
+      animateOnce={true}
+    >
       <ProjecstTitle>{projectsHeader}</ProjecstTitle>
       <ProjectsCircles>
         <ProjectsCircleZero
+          data-test="projects-set-first"
           onClick={() => setCurrentProjectFirst(lang)}
           id={id}
         />
         <ProjectsCircleOne
+          data-test="projects-set-second"
           onClick={() => setCurrentProjectSecond(lang)}
           id={id}
         />
         <ProjectsCircleTwo
+          data-test="projects-set-third"
           onClick={() => setCurrentProjectThird(lang)}
           id={id}
         />
         <ProjectsCircleThree
+          data-test="projects-set-fourth"
           onClick={() => setCurrentProjectFourth(lang)}
           id={id}
         />
@@ -126,7 +134,7 @@ const Projects = ({
       <ProjectsImageWrapper load={isLoaded}>
         <ProjectsImage src={`${image}`} alt="Project presentation slide." />
       </ProjectsImageWrapper>
-      <ProjectsBox>
+      <ProjectsBox data-test="projects-box">
         <ProjectsContent load={isLoaded}>
           <ProjectsContentTitle>{name}</ProjectsContentTitle>
           <ProjectsContentDesc>

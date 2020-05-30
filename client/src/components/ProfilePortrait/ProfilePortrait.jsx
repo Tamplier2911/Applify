@@ -1,5 +1,6 @@
 // import './ProfilePortrait.scss';
 import React from "react";
+import PropTypes from "prop-types";
 
 // components
 import AdminBar from "../AdminBar/AdminBar";
@@ -13,13 +14,24 @@ import {
 
 const ProfilePortrait = ({ photo, userRole }) => {
   return (
-    <ProfilePortraitContainer animateIn="bounceInRight" animateOnce={true}>
-      <ProfilePortraitWrapper>
+    <ProfilePortraitContainer
+      data-test="profile-portrait"
+      animateIn="bounceInRight"
+      animateOnce={true}
+    >
+      <ProfilePortraitWrapper data-test="profile-portrait-photo">
         <ProfilePortraitImage src={photo} alt="happy user" />
       </ProfilePortraitWrapper>
-      {userRole === "admin" || userRole === "owner" ? <AdminBar /> : null}
+      {userRole === "admin" || userRole === "owner" ? (
+        <AdminBar data-test="profile-portrait-adminbar" />
+      ) : null}
     </ProfilePortraitContainer>
   );
+};
+
+ProfilePortrait.propTypes = {
+  photo: PropTypes.string,
+  userRole: PropTypes.string,
 };
 
 export default ProfilePortrait;
