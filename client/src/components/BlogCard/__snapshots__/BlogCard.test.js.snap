@@ -1,3 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogCard /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<BlogCard /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="flipInY"
+  animateOnce={true}
+  data-test="blog-card"
+  img="http://localhost/api/uploads/images/users/default.jpg"
+>
+  <styled.div
+    data-test="blog-card-header"
+  >
+    <styled.div />
+    <styled.div />
+    <styled.div>
+      May 31, 2020
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="blog-card-body"
+  >
+    <styled.div>
+      <styled.img
+        alt="happy author"
+        src="http://localhost/api/uploads/images/users/default.jpg"
+      />
+    </styled.div>
+    <styled.div />
+    <styled.div>
+      <styled.div />
+      <styled.div>
+        <Styled(Component) />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="blog-card-controls"
+  >
+    <Button
+      click={[Function]}
+      data-test="blog-card-button"
+      type="button"
+      value="Delete"
+    />
+    <Styled(Link)
+      data-test="blog-card-link"
+      to="/profile/blogs/undefined"
+    >
+      Update
+    </Styled(Link)>
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

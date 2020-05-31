@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import MessagesCollection from "./MessagesCollection";
@@ -35,7 +36,7 @@ describe("<MessagesCollection />", () => {
   });
 
   it("matches snapshot", () => {
-    const messagesCollection = findByTestAttr(wrapper, "messages-collection");
-    expect(messagesCollection).toMatchSnapshot();
+    const messagesCollectio = findByTestAttr(wrapper, "messages-collection");
+    expect(toJson(messagesCollectio)).toMatchSnapshot();
   });
 });

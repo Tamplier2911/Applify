@@ -1,6 +1,5 @@
 import React from "react";
-
-import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
 
 // component
 import Modal from "./Modal";
@@ -55,6 +54,6 @@ describe("<Modal />", () => {
 
   it("matches snapshot", () => {
     const modal = findByTestAttr(wrapper, "modal");
-    expect(modal).toMatchSnapshot();
+    expect(toJson(modal)).toMatchSnapshot();
   });
 });

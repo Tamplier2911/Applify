@@ -1,3 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MessageView /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<MessageView /> matches snapshot 1`] = `
+<styled.div
+  data-test="message-view-content"
+>
+  <styled.h3>
+    Breadberry
+  </styled.h3>
+  <styled.div>
+    ex@mple.com
+  </styled.div>
+  <styled.div>
+    Well, hello!
+  </styled.div>
+  <styled.div>
+    October 5, 2020
+  </styled.div>
+</styled.div>
+`;

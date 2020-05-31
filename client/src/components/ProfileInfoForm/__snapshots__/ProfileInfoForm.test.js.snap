@@ -1,3 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfileInfoForm /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<ProfileInfoForm /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="bounceInRight"
+  animateOnce={true}
+  data-test="profile-info-form"
+>
+  <styled.h3
+    lang="eng"
+  >
+    Change Credentials:
+  </styled.h3>
+  <styled.form
+    autoComplete="off"
+    data-test="profile-info-form-element"
+    onSubmit={[Function]}
+  >
+    <FormInput
+      label="Name"
+      name="profileName"
+      onInputChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <FormInput
+      label="Email"
+      name="profileEmail"
+      onInputChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <FileInput
+      id="profileInfoFormFileInput"
+      image={0}
+      label="Upload Image"
+      name="profileImage"
+      onInputChange={[Function]}
+      type="file"
+    />
+    <Button
+      type="submit"
+      value="Save Changes"
+    />
+  </styled.form>
+</Styled(ScrollAnimation)>
+`;

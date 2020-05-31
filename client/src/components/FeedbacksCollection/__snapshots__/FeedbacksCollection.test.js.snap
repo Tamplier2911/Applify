@@ -1,3 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FeedbacksCollection /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<FeedbacksCollection /> matches snapshot 1`] = `
+<styled.div
+  data-test="feedbacks-collection"
+>
+  <styled.h2>
+    Recent Feedbacks:
+  </styled.h2>
+  <styled.div
+    data-test="feedbacks-collection-controlls"
+    loaded={1}
+    onClick={[Function]}
+  >
+    Show More
+  </styled.div>
+  <Connect(FeedbackCreate)
+    method="POST"
+  />
+</styled.div>
+`;

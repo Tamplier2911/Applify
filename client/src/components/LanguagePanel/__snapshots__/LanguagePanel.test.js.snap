@@ -1,3 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LanguagePanel /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<LanguagePanel /> matches snapshot 1`] = `
+<styled.div
+  data-test="language-panel"
+>
+  <styled.div
+    data-test="language-panel-languages"
+  >
+    <styled.div
+      data-test="language-panel-lang-eng"
+      onClick={[Function]}
+    >
+      <styled.img
+        alt="great britain flag"
+        src="lang-eng.jpg"
+      />
+    </styled.div>
+    <styled.div
+      data-test="language-panel-lang-ukr"
+      onClick={[Function]}
+    >
+      <styled.img
+        alt="ukrainian flag"
+        src="lang-ukr.jpg"
+      />
+    </styled.div>
+    <styled.div
+      data-test="language-panel-lang-rus"
+      onClick={[Function]}
+    >
+      <styled.img
+        alt="russian flag"
+        src="lang-rus.jpg"
+      />
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="language-panel-toggle-btn"
+    onClick={[Function]}
+  >
+    <Styled(Component)>
+      Language Pannel
+    </Styled(Component)>
+  </styled.div>
+</styled.div>
+`;

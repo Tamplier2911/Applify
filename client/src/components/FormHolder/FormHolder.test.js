@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import FormHolder from "./FormHolder";
@@ -42,6 +43,6 @@ describe("<FormHolder />", () => {
 
   it("matches snapshot", () => {
     const formHolder = findByTestAttr(wrapper, "form-holder");
-    expect(formHolder).toMatchSnapshot();
+    expect(toJson(formHolder)).toMatchSnapshot();
   });
 });

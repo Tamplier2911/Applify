@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogCreate /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<BlogCreate /> matches snapshot 1`] = `
+<styled.div
+  data-test="blog-create"
+>
+  <Connect(BlogCreateRules)
+    data-test="blog-create-rules"
+  />
+  <Connect(CreateUpdateBlogpost)
+    data-test="blog-create-cub"
+    method="POST"
+  />
+</styled.div>
+`;

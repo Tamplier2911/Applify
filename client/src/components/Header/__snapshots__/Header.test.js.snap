@@ -1,3 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Header /> matches snapshot 1`] = `
+<styled.div
+  data-test="header"
+  shadow={1}
+>
+  <styled.div>
+    <styled.div>
+      <Styled(Link)
+        data-test="header-login-link"
+        to="/authorization"
+      >
+        Log In
+      </Styled(Link)>
+       
+      /
+       
+      <Styled(Link)
+        data-test="header-signup-link"
+        to="/authorization"
+      >
+        Sign Up
+      </Styled(Link)>
+    </styled.div>
+    <Styled(Link)
+      data-test="header-logo-link"
+      to="/"
+    >
+      <Styled(Component) />
+    </Styled(Link)>
+    <Styled(Component)
+      data-test="header-menu-btn"
+      onClick={[Function]}
+    />
+  </styled.div>
+</styled.div>
+`;

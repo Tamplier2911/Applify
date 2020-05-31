@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import BlogPostView from "./BlogPostView";
@@ -67,6 +68,6 @@ describe("<BlogPostView />", () => {
 
   it("matches snapshot", () => {
     const blogPostView = findByTestAttr(wrapper, "blog-post-view");
-    expect(blogPostView).toMatchSnapshot();
+    expect(toJson(blogPostView)).toMatchSnapshot();
   });
 });

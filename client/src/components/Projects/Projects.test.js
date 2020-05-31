@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // projects data
 import projectsData from "../../redux/projects/projectsConstants";
@@ -96,7 +97,9 @@ describe("<Projects />", () => {
   });
 
   it("matches snapshot", () => {
+    // renders projectsData.allProjects.eng[3]
+    // current project after last simulation
     const projects = findByTestAttr(wrapper, "projects");
-    expect(projects).toMatchSnapshot();
+    expect(toJson(projects)).toMatchSnapshot();
   });
 });

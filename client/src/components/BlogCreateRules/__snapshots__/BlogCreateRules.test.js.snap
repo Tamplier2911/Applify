@@ -1,3 +1,140 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogCreateRules /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<BlogCreateRules /> matches snapshot 1`] = `
+<styled.div
+  data-test="blog-create-rules"
+>
+  <styled.h3>
+    Simple rules on how to create a blog, with data to be parsed in right way:
+  </styled.h3>
+  <styled.ul>
+    <styled.li>
+      <styled.span>
+        %BLOCK%
+      </styled.span>
+      <styled.span>
+        - wrap around every block of content.
+      </styled.span>
+    </styled.li>
+    <styled.li>
+      <styled.span>
+        %H%
+      </styled.span>
+      <styled.span>
+        - wrap around anything meant to be a header.
+      </styled.span>
+    </styled.li>
+    <styled.li>
+      <styled.span>
+        %P%
+      </styled.span>
+      <styled.span>
+        - wrap around any paragraph.
+      </styled.span>
+    </styled.li>
+    <styled.li>
+      <styled.span>
+        %A%
+      </styled.span>
+      <styled.span>
+        - wrap around any anchor tag.
+      </styled.span>
+    </styled.li>
+    <styled.li>
+      <styled.span>
+        %L%
+      </styled.span>
+      <styled.span>
+        - wrap around any list item.
+      </styled.span>
+    </styled.li>
+    <styled.li>
+      <styled.span>
+        %CODE%
+      </styled.span>
+      <styled.span>
+        - wrap around any code snippet.
+      </styled.span>
+    </styled.li>
+  </styled.ul>
+  <styled.h3>
+    Example:
+  </styled.h3>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+        %BLOCK%
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        %H%
+      </styled.div>
+      <styled.div>
+        This is a header!
+      </styled.div>
+      <styled.div>
+        %H%
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        %P%
+      </styled.div>
+      <styled.div>
+        This is some paragraph that mean to be rendered.
+      </styled.div>
+      <styled.div>
+        %P%
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        %A%
+      </styled.div>
+      <styled.div>
+        https://www.google.com:Google.com
+      </styled.div>
+      <styled.div>
+        %A%
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        %L%
+      </styled.div>
+      <styled.div>
+        List item - 1
+      </styled.div>
+      <styled.div>
+        %L%
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        %L%
+      </styled.div>
+      <styled.div>
+        List item - 2
+      </styled.div>
+      <styled.div>
+        %L%
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        %CODE%
+      </styled.div>
+      <styled.div>
+        2console.log('Hello, world!') // 2 - spaces
+      </styled.div>
+      <styled.div>
+        %CODE%
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      %BLOCK%
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

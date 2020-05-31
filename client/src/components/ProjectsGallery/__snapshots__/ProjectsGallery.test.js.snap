@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProjectsGallery /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="bounceInLeft"
+  animateOnce={true}
+  data-test="projects-gallery"
+>
+  <styled.h2>
+    Projects gallery:
+  </styled.h2>
+  <styled.div>
+    <styled.div
+      data-test="projects-gallery-prev-btn"
+      onClick={[Function]}
+    >
+      <Styled(Component) />
+    </styled.div>
+    <styled.div
+      load={false}
+    >
+      <styled.img
+        alt="project gallery overview"
+        data-test="projects-gallery-image"
+        src="http://localhost/api/uploads/images/projects/audit-desktop.jpg"
+      />
+    </styled.div>
+    <styled.div
+      data-test="projects-gallery-next-btn"
+      onClick={[Function]}
+    >
+      <Styled(Component) />
+    </styled.div>
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

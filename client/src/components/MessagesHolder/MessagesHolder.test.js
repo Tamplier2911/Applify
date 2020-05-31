@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // components
 import MessagesHolder from "./MessagesHolder";
@@ -60,6 +61,6 @@ describe("<MessagesHolder />", () => {
 
   it("matches snapshot", () => {
     const messagesHolder = findByTestAttr(wrapper, "messages-holder");
-    expect(messagesHolder).toMatchSnapshot();
+    expect(toJson(messagesHolder)).toMatchSnapshot();
   });
 });

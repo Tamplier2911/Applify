@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import ProfilePasswordForm from "./ProfilePasswordForm";
@@ -45,6 +46,6 @@ describe("<ProfilePasswordForm />", () => {
       wrapper,
       "profile-password-form"
     );
-    expect(profilePasswordForm).toMatchSnapshot();
+    expect(toJson(profilePasswordForm)).toMatchSnapshot();
   });
 });

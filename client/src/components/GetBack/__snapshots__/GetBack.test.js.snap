@@ -1,3 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GetBack /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<GetBack /> matches snapshot 1`] = `
+<styled.div
+  data-test="get-back"
+  onClick={[Function]}
+>
+  <Styled(Component)
+    data-test="get-back-svg"
+  />
+</styled.div>
+`;

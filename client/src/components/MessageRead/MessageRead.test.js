@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import MessageRead from "./MessageRead";
@@ -82,6 +83,6 @@ describe("<MessageRead />", () => {
 
   it("matches snapshot", () => {
     const messageRead = findByTestAttr(wrapper, "message-read");
-    expect(messageRead).toMatchSnapshot();
+    expect(toJson(messageRead)).toMatchSnapshot();
   });
 });

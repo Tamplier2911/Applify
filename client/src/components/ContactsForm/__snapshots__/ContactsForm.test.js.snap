@@ -1,3 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ContactsForm /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<ContactsForm /> matches snapshot 1`] = `
+<styled.div
+  data-test="contacts-form"
+>
+  <styled.h3
+    lang="eng"
+  >
+    Send us a message describing your problem, and we will get back to you shortly!
+  </styled.h3>
+  <styled.form
+    autoComplete="off"
+    data-test="contacts-form-element"
+    onSubmit={[Function]}
+  >
+    <FormInput
+      data-test="contacts-form-input"
+      label="Name"
+      name="name"
+      onInputChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <FormInput
+      data-test="contacts-form-input"
+      label="Email"
+      name="email"
+      onInputChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <TextInput
+      data-test="contacts-form-input"
+      label="Message"
+      max="2000"
+      name="message"
+      onInputChange={[Function]}
+      required={true}
+      rows="6"
+      value=""
+    />
+    <Button
+      data-test="contacts-form-submit"
+      type="submit"
+      value="Send"
+    />
+  </styled.form>
+  <styled.p>
+    Message length: 
+    2000
+  </styled.p>
+</styled.div>
+`;

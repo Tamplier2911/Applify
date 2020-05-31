@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import ErrorBoundary from "./ErrorBoundary";
@@ -37,6 +38,6 @@ describe("<ErrorBoundary />", () => {
 
   it("matches snapshot", () => {
     const errorBoundary = findByTestAttr(wrapper, "error-boundary");
-    expect(errorBoundary).toMatchSnapshot();
+    expect(toJson(errorBoundary)).toMatchSnapshot();
   });
 });

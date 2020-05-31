@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import FormInput from "./FormInput";
@@ -35,6 +36,6 @@ describe("<FormInput />", () => {
 
   it("matches snapshot", () => {
     const formInput = findByTestAttr(wrapper, "form-input");
-    expect(formInput).toMatchSnapshot();
+    expect(toJson(formInput)).toMatchSnapshot();
   });
 });

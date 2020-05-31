@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import BlogCard from "./BlogCard";
@@ -70,6 +71,6 @@ describe("<BlogCard />", () => {
 
   it("matches snapshot", () => {
     const blogCard = findByTestAttr(wrapper, "blog-card");
-    expect(blogCard).toMatchSnapshot();
+    expect(toJson(blogCard)).toMatchSnapshot();
   });
 });

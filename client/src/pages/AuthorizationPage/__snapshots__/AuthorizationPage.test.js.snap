@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AuthorizationPage /> matching snapshot 1`] = `ShallowWrapper {}`;
+exports[`<AuthorizationPage /> matching snapshot 1`] = `
+<styled.section
+  data-test="auth-page"
+>
+  <styled.div />
+  <Connect(SignIn)
+    data-test="auth-page-signin"
+  />
+  <Connect(SignUp)
+    data-test="auth-page-signup"
+  />
+</styled.section>
+`;

@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import LanguagePanel from "./LanguagePanel";
@@ -123,6 +124,6 @@ describe("<LanguagePanel />", () => {
 
   it("matches snapshot", () => {
     const languagePanel = findByTestAttr(wrapper, "language-panel");
-    expect(languagePanel).toMatchSnapshot();
+    expect(toJson(languagePanel)).toMatchSnapshot();
   });
 });

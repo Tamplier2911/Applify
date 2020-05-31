@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import FeedbacksHolder from "./FeedbacksHolder";
@@ -55,6 +56,6 @@ describe("<CollectionHolder />", () => {
 
   it("matches snapshot", () => {
     const feedbacksHolder = findByTestAttr(wrapper, "feedbacks-holder");
-    expect(feedbacksHolder).toMatchSnapshot();
+    expect(toJson(feedbacksHolder)).toMatchSnapshot();
   });
 });

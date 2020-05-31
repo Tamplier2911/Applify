@@ -1,3 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FeedbackView /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<FeedbackView /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="bounceInLeft"
+  animateOnce={true}
+  data-test="feedback-view"
+>
+  <styled.div
+    data-test="feedback-view-left"
+    even={0}
+  >
+    <styled.div>
+      <styled.div
+        even={0}
+      >
+        <styled.img
+          alt="happy user"
+          src="http://localhost/api/uploads/images/users/default.jpg"
+        />
+      </styled.div>
+      <styled.div
+        even={0}
+      >
+        <styled.div
+          even={0}
+        />
+        <styled.div
+          even={0}
+        >
+          <Styled(Component)
+            key="1"
+          />
+          <Styled(Component)
+            key="2"
+          />
+        </styled.div>
+      </styled.div>
+      <styled.div
+        even={0}
+      />
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="feedback-view-right"
+  >
+    <styled.div>
+      <styled.div>
+        “
+      </styled.div>
+      <styled.div />
+      <styled.div>
+        „
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

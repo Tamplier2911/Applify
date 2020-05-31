@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfilePortrait /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<ProfilePortrait /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="bounceInRight"
+  animateOnce={true}
+  data-test="profile-portrait"
+>
+  <styled.div
+    data-test="profile-portrait-photo"
+  >
+    <styled.img
+      alt="happy user"
+      src="user.jpg"
+    />
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

@@ -1,3 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AdminBar /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<AdminBar /> matches snapshot 1`] = `
+<styled.div
+  data-test="admin-bar"
+>
+  <styled.ul>
+    <styled.li>
+      <Styled(Link)
+        data-test="admin-bar-users"
+        to="profile/users"
+      >
+        <Styled(Component) />
+      </Styled(Link)>
+    </styled.li>
+    <styled.li>
+      <Styled(Link)
+        data-test="admin-bar-messages"
+        to="profile/messages"
+      >
+        <Styled(Component) />
+      </Styled(Link)>
+    </styled.li>
+    <styled.li>
+      <Styled(Link)
+        data-test="admin-bar-blogs"
+        to="profile/blogs"
+      >
+        <Styled(Component) />
+      </Styled(Link)>
+    </styled.li>
+    <styled.li>
+      <Styled(Link)
+        data-test="admin-bar-feeds"
+        to="profile/feeds"
+      >
+        <Styled(Component) />
+      </Styled(Link)>
+    </styled.li>
+  </styled.ul>
+</styled.div>
+`;

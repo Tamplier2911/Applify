@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import PasswordRestorationPage from "./PasswordRestorationPage";
@@ -52,6 +53,6 @@ describe("<ProfilePage />", () => {
       wrapper,
       "password-restoration-page"
     );
-    expect(passwordRestorationPage).toMatchSnapshot();
+    expect(toJson(passwordRestorationPage)).toMatchSnapshot();
   });
 });

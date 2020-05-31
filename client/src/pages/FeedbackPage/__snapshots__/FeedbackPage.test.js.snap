@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FeedbackPage /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<FeedbackPage /> matches snapshot 1`] = `
+<styled.section
+  data-test="feedback-page"
+>
+  <Component
+    data-test="feedback-page-with-spinner"
+    feedbacks={Array []}
+    isLoading={false}
+  />
+</styled.section>
+`;

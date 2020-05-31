@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import ResumePage from "./ResumePage";
@@ -24,6 +25,6 @@ describe("<ResumePage />", () => {
 
   it("matches snapshot", () => {
     const resumePage = findByTestAttr(wrapper, "resume-page");
-    expect(resumePage).toMatchSnapshot();
+    expect(toJson(resumePage)).toMatchSnapshot();
   });
 });

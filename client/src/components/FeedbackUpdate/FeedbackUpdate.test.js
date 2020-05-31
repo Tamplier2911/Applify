@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import FeedbackUpdate from "./FeedbackUpdate";
@@ -68,6 +69,6 @@ describe("<FeedbackUpdate />", () => {
 
   it("matches snapshot", () => {
     const feedbackUpdate = findByTestAttr(wrapper, "feedback-update");
-    expect(feedbackUpdate).toMatchSnapshot();
+    expect(toJson(feedbackUpdate)).toMatchSnapshot();
   });
 });

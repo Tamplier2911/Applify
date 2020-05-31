@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreateUpdateUser /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<CreateUpdateUser /> matches snapshot 1`] = `
+<styled.div
+  data-test="create-update-user"
+>
+  <FormHolder
+    data-test="create-update-user-form-holder"
+    title="Update User:"
+    type="update-create-user"
+  >
+    <Connect(CreateUpdateUserForm)
+      data-test="create-update-user-form"
+    />
+  </FormHolder>
+</styled.div>
+`;

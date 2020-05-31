@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import GetBack from "./GetBack";
@@ -41,6 +42,6 @@ describe("<GetBack />", () => {
 
   it("matches snapshot", () => {
     const getBack = findByTestAttr(wrapper, "get-back");
-    expect(getBack).toMatchSnapshot();
+    expect(toJson(getBack)).toMatchSnapshot();
   });
 });

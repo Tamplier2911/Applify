@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomePage /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<HomePage /> matches snapshot 1`] = `
+<styled.section
+  data-test="home-page"
+>
+  <Connect(Hero)
+    data-test="home-page-hero"
+  />
+  <Connect(HomeCards)
+    data-test="home-page-cards"
+  />
+  <styled.div />
+</styled.section>
+`;

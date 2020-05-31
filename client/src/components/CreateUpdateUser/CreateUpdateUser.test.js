@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import CreateUpdateUser from "./CreateUpdateUser";
@@ -54,6 +55,6 @@ describe("<CreateUpdateUser />", () => {
 
   it("matches snapshot", () => {
     const createUpdateUser = findByTestAttr(wrapper, "create-update-user");
-    expect(createUpdateUser).toMatchSnapshot();
+    expect(toJson(createUpdateUser)).toMatchSnapshot();
   });
 });

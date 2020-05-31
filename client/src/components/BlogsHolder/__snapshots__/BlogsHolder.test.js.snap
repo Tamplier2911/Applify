@@ -1,3 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogsHolder /> matches snapshot  1`] = `1`;
+exports[`<BlogsHolder /> matches snapshot  1`] = `
+<styled.div
+  data-test="blogs-holder"
+>
+  <Button
+    click={[Function]}
+    type="button"
+    value="Create New Post"
+  />
+  <styled.div
+    data-test="blogs-holder-search"
+  >
+    <FormInput
+      label="Search"
+      name="search"
+      onInputChange={[Function]}
+      type="text"
+      value=""
+    />
+  </styled.div>
+  <CollectionHolder
+    cb={[Function]}
+    data-test="blogs-holder-collection"
+    lang="eng"
+    refresher={1}
+    title="Posts:"
+  >
+    <Component
+      dataCollection={Array []}
+      isLoading={false}
+    >
+      <Connect(BlogCard) />
+    </Component>
+  </CollectionHolder>
+</styled.div>
+`;

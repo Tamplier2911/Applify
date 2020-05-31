@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Card /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateOnce={true}
+  cl={
+    Object {
+      "left": undefined,
+      "right": undefined,
+    }
+  }
+  data-test="card-component"
+>
+  <styled.div
+    data-test="card-component-svg"
+  />
+  <styled.div
+    data-test="card-component-content"
+  >
+    <styled.h4 />
+    <styled.div />
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

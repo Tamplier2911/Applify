@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import LazzySpinner from "./LazzySpinner";
@@ -24,6 +25,6 @@ describe("<LazzySpinner />", () => {
 
   it("matches snapshot", () => {
     const lazzySpinner = findByTestAttr(wrapper, "lazzy-spinner");
-    expect(lazzySpinner).toMatchSnapshot();
+    expect(toJson(lazzySpinner)).toMatchSnapshot();
   });
 });

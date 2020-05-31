@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CollectionHolder /> matches snapshot 1`] = `
+<styled.div
+  data-test="collection-for-holder"
+>
+  <styled.h2 />
+  <styled.div
+    data-test="collection-for-holder-children"
+  />
+</styled.div>
+`;

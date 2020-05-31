@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Contacts /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Contacts /> matches snapshot 1`] = `
+<styled.div
+  data-test="contacts"
+>
+  <FormHolder
+    data-test="contacts-form-holder"
+    title="Ready to enhance your business with cutting edge technologies?"
+    type="contact"
+  >
+    <Connect(ContactsForm) />
+  </FormHolder>
+</styled.div>
+`;

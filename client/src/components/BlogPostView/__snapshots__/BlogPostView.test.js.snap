@@ -1,3 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogPostView /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<BlogPostView /> matches snapshot 1`] = `
+<Styled(Link)
+  big={0}
+  data-test="blog-post-view"
+  to="blog/undefined-undefined-undefined"
+>
+  <styled.img
+    alt="blog post presentation"
+    src="http://localhost/api/uploads/images/users/default.jpg"
+  />
+  <styled.div
+    data-test="blog-post-view-content"
+  >
+    <styled.div>
+      <styled.div />
+      <styled.h4 />
+      <styled.div>
+        <styled.div>
+          May 31, 2020
+        </styled.div>
+        <styled.div
+          onClick={[Function]}
+        >
+          <styled.div />
+          <Styled(Component)
+            liked={0}
+          />
+        </styled.div>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</Styled(Link)>
+`;

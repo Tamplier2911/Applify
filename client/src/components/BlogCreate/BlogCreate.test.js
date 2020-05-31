@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import BlogCreate from "./BlogCreate";
@@ -29,6 +30,6 @@ describe("<BlogCreate />", () => {
 
   it("matches snapshot", () => {
     const blogCreate = findByTestAttr(wrapper, "blog-create");
-    expect(blogCreate).toMatchSnapshot();
+    expect(toJson(blogCreate)).toMatchSnapshot();
   });
 });

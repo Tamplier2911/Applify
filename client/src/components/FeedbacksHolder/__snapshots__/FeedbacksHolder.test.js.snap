@@ -1,3 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CollectionHolder /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<CollectionHolder /> matches snapshot 1`] = `
+<styled.div
+  data-test="feedbacks-holder"
+>
+  <Button
+    click={[Function]}
+    type="button"
+    value="Write Feedback"
+  />
+  <styled.div
+    data-test="feedbacks-holder-search"
+  >
+    <FormInput
+      label="Search"
+      name="search"
+      onInputChange={[Function]}
+      type="text"
+      value=""
+    />
+  </styled.div>
+  <CollectionHolder
+    cb={[Function]}
+    data-test="feedbacks-holder-component"
+    lang="eng"
+    refresher={1}
+    title="Feedbacks:"
+  >
+    <Component
+      data-test="feedbacks-holder-collection"
+      dataCollection={Array []}
+      isLoading={false}
+    >
+      <Connect(FeedbackCard) />
+    </Component>
+  </CollectionHolder>
+</styled.div>
+`;

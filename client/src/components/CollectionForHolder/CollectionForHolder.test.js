@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import CollectionForHolder from "./CollectionForHolder";
@@ -31,6 +32,6 @@ describe("<CollectionForHolder />", () => {
       wrapper,
       "collection-for-holder"
     );
-    expect(collectionForHolder).toMatchSnapshot();
+    expect(toJson(collectionForHolder)).toMatchSnapshot();
   });
 });

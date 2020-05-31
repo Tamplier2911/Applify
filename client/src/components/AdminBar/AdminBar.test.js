@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import AdminBar from "./AdminBar";
@@ -39,6 +40,6 @@ describe("<AdminBar />", () => {
 
   it("matches snapshot", () => {
     const adminBar = findByTestAttr(wrapper, "admin-bar");
-    expect(adminBar).toMatchSnapshot();
+    expect(toJson(adminBar)).toMatchSnapshot();
   });
 });

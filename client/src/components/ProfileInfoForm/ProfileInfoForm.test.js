@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import ProfileInfoForm from "./ProfileInfoForm";
@@ -55,6 +56,6 @@ describe("<ProfileInfoForm />", () => {
 
   it("matches snapshot", () => {
     const profileInfoForm = findByTestAttr(wrapper, "profile-info-form");
-    expect(profileInfoForm).toMatchSnapshot();
+    expect(toJson(profileInfoForm)).toMatchSnapshot();
   });
 });

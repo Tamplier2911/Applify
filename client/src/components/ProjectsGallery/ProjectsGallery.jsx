@@ -77,21 +77,32 @@ const ProjectsGallery = ({
   const device = getDeviceValue(width);
 
   return (
-    <ProjectsGalleryContainer animateIn={"bounceInLeft"} animateOnce={true}>
+    <ProjectsGalleryContainer
+      data-test="projects-gallery"
+      animateIn={"bounceInLeft"}
+      animateOnce={true}
+    >
       <ProjectsGalleryTitle>{projectsGalleryHeader}</ProjectsGalleryTitle>
       <ProjectsGalleryComposition>
-        <ProjectsGalleryArrow onClick={() => setCurrentImagePrev(device)}>
+        <ProjectsGalleryArrow
+          data-test="projects-gallery-prev-btn"
+          onClick={() => setCurrentImagePrev(device)}
+        >
           <ProjectsGalleryArrowLeftSVG />
         </ProjectsGalleryArrow>
 
         <ProjectsGalleryImageContainer load={isLoaded}>
           <ProjectsGalleryImage
+            data-test="projects-gallery-image"
             src={projectPortrait}
             alt="project gallery overview"
           ></ProjectsGalleryImage>
         </ProjectsGalleryImageContainer>
 
-        <ProjectsGalleryArrow onClick={() => setCurrentImageNext(device)}>
+        <ProjectsGalleryArrow
+          data-test="projects-gallery-next-btn"
+          onClick={() => setCurrentImageNext(device)}
+        >
           <ProjectsGalleryArrowRightSVG />
         </ProjectsGalleryArrow>
       </ProjectsGalleryComposition>

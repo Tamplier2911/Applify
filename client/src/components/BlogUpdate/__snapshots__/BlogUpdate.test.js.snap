@@ -1,3 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogUpdate /> matches snapshot 1`] = `1`;
+exports[`<BlogUpdate /> matches snapshot 1`] = `
+<styled.div
+  data-test="blog-update"
+>
+  <styled.div
+    data-test="blog-update-data"
+    img="http://localhost/api/uploads/images/users/default.jpg"
+  >
+    <styled.div>
+      <styled.div>
+        <styled.div />
+        <styled.div>
+          May 31, 2020
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.img
+          alt="happy author"
+          src="http://localhost/api/uploads/images/users/default.jpg"
+        />
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div />
+      <styled.div>
+        <Styled(Component) />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <Connect(CreateUpdateBlogpost)
+    method="PATCH"
+    updateData={
+      Object {
+        "_id": undefined,
+        "content": undefined,
+        "theme": undefined,
+        "title": undefined,
+      }
+    }
+  />
+  <withRouter(GetBack)
+    path="/profile/blogs"
+  />
+</styled.div>
+`;

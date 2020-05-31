@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import FeedbackView from "./FeedbackView";
@@ -41,6 +42,6 @@ describe("<FeedbackView />", () => {
 
   it("matches snapshot", () => {
     const feedbackView = findByTestAttr(wrapper, "feedback-view");
-    expect(feedbackView).toMatchSnapshot();
+    expect(toJson(feedbackView)).toMatchSnapshot();
   });
 });

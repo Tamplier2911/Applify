@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Modal /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Modal /> matches snapshot 1`] = `
+<styled.div
+  data-test="modal"
+  hidden={true}
+  onClick={[Function]}
+>
+  <styled.div
+    onClick={[Function]}
+  >
+    <styled.h3
+      data-test="modal-header"
+    />
+    <styled.div
+      data-test="modal-close"
+      onClick={[Function]}
+    >
+      ✖
+    </styled.div>
+    <styled.div
+      data-test="modal-content"
+    />
+  </styled.div>
+</styled.div>
+`;

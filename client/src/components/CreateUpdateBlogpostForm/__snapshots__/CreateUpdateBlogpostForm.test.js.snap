@@ -1,3 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreateUpdateBlogpostForm /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<CreateUpdateBlogpostForm /> matches snapshot 1`] = `
+<styled.div
+  data-test="create-update-bp-form"
+>
+  <styled.h3
+    lang="eng"
+  >
+    Share source of your inspiration with the world.
+  </styled.h3>
+  <styled.form
+    autoComplete="off"
+    data-test="create-update-bp-form-elem"
+    onSubmit={[Function]}
+  >
+    <FormInput
+      data-test="create-update-bp-form-input"
+      label="Blog Title"
+      name="blogTitle"
+      onInputChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <FormInput
+      data-test="create-update-bp-form-input"
+      label="Blog Subject"
+      name="blogTheme"
+      onInputChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <TextInput
+      data-test="create-update-bp-form-input"
+      label="Blog Content"
+      max="100000"
+      name="blogContent"
+      onInputChange={[Function]}
+      required={true}
+      rows="10"
+      value=""
+    />
+    <FileInput
+      id="createUpdateBlogostFileInput"
+      image={0}
+      label="Choose Image"
+      name="blogImage"
+      onInputChange={[Function]}
+      type="file"
+    />
+    <Button
+      type="submit"
+      value="Create Post"
+    />
+  </styled.form>
+  <styled.div>
+    <styled.div>
+      *Note: In order to create a post, you need to choose an image.
+    </styled.div>
+    <styled.div>
+      Blog length: 
+      100000
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

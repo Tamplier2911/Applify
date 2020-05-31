@@ -1,3 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogsCollection /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<BlogsCollection /> matches snapshot 1`] = `
+<styled.div
+  data-test="blogs-collection"
+>
+  <styled.h2>
+    Recent blog posts:
+  </styled.h2>
+  <Styled(ScrollAnimation)
+    animateIn="bounceInUp"
+    animateOnce={true}
+    data-test="blog-collection-blogs"
+  >
+    <styled.div>
+      <styled.div
+        disabled={0}
+        onClick={[Function]}
+      >
+        &lt;
+      </styled.div>
+      <styled.div
+        disabled={1}
+        onClick={[Function]}
+      >
+        &gt;
+      </styled.div>
+    </styled.div>
+  </Styled(ScrollAnimation)>
+</styled.div>
+`;

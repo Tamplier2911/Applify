@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import BlogUpdate from "./BlogUpdate";
@@ -71,6 +72,6 @@ describe("<BlogUpdate />", () => {
 
   it("matches snapshot", () => {
     const blogUpdate = findByTestAttr(wrapper, "blog-update");
-    expect(blogUpdate.length).toMatchSnapshot();
+    expect(toJson(blogUpdate)).toMatchSnapshot();
   });
 });

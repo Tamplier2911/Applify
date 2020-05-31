@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BlogPage /> matches snapshot 1`] = `
+<styled.section
+  data-test="blog-page"
+>
+  <Switch>
+    <Route
+      data-test="blog-page-route-cl"
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      component={[Function]}
+      data-test="blog-page-route-id"
+      path="//:id"
+    />
+  </Switch>
+  <styled.div
+    data-test="blog-page-placeholder"
+  />
+</styled.section>
+`;

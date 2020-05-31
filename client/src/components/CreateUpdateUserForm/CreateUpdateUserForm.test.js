@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import CreateUpdateUserForm from "./CreateUpdateUserForm";
@@ -60,6 +61,6 @@ describe("<CreateUpdateUserForm />", () => {
       wrapper,
       "create-update-user-form"
     );
-    expect(createUpdateUserForm).toMatchSnapshot();
+    expect(toJson(createUpdateUserForm)).toMatchSnapshot();
   });
 });

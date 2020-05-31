@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import Header from "./Header";
@@ -133,6 +134,6 @@ describe("<Header />", () => {
 
   it("matches snapshot", () => {
     const header = findByTestAttr(wrapper, "header");
-    expect(header).toMatchSnapshot();
+    expect(toJson(header)).toMatchSnapshot();
   });
 });

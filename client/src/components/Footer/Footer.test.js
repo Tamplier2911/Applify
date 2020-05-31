@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import Footer from "./Footer";
@@ -41,6 +42,6 @@ describe("<Footer />", () => {
 
   it("renders without an error", () => {
     const footer = findByTestAttr(wrapper, "footer");
-    expect(footer).toMatchSnapshot();
+    expect(toJson(footer)).toMatchSnapshot();
   });
 });

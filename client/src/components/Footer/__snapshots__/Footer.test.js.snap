@@ -1,3 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Footer /> renders without an error 1`] = `ShallowWrapper {}`;
+exports[`<Footer /> renders without an error 1`] = `
+<styled.footer
+  data-test="footer"
+>
+  <styled.div>
+    <styled.div
+      data-test="footer-links"
+    >
+      <styled.a
+        aria-label="Facebook"
+        href="https://www.facebook.com/artyom.nikolayev"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Styled(Component) />
+      </styled.a>
+      <styled.a
+        aria-label="GitHub"
+        href="https://github.com/Tamplier2911"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Styled(Component) />
+      </styled.a>
+      <styled.a
+        aria-label="LinkedIn"
+        href="http://linkedin.com/in/artem-nikolaiev-946755198"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Styled(Component) />
+      </styled.a>
+    </styled.div>
+    <styled.div
+      data-test="footer-copy"
+    >
+      Originally designed and developed by Artem Nikolaiev ©️ 2020
+    </styled.div>
+  </styled.div>
+</styled.footer>
+`;

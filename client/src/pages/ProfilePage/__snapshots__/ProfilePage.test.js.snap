@@ -1,3 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfilePage /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<ProfilePage /> matches snapshot 1`] = `
+<styled.section
+  data-test="profile-page"
+>
+  <styled.div />
+  <Switch>
+    <Route
+      data-test="profile-page-exact"
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-users"
+      exact={true}
+      path="//users"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-users-create"
+      exact={true}
+      path="//users/create"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-users-id"
+      path="//users/:id"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-messages"
+      exact={true}
+      path="//messages"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-messages-id"
+      path="//messages/:id"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-blogs"
+      exact={true}
+      path="//blogs"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-blogs-create"
+      exact={true}
+      path="//blogs/create"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-blogs-id"
+      path="//blogs/:id"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-feeds"
+      exact={true}
+      path="//feeds"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-feeds-create"
+      exact={true}
+      path="//feeds/create"
+      render={[Function]}
+    />
+    <Route
+      data-test="profile-page-feeds-id"
+      path="//feeds/:id"
+      render={[Function]}
+    />
+  </Switch>
+</styled.section>
+`;

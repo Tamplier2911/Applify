@@ -1,3 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FeedbackCard /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<FeedbackCard /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="flipInY"
+  animateOnce={true}
+  data-test="feedback-card"
+>
+  <styled.div>
+    <styled.div />
+  </styled.div>
+  <styled.div
+    data-test="feedback-card-body"
+  >
+    <styled.div
+      color="#fff"
+    >
+      <styled.img
+        alt="happy user"
+        src="http://localhost/api/uploads/images/users/default.jpg"
+      />
+    </styled.div>
+    <styled.div>
+      <Styled(Component)
+        key="0"
+      />
+      <Styled(Component)
+        key="1"
+      />
+      <Styled(Component)
+        key="2"
+      />
+      <Styled(Component)
+        key="3"
+      />
+      <Styled(Component)
+        key="4"
+      />
+    </styled.div>
+    <styled.div>
+      <styled.span
+        color="#fff"
+      >
+        “
+      </styled.span>
+      <styled.div>
+        good
+      </styled.div>
+      <styled.span
+        color="#fff"
+      >
+        „
+      </styled.span>
+    </styled.div>
+    <styled.div>
+      January 1, 2020
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="feedback-card-controlls"
+  >
+    <Button
+      click={[Function]}
+      type="button"
+      value="Delete"
+    />
+    <Styled(Link)
+      to="/profile/feeds/undefined"
+    >
+      Update
+    </Styled(Link)>
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

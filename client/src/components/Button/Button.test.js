@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import Button from "./Button";
@@ -30,6 +31,6 @@ describe("<Button />", () => {
 
   it("matches snapshot", () => {
     const button = findByTestAttr(wrapper, "button");
-    expect(button.length).toMatchSnapshot();
+    expect(toJson(button)).toMatchSnapshot();
   });
 });

@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import ForgotPassword from "./ForgotPassword";
@@ -44,6 +45,6 @@ describe("<ForgotPassword />", () => {
 
   it("matches snapshot", () => {
     const forgotPassword = findByTestAttr(wrapper, "forgot-password");
-    expect(forgotPassword).toMatchSnapshot();
+    expect(toJson(forgotPassword)).toMatchSnapshot();
   });
 });

@@ -1,3 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MessageRead /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<MessageRead /> matches snapshot 1`] = `
+<styled.div
+  data-test="message-read"
+>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+        Test Message
+      </styled.div>
+      <styled.div>
+        test@email.com
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        <styled.img
+          alt="happy user"
+          src="http://localhost/api/uploads/images/users/default.jpg"
+        />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="message-read-body"
+  >
+    <styled.div>
+      To be tested!
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <styled.div>
+      May 31, 2020
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="message-read-controlls"
+  >
+    <Button
+      click={[Function]}
+      data-test="message-read-delete"
+      type="button"
+      value="Delete"
+    />
+    <Button
+      click={[Function]}
+      data-test="message-read-email"
+      type="button"
+      value="Answer"
+    />
+  </styled.div>
+  <withRouter(GetBack)
+    path="/profile/messages"
+  />
+</styled.div>
+`;

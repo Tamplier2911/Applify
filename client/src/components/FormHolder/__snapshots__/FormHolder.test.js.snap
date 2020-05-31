@@ -1,3 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FormHolder /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<FormHolder /> matches snapshot 1`] = `
+<styled.div
+  data-test="form-holder"
+>
+  <styled.h2 />
+  <styled.div
+    data-test="form-holder-composition"
+  >
+    <Styled(ScrollAnimation)
+      animateIn="bounceInRight"
+      animateOnce={true}
+    >
+      <Styled(Component) />
+    </Styled(ScrollAnimation)>
+    <Styled(ScrollAnimation)
+      animateIn="bounceInLeft"
+      animateOnce={true}
+    >
+      <styled.div
+        data-test="form-holder-formwrap"
+      />
+    </Styled(ScrollAnimation)>
+  </styled.div>
+</styled.div>
+`;

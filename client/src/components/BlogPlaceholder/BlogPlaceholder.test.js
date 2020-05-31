@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import BlogPlaceholder from "./BlogPlaceholder";
@@ -33,6 +34,6 @@ describe("<BlogPlaceholder />", () => {
 
   it("matches snapshot", () => {
     const blogPlaceholder = findByTestAttr(wrapper, "blog-placeholder");
-    expect(blogPlaceholder).toMatchSnapshot();
+    expect(toJson(blogPlaceholder)).toMatchSnapshot();
   });
 });

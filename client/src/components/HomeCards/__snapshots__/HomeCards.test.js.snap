@@ -1,3 +1,216 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomeCards /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<HomeCards /> matches snapshot 1`] = `
+<styled.div
+  data-test="home-cards"
+>
+  <Card
+    SVG={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "baseHash": 1882630949,
+          "componentId": "sc-AxheI",
+          "isStatic": false,
+          "rules": Array [
+            "
+  ",
+            "
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  object-fit: cover;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+",
+            "
+",
+          ],
+          "staticRulesId": "",
+        },
+        "displayName": "Styled(Component)",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-AxheI",
+        "target": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    gradient={
+      Array [
+        "rgb(240, 152, 25)",
+        "rgb(237, 223, 94)",
+      ]
+    }
+    id={201}
+    key="201"
+    text="We value your time"
+    title="Rapid Development"
+  />
+  <Card
+    SVG={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "baseHash": -1474970742,
+          "componentId": "sc-Axmtr",
+          "isStatic": false,
+          "rules": Array [
+            "
+  ",
+            "
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  object-fit: cover;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+",
+            "
+",
+          ],
+          "staticRulesId": "",
+        },
+        "displayName": "Styled(Component)",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-Axmtr",
+        "target": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    gradient={
+      Array [
+        "rgb(72, 128, 236)",
+        "rgb(1, 156, 173)",
+      ]
+    }
+    id={202}
+    key="202"
+    text="For any device"
+    title="Responsive Design"
+  />
+  <Card
+    SVG={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "baseHash": -1923298833,
+          "componentId": "sc-AxmLO",
+          "isStatic": false,
+          "rules": Array [
+            "
+  ",
+            "
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  object-fit: cover;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+",
+            "
+",
+          ],
+          "staticRulesId": "",
+        },
+        "displayName": "Styled(Component)",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-AxmLO",
+        "target": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    gradient={
+      Array [
+        "rgb(255, 81, 47)",
+        "rgb(221, 36, 118)",
+      ]
+    }
+    id={203}
+    key="203"
+    text="Supreme technologies"
+    title="Cutting Edge"
+  />
+  <Card
+    SVG={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "baseHash": 1280172402,
+          "componentId": "sc-fzozJi",
+          "isStatic": false,
+          "rules": Array [
+            "
+  ",
+            "
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  object-fit: cover;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+",
+            "
+",
+          ],
+          "staticRulesId": "",
+        },
+        "displayName": "Styled(Component)",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-fzozJi",
+        "target": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    gradient={
+      Array [
+        "rgb(60, 165, 92)",
+        "rgb(182, 173, 73)",
+      ]
+    }
+    id={204}
+    key="204"
+    text="Free adjustments"
+    title="One Week Warranty"
+  />
+</styled.div>
+`;

@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogPlaceholder /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<BlogPlaceholder /> matches snapshot 1`] = `
+<styled.div
+  big={0}
+  data-test="blog-placeholder"
+>
+  <styled.div
+    data-test="blog-placeholder-wrap"
+  >
+    <Styled(Component) />
+  </styled.div>
+</styled.div>
+`;

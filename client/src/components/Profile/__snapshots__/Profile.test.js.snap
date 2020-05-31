@@ -1,3 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Profile /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Profile /> matches snapshot 1`] = `
+<styled.div
+  data-test="profile"
+>
+  <styled.h2>
+    Profile:
+  </styled.h2>
+  <styled.div
+    data-test="profile-content"
+  >
+    <ProfilePortrait
+      photo="api/profilePhoto.jpg"
+    />
+    <Connect(ProfileAboutForm)
+      about="I love unicorns."
+    />
+    <Connect(ProfileInfoForm)
+      email="ex@mple.com"
+      name="Thomas White"
+      photo="profilePhoto.jpg"
+    />
+    <Connect(ProfilePasswordForm) />
+  </styled.div>
+</styled.div>
+`;

@@ -1,3 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BlogPost /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<BlogPost /> matches snapshot 1`] = `
+<styled.section
+  data-test="blog-post"
+>
+  <styled.div>
+    <styled.h1 />
+    <styled.div>
+      <styled.div>
+        <styled.img
+          alt="happy author"
+          src="http://localhost/api/uploads/images/users/default.jpg"
+        />
+      </styled.div>
+      <styled.div />
+      <styled.div>
+        May 31, 2020
+      </styled.div>
+    </styled.div>
+    <styled.div />
+    <styled.div>
+      <styled.div />
+      <styled.div
+        onClick={[Function]}
+      >
+        <Styled(Component)
+          liked={0}
+        />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <styled.img
+      alt="blog representation"
+      src="http://localhost/api/uploads/images/users/default.jpg"
+    />
+  </styled.div>
+  <styled.div
+    data-test="blog-post-content"
+  />
+  <withRouter(GetBack)
+    path="/blog"
+  />
+</styled.section>
+`;

@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import CreateUpdateBlogpostForm from "./CreateUpdateBlogpostForm";
@@ -62,6 +63,6 @@ describe("<CreateUpdateBlogpostForm />", () => {
       wrapper,
       "create-update-bp-form"
     );
-    expect(createUpdateBlogpostForm).toMatchSnapshot();
+    expect(toJson(createUpdateBlogpostForm)).toMatchSnapshot();
   });
 });

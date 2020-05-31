@@ -1,3 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreateUpdateUserForm /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<CreateUpdateUserForm /> matches snapshot 1`] = `
+<styled.div
+  data-test="create-update-user-form"
+>
+  <styled.h3
+    lang="eng"
+  >
+    Create new user.
+  </styled.h3>
+  <styled.form
+    autoComplete="off"
+    data-test="create-update-user-form-element"
+    onSubmit={[Function]}
+  >
+    <FormInput
+      data-test="create-update-user-form-input"
+      label="Name"
+      name="userName"
+      onInputChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <FormInput
+      data-test="create-update-user-form-input"
+      label="Email"
+      name="userEmail"
+      onInputChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <FormInput
+      label="Password"
+      name="userPassword"
+      onInputChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <FormInput
+      label="Confirm Password"
+      name="userPasswordConfirm"
+      onInputChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <SelectInput
+      data-test="create-update-user-form-input"
+      defaultValue="user"
+      label={<ForwardRef(Styled(Component)) />}
+      name="userRole"
+      onInputChange={[Function]}
+      options={
+        Array [
+          Object {
+            "name": "User",
+            "value": "user",
+          },
+          Object {
+            "name": "Admin",
+            "value": "admin",
+          },
+          Object {
+            "name": "Owner",
+            "value": "owner",
+          },
+        ]
+      }
+      required={true}
+    />
+    <Button
+      type="submit"
+      value="Create"
+    />
+  </styled.form>
+</styled.div>
+`;

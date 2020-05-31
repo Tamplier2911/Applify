@@ -1,3 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FeedbackUpdate /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<FeedbackUpdate /> matches snapshot 1`] = `
+<styled.div
+  data-test="feedback-update"
+>
+  <styled.div>
+    <styled.h2>
+      This feedback is written by:
+    </styled.h2>
+    <styled.div>
+      <styled.div>
+        <styled.div>
+          Name:
+           
+        </styled.div>
+        <styled.div>
+          Date:
+           
+          Invalid Date
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.img
+          alt="happy user"
+          src="http://localhost/api/uploads/images/users/default.jpg"
+        />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <Connect(FeedbackCreate)
+    data-test="feedback-update-form"
+    method="PATCH"
+    updateData={
+      Object {
+        "_id": undefined,
+        "feedback": undefined,
+        "rating": undefined,
+      }
+    }
+  />
+  <withRouter(GetBack)
+    path="/profile/feeds"
+  />
+</styled.div>
+`;

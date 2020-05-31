@@ -1,3 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Projects /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Projects /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="bounceInRight"
+  animateOnce={true}
+  data-test="projects"
+>
+  <styled.h2>
+    Recent projects:
+  </styled.h2>
+  <styled.div>
+    <styled.div
+      data-test="projects-set-first"
+      id={3}
+      onClick={[Function]}
+    />
+    <styled.div
+      data-test="projects-set-second"
+      id={3}
+      onClick={[Function]}
+    />
+    <styled.div
+      data-test="projects-set-third"
+      id={3}
+      onClick={[Function]}
+    />
+    <styled.div
+      data-test="projects-set-fourth"
+      id={3}
+      onClick={[Function]}
+    />
+  </styled.div>
+  <styled.div
+    load={false}
+  >
+    <styled.img
+      alt="Project presentation slide."
+      src="clarify-min.jpg"
+    />
+  </styled.div>
+  <styled.div
+    data-test="projects-box"
+  >
+    <styled.div
+      load={false}
+    >
+      <styled.h3>
+        Clarify
+      </styled.h3>
+      <styled.div>
+        <styled.span
+          color="#DD4F4F"
+        >
+          Description:
+        </styled.span>
+        <styled.div>
+          Clarify - is an email service, that helps you to collect feedback from people in order to improve their experience.
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.span
+          color="#DD4F4F"
+        >
+          Technology Stack:
+        </styled.span>
+        <styled.div>
+          Front-end of the app covered by React alongside with Redux and Redux-Sagas. Back-end handled with Express server, data persistance achieved with MongoDB and Mongoose
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.div>
+          August 12, 2019
+        </styled.div>
+        <styled.a
+          color="#DD4F4F"
+          href="https://clarify-s.herokuapp.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+          theme="light"
+        >
+          Visit
+        </styled.a>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

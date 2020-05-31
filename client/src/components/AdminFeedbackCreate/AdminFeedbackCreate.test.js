@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import AdminFeedbackCreate from "./AdminFeedbackCreate";
@@ -24,6 +25,6 @@ describe("<AdminFeedbackCreate />", () => {
 
   it("matches snapshot", () => {
     const adminFBCreate = findByTestAttr(wrapper, "admin-fb-create");
-    expect(adminFBCreate).toMatchSnapshot();
+    expect(toJson(adminFBCreate)).toMatchSnapshot();
   });
 });

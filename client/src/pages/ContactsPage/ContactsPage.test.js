@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import ContactsPage from "./ContactsPage";
@@ -24,6 +25,6 @@ describe("<ContactsPage />", () => {
 
   it("matches snapshot", () => {
     const contactsPage = findByTestAttr(wrapper, "contacts-page");
-    expect(contactsPage).toMatchSnapshot();
+    expect(toJson(contactsPage)).toMatchSnapshot();
   });
 });

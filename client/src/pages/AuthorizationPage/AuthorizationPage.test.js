@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import AuthorizationPage from "./AuthorizationPage";
@@ -27,6 +28,6 @@ describe("<AuthorizationPage />", () => {
 
   it("matching snapshot", () => {
     const authPage = findByTestAttr(wrapper, "auth-page");
-    expect(authPage).toMatchSnapshot();
+    expect(toJson(authPage)).toMatchSnapshot();
   });
 });

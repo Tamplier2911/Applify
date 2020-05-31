@@ -20,9 +20,13 @@ const RestorePassword = ({ lang }) => {
   const { restorePasswordTitle } = restorePasswordData[lang];
 
   return (
-    <RestorePasswordContainer>
-      <FormHolder type="restore" title={restorePasswordTitle}>
-        <RestorePasswordForm />
+    <RestorePasswordContainer data-test="restore-password">
+      <FormHolder
+        data-test="restore-password-form-holder"
+        type="restore"
+        title={restorePasswordTitle}
+      >
+        <RestorePasswordForm data-test="restore-password-form" />
       </FormHolder>
     </RestorePasswordContainer>
   );

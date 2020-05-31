@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import ProfilePage from "./ProfilePage";
@@ -114,6 +115,6 @@ describe("<ProfilePage />", () => {
 
   it("matches snapshot", () => {
     const profilePage = findByTestAttr(wrapper, "profile-page");
-    expect(profilePage).toMatchSnapshot();
+    expect(toJson(profilePage)).toMatchSnapshot();
   });
 });

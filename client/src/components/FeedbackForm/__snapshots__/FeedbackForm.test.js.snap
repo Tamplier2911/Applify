@@ -1,3 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FeedbackForm /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<FeedbackForm /> matches snapshot 1`] = `
+<styled.div
+  data-test="feedback-form"
+>
+  <styled.h3
+    lang="eng"
+  >
+    <styled.p>
+      Please, describe what did you like about our services, and what you didn't.
+    </styled.p>
+    <styled.p>
+      How could we improve?
+    </styled.p>
+  </styled.h3>
+  <styled.form
+    autoComplete="off"
+    data-test="feedback-form-element"
+    onSubmit={[Function]}
+  >
+    <TextInput
+      data-test="feedback-form-input"
+      label="Feedback"
+      max="500"
+      name="feedbackMessage"
+      onInputChange={[Function]}
+      required={true}
+      rows="6"
+      value=""
+    />
+    <SelectInput
+      data-test="feedback-form-input"
+      defaultValue="5"
+      label={
+        Array [
+          <ForwardRef(Styled(Component)) />,
+          <ForwardRef(Styled(Component)) />,
+          <ForwardRef(Styled(Component)) />,
+          <ForwardRef(Styled(Component)) />,
+          <ForwardRef(Styled(Component)) />,
+        ]
+      }
+      name="feedbackRating"
+      onInputChange={[Function]}
+      options={
+        Array [
+          Object {
+            "name": "Awful",
+            "value": "1",
+          },
+          Object {
+            "name": "Could be better...",
+            "value": "2",
+          },
+          Object {
+            "name": "Good enough",
+            "value": "3",
+          },
+          Object {
+            "name": "Meet expectations",
+            "value": "4",
+          },
+          Object {
+            "name": "Unforgettable",
+            "value": "5",
+          },
+        ]
+      }
+      required={true}
+    />
+    <Button
+      type="submit"
+      value="Submit"
+    />
+  </styled.form>
+  <styled.p>
+    Feedback length: 
+    500
+  </styled.p>
+</styled.div>
+`;

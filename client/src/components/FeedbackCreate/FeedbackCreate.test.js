@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import FeedbackCreate from "./FeedbackCreate";
@@ -68,6 +69,6 @@ describe("<FeedbackCreate />", () => {
   it("matches snapshot", () => {
     const wrapper = setShallowC(<FeedbackCreate store={storeNotLogged} />);
     const feedbackCreate = findByTestAttr(wrapper, "feedback-create");
-    expect(feedbackCreate).toMatchSnapshot();
+    expect(toJson(feedbackCreate)).toMatchSnapshot();
   });
 });

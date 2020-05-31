@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import MessageView from "./MessageView";
@@ -67,6 +68,6 @@ describe("<MessageView />", () => {
 
   it("matches snapshot", () => {
     const messageView = findByTestAttr(wrapper, "message-view-content");
-    expect(messageView).toMatchSnapshot();
+    expect(toJson(messageView)).toMatchSnapshot();
   });
 });

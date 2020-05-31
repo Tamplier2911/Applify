@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FileInput />  1`] = `ShallowWrapper {}`;
+exports[`<FileInput />  1`] = `
+<styled.div
+  data-test="file-input"
+>
+  <styled.div>
+    ✖
+  </styled.div>
+  <styled.input
+    data-test="file-input-element"
+  />
+</styled.div>
+`;

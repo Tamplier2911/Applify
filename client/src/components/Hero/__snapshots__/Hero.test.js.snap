@@ -1,3 +1,431 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Hero /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Hero /> matches snapshot 1`] = `
+<styled.div
+  data-test="hero"
+  theme="light"
+>
+  <Square
+    key="1"
+    options={
+      Object {
+        "color": "#fe3f2d",
+        "height": 10,
+        "id": 1,
+        "posX": 10,
+        "posY": 24,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="2"
+    options={
+      Object {
+        "color": "#ffaa2d",
+        "height": 10,
+        "id": 2,
+        "posX": 30,
+        "posY": 34,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="3"
+    options={
+      Object {
+        "color": "#00a8a9",
+        "height": 10,
+        "id": 3,
+        "posX": 20,
+        "posY": 34,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="4"
+    options={
+      Object {
+        "color": "#fe3f2d",
+        "height": 10,
+        "id": 4,
+        "posX": 30,
+        "posY": 14,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="5"
+    options={
+      Object {
+        "color": "#fed595",
+        "height": 10,
+        "id": 5,
+        "posX": 40,
+        "posY": 34,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="6"
+    options={
+      Object {
+        "color": "#fe3f2d",
+        "height": 5,
+        "id": 6,
+        "posX": 5,
+        "posY": 5,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="7"
+    options={
+      Object {
+        "color": "#ffaa2d",
+        "height": 10,
+        "id": 7,
+        "posX": 20,
+        "posY": 24,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="8"
+    options={
+      Object {
+        "color": "#00a8a9",
+        "height": 5,
+        "id": 8,
+        "posX": 15,
+        "posY": 10,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="9"
+    options={
+      Object {
+        "color": "#002a38",
+        "height": 10,
+        "id": 9,
+        "posX": 50,
+        "posY": 4,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="10"
+    options={
+      Object {
+        "color": "#00a8a9",
+        "height": 10,
+        "id": 10,
+        "posX": 40,
+        "posY": 14,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="11"
+    options={
+      Object {
+        "color": "#fed595",
+        "height": 10,
+        "id": 11,
+        "posX": 10,
+        "posY": 54,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="12"
+    options={
+      Object {
+        "color": "#002a38",
+        "height": 10,
+        "id": 12,
+        "posX": 30,
+        "posY": 24,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="13"
+    options={
+      Object {
+        "color": "#fe3f2d",
+        "height": 10,
+        "id": 13,
+        "posX": 20,
+        "posY": 44,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="14"
+    options={
+      Object {
+        "color": "#ffaa2d",
+        "height": 10,
+        "id": 14,
+        "posX": 10,
+        "posY": 44,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="15"
+    options={
+      Object {
+        "color": "#fed595",
+        "height": 10,
+        "id": 15,
+        "posX": 40,
+        "posY": 4,
+        "shadow": true,
+        "width": 10,
+      }
+    }
+  />
+  <Square
+    key="16"
+    options={
+      Object {
+        "color": "#d6d7d9",
+        "height": 5,
+        "id": 16,
+        "posX": 110,
+        "posY": 40,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="17"
+    options={
+      Object {
+        "color": "#c0c1c3",
+        "height": 5,
+        "id": 17,
+        "posX": 100,
+        "posY": 45,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="18"
+    options={
+      Object {
+        "color": "#d6d7d9",
+        "height": 5,
+        "id": 18,
+        "posX": 105,
+        "posY": 45,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="20"
+    options={
+      Object {
+        "color": "#bfc0c2",
+        "height": 5,
+        "id": 20,
+        "posX": 100,
+        "posY": 50,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="21"
+    options={
+      Object {
+        "color": "#bfc0c2",
+        "height": 5,
+        "id": 21,
+        "posX": 95,
+        "posY": 50,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="22"
+    options={
+      Object {
+        "color": "#d6d7d9",
+        "height": 5,
+        "id": 22,
+        "posX": 90,
+        "posY": 45,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="23"
+    options={
+      Object {
+        "color": "#bfc0c2",
+        "height": 5,
+        "id": 23,
+        "posX": 90,
+        "posY": 55,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="24"
+    options={
+      Object {
+        "color": "#d6d7d9",
+        "height": 5,
+        "id": 24,
+        "posX": 110,
+        "posY": 50,
+        "shadow": true,
+        "width": 5,
+      }
+    }
+  />
+  <Square
+    key="25"
+    options={
+      Object {
+        "color": "#ffaa2d",
+        "height": 4,
+        "id": 25,
+        "posX": 2,
+        "posY": 40,
+        "shadow": true,
+        "width": 4,
+      }
+    }
+  />
+  <Square
+    key="26"
+    options={
+      Object {
+        "color": "#fed595",
+        "height": 4,
+        "id": 26,
+        "posX": 110,
+        "posY": 15,
+        "shadow": true,
+        "width": 4,
+      }
+    }
+  />
+  <Square
+    key="27"
+    options={
+      Object {
+        "color": "#fe3f2d",
+        "height": 4,
+        "id": 27,
+        "posX": 0,
+        "posY": 54,
+        "shadow": true,
+        "width": 4,
+      }
+    }
+  />
+  <Square
+    key="28"
+    options={
+      Object {
+        "color": "#00a8a9",
+        "height": 4,
+        "id": 28,
+        "posX": 90,
+        "posY": 5,
+        "shadow": true,
+        "width": 4,
+      }
+    }
+  />
+  <styled.div
+    data-test="hero-cta"
+  >
+    <Styled(Link)
+      to="/contacts"
+    >
+      <Square
+        options={
+          Object {
+            "color": "#002a38",
+            "height": 7,
+            "id": 30,
+            "posX": 50,
+            "posY": 50,
+            "shadow": true,
+            "width": 30,
+          }
+        }
+        text="Get Started"
+      />
+    </Styled(Link)>
+  </styled.div>
+  <styled.div
+    data-test="hero-content"
+  >
+    <Styled(ScrollAnimation)
+      animateIn="bounceInRight"
+      animateOnce={true}
+    >
+      <styled.h1>
+        Applify
+      </styled.h1>
+      <styled.h3>
+        Creative web solutions for your business...
+      </styled.h3>
+    </Styled(ScrollAnimation)>
+    <Styled(Link)
+      data-test="hero-cta"
+      theme="light"
+      to="/contacts"
+    >
+      Get Started
+    </Styled(Link)>
+  </styled.div>
+</styled.div>
+`;

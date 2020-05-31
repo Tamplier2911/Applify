@@ -1,3 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MessagesHolder /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<MessagesHolder /> matches snapshot 1`] = `
+<styled.div
+  data-test="messages-holder"
+>
+  <styled.div
+    data-test="messages-holder-search"
+  >
+    <FormInput
+      label="Search:"
+      name="search"
+      onInputChange={[Function]}
+      type="text"
+      value=""
+    />
+  </styled.div>
+  <CollectionHolder
+    cb={[Function]}
+    data-test="messages-holder-collection-holder"
+    lang="eng"
+    refresher={1}
+    title="Recent Messages:"
+  >
+    <Component
+      data-test="messages-holder-collection"
+      isLoading={false}
+      messages={Array []}
+    />
+  </CollectionHolder>
+</styled.div>
+`;

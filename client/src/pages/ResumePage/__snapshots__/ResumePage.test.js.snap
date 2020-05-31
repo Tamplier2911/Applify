@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ResumePage /> matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`<ResumePage /> matches snapshot 1`] = `
+<styled.section
+  data-test="resume-page"
+>
+  <Connect(Resume)
+    data-test="resume-page-child"
+  />
+</styled.section>
+`;

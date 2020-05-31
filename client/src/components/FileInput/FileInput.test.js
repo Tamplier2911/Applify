@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import FileInput from "./FileInput";
@@ -42,6 +43,6 @@ describe("<FileInput />", () => {
 
   it("", () => {
     const fileInput = findByTestAttr(wrapper, "file-input");
-    expect(fileInput).toMatchSnapshot();
+    expect(toJson(fileInput)).toMatchSnapshot();
   });
 });

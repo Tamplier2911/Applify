@@ -1,4 +1,5 @@
 import React from "react";
+import toJson from "enzyme-to-json";
 
 // component
 import HomeCards from "./HomeCards";
@@ -34,6 +35,6 @@ describe("<HomeCards />", () => {
 
   it("matches snapshot", () => {
     const homeCards = findByTestAttr(wrapper, "home-cards");
-    expect(homeCards).toMatchSnapshot();
+    expect(toJson(homeCards)).toMatchSnapshot();
   });
 });
