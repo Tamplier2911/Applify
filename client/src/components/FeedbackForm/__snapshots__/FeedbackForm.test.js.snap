@@ -30,17 +30,10 @@ exports[`<FeedbackForm /> matches snapshot 1`] = `
       value=""
     />
     <SelectInput
+      count="5"
       data-test="feedback-form-input"
       defaultValue="5"
-      label={
-        Array [
-          <ForwardRef(Styled(Component)) />,
-          <ForwardRef(Styled(Component)) />,
-          <ForwardRef(Styled(Component)) />,
-          <ForwardRef(Styled(Component)) />,
-          <ForwardRef(Styled(Component)) />,
-        ]
-      }
+      label={<ForwardRef(Styled(Component)) />}
       name="feedbackRating"
       onInputChange={[Function]}
       options={

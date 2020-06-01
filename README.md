@@ -1,6 +1,6 @@
 ## Applify
 
-Digital Studio / Small-Medium IT Company Web Application using MERN Stack. https://www.applify-tech.com/
+Digital Studio / Small-Medium IT Company Web Application using MERN Stack.
 
 ## Deployment
 

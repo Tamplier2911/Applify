@@ -75,8 +75,6 @@ export const FeedbackForm = ({
       : updateFeedbackStart(feedback);
   };
 
-  const labels = Array.from(new Array(Number(feedbackRating)), (n, i) => i + 1);
-
   const {
     feedbackFormTitle,
     feedbackFormFeedback,
@@ -112,9 +110,8 @@ export const FeedbackForm = ({
           onInputChange={(e) => onInputChange(e)}
           defaultValue={method === "POST" ? "5" : feedbackRating}
           name={"feedbackRating"}
-          label={labels.map((label) => (
-            <FeedbackFormRatingSVG key={label} />
-          ))}
+          label={<FeedbackFormRatingSVG />}
+          count={feedbackRating}
           options={feedbackFormOptions}
           required
         />

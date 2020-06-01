@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Resume /> renders children - resumne  1`] = `
+<styled.div
+  data-test="resume"
+  lang="eng"
+>
+  <Styled(ScrollAnimation)
+    animateIn="bounceInUp"
+    animateOnce={true}
+    data-test="resume-head"
+  >
+    <styled.div>
+      <styled.img
+        alt="author"
+        src="profile-portrait.jpg"
+      />
+    </styled.div>
+    <styled.div>
+      <styled.h2>
+        Artem Nikolaiev
+      </styled.h2>
+      <styled.h4>
+        Front-End Engineer
+      </styled.h4>
+    </styled.div>
+  </Styled(ScrollAnimation)>
+  <Styled(ScrollAnimation)
+    animateIn="bounceInRight"
+    animateOnce={true}
+    data-test="resume-info"
+  >
+    <styled.div>
+      <styled.h4>
+        About me
+      </styled.h4>
+      <styled.div>
+        My passion - technologies and self-education, looking forward along-term productive partnership.
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.h4>
+        Personal Details
+      </styled.h4>
+      <styled.div>
+        <styled.h4>
+          Birth Date
+        </styled.h4>
+        <styled.div>
+          15 / 03 / 1990
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.h4>
+          Nationality
+        </styled.h4>
+        <styled.div>
+          Ukrainian
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.h4>
+          Address
+        </styled.h4>
+        <styled.div>
+          Avdiivka, Donetska Oblast, Ukraine
+        </styled.div>
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.h4>
+        Contacts
+      </styled.h4>
+      <styled.div>
+        <Styled(Component) />
+        <styled.div>
+          artyom.nikolaev@yahoo.com
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <Styled(Component) />
+        <styled.div>
+          +38 093 151 21 28
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <Styled(Component) />
+        <styled.a
+          data-test="resume-github"
+          href="https://github.com/Tamplier2911"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          GitHub
+        </styled.a>
+      </styled.div>
+      <styled.div>
+        <Styled(Component) />
+        <styled.a
+          data-test="resume-twitter"
+          href="https://twitter.com/ArtyomNikolayev"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Twitter
+        </styled.a>
+      </styled.div>
+    </styled.div>
+  </Styled(ScrollAnimation)>
+  <Styled(ScrollAnimation)
+    animateIn="bounceInLeft"
+    animateOnce={true}
+    data-test="resume-main"
+  >
+    <styled.div>
+      <styled.h4>
+        Professional Experience
+      </styled.h4>
+      <styled.h4>
+        Front-end Engineer
+      </styled.h4>
+      <styled.div>
+        My experience in web development mainly comes from self-education and independant projects, that I love to challenge myself with. Having 12+ month of experience studying and building web solutions, I have developed a strong passion for this domain. To demonstrate my learning curve, below I have provided a git link, which you can use to review the projects I have built along the way. This is my first application for Front-end dev. position, and I am excited to put my skill to the test as a part of growing, ambitious team.
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.h4>
+        Education
+      </styled.h4>
+      <styled.div>
+        <styled.h4>
+          Computer Science 50
+        </styled.h4>
+        <styled.div>
+          2018 - 2019
+        </styled.div>
+        <styled.div>
+          edx.org - online courses
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.h4>
+          Bachelor of Restaurant and Hotel Business
+        </styled.h4>
+        <styled.div>
+          2009 - 2014
+        </styled.div>
+        <styled.div>
+          Donetsk National University of Economics and Trade
+        </styled.div>
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        <styled.h4>
+          Front-end Skills
+        </styled.h4>
+        <styled.div>
+          <styled.div>
+            <styled.div
+              percentage={76}
+            >
+              <styled.div>
+                <styled.div>
+                  76
+                  %
+                </styled.div>
+              </styled.div>
+            </styled.div>
+            <styled.div>
+              HTML / CSS / JS
+            </styled.div>
+          </styled.div>
+          <styled.div>
+            <styled.div
+              percentage={70}
+            >
+              <styled.div>
+                <styled.div>
+                  70
+                  %
+                </styled.div>
+              </styled.div>
+            </styled.div>
+            <styled.div>
+              React.js
+            </styled.div>
+          </styled.div>
+          <styled.div>
+            <styled.div
+              percentage={35}
+            >
+              <styled.div>
+                <styled.div>
+                  35
+                  %
+                </styled.div>
+              </styled.div>
+            </styled.div>
+            <styled.div>
+              React Native
+            </styled.div>
+          </styled.div>
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.h4>
+          Back-end Skills
+        </styled.h4>
+        <styled.div>
+          <styled.div>
+            <styled.div
+              percentage={50}
+            >
+              <styled.div>
+                <styled.div>
+                  50
+                  %
+                </styled.div>
+              </styled.div>
+            </styled.div>
+            <styled.div>
+              Node.js / Express
+            </styled.div>
+          </styled.div>
+          <styled.div>
+            <styled.div
+              percentage={39}
+            >
+              <styled.div>
+                <styled.div>
+                  39
+                  %
+                </styled.div>
+              </styled.div>
+            </styled.div>
+            <styled.div>
+              MongoDB / Mongoose
+            </styled.div>
+          </styled.div>
+          <styled.div>
+            <styled.div
+              percentage={20}
+            >
+              <styled.div>
+                <styled.div>
+                  20
+                  %
+                </styled.div>
+              </styled.div>
+            </styled.div>
+            <styled.div>
+              Docker / Kubernetes
+            </styled.div>
+          </styled.div>
+        </styled.div>
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.h4>
+        Interests
+      </styled.h4>
+      <styled.div>
+        <styled.div>
+          <Styled(Component) />
+          <styled.div>
+            Music & Movies
+          </styled.div>
+        </styled.div>
+        <styled.div>
+          <Styled(Component) />
+          <styled.div>
+            Technologies
+          </styled.div>
+        </styled.div>
+        <styled.div>
+          <Styled(Component) />
+          <styled.div>
+            Reading & Education
+          </styled.div>
+        </styled.div>
+        <styled.div>
+          <Styled(Component) />
+          <styled.div>
+            Sitting with cocoa covered in blanket
+          </styled.div>
+        </styled.div>
+      </styled.div>
+    </styled.div>
+  </Styled(ScrollAnimation)>
+  <Styled(ScrollAnimation)
+    animateIn="bounceInDown"
+    animateOnce={true}
+    data-test="resume-links"
+  >
+    <styled.a
+      download={true}
+      href="Artem_Nikolaiev_CV_ENG.pdf"
+    >
+      Download in English
+    </styled.a>
+    <styled.a
+      download={true}
+      href="Artem_Nikolaiev_CV_RUS.pdf"
+    >
+      Download in Russian
+    </styled.a>
+    <styled.a
+      download={true}
+      href="Artem_Nikolaiev_CV_UKR.pdf"
+    >
+      Download in Ukrainian
+    </styled.a>
+  </Styled(ScrollAnimation)>
+</styled.div>
+`;

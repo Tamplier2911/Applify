@@ -66,15 +66,17 @@ const RestorePasswordForm = ({
   } = restorePasswordFormData[lang];
 
   return (
-    <RestorePasswordFormContainer>
+    <RestorePasswordFormContainer data-test="restore-password-form">
       <RestorePasswordFormTitle lang={lang}>
         {restorePasswordFormTitle}
       </RestorePasswordFormTitle>
       <RestorePasswordFormElement
+        data-test="restore-password-form-element"
         onSubmit={(e) => onSubmit(e)}
         autoComplete="off"
       >
         <FormInput
+          data-test="restore-password-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={newPassword}
           label={restorePasswordFormNewPass}
@@ -83,6 +85,7 @@ const RestorePasswordForm = ({
           required
         />
         <FormInput
+          data-test="restore-password-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={newPasswordConfirm}
           label={restorePasswordFormNewPassConf}
@@ -90,7 +93,11 @@ const RestorePasswordForm = ({
           type="password"
           required
         />
-        <Button type="submit" value={restorePasswordFormButton} />
+        <Button
+          data-test="restore-password-form-submit"
+          type="submit"
+          value={restorePasswordFormButton}
+        />
       </RestorePasswordFormElement>
     </RestorePasswordFormContainer>
   );

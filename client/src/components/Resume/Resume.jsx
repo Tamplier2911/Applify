@@ -89,8 +89,12 @@ const Resume = ({ lang }) => {
   } = resumeData[lang];
 
   return (
-    <ResumeContainer lang={lang}>
-      <ResumeHeader animateIn={"bounceInUp"} animateOnce={true}>
+    <ResumeContainer data-test="resume" lang={lang}>
+      <ResumeHeader
+        data-test="resume-head"
+        animateIn={"bounceInUp"}
+        animateOnce={true}
+      >
         <ResumeHeaderImgContainer>
           <ResumeHeaderImg alt="author" src={image} />
         </ResumeHeaderImgContainer>
@@ -99,7 +103,11 @@ const Resume = ({ lang }) => {
           <ResumeHeaderOccupation>{occupation}</ResumeHeaderOccupation>
         </ResumeHeaderTitle>
       </ResumeHeader>
-      <ResumeInfo animateIn={"bounceInRight"} animateOnce={true}>
+      <ResumeInfo
+        data-test="resume-info"
+        animateIn={"bounceInRight"}
+        animateOnce={true}
+      >
         <ResumeInfoAbout>
           <ResumeBlackHeader>{aboutHeader}</ResumeBlackHeader>
           <ResumeSubTitle>{aboutText}</ResumeSubTitle>
@@ -132,6 +140,7 @@ const Resume = ({ lang }) => {
           <ResumeInfoContacstWrapper>
             <ResumeChromeSVG />
             <ResumeInfoContacsLink
+              data-test="resume-github"
               href={github}
               rel="noopener noreferrer"
               target="_blank"
@@ -143,6 +152,7 @@ const Resume = ({ lang }) => {
           <ResumeInfoContacstWrapper>
             <ResumeTwitterSVG />
             <ResumeInfoContacsLink
+              data-test="resume-twitter"
               href={twitter}
               rel="noopener noreferrer"
               target="_blank"
@@ -152,7 +162,11 @@ const Resume = ({ lang }) => {
           </ResumeInfoContacstWrapper>
         </ResumeInfoContacts>
       </ResumeInfo>
-      <ResumeMain animateIn={"bounceInLeft"} animateOnce={true}>
+      <ResumeMain
+        data-test="resume-main"
+        animateIn={"bounceInLeft"}
+        animateOnce={true}
+      >
         <ResumeMainExperience>
           <ResumeBlackHeader>{experienceHeader}</ResumeBlackHeader>
           <ResumeBlueHeader>{experienceTitle}</ResumeBlueHeader>
@@ -215,6 +229,20 @@ const Resume = ({ lang }) => {
                   {skillListFront[1].skillSubject}
                 </ResumeSubTitle>
               </ResumeMainSkillsProgWrapper>
+              <ResumeMainSkillsProgWrapper>
+                <ResumeProgressContainer
+                  percentage={skillListFront[2].skillPercentage}
+                >
+                  <ResumeProgressCircle>
+                    <ResumeProgressText>
+                      {skillListFront[2].skillPercentage}%
+                    </ResumeProgressText>
+                  </ResumeProgressCircle>
+                </ResumeProgressContainer>
+                <ResumeSubTitle>
+                  {skillListFront[2].skillSubject}
+                </ResumeSubTitle>
+              </ResumeMainSkillsProgWrapper>
             </ResumeMainSkillsProg>
           </ResumeMainSkills>
           <ResumeMainSkills>
@@ -243,6 +271,18 @@ const Resume = ({ lang }) => {
                   </ResumeProgressCircle>
                 </ResumeProgressContainer>
                 <ResumeSubTitle>{skillListBack[1].skillSubject}</ResumeSubTitle>
+              </ResumeMainSkillsProgWrapper>
+              <ResumeMainSkillsProgWrapper>
+                <ResumeProgressContainer
+                  percentage={skillListBack[2].skillPercentage}
+                >
+                  <ResumeProgressCircle>
+                    <ResumeProgressText>
+                      {skillListBack[2].skillPercentage}%
+                    </ResumeProgressText>
+                  </ResumeProgressCircle>
+                </ResumeProgressContainer>
+                <ResumeSubTitle>{skillListBack[2].skillSubject}</ResumeSubTitle>
               </ResumeMainSkillsProgWrapper>
             </ResumeMainSkillsProg>
           </ResumeMainSkills>
@@ -277,7 +317,11 @@ const Resume = ({ lang }) => {
           </ResumeMainInterestsCover>
         </ResumeMainInterests>
       </ResumeMain>
-      <ResumeLinksContainer animateIn={"bounceInDown"} animateOnce={true}>
+      <ResumeLinksContainer
+        data-test="resume-links"
+        animateIn={"bounceInDown"}
+        animateOnce={true}
+      >
         <ResumeDownloadLink href={resEng} download>
           {linkDescriptions[0].text}
         </ResumeDownloadLink>

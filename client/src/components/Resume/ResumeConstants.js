@@ -64,6 +64,10 @@ const resumeData = {
             skillSubject: "React.js",
             skillPercentage: 70,
           },
+          {
+            skillSubject: "React Native",
+            skillPercentage: 35,
+          },
         ],
         skillsHeaderBack: "Back-end Skills",
         skillListBack: [
@@ -74,6 +78,10 @@ const resumeData = {
           {
             skillSubject: "MongoDB / Mongoose",
             skillPercentage: 39,
+          },
+          {
+            skillSubject: "Docker / Kubernetes",
+            skillPercentage: 20,
           },
         ],
       },
@@ -159,6 +167,10 @@ const resumeData = {
             skillSubject: "React.js",
             skillPercentage: 70,
           },
+          {
+            skillSubject: "React Native",
+            skillPercentage: 35,
+          },
         ],
         skillsHeaderBack: "Бэк-энд Навыки",
         skillListBack: [
@@ -169,6 +181,10 @@ const resumeData = {
           {
             skillSubject: "MongoDB / Mongoose",
             skillPercentage: 39,
+          },
+          {
+            skillSubject: "Docker / Kubernetes",
+            skillPercentage: 20,
           },
         ],
       },
@@ -254,6 +270,10 @@ const resumeData = {
             skillSubject: "React.js",
             skillPercentage: 70,
           },
+          {
+            skillSubject: "React Native",
+            skillPercentage: 35,
+          },
         ],
         skillsHeaderBack: "Бекенд Вміння",
         skillListBack: [
@@ -264,6 +284,10 @@ const resumeData = {
           {
             skillSubject: "MongoDB / Mongoose",
             skillPercentage: 39,
+          },
+          {
+            skillSubject: "Docker / Kubernetes",
+            skillPercentage: 20,
           },
         ],
       },
