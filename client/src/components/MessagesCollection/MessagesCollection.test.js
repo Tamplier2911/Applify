@@ -22,7 +22,7 @@ describe("<MessagesCollection />", () => {
     const expectedProps = {
       messages: [
         {
-          createdAt: Date.now().toLocaleString(),
+          createdAt: (1591822933023).toLocaleString(),
           email: "ex@mple.com",
           from: {},
           message: "HI!",

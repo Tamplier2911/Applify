@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SelectInput /> matches snapshot 1`] = `
+<styled.div
+  data-test="select-input"
+>
+  <styled.div
+    columns="1"
+  >
+    <ForwardRef(SvgAdmin)
+      data-test="select-input-label"
+      key="1"
+    />
+  </styled.div>
+  <styled.select
+    data-test="select-input-select"
+    onChange={[Function]}
+  >
+    <styled.option
+      data-test="select-input-select-option"
+      key="0"
+      value="val1"
+    >
+      opt1
+    </styled.option>
+  </styled.select>
+</styled.div>
+`;

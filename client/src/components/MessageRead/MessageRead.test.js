@@ -22,7 +22,7 @@ describe("<MessageRead />", () => {
         sdk123: {
           _id: "sdk123",
           from: {},
-          createdAt: Date.now(),
+          createdAt: 1591822933023,
           name: "Test Message",
           email: "test@email.com",
           message: "To be tested!",

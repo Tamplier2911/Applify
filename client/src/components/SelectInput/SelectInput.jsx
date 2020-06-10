@@ -14,7 +14,7 @@ import {
  * @JSXComponent
  * @param {function} onInputChange - on change trigger.
  * @param {JSXComponent} label - svg icon that we want to render within select bar.
- * @param {string} count - represent amount of labels to render, eg 1-5 stars for feedbacl.
+ * @param {string} count - represent amount of labels to render, eg 1-5 stars for feedback.
  * @param {array} options - array of objects to render select options {name: "", value: ""}.
  * @param {object} otherProps - defaultValue, required etc..
  */
@@ -27,21 +27,34 @@ export const SelectInput = ({
   ...otherProps
 }) => {
   return (
-    <SelectInputContainer>
+    <SelectInputContainer data-test="select-input">
       {label && count ? (
         <SelectInputLabel columns={count}>
           {Array.from(new Array(Number(count)), (el, i) => i + 1).map((el, i) =>
-            React.cloneElement(label, { key: `${el + i}` })
+            React.cloneElement(label, {
+              key: `${el + i}`,
+              "data-test": "select-input-label",
+            })
           )}
         </SelectInputLabel>
       ) : (
-        <SelectInputLabel columns={label.length}>{label}</SelectInputLabel>
+        <SelectInputLabel columns={label.length} data-test="select-input-label">
+          {label}
+        </SelectInputLabel>
       )}
-      <SelectInputElement {...otherProps} onChange={onInputChange}>
+      <SelectInputElement
+        {...otherProps}
+        onChange={onInputChange}
+        data-test="select-input-select"
+      >
         {options.map((option, i) => {
           const { name, value } = option;
           return (
-            <SelectInputOptions value={value} key={i}>
+            <SelectInputOptions
+              data-test="select-input-select-option"
+              value={value}
+              key={i}
+            >
               {name}
             </SelectInputOptions>
           );

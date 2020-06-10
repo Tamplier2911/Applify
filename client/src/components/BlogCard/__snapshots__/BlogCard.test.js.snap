@@ -13,7 +13,7 @@ exports[`<BlogCard /> matches snapshot 1`] = `
     <styled.div />
     <styled.div />
     <styled.div>
-      May 31, 2020
+      June 11, 2020
     </styled.div>
   </styled.div>
   <styled.div

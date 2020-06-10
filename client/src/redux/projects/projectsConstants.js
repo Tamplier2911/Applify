@@ -1,7 +1,63 @@
 import applify from "../../assets/jpeg/applify-min.jpg";
+import tajam from "../../assets/jpeg/tajam-min.jpg";
 import crownclothing from "../../assets/jpeg/crown-clothing-min.jpg";
 import natours from "../../assets/jpeg/natours-min.jpg";
 import clarify from "../../assets/jpeg/clarify-min.jpg";
+
+// dublicate element
+// add parent grid-template-columns: repeat(5, min-content);
+// to same parent grid-column-gap: 3rem; for mobiles
+
+// include project to array
+// add actions
+// refactor action indecies in reducer
+// in project make sure useEffect updated correctly
+// test all things enjoy new project added
+
+const temp = {
+  eng: [
+    {
+      id: 0,
+      image: tajam,
+      name: "Tajam",
+      description: "Creative Design Studio / Company App.",
+      techStack:
+        "Front side of the application realized by React.js, state managed using context api. Express serves static content, both client and server utilizes Socket.IO lib to realized real time built in chat.",
+      date: new Date("June 8, 2020 03:24:00"),
+      url: "https://tajam-s.herokuapp.com/",
+      active: true,
+      color: "#312360",
+    },
+  ],
+  urk: [
+    {
+      id: 0,
+      image: tajam,
+      name: "Tajam",
+      description: "Додаток креативної Дизайн Студії.",
+      techStack:
+        "Фронт-енд додатка реалізований за допомогою React.js, стан управляється за допомогою context api. Express сервер обслуговує статичний контент, і клієнт, і сервер використовують бібліатеку Socket.IO для реалізації вбудованого чату в реальному часі.",
+      date: new Date("June 8, 2020 03:24:00"),
+      url: "https://tajam-s.herokuapp.com/",
+      active: true,
+      color: "#312360",
+    },
+  ],
+  rus: [
+    {
+      id: 0,
+      image: tajam,
+      name: "Tajam",
+      description: "Приложение креативной Дизайн Студии.",
+      techStack:
+        "Фронт-енд приложения реализован с помощью React.js, состояние управляется с помощью context api. Express сервер обслуживает статический контент, и клиент, и сервер используют библиатеку Socket.IO для реализации встроенного чата в реальном времени.",
+      date: new Date("June 8, 2020 03:24:00"),
+      url: "https://tajam-s.herokuapp.com/",
+      active: true,
+      color: "#312360",
+    },
+  ],
+};
 
 const projectsData = {
   currentProject: {},

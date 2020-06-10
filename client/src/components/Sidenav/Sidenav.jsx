@@ -60,6 +60,12 @@ const BuffedLink = ({ children, direction, delay }) => {
   );
 };
 
+/**
+ * @JXSComponent - since portals are hard to deal with using enzyme and jest
+ * if test passed return pure markdown, else return portal.
+ * @param {boolean} test - boolean if true returns pure component, else returns portal.
+ */
+
 const Sidenav = ({
   sidenavCondition,
   toggleSideNav,
@@ -70,6 +76,7 @@ const Sidenav = ({
   theme,
   setThemeDark,
   setThemeLight,
+  test,
 }) => {
   const { name, email, photo } = user;
   const currentData = sidenavData[lang];
@@ -87,11 +94,19 @@ const Sidenav = ({
 
   let image = getImageRelativePath(photo ? photo : "");
 
-  return ReactDOM.createPortal(
-    <SidenavContainer hidden={sidenavCondition} onClick={toggleSideNav}>
+  const markdown = (
+    <SidenavContainer
+      data-test="sidenav"
+      hidden={sidenavCondition}
+      onClick={toggleSideNav}
+    >
       {sidenavCondition ? null : (
-        <SidenavContent onClick={(e) => e.stopPropagation()}>
+        <SidenavContent
+          data-test="sidenav-content"
+          onClick={(e) => e.stopPropagation()}
+        >
           <SidenavTheme
+            data-test="sidenav-theme-btn"
             onClick={() =>
               theme === "light" ? setThemeDark() : setThemeLight()
             }
@@ -104,7 +119,7 @@ const Sidenav = ({
                 <SidenavHeroImgContainer>
                   <SidenavImage src={image} alt="Happy user." />
                 </SidenavHeroImgContainer>
-                <SidenavUserData>
+                <SidenavUserData data-test="sidenav-user-data">
                   <SidenavUserName>{name}</SidenavUserName>
                   <SidenavUserEmail>{email}</SidenavUserEmail>
                   <SidenavUserLinks to="/profile" onClick={toggleSideNav}>
@@ -121,7 +136,7 @@ const Sidenav = ({
                 </SidenavUserData>
               </Fragment>
             ) : (
-              <SidenavUserData>
+              <SidenavUserData data-test="sidenav-logout">
                 <SidenavUserLinks to="/authorization" onClick={toggleSideNav}>
                   {sidenavLogIn}
                 </SidenavUserLinks>
@@ -178,9 +193,12 @@ const Sidenav = ({
           </SidenavNavigation>
         </SidenavContent>
       )}
-    </SidenavContainer>,
-    document.querySelector("#sidenav")
+    </SidenavContainer>
   );
+
+  return test
+    ? markdown
+    : ReactDOM.createPortal(markdown, document.querySelector("#sidenav"));
 };
 
 const mapStateToProps = createStructuredSelector({
