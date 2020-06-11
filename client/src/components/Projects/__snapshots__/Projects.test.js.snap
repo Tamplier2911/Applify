@@ -12,22 +12,27 @@ exports[`<Projects /> matches snapshot 1`] = `
   <styled.div>
     <styled.div
       data-test="projects-set-first"
-      id={3}
+      id={4}
       onClick={[Function]}
     />
     <styled.div
       data-test="projects-set-second"
-      id={3}
+      id={4}
       onClick={[Function]}
     />
     <styled.div
       data-test="projects-set-third"
-      id={3}
+      id={4}
       onClick={[Function]}
     />
     <styled.div
       data-test="projects-set-fourth"
-      id={3}
+      id={4}
+      onClick={[Function]}
+    />
+    <styled.div
+      data-test="projects-set-fifth"
+      id={4}
       onClick={[Function]}
     />
   </styled.div>

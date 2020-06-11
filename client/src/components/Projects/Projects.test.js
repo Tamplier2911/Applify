@@ -44,6 +44,8 @@ describe("<Projects />", () => {
 
   it("switches to first project on setCurrentProjectFirst", () => {
     const projectsSetFirst = findByTestAttr(wrapper, "projects-set-first");
+    expect(projectsSetFirst).toHaveLength(1);
+
     const oldState = store.getState();
     expect(oldState.projects.currentProject).toEqual({});
 
@@ -56,6 +58,8 @@ describe("<Projects />", () => {
 
   it("switches to second project on setCurrentProjectSecond", () => {
     const projectsSetSecond = findByTestAttr(wrapper, "projects-set-second");
+    expect(projectsSetSecond).toHaveLength(1);
+
     const oldState = store.getState();
     expect(oldState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[0]
@@ -70,6 +74,8 @@ describe("<Projects />", () => {
 
   it("switches to third project on setCurrentProjectThird", () => {
     const projectsSetThird = findByTestAttr(wrapper, "projects-set-third");
+    expect(projectsSetThird).toHaveLength(1);
+
     const oldState = store.getState();
     expect(oldState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[1]
@@ -84,6 +90,8 @@ describe("<Projects />", () => {
 
   it("switches to fourth project on setCurrentProjectFourth", () => {
     const projectsSetFourth = findByTestAttr(wrapper, "projects-set-fourth");
+    expect(projectsSetFourth).toHaveLength(1);
+
     const oldState = store.getState();
     expect(oldState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[2]
@@ -93,6 +101,23 @@ describe("<Projects />", () => {
     const newState = store.getState();
     expect(newState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[3]
+    );
+  });
+
+  it("switches to fifth project on setCurrentProjectFifth", () => {
+    const projectsSetFifth = findByTestAttr(wrapper, "projects-set-fifth");
+    expect(projectsSetFifth).toHaveLength(1);
+
+    const oldState = store.getState();
+    expect(oldState.projects.currentProject).toEqual(
+      projectsData.allProjects.eng[3]
+    );
+
+    projectsSetFifth.simulate("click");
+
+    const newState = store.getState();
+    expect(newState.projects.currentProject).toEqual(
+      projectsData.allProjects.eng[4]
     );
   });
 

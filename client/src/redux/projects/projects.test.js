@@ -10,6 +10,7 @@ import {
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
+  setCurrentProjectFifth,
   setCurrentProjectNext,
   setCurrentProjectPrev,
 } from "./projects.actions";
@@ -28,6 +29,7 @@ const {
   SET_CURRENT_PROJECT_SECOND,
   SET_CURRENT_PROJECT_THIRD,
   SET_CURRENT_PROJECT_FOURTH,
+  SET_CURRENT_PROJECT_FIFTH,
   SET_CURRENT_PROJECT_NEXT,
   SET_CURRENT_PROJECT_PREV,
 } = projectsTypes;
@@ -71,6 +73,11 @@ describe("projects.actions", () => {
   });
 
   it("returns an action object with expected type", () => {
+    const actionObject = setCurrentProjectFifth();
+    expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_FIFTH);
+  });
+
+  it("returns an action object with expected type", () => {
     const actionObject = setCurrentProjectNext();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_NEXT);
   });
@@ -95,54 +102,60 @@ describe("projects.reducer", () => {
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, getCurrentProject("eng"));
     newState.currentProject = defaultState.allProjects.eng[0];
-    expect(state).toEqual(newState);
+    expect(state.currentProject).toEqual(newState.currentProject);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentImageNext("phone"));
     newState.currentImage = defaultState.allImages["phone"][1];
-    expect(state).toEqual(newState);
+    expect(state.currentImage).toEqual(newState.currentImage);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentImagePrev("desktop"));
     newState.currentImage = defaultState.allImages["desktop"][0];
-    expect(state).toEqual(newState);
+    expect(state.currentImage).toEqual(newState.currentImage);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentProjectNext("eng"));
     newState.currentProject = defaultState.allProjects.eng[1];
-    expect(state).toEqual(newState);
+    expect(state.currentProject).toEqual(newState.currentProject);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentProjectPrev("rus"));
     newState.currentProject = defaultState.allProjects.rus[0];
-    expect(state).toEqual(newState);
+    expect(state.currentProject).toEqual(newState.currentProject);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentProjectFirst("ukr"));
     newState.currentProject = defaultState.allProjects.ukr[0];
-    expect(state).toEqual(newState);
+    expect(state.currentProject).toEqual(newState.currentProject);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentProjectSecond("eng"));
     newState.currentProject = defaultState.allProjects.eng[1];
-    expect(state).toEqual(newState);
+    expect(state.currentProject).toEqual(newState.currentProject);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentProjectThird("rus"));
     newState.currentProject = defaultState.allProjects.rus[2];
-    expect(state).toEqual(newState);
+    expect(state.currentProject).toEqual(newState.currentProject);
   });
 
   it("performs changes to state depends on action type", () => {
     const state = projectsReducer(defaultState, setCurrentProjectFourth("ukr"));
     newState.currentProject = defaultState.allProjects.ukr[3];
-    expect(state).toEqual(newState);
+    expect(state.currentProject).toEqual(newState.currentProject);
+  });
+
+  it("performs changes to state depends on action type", () => {
+    const state = projectsReducer(defaultState, setCurrentProjectFifth("eng"));
+    newState.currentProject = defaultState.allProjects.eng[4];
+    expect(state.currentProject).toEqual(newState.currentProject);
   });
 });

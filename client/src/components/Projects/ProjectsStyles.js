@@ -66,13 +66,17 @@ const getCircleColorZero = (props) => {
   return props.id === 0 ? "var(--cl-circle-0)" : "var(--cl-circle-transit)";
 };
 const getCircleColorOne = (props) => {
-  return props.id === 1 ? "var(--cl-cirlce-1)" : "var(--cl-circle-transit)";
+  return props.id === 1 ? "var(--cl-circle-1)" : "var(--cl-circle-transit)";
 };
 const getCircleColorTwo = (props) => {
-  return props.id === 2 ? "var(--cl-circle-2)" : "var(--cl-circle-transit)";
+  return props.id === 2 ? "var(--cl-cirlce-2)" : "var(--cl-circle-transit)";
 };
 const getCircleColorThree = (props) => {
   return props.id === 3 ? "var(--cl-circle-3)" : "var(--cl-circle-transit)";
+};
+
+const getCircleColorFour = (props) => {
+  return props.id === 4 ? "var(--cl-circle-4)" : "var(--cl-circle-transit)";
 };
 
 export const ProjectsContainer = styled(ScrollAnimation)`
@@ -93,7 +97,7 @@ export const ProjecstTitle = styled.h2`
 export const ProjectsCircles = styled.div`
   grid-area: 2 / 6 / 3 / 9;
   display: grid;
-  grid-template-columns: repeat(4, min-content);
+  grid-template-columns: repeat(5, min-content);
   justify-content: end;
   grid-column-gap: 3rem;
   padding: 2rem;
@@ -103,6 +107,10 @@ export const ProjectsCircles = styled.div`
     grid-area: 20 / 3 / 21 / 9;
     justify-content: center;
     grid-column-gap: 4rem;
+  }
+
+  @media only screen and (max-width: 425px) {
+    grid-column-gap: 3rem;
   }
 `;
 
@@ -150,6 +158,17 @@ export const ProjectsCircleThree = styled.div`
   }
 `;
 
+export const ProjectsCirclFour = styled.div`
+  ${circlesSharedStyle}
+  background-color: ${getCircleColorFour};
+
+  @media (hover: none) {
+    &:hover {
+      background-color: ${getCircleColorFour};
+    }
+  }
+`;
+
 // ${projectsAnimation}
 export const ProjectsImageWrapper = styled.div`
   position: relative;
@@ -184,10 +203,23 @@ export const ProjectsBox = styled.div`
   box-shadow: 0 0.2rem 1rem var(--cl-square-shadow);
 
   padding: 2rem;
+  height: 40rem;
+
+  @media only screen and (max-width: 768px) {
+    height: 44rem;
+  }
 
   @media only screen and (max-width: 720px) {
     grid-area: 7 / 1 / 20 / 11;
     z-index: 10;
+  }
+
+  @media only screen and (max-width: 310px) {
+    height: 50rem;
+  }
+
+  @media only screen and (max-width: 254px) {
+    height: 60rem;
   }
 `;
 
@@ -203,6 +235,10 @@ export const ProjectsContent = styled.div`
 
   @media only screen and (max-width: 720px) {
     grid-column: 1 / 3;
+  }
+
+  @media only screen and (max-width: 310px) {
+    grid-row-gap: 1rem;
   }
 
   ${fadeInProject}
@@ -225,6 +261,10 @@ export const ProjectsContentBottom = styled.div`
   display: grid;
   grid-template-columns: 1fr min-content;
   align-items: center;
+
+  @media only screen and (max-width: 254px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ProjectsContentDate = styled.div``;
@@ -235,6 +275,7 @@ export const ProjectsContentLink = styled.a`
   padding: 0.5rem 5rem;
   font-family: var(--font-title);
   text-decoration: none;
+  text-align: center;
 
   transition: 0.3s background-color;
 

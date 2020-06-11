@@ -9,6 +9,7 @@ import {
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
+  setCurrentProjectFifth,
   setCurrentProjectNext,
   getCurrentProject,
   // setCurrentProjectPrev
@@ -29,6 +30,7 @@ import {
   ProjectsCircleOne,
   ProjectsCircleTwo,
   ProjectsCircleThree,
+  ProjectsCirclFour,
   ProjectsImageWrapper,
   ProjectsImage,
   ProjectsBox,
@@ -48,6 +50,7 @@ const Projects = ({
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
+  setCurrentProjectFifth,
   setCurrentProjectNext,
   getCurrentProject,
   lang,
@@ -64,6 +67,7 @@ const Projects = ({
     if (id === 1) setCurrentProjectSecond(lang);
     if (id === 2) setCurrentProjectThird(lang);
     if (id === 3) setCurrentProjectFourth(lang);
+    if (id === 4) setCurrentProjectFifth(lang);
 
     // animation state
     setIsLoaded(false);
@@ -75,13 +79,14 @@ const Projects = ({
     // slider functionality
     const slider = setInterval(() => {
       setCurrentProjectNext(lang);
-    }, 15000);
+    }, 20000);
     return () => clearInterval(slider);
   }, [
     setCurrentProjectNext,
     setCurrentProjectSecond,
     setCurrentProjectThird,
     setCurrentProjectFourth,
+    setCurrentProjectFifth,
     getCurrentProject,
     lang,
     id,
@@ -128,6 +133,11 @@ const Projects = ({
         <ProjectsCircleThree
           data-test="projects-set-fourth"
           onClick={() => setCurrentProjectFourth(lang)}
+          id={id}
+        />
+        <ProjectsCirclFour
+          data-test="projects-set-fifth"
+          onClick={() => setCurrentProjectFifth(lang)}
           id={id}
         />
       </ProjectsCircles>
@@ -179,6 +189,7 @@ export default connect(mapStateToProps, {
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
+  setCurrentProjectFifth,
   setCurrentProjectNext,
   getCurrentProject,
   // setCurrentProjectPrev

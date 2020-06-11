@@ -63,10 +63,11 @@ const getTheme = (props) => {
             --cl-card-shadow-hover: rgba(78, 204, 162, 0.357);
         
             // PORTFOLIO PROJECTS CIRCLES
-            --cl-circle-0: #265545;
-            --cl-cirlce-1: #000;
-            --cl-circle-2: #55c57a;
-            --cl-circle-3: #dd4f4f;
+            --cl-circle-0: #624aba;
+            --cl-circle-1: #265545;
+            --cl-cirlce-2: #000;
+            --cl-circle-3: #55c57a;
+            --cl-circle-4: #dd4f4f;
             --cl-circle-hover: #002a38;
             --cl-circle-transit: #747474;
         
@@ -283,10 +284,11 @@ const getTheme = (props) => {
             --cl-card-shadow-hover: rgba(254, 64, 47, 0.631);
         
             // PORTFOLIO PROJECTS CIRCLES
-            --cl-circle-0: #265545;
-            --cl-cirlce-1: #000;
-            --cl-circle-2: #55c57a;
-            --cl-circle-3: #dd4f4f;
+            --cl-circle-0: #624aba;
+            --cl-circle-1: #265545;
+            --cl-cirlce-2: #000;
+            --cl-circle-3: #55c57a;
+            --cl-circle-4: #dd4f4f;
             --cl-circle-hover: #002a38;
             --cl-circle-transit: #747474;
         
