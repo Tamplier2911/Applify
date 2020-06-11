@@ -19,9 +19,13 @@ import { SignInContainer } from "./SignInStyles";
 const SignIn = ({ lang }) => {
   const { signInTitle } = signInConstants[lang];
   return (
-    <SignInContainer>
-      <FormHolder type="signIn" title={signInTitle}>
-        <SignInForm />
+    <SignInContainer data-test="sign-in">
+      <FormHolder
+        data-test="sign-in-form-holder"
+        type="signIn"
+        title={signInTitle}
+      >
+        <SignInForm data-test="sign-in-form-element" />
       </FormHolder>
     </SignInContainer>
   );

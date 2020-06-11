@@ -65,13 +65,15 @@ const SignInForm = ({ lang, logUserInStart, openModal }) => {
   } = signInFormData[lang];
 
   return (
-    <SignInFormContainer>
+    <SignInFormContainer data-test="signin-form">
       <SignInFormTitle lang={lang}>{signInFormTitle}</SignInFormTitle>
       <SignInFormElement
+        data-test="signin-form-element"
         // autoComplete="off"
         onSubmit={(e) => onSubmit(e)}
       >
         <FormInput
+          data-test="signin-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={email}
           label={signInFormEmail}
@@ -80,6 +82,7 @@ const SignInForm = ({ lang, logUserInStart, openModal }) => {
           required
         />
         <FormInput
+          data-test="signin-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={password}
           label={signInFormPassword}

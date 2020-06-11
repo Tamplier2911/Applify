@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignInForm /> to match snapshot 1`] = `
+<styled.div
+  data-test="signin-form"
+>
+  <styled.h3
+    lang="eng"
+  >
+    Please, enter your email and password.
+  </styled.h3>
+  <styled.form
+    data-test="signin-form-element"
+    onSubmit={[Function]}
+  >
+    <FormInput
+      data-test="signin-form-input"
+      label="Email"
+      name="email"
+      onInputChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <FormInput
+      data-test="signin-form-input"
+      label="Password"
+      name="password"
+      onInputChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <Button
+      type="submit"
+      value="Sign In"
+    />
+  </styled.form>
+  <Styled(Link)
+    to="/restore"
+  >
+    Forgot password?
+  </Styled(Link)>
+</styled.div>
+`;

@@ -19,9 +19,13 @@ import signUpData from "./SignUpConstants";
 const SignUp = ({ lang }) => {
   const { signUpTitle } = signUpData[lang];
   return (
-    <SignUpContainer>
-      <FormHolder type="signUp" title={signUpTitle}>
-        <SignUpForm />
+    <SignUpContainer data-test="sign-up">
+      <FormHolder
+        data-test="sign-up-form-holder"
+        type="signUp"
+        title={signUpTitle}
+      >
+        <SignUpForm data-test="sign-up-form-element" />
       </FormHolder>
     </SignUpContainer>
   );

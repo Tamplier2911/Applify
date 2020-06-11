@@ -1,5 +1,6 @@
 // import "./Square.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 import {
   SquareContainer,
@@ -27,6 +28,7 @@ const Square = ({ options, text }) => {
 
   return (
     <SquareContainer
+      data-test="square"
       {...properties}
       animateIn={getAnimationStyle()}
       duration={2}
@@ -41,9 +43,24 @@ const Square = ({ options, text }) => {
       <SquareMaskSeven {...properties} />
       <SquareMaskEight {...properties} />
       <SquareMaskNine {...properties} />
-      <SquareBody {...properties}>{text ? text : null}</SquareBody>
+      <SquareBody data-test="square-body" {...properties}>
+        {text ? text : null}
+      </SquareBody>
     </SquareContainer>
   );
+};
+
+Square.propTypes = {
+  options: PropTypes.shape({
+    id: PropTypes.number,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    posX: PropTypes.number,
+    posY: PropTypes.number,
+    shadow: PropTypes.bool,
+    color: PropTypes.string,
+  }),
+  test: PropTypes.string,
 };
 
 export default Square;

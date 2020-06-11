@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUpForm /> matches snapshot 1`] = `
+<styled.div
+  data-test="signup-form"
+>
+  <styled.h3>
+    Please, enter your name, email and password.
+  </styled.h3>
+  <styled.form
+    autoComplete="off"
+    data-test="signup-form-element"
+    onSubmit={[Function]}
+  >
+    <FormInput
+      data-test="signup-form-input"
+      label="Name"
+      name="name"
+      onInputChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <FormInput
+      data-test="signup-form-input"
+      label="Email"
+      name="email"
+      onInputChange={[Function]}
+      required={true}
+      type="email"
+      value=""
+    />
+    <FormInput
+      data-test="signup-form-input"
+      label="Password"
+      name="password"
+      onInputChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <FormInput
+      data-test="signup-form-input"
+      label="Confirm Password"
+      name="passwordConfirm"
+      onInputChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <Button
+      type="submit"
+      value="Sign Up"
+    />
+  </styled.form>
+</styled.div>
+`;

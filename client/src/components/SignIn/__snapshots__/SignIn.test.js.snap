@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignIn /> matches snapshot 1`] = `
+<styled.div
+  data-test="sign-in"
+>
+  <FormHolder
+    data-test="sign-in-form-holder"
+    title="I already have an account:"
+    type="signIn"
+  >
+    <Connect(SignInForm)
+      data-test="sign-in-form-element"
+    />
+  </FormHolder>
+</styled.div>
+`;

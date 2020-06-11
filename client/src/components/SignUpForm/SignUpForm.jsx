@@ -77,10 +77,15 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
   };
 
   return (
-    <SignUpFormContainer>
+    <SignUpFormContainer data-test="signup-form">
       <SignUpFormTitle>{signUpFormTitle}</SignUpFormTitle>
-      <SignUpFormElement autoComplete="off" onSubmit={(e) => onSubmit(e)}>
+      <SignUpFormElement
+        data-test="signup-form-element"
+        autoComplete="off"
+        onSubmit={(e) => onSubmit(e)}
+      >
         <FormInput
+          data-test="signup-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={name}
           label={signUpFormName}
@@ -89,6 +94,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
           required
         />
         <FormInput
+          data-test="signup-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={email}
           label={signUpFormEmail}
@@ -97,6 +103,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
           required
         />
         <FormInput
+          data-test="signup-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={password}
           label={signUpFormPassword}
@@ -105,6 +112,7 @@ const SignUpForm = ({ lang, signUserUpStart, openModal }) => {
           required
         />
         <FormInput
+          data-test="signup-form-input"
           onInputChange={(e) => onInputChange(e)}
           value={passwordConfirm}
           label={signUpFormPasswordConfirm}
