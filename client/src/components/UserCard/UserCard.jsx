@@ -1,5 +1,6 @@
 // import "./UserCard.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // redux
 import { connect } from "react-redux";
@@ -59,13 +60,17 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
   } = userCardData[lang];
 
   return (
-    <UserCardContainer animateIn={"flipInY"} animateOnce={true}>
-      <UserCardHeader>
+    <UserCardContainer
+      data-test="user-card"
+      animateIn={"flipInY"}
+      animateOnce={true}
+    >
+      <UserCardHeader data-test="user-card-header">
         <UserCardHeaderName>{name}</UserCardHeaderName>
         <UserCardHeaderEmail>{email}</UserCardHeaderEmail>
         <UserCardHeaderRole>{role}</UserCardHeaderRole>
       </UserCardHeader>
-      <UserCardBody>
+      <UserCardBody data-test="user-card-body">
         <UserCardBodyWrap>
           <UserCardBodyImg src={image} alt="happy user" />
         </UserCardBodyWrap>
@@ -89,7 +94,7 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
           </UserCardBodyPasswordChanged>
         </UserCardBodyPassword>
       </UserCardBody>
-      <UserCardControlls>
+      <UserCardControlls data-test="user-card-controls">
         <Button
           type="button"
           value={userCardDelete}
@@ -101,6 +106,19 @@ const UserCard = ({ data, lang, deleteOneUserStart }) => {
       </UserCardControlls>
     </UserCardContainer>
   );
+};
+
+UserCard.propTypes = {
+  data: PropTypes.shape({
+    about: PropTypes.string,
+    email: PropTypes.string,
+    likedBlogposts: PropTypes.array,
+    name: PropTypes.string,
+    passwordChangedAt: PropTypes.string,
+    role: PropTypes.string,
+    photo: PropTypes.string,
+    _id: PropTypes.string,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({

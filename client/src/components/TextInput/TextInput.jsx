@@ -1,17 +1,18 @@
 // import './TextInput.scss'
 import React from "react";
+import PropTypes from "prop-types";
 
 // JS Rendering CSS
 import {
   TextInputContainer,
   TextInputArea,
   TextInputAreaLabel,
-  FormInputFillingBar
+  FormInputFillingBar,
 } from "./TextInputStyles";
 
 const TextInput = ({ onInputChange, value, max, label, ...otherProps }) => {
   return (
-    <TextInputContainer>
+    <TextInputContainer data-test="text-input">
       <TextInputArea
         onChange={onInputChange}
         {...otherProps}
@@ -21,10 +22,20 @@ const TextInput = ({ onInputChange, value, max, label, ...otherProps }) => {
       />
       <FormInputFillingBar />
       {label ? (
-        <TextInputAreaLabel inputlength={value}>{label}</TextInputAreaLabel>
+        <TextInputAreaLabel data-test="text-input-label" inputlength={value}>
+          {label}
+        </TextInputAreaLabel>
       ) : null}
     </TextInputContainer>
   );
+};
+
+TextInput.propTypes = {
+  onInputChange: PropTypes.func,
+  value: PropTypes.string,
+  max: PropTypes.string,
+  label: PropTypes.string,
+  otherProps: PropTypes.object,
 };
 
 export default TextInput;

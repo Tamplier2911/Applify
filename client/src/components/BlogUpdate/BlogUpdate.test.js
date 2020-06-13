@@ -21,6 +21,14 @@ describe("<BlogUpdate />", () => {
       allBlogposts: [
         {
           id: "",
+          _id: "testObj",
+          image: "",
+          likes: 1,
+          createdAt: "2020-03-31T19:07:26.908Z",
+          title: "",
+          theme: "",
+          content: "",
+          author: "",
         },
       ],
       allSets: {},
@@ -35,7 +43,7 @@ describe("<BlogUpdate />", () => {
 
   let wrapper;
   beforeEach(() => {
-    wrapper = setShallowWRC(<BlogUpdate store={store} />);
+    wrapper = setShallowWRC(<BlogUpdate store={store} testObjId={"testObj"} />);
   });
 
   it("renders without an error", () => {

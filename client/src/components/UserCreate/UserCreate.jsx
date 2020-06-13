@@ -9,8 +9,8 @@ import { UserCreateContainer } from "./UserCreateStyles";
 
 const UserCreate = () => {
   return (
-    <UserCreateContainer>
-      <CreateUpdateUser method="POST" />
+    <UserCreateContainer data-test="user-create">
+      <CreateUpdateUser data-test="user-create-update" method="POST" />
     </UserCreateContainer>
   );
 };

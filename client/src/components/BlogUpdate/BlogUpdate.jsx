@@ -35,7 +35,15 @@ import {
 // component constants
 import blogUpdateData from "./BlogUpdateConstants";
 
-const BlogUpdate = ({ lang, blogObject }) => {
+/**
+ * @JSXComponent - renders blog update data and form as a children
+ * @param {string} lang - current language
+ * @param {object} blogObject - current blogpost
+ * @param {string} testObjId - required pice of data for testing, if defined renders testing object
+ * from BlogUpdate.test.js
+ */
+
+const BlogUpdate = ({ lang, blogObject, testObjId }) => {
   // author
   const {
     _id,
@@ -93,7 +101,9 @@ const BlogUpdate = ({ lang, blogObject }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  blogObject: selectAllBlogpostsAsObject(ownProps.match.params.id)(state),
+  blogObject: selectAllBlogpostsAsObject(
+    ownProps.testObjId ? ownProps.testObjId : ownProps.match.params.id
+  )(state),
   lang: selectCurrentLanguage(state),
 });
 

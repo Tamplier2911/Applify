@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserCard /> matches snapshot 1`] = `
+<Styled(ScrollAnimation)
+  animateIn="flipInY"
+  animateOnce={true}
+  data-test="user-card"
+>
+  <styled.div
+    data-test="user-card-header"
+  >
+    <styled.div />
+    <styled.div />
+    <styled.div />
+  </styled.div>
+  <styled.div
+    data-test="user-card-body"
+  >
+    <styled.div>
+      <styled.img
+        alt="happy user"
+        src="http://localhost/api/uploads/images/users/default.jpg"
+      />
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        “
+      </styled.div>
+      <styled.div>
+        About section is not yet modified.
+      </styled.div>
+      <styled.div>
+        „
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        Password was changed at:
+      </styled.div>
+      <styled.div>
+        Password was not yet changed.
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div
+    data-test="user-card-controls"
+  >
+    <Button
+      click={[Function]}
+      type="button"
+      value="Delete"
+    />
+    <Styled(Link)
+      to="/profile/users/"
+    >
+      Update
+    </Styled(Link)>
+  </styled.div>
+</Styled(ScrollAnimation)>
+`;

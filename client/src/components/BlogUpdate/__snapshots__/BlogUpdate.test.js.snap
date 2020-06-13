@@ -12,7 +12,7 @@ exports[`<BlogUpdate /> matches snapshot 1`] = `
       <styled.div>
         <styled.div />
         <styled.div>
-          June 11, 2020
+          March 31, 2020
         </styled.div>
       </styled.div>
       <styled.div>
@@ -23,7 +23,9 @@ exports[`<BlogUpdate /> matches snapshot 1`] = `
       </styled.div>
     </styled.div>
     <styled.div>
-      <styled.div />
+      <styled.div>
+        1
+      </styled.div>
       <styled.div>
         <Styled(Component) />
       </styled.div>
@@ -33,10 +35,10 @@ exports[`<BlogUpdate /> matches snapshot 1`] = `
     method="PATCH"
     updateData={
       Object {
-        "_id": undefined,
-        "content": undefined,
-        "theme": undefined,
-        "title": undefined,
+        "_id": "testObj",
+        "content": "",
+        "theme": "",
+        "title": "",
       }
     }
   />

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserCreate /> matches snapshot 1`] = `
+<styled.div
+  data-test="user-create"
+>
+  <Connect(CreateUpdateUser)
+    data-test="user-create-update"
+    method="POST"
+  />
+</styled.div>
+`;
