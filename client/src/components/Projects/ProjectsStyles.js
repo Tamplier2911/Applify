@@ -205,8 +205,12 @@ export const ProjectsBox = styled.div`
   padding: 2rem;
   height: 40rem;
 
-  @media only screen and (max-width: 768px) {
-    height: 44rem;
+  @media only screen and (max-width: 1010px) {
+    height: 46rem;
+  }
+
+  @media only screen and (max-width: 829px) {
+    height: 50rem;
   }
 
   @media only screen and (max-width: 720px) {
@@ -215,11 +219,15 @@ export const ProjectsBox = styled.div`
   }
 
   @media only screen and (max-width: 310px) {
-    height: 50rem;
+    height: 55rem;
+  }
+
+  @media only screen and (max-width: 264px) {
+    height: 62rem;
   }
 
   @media only screen and (max-width: 254px) {
-    height: 60rem;
+    height: 68rem;
   }
 `;
 
