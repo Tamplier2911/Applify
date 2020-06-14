@@ -1,20 +1,26 @@
 // import "./WithSpinnerHOC.scss";
 import React from "react";
+import PropTypes from "prop-types";
 
 // JS Rendering CSS
 import {
   WithSpinnerHOCContainer,
-  WithSpinnerHOCSquare
+  WithSpinnerHOCSquare,
 } from "./WithSpinnerHOCStyles";
 
-const WithSpinnerHOC = WrappedComponent => ({ isLoading, ...otherProps }) => {
+const WithSpinnerHOC = (WrappedComponent) => ({ isLoading, ...otherProps }) => {
   return isLoading ? (
-    <WithSpinnerHOCContainer>
+    <WithSpinnerHOCContainer data-test="content-is-loading">
       <WithSpinnerHOCSquare />
     </WithSpinnerHOCContainer>
   ) : (
-    <WrappedComponent {...otherProps} />
+    <WrappedComponent data-test="content-is-loaded" {...otherProps} />
   );
+};
+
+WithSpinnerHOC.propTypes = {
+  isLoading: PropTypes.bool,
+  otherProps: PropTypes.object,
 };
 
 export default WithSpinnerHOC;

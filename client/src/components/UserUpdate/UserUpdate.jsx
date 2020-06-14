@@ -67,12 +67,9 @@ const UserUpdate = ({ lang, userObject, testObjId }) => {
     userUpdateNotFound,
   } = userUpdateData[lang];
 
-  console.log(userObject);
-  console.log(testObjId);
-
   return userObject ? (
-    <UserUpdateContainer test-data="user-update">
-      <UserUpdateInfo test-data="user-update-info">
+    <UserUpdateContainer data-test="user-update">
+      <UserUpdateInfo data-test="user-update-info">
         <UserUpdateCred>
           <UserUpdateName>
             <UserFieldKey>{userUpdateName}</UserFieldKey>
@@ -104,14 +101,14 @@ const UserUpdate = ({ lang, userObject, testObjId }) => {
         </UserUpdatePhoto>
       </UserUpdateInfo>
       <CreateUpdateUser
-        test-data="user-update-cu"
+        data-test="user-update-cu"
         method="PATCH"
         updateData={userData}
       />
       <GetBack path={`/profile/users`} />
     </UserUpdateContainer>
   ) : (
-    <UserUpdateNotFound test-data="user-update-not-found">
+    <UserUpdateNotFound data-test="user-update-not-found">
       {userUpdateNotFound}
     </UserUpdateNotFound>
   );

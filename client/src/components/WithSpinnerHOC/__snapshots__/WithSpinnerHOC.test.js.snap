@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WithSpinnerHOC /> matches snapshot 1`] = `
+<TestComponent
+  data-test="content-is-loaded"
+/>
+`;

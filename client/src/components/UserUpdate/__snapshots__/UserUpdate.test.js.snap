@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserUpdate /> renders without an error 1`] = `
+<styled.div
+  data-test="user-update"
+>
+  <styled.div
+    data-test="user-update-info"
+  >
+    <styled.div>
+      <styled.div>
+        <styled.div>
+          Name:
+        </styled.div>
+        <styled.div>
+          Suss
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.div>
+          Email:
+        </styled.div>
+        <styled.div>
+          sussy@gmail.com
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.div>
+          Role:
+        </styled.div>
+        <styled.div>
+          user
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.div>
+          ID:
+        </styled.div>
+        <styled.div>
+          testObjSdk
+        </styled.div>
+      </styled.div>
+      <styled.div>
+        <styled.div>
+          Password Changed:
+        </styled.div>
+        <styled.div>
+          Never changed
+        </styled.div>
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        <styled.img
+          alt="happy user"
+          src="http://localhost/api/uploads/images/users/default.jpg"
+        />
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <Connect(CreateUpdateUser)
+    data-test="user-update-cu"
+    method="PATCH"
+    updateData={
+      Object {
+        "_id": "testObjSdk",
+        "about": "Wonderful!",
+        "email": "sussy@gmail.com",
+        "name": "Suss",
+        "role": "user",
+      }
+    }
+  />
+  <withRouter(GetBack)
+    path="/profile/users"
+  />
+</styled.div>
+`;

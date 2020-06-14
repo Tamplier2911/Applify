@@ -40,31 +40,37 @@ describe("<UserUpdate />", () => {
     wrapper = setShallowWRC(
       <UserUpdate store={store} testObjId="testObjSdk" />
     );
-    console.log(wrapper.debug());
   });
 
   it("renders without an error", () => {
-    // const userUpdate = findByTestAttr(wrapper, "user-update");
-    // expect(userUpdate).toHaveLength(1);
+    const userUpdate = findByTestAttr(wrapper, "user-update");
+    expect(userUpdate).toHaveLength(1);
   });
 
   it("renders children - user update info", () => {
-    // const userUpdateInfo = findByTestAttr(wrapper, "user-update-info");
-    // expect(userUpdateInfo).toHaveLength(0);
+    const userUpdateInfo = findByTestAttr(wrapper, "user-update-info");
+    expect(userUpdateInfo).toHaveLength(1);
   });
 
   it("renders children - user update create/update", () => {
-    // const userUpdateCu = findByTestAttr(wrapper, "user-update-cu");
-    // expect(userUpdateCu).toHaveLength(0);
+    const userUpdateCu = findByTestAttr(wrapper, "user-update-cu");
+    expect(userUpdateCu).toHaveLength(1);
   });
 
   it("renders fallback when user object is not found", () => {
-    // const userUpdate = findByTestAttr(wrapper, "user-update");
-    // expect(userUpdate).toHaveLength(0);
+    let userUpdateNotFound = findByTestAttr(wrapper, "user-update-not-found");
+    expect(userUpdateNotFound).toHaveLength(0);
+
+    wrapper = setShallowWRC(
+      <UserUpdate store={store} testObjId="notExistingId" />
+    );
+
+    userUpdateNotFound = findByTestAttr(wrapper, "user-update-not-found");
+    expect(userUpdateNotFound).toHaveLength(1);
   });
 
   it("renders without an error", () => {
-    // const userUpdate = findByTestAttr(wrapper, "user-update");
-    //     expect(toJson(userUpdate)).toMatchSnapshot();
+    const userUpdate = findByTestAttr(wrapper, "user-update");
+    expect(toJson(userUpdate)).toMatchSnapshot();
   });
 });

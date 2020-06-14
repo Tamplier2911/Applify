@@ -143,43 +143,55 @@ describe("users.reducer", () => {
   });
 
   describe("loadAllUsersSuccess", () => {
-    const users = [{ name: "User", uid: "SDK2321" }];
-    const state = usersReducer(defaultState, loadAllUsersSucess(users));
-    expect(state.allUsers.length).toBe(1);
+    it("loads array of users to the state", () => {
+      const users = [{ name: "User", uid: "SDK2321" }];
+      const state = usersReducer(defaultState, loadAllUsersSucess(users));
+      expect(state.allUsers.length).toBe(1);
+    });
   });
 
   describe("loadAllUsersFailure", () => {
-    const error = "err!";
-    const state = usersReducer(defaultState, loadAllUsersFailure(error));
-    expect(state.errorMessage).toEqual(error);
+    it("loads error to the state", () => {
+      const error = "err!";
+      const state = usersReducer(defaultState, loadAllUsersFailure(error));
+      expect(state.errorMessage).toEqual(error);
+    });
   });
 
   describe("createOneUserFailure", () => {
-    const error = "err!";
-    const state = usersReducer(defaultState, createOneUserFailure(error));
-    expect(state.errorMessage).toEqual(error);
+    it("loads error to the state", () => {
+      const error = "err!";
+      const state = usersReducer(defaultState, createOneUserFailure(error));
+      expect(state.errorMessage).toEqual(error);
+    });
   });
 
   describe("updateOneUserFailure", () => {
-    const error = "err!";
-    const state = usersReducer(defaultState, updateOneUserFailure(error));
-    expect(state.errorMessage).toEqual(error);
+    it("loads error to the state", () => {
+      const error = "err!";
+      const state = usersReducer(defaultState, updateOneUserFailure(error));
+      expect(state.errorMessage).toEqual(error);
+    });
   });
 
   describe("deleteOneUserFailure", () => {
-    const error = "err!";
-    const state = usersReducer(defaultState, deleteOneUserFailure(error));
-    expect(state.errorMessage).toEqual(error);
+    it("loads error to the state", () => {
+      const error = "err!";
+      const state = usersReducer(defaultState, deleteOneUserFailure(error));
+      expect(state.errorMessage).toEqual(error);
+    });
   });
 
   describe("cleanUpUsersFromState", () => {
-    defaultState = {
-      allUsers: [{ name: "User", uid: "SDK12312" }],
-      isLoading: false,
-      errorMessage: null,
-    };
-    const state = usersReducer(defaultState, cleanUpUsersFromState());
-    expect(state.allUsers.length).toBe(0);
+    it("cleans up state from user objects", () => {
+      defaultState = {
+        allUsers: [{ name: "User", uid: "SDK12312" }],
+        isLoading: false,
+        errorMessage: null,
+      };
+      const state = usersReducer(defaultState, cleanUpUsersFromState());
+      expect(state.allUsers.length).toBe(0);
+    });
   });
 });
 
