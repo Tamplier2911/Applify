@@ -30,13 +30,22 @@ import {
   UserUpdatePhotoImg,
   UserFieldKey,
   UserFieldValue,
-  UserUpdateNotFound
+  UserUpdateNotFound,
 } from "./UserUpdateStyles";
 
 // component constants
 import userUpdateData from "./UserUpdateConstants";
 
-const UserUpdate = ({ lang, userObject }) => {
+/**
+ * @JSXComponent
+ * @param {string} lang - current language
+ * @param {object} userObject - user object retrieved from all users collection
+ * by match.params.id
+ * @param {string} testObjId - optional argument for testing purposes, contains
+ * id of object we trying to test, which is going to be retrieved from all users collection
+ */
+
+const UserUpdate = ({ lang, userObject, testObjId }) => {
   const { _id, photo, about, role, name, email, passwordChangedAt } = userObject
     ? userObject
     : {};
@@ -55,12 +64,15 @@ const UserUpdate = ({ lang, userObject }) => {
     userUpdateId,
     userUpdatePassword,
     userUpdatePasswordChanged,
-    userUpdateNotFound
+    userUpdateNotFound,
   } = userUpdateData[lang];
 
+  console.log(userObject);
+  console.log(testObjId);
+
   return userObject ? (
-    <UserUpdateContainer>
-      <UserUpdateInfo>
+    <UserUpdateContainer test-data="user-update">
+      <UserUpdateInfo test-data="user-update-info">
         <UserUpdateCred>
           <UserUpdateName>
             <UserFieldKey>{userUpdateName}</UserFieldKey>
@@ -91,17 +103,25 @@ const UserUpdate = ({ lang, userObject }) => {
           </UserUpdatePhotoWrap>
         </UserUpdatePhoto>
       </UserUpdateInfo>
-      <CreateUpdateUser method="PATCH" updateData={userData} />
+      <CreateUpdateUser
+        test-data="user-update-cu"
+        method="PATCH"
+        updateData={userData}
+      />
       <GetBack path={`/profile/users`} />
     </UserUpdateContainer>
   ) : (
-    <UserUpdateNotFound>{userUpdateNotFound}</UserUpdateNotFound>
+    <UserUpdateNotFound test-data="user-update-not-found">
+      {userUpdateNotFound}
+    </UserUpdateNotFound>
   );
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  userObject: selectAllUsersAsObject(ownProps.match.params.id)(state),
-  lang: selectCurrentLanguage(state)
+  userObject: selectAllUsersAsObject(
+    ownProps.testObjId ? ownProps.testObjId : ownProps.match.params.id
+  )(state),
+  lang: selectCurrentLanguage(state),
 });
 
 export default withRouter(connect(mapStateToProps)(UserUpdate));

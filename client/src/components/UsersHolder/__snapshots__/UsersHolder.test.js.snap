@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UsersHolder /> matches snapshot 1`] = `
+<styled.div
+  data-test="users-holder"
+>
+  <Button
+    click={[Function]}
+    type="button"
+    value="Create User"
+  />
+  <styled.div
+    data-test="users-holder-search"
+  >
+    <FormInput
+      label="Search"
+      name="search"
+      onInputChange={[Function]}
+      type="text"
+      value=""
+    />
+  </styled.div>
+  <CollectionHolder
+    cb={[Function]}
+    data-test="users-holder-col-holder"
+    lang="eng"
+    refresher={1}
+    title="Users:"
+  >
+    <Component
+      data-test="users-holder-col-for-holder-sp"
+      dataCollection={Array []}
+      isLoading={false}
+    >
+      <Connect(UserCard) />
+    </Component>
+  </CollectionHolder>
+</styled.div>
+`;

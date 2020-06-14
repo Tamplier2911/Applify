@@ -69,13 +69,13 @@ const UsersHolder = ({
   } = usersHolderData[lang];
 
   return (
-    <UsersHolderContainer>
+    <UsersHolderContainer data-test="users-holder">
       <Button
         type="button"
         value={usersHolderButton}
         click={redirectToCreateUser}
       />
-      <UserHolderSearchBarContainer>
+      <UserHolderSearchBarContainer data-test="users-holder-search">
         <FormInput
           onInputChange={(e) => onInputChange(e)}
           value={search}
@@ -85,12 +85,14 @@ const UsersHolder = ({
         />
       </UserHolderSearchBarContainer>
       <CollectionHolder
+        data-test="users-holder-col-holder"
         lang={lang}
         title={usersHolderTitle}
         refresher={1}
         cb={() => loadAllUsersStart()}
       >
         <CollectionForHolderWithSpinner
+          data-test="users-holder-col-for-holder-sp"
           isLoading={isLoading}
           dataCollection={usersArray}
         >
