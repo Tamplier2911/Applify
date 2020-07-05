@@ -23,6 +23,11 @@ const xss = require("xss-clean");
 // HTTP parameter pollution protection
 const hpp = require("hpp");
 
+// protection headers options
+const { contentSecurityPolicyOpt } = require("./utils/contentSecurityPolicy");
+const { featurePolicyOpt } = require("./utils/featurePolicy");
+const { referrerPolicyOpt } = require("./utils/referrerPolicy");
+
 /**************************** PARSE & COMPRESS ******************************/
 
 // const bodyParser = require("body-parser");
@@ -52,6 +57,8 @@ const feedbackRouter = require("./routes/feedbackRoutes");
 const blogpostRouter = require("./routes/blogpostRoutes");
 // const c = require("./routes/c");
 
+/*****************************************************************************/
+
 const app = express();
 app.enable("trust proxy");
 
@@ -71,59 +78,11 @@ app.options("*", cors(corsOptions));
 // app.use("/uploads", express.static("uploads"));
 app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
+// protection headers
 app.use(helmet());
-app.use(
-  csp({
-    directives: {
-      // defaultSrc: [
-      //   "'self'",
-      //   "applify-tech.com",
-      //   "applify-s.herokuapp.com",
-      //   "fonts.googleapis.com",
-      // ],
-      scriptSrc: [
-        "'self'",
-        "'unsafe-inline'",
-        "'unsafe-eval'",
-        "'sha256-GDUfxAiaE5lVgQ6z2nbmzD2HvviBuHsUsSnoHzDvfdo='",
-        "storage.googleapis.com",
-        "applify-tech.com",
-        "applify-s.herokuapp.com",
-      ],
-      fontSrc: ["'self'", "fonts.googleapis.com", "fonts.gstatic.com"],
-      objectSrc: ["'self'"],
-    },
-  })
-);
-app.use(
-  featurePolicy({
-    features: {
-      fullscreen: ["'self'"],
-      vibrate: ["'none'"],
-      payment: ["'none'"],
-      syncXhr: ["'none'"],
-      accelerometer: ["'none'"],
-      ambientLightSensor: ["'none'"],
-      autoplay: ["'none'"],
-      camera: ["'none'"],
-      geolocation: ["'self'"],
-      gyroscope: ["'none'"],
-      magnetometer: ["'none'"],
-      microphone: ["'none'"],
-      usb: ["'none'"],
-      vr: ["'none'"],
-      speaker: ["'none'"],
-      midi: ["'none'"],
-      pictureInPicture: ["'none'"],
-      syncXhr: ["'none'"],
-    },
-  })
-);
-app.use(
-  referrerPolicy({
-    policy: "no-referrer",
-  })
-);
+app.use(csp(contentSecurityPolicyOpt));
+app.use(featurePolicy(featurePolicyOpt));
+app.use(referrerPolicy(referrerPolicyOpt));
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 

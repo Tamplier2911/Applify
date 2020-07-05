@@ -1,0 +1,22 @@
+exports.featurePolicyOpt = {
+  features: {
+    fullscreen: ["'self'"],
+    vibrate: ["'none'"],
+    payment: ["'none'"],
+    syncXhr: ["'none'"],
+    accelerometer: ["'none'"],
+    ambientLightSensor: ["'none'"],
+    autoplay: ["'none'"],
+    camera: ["'none'"],
+    geolocation: ["'self'"],
+    gyroscope: ["'none'"],
+    magnetometer: ["'none'"],
+    microphone: ["'none'"],
+    usb: ["'none'"],
+    vr: ["'none'"],
+    speaker: ["'none'"],
+    midi: ["'none'"],
+    pictureInPicture: ["'none'"],
+    syncXhr: ["'none'"],
+  },
+};

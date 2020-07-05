@@ -113,6 +113,6 @@ describe("<Sidenav />", () => {
 
   it("matches snapshot", () => {
     const sidenav = findByTestAttr(wrapper, "sidenav");
-    expect(sidenav).toMatchSnapshot();
+    expect(toJson(sidenav)).toMatchSnapshot();
   });
 });

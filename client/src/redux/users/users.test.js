@@ -1,6 +1,11 @@
 // reducer
 import usersReducer from "./users.reducer";
 
+// sagas
+import { loadAllUsers } from "./users.sagas";
+import { runSaga } from "redux-saga";
+import api from "./users.api";
+
 // actions
 import {
   loadAllUsersStart,
@@ -195,4 +200,31 @@ describe("users.reducer", () => {
   });
 });
 
-describe("users.sagas", () => {});
+describe("users.sagas", () => {
+  describe("saga - loadAllUsers", () => {
+    it("runs expected sagas", async () => {
+      const dummyUsers = [
+        { id: "1", name: "Thomas", email: "ex@mple.com" },
+        { id: "2", name: "Donna", email: "ex@mple.com" },
+        { id: "3", name: "Rayan", email: "ex@mple.com" },
+      ];
+
+      const fetchAllUsers = jest
+        .spyOn(api, "fetchAllUsers")
+        .mockImplementation(() => Promise.resolve(dummyUsers));
+
+      const dispatched = [];
+      const result = await runSaga(
+        {
+          dispatch: (action) => dispatched.push(action),
+        },
+        loadAllUsers
+      );
+
+      // console.log(dispatched);
+      // expect(fetchAllUsers).toHaveBeenCalledTimes(1);
+      // expect(dispatched).toEqual([]);
+      // fetchAllUsers.mockClear();
+    });
+  });
+});

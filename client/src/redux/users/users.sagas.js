@@ -1,10 +1,13 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
 import axios from "axios";
 
+// api
+import { fetchAllUsers } from "./users.api";
+
 // error filters
 import {
   getErrorMessage,
-  successfulResponse
+  successfulResponse,
 } from "../../utils/ErrorFilters/errorFilters";
 
 // confirmation
@@ -20,7 +23,7 @@ import {
   updateOneUserSuccess,
   updateOneUserFailure,
   deleteOneUserSuccess,
-  deleteOneUserFailure
+  deleteOneUserFailure,
 } from "./users.actions";
 
 // modal actions
@@ -33,16 +36,17 @@ const {
   LOAD_ALL_USERS_START,
   CREATE_ONE_USER_START,
   UPDATE_ONE_USER_START,
-  DELETE_ONE_USER_START
+  DELETE_ONE_USER_START,
 } = usersTypes;
 
 export function* loadAllUsers() {
   try {
-    const res = yield axios({
-      method: "GET",
-      url: "/api/v1/users"
-    });
-    const users = res.data.data.data;
+    // const res = yield axios({
+    //   method: "GET",
+    //   url: "/api/v1/users",
+    // });
+    // const users = res.data.data.data;
+    const users = yield call(fetchAllUsers, "GET", "/api/v1/users");
     yield put(loadAllUsersSucess(users));
   } catch (error) {
     const { header, content } = getErrorMessage(error);
@@ -57,7 +61,7 @@ export function* createOneUser({ payload }) {
     userEmail,
     userRole,
     userPassword,
-    userPasswordConfirm
+    userPasswordConfirm,
   } = payload;
   try {
     const res = yield axios({
@@ -68,15 +72,15 @@ export function* createOneUser({ payload }) {
         email: userEmail,
         role: userRole,
         password: userPassword,
-        passwordConfirm: userPasswordConfirm
-      }
+        passwordConfirm: userPasswordConfirm,
+      },
     });
     yield put(createOneUserSuccess());
     if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
-          content: "New user was successfully created."
+          content: "New user was successfully created.",
         })
       );
     }
@@ -98,15 +102,15 @@ export function* updateOneUser({ payload }) {
         name: userName,
         email: userEmail,
         role: userRole,
-        about: userAbout
-      }
+        about: userAbout,
+      },
     });
     yield put(updateOneUserSuccess());
     if (successfulResponse(res)) {
       yield put(
         openModal({
           header: "Success!",
-          content: "User data was successfully updated."
+          content: "User data was successfully updated.",
         })
       );
     }
@@ -127,14 +131,14 @@ export function* deleteOneUser({ payload }) {
     try {
       const res = yield axios({
         method: "DELETE",
-        url: `/api/v1/users/${payload}`
+        url: `/api/v1/users/${payload}`,
       });
       yield put(deleteOneUserSuccess());
       if (successfulResponse(res)) {
         yield put(
           openModal({
             header: "Success!",
-            content: "User was successfully deleted."
+            content: "User was successfully deleted.",
           })
         );
       }
@@ -168,6 +172,6 @@ export function* usersSagas() {
     call(onLoadUsersStart),
     call(onCeateOneUserStart),
     call(onUpdateOneUserStart),
-    call(onDeleteOneUserStart)
+    call(onDeleteOneUserStart),
   ]);
 }
