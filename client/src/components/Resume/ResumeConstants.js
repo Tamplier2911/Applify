@@ -12,7 +12,7 @@ const resumeData = {
       about: {
         aboutHeader: "About me",
         aboutText:
-          "My passion - technologies and self-education, looking forward along-term productive partnership.",
+          "My passion - technologies and self-education, looking forward a long-term productive partnership.",
       },
       details: {
         detailsHeader: "Personal Details",

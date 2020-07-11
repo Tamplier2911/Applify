@@ -35,7 +35,7 @@ exports[`<Resume /> renders children - resumne  1`] = `
         About me
       </styled.h4>
       <styled.div>
-        My passion - technologies and self-education, looking forward along-term productive partnership.
+        My passion - technologies and self-education, looking forward a long-term productive partnership.
       </styled.div>
     </styled.div>
     <styled.div>
