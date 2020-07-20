@@ -2,7 +2,7 @@ import { takeLatest, put, all, call } from "redux-saga/effects";
 import axios from "axios";
 
 // api
-import { fetchAllUsers } from "./users.api";
+// import { fetchAllUsers } from "./users.api";
 
 // error filters
 import {
@@ -41,12 +41,12 @@ const {
 
 export function* loadAllUsers() {
   try {
-    // const res = yield axios({
-    //   method: "GET",
-    //   url: "/api/v1/users",
-    // });
-    // const users = res.data.data.data;
-    const users = yield call(fetchAllUsers, "GET", "/api/v1/users");
+    const res = yield axios({
+      method: "GET",
+      url: "/api/v1/users",
+    });
+    const users = res.data.data.data;
+    // const users = yield call(fetchAllUsers, "GET", "/api/v1/users");
     yield put(loadAllUsersSucess(users));
   } catch (error) {
     const { header, content } = getErrorMessage(error);
