@@ -63,7 +63,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   // creating instance of Email with current user, url and data obj
   const sendEmail = new Email(newUser, url, {});
-  // sending emal
+  // sending email
   await sendEmail.sendWelcome();
 
   // create and send jwt
@@ -147,7 +147,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // Grant access to protected route
   req.user = currentUser;
-  res.locals.user = currentUser;
+  // res.locals.user = currentUser;
   next();
 });
 
