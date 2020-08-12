@@ -2,27 +2,27 @@ const AppError = require("../utils/appError");
 // const colors = require("colors");
 
 // Invalid ID - wwww
-const handleCastErrorDB = err => {
+const handleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value}`;
   return new AppError(message, 400);
 };
 
 // Duplicates
-const handleDuplicateFieldDB = err => {
+const handleDuplicateFieldDB = (err) => {
   const duplicate = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
   const message = `Duplicate field value: ${duplicate}. Please use another value.`;
   return new AppError(message, 400);
 };
 
 // Validations
-const handleValidationErrorDB = err => {
-  const errors = Object.values(err.errors).map(el => el.message);
+const handleValidationErrorDB = (err) => {
+  const errors = Object.values(err.errors).map((el) => el.message);
   const message = `Invalid input data. ${errors.join(". ")}`;
   return new AppError(message, 400);
 };
 
 // JWT Error
-const handleJWTError = err => {
+const handleJWTError = (err) => {
   const message = `${err.message[0].toUpperCase()}${err.message.slice(
     1
   )}, please log in again.`;
@@ -30,7 +30,7 @@ const handleJWTError = err => {
 };
 
 // JWT Exired
-const handleJWTExired = err => {
+const handleJWTExired = (err) => {
   const message = `${err.message.toUpperCase().slice(0, 3)} ${err.message.slice(
     4
   )}, please try to relog.`;
@@ -47,13 +47,13 @@ const sendErrorDev = (err, req, res) => {
       status: err.status,
       error: err,
       message: err.message,
-      stack: err.stack
+      stack: err.stack,
     });
-    // RENDERED WEBSITE
   }
+  // RENDERED WEBSITE
   return res.status(err.statusCode).render("error", {
     title: "Something went wrong!",
-    msg: err.message
+    msg: err.message,
   });
 };
 
@@ -64,7 +64,7 @@ const sendErrorProd = (err, req, res) => {
     if (err.isOperational) {
       return res.status(err.statusCode).json({
         status: err.status,
-        message: err.message
+        message: err.message,
       });
     }
     // Programmatic or other unknown error: don't leak error details
@@ -75,7 +75,7 @@ const sendErrorProd = (err, req, res) => {
     // 2) Send generic message
     return res.status(500).json({
       status: "error",
-      message: "Oops! How unfortunate ಥ_ಥ!"
+      message: "Oops! How unfortunate ಥ_ಥ!",
     });
   }
   // FOR RENDERED WEBSITE
@@ -84,7 +84,7 @@ const sendErrorProd = (err, req, res) => {
   if (err.isOperational) {
     return res.status(err.statusCode).render("error", {
       title: "Something went wrong!",
-      msg: err.message
+      msg: err.message,
     });
   }
   // Programmatic or other unknown error: don't leak error details
@@ -95,7 +95,7 @@ const sendErrorProd = (err, req, res) => {
   // 2) Send generic message
   return res.status(err.statusCode).render("error", {
     title: "Something went wrong!",
-    msg: "Oops! How unfortunate ಥ_ಥ!"
+    msg: "Oops! How unfortunate ಥ_ಥ!",
   });
 };
 

@@ -1,27 +1,27 @@
 // import "./App.scss";
 // import React, {useEffect, lazy, Suspense} from "react";
-import "animate.css/animate.min.css";
-import React, { useEffect, Suspense, lazy } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import 'animate.css/animate.min.css';
+import React, { useEffect, Suspense, lazy } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // redux
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { openModal } from "./redux/modal/modal.actions";
-import { selectIsLogged } from "./redux/auth/auth.selectors";
-import { fetchAuthObjectStart } from "./redux/auth/auth.actions";
-import { selectCurrentTheme } from "./redux/theme/theme.selectors";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { openModal } from './redux/modal/modal.actions';
+import { selectIsLogged } from './redux/auth/auth.selectors';
+import { fetchAuthObjectStart } from './redux/auth/auth.actions';
+import { selectCurrentTheme } from './redux/theme/theme.selectors';
 
 // components
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
-import Sidenav from "./components/Sidenav/Sidenav";
-import Modal from "./components/Modal/Modal";
-import LanguagePannel from "./components/LanguagePanel/LanguagePanel";
+import Sidenav from './components/Sidenav/Sidenav';
+import Modal from './components/Modal/Modal';
+import LanguagePannel from './components/LanguagePanel/LanguagePanel';
 
-import LazzySpinner from "./components/LazzySpinner/LazzySpinner";
-import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import LazzySpinner from './components/LazzySpinner/LazzySpinner';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 // pages
 // import HomePage from "./pages/HomePage/HomePage";
@@ -35,24 +35,24 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 // import PasswordRestorationPage from "./pages/PasswordRestorationPage/PasswordRestorationPage";
 
 // GLOBAL STYLE
-import { GlobalStyle } from "./IndexStyles";
+import { GlobalStyle } from './IndexStyles';
 
 // JS rendering CSS
-import { AppContainer, AppMain } from "./AppStyles";
+import { AppContainer, AppMain } from './AppStyles';
 
 // lazzy loaded pages
-const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
-const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage'));
 const AuthorizationPage = lazy(() =>
-  import("./pages/AuthorizationPage/AuthorizationPage")
+  import('./pages/AuthorizationPage/AuthorizationPage')
 );
-const ResumePage = lazy(() => import("./pages/ResumePage/ResumePage"));
-const PortfolioPage = lazy(() => import("./pages/PortfolioPage/PortfolioPage"));
-const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
-const FeedbackPage = lazy(() => import("./pages/FeedbackPage/FeedbackPage"));
-const BlogPage = lazy(() => import("./pages/BlogPage/BlogPage"));
+// const ResumePage = lazy(() => import("./pages/ResumePage/ResumePage"));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage/PortfolioPage'));
+const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
+const FeedbackPage = lazy(() => import('./pages/FeedbackPage/FeedbackPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage/BlogPage'));
 const PasswordRestorationPage = lazy(() =>
-  import("./pages/PasswordRestorationPage/PasswordRestorationPage")
+  import('./pages/PasswordRestorationPage/PasswordRestorationPage')
 );
 
 const App = ({ openModal, fetchAuthObjectStart, isLogged, theme }) => {
@@ -85,7 +85,7 @@ const App = ({ openModal, fetchAuthObjectStart, isLogged, theme }) => {
                 }
               />
               {/* hide me later */}
-              <Route exact path="/resume" component={ResumePage} />
+              {/* <Route exact path="/resume" component={ResumePage} /> */}
               {/* hide me later */}
               <Route exact path="/portfolio" component={PortfolioPage} />
               <Route exact path="/contacts" component={ContactsPage} />

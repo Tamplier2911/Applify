@@ -1,20 +1,20 @@
 // import "./Sidenav.scss";
-import React, { Fragment } from "react";
-import ReactDOM from "react-dom";
+import React, { Fragment } from 'react';
+import ReactDOM from 'react-dom';
 
 // redux
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { toggleSideNav } from "../../redux/sidenav/sidenav.actions";
-import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
-import { selectSidenavHidden } from "../../redux/sidenav/sidenav.selectors";
-import { logUserOutStart } from "../../redux/auth/auth.actions";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { toggleSideNav } from '../../redux/sidenav/sidenav.actions';
+import { selectCurrentLanguage } from '../../redux/lang/lang.selectors';
+import { selectSidenavHidden } from '../../redux/sidenav/sidenav.selectors';
+import { logUserOutStart } from '../../redux/auth/auth.actions';
 import {
   selectIsLogged,
   selectUserObject,
-} from "../../redux/auth/auth.selectors";
-import { setThemeDark, setThemeLight } from "../../redux/theme/theme.actions";
-import { selectCurrentTheme } from "../../redux/theme/theme.selectors";
+} from '../../redux/auth/auth.selectors';
+import { setThemeDark, setThemeLight } from '../../redux/theme/theme.actions';
+import { selectCurrentTheme } from '../../redux/theme/theme.selectors';
 
 // JS Rendering CSS
 import {
@@ -36,16 +36,16 @@ import {
   SidenavLi,
   AnimateWrapper,
   SidenavLink,
-} from "./SidenavStyles";
+} from './SidenavStyles';
 
 // transforms
-import getImageRelativePath from "../../utils/PathTransformations/getImageRelativePath.js";
+import getImageRelativePath from '../../utils/PathTransformations/getImageRelativePath.js';
 
 // component constants
-import sidenavData from "./SidenavConstants";
+import sidenavData from './SidenavConstants';
 
 // component motions
-import sidenavMotions from "./SidenavMotions.js";
+import sidenavMotions from './SidenavMotions.js';
 
 const BuffedLink = ({ children, direction, delay }) => {
   const variants = sidenavMotions(delay);
@@ -92,7 +92,7 @@ const Sidenav = ({
     sidenavBlog,
   } = currentData;
 
-  let image = getImageRelativePath(photo ? photo : "");
+  let image = getImageRelativePath(photo ? photo : '');
 
   const markdown = (
     <SidenavContainer
@@ -108,10 +108,10 @@ const Sidenav = ({
           <SidenavTheme
             data-test="sidenav-theme-btn"
             onClick={() =>
-              theme === "light" ? setThemeDark() : setThemeLight()
+              theme === 'light' ? setThemeDark() : setThemeLight()
             }
           >
-            {theme === "light" ? <SidenavMoonSVG /> : <SidenavSunSVG />}
+            {theme === 'light' ? <SidenavMoonSVG /> : <SidenavSunSVG />}
           </SidenavTheme>
           <SidenavHero>
             {isLogged ? (
@@ -153,13 +153,13 @@ const Sidenav = ({
                 </BuffedLink>
               </SidenavLi>
               {/* hide me later */}
-              <SidenavLi>
+              {/* <SidenavLi>
                 <BuffedLink direction="right" delay={0.2}>
                   <SidenavLink to="/resume" onClick={toggleSideNav}>
                     {sidenavResume}
                   </SidenavLink>
                 </BuffedLink>
-              </SidenavLi>
+              </SidenavLi> */}
               {/* hide me later */}
               <SidenavLi>
                 <BuffedLink direction="left" delay={0.4}>
@@ -198,7 +198,7 @@ const Sidenav = ({
 
   return test
     ? markdown
-    : ReactDOM.createPortal(markdown, document.querySelector("#sidenav"));
+    : ReactDOM.createPortal(markdown, document.querySelector('#sidenav'));
 };
 
 const mapStateToProps = createStructuredSelector({
