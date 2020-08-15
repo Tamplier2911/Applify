@@ -85,7 +85,7 @@ const Sidenav = ({
     sidenavLogOut,
     sidenavLogIn,
     sidenavHome,
-    sidenavResume,
+    // sidenavResume,
     sidenavPortfolio,
     sidenavContacts,
     sidenavFeedback,

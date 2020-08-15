@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { ReactComponent as MenuSVG } from "../../assets/svg/menu.svg";
-import { ReactComponent as LogoSVG } from "../../assets/svg/logo-min.svg";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { ReactComponent as MenuSVG } from '../../assets/svg/menu.svg';
+import { ReactComponent as LogoSVG } from '../../assets/svg/logo-min.svg';
 
 const getBoxShadow = (props) => {
   const { shadow } = props;
@@ -12,7 +12,7 @@ const getBoxShadow = (props) => {
   }
 };
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
   ${getBoxShadow}
   display: grid;
   /* grid-template-columns: subgrid; */
