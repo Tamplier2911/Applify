@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import ScrollAnimation from "react-animate-on-scroll";
+import styled, { css } from 'styled-components';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 /*
 
@@ -27,7 +27,7 @@ const projectsAnimation = css`
 
 const getThemeColorForLink = (props) => {
   const { theme } = props;
-  if (theme === "dark") {
+  if (theme === 'dark') {
     return `color: var(--cl-font);`;
   } else {
     return `color: var(--cl-white);`;
@@ -63,20 +63,27 @@ const getTitleColors = (props) => {
 };
 
 const getCircleColorZero = (props) => {
-  return props.id === 0 ? "var(--cl-circle-0)" : "var(--cl-circle-transit)";
+  return props.projId === 0 ? 'var(--cl-circle-0)' : 'var(--cl-circle-transit)';
 };
+
 const getCircleColorOne = (props) => {
-  return props.id === 1 ? "var(--cl-circle-1)" : "var(--cl-circle-transit)";
+  return props.projId === 1 ? 'var(--cl-circle-1)' : 'var(--cl-circle-transit)';
 };
+
 const getCircleColorTwo = (props) => {
-  return props.id === 2 ? "var(--cl-cirlce-2)" : "var(--cl-circle-transit)";
+  return props.projId === 2 ? 'var(--cl-circle-2)' : 'var(--cl-circle-transit)';
 };
+
 const getCircleColorThree = (props) => {
-  return props.id === 3 ? "var(--cl-circle-3)" : "var(--cl-circle-transit)";
+  return props.projId === 3 ? 'var(--cl-circle-3)' : 'var(--cl-circle-transit)';
 };
 
 const getCircleColorFour = (props) => {
-  return props.id === 4 ? "var(--cl-circle-4)" : "var(--cl-circle-transit)";
+  return props.projId === 4 ? 'var(--cl-circle-4)' : 'var(--cl-circle-transit)';
+};
+
+const getCircleColorFive = (props) => {
+  return props.projId === 5 ? 'var(--cl-circle-5)' : 'var(--cl-circle-transit)';
 };
 
 export const ProjectsContainer = styled(ScrollAnimation)`
@@ -97,7 +104,7 @@ export const ProjecstTitle = styled.h2`
 export const ProjectsCircles = styled.div`
   grid-area: 2 / 6 / 3 / 9;
   display: grid;
-  grid-template-columns: repeat(5, min-content);
+  grid-template-columns: repeat(6, min-content);
   justify-content: end;
   grid-column-gap: 3rem;
   padding: 2rem;
@@ -165,6 +172,17 @@ export const ProjectsCirclFour = styled.div`
   @media (hover: none) {
     &:hover {
       background-color: ${getCircleColorFour};
+    }
+  }
+`;
+
+export const ProjectsCirclFive = styled.div`
+  ${circlesSharedStyle}
+  background-color: ${getCircleColorFive};
+
+  @media (hover: none) {
+    &:hover {
+      background-color: ${getCircleColorFive};
     }
   }
 `;

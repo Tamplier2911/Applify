@@ -1,25 +1,26 @@
 // import "./Projects.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // redux
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import {
   setCurrentProjectFirst,
   setCurrentProjectSecond,
   setCurrentProjectThird,
   setCurrentProjectFourth,
   setCurrentProjectFifth,
+  setCurrentProjectSixth,
   setCurrentProjectNext,
   getCurrentProject,
   // setCurrentProjectPrev
-} from "../../redux/projects/projects.actions";
-import { selectCurrentProject } from "../../redux/projects/projects.selectors";
-import { selectCurrentLanguage } from "../../redux/lang/lang.selectors";
-import { selectCurrentTheme } from "../../redux/theme/theme.selectors";
+} from '../../redux/projects/projects.actions';
+import { selectCurrentProject } from '../../redux/projects/projects.selectors';
+import { selectCurrentLanguage } from '../../redux/lang/lang.selectors';
+import { selectCurrentTheme } from '../../redux/theme/theme.selectors';
 
 // projects constants
-import projectsHeaders from "./ProjectsConstants";
+import projectsHeaders from './ProjectsConstants';
 
 // JS Rendering CSS
 import {
@@ -31,6 +32,7 @@ import {
   ProjectsCircleTwo,
   ProjectsCircleThree,
   ProjectsCirclFour,
+  ProjectsCirclFive,
   ProjectsImageWrapper,
   ProjectsImage,
   ProjectsBox,
@@ -42,7 +44,7 @@ import {
   ProjectsContentBottom,
   ProjectsContentDate,
   ProjectsContentLink,
-} from "./ProjectsStyles";
+} from './ProjectsStyles';
 
 const Projects = ({
   currentProject: { id, name, image, color, description, techStack, date, url },
@@ -51,6 +53,7 @@ const Projects = ({
   setCurrentProjectThird,
   setCurrentProjectFourth,
   setCurrentProjectFifth,
+  setCurrentProjectSixth,
   setCurrentProjectNext,
   getCurrentProject,
   lang,
@@ -68,6 +71,7 @@ const Projects = ({
     if (id === 2) setCurrentProjectThird(lang);
     if (id === 3) setCurrentProjectFourth(lang);
     if (id === 4) setCurrentProjectFifth(lang);
+    if (id === 5) setCurrentProjectSixth(lang);
 
     // animation state
     setIsLoaded(false);
@@ -87,6 +91,7 @@ const Projects = ({
     setCurrentProjectThird,
     setCurrentProjectFourth,
     setCurrentProjectFifth,
+    setCurrentProjectSixth,
     getCurrentProject,
     lang,
     id,
@@ -100,17 +105,17 @@ const Projects = ({
   } = projectsHeaders[lang];
 
   date = date
-    ? date.toLocaleString("en-us", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
+    ? date.toLocaleString('en-us', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
       })
     : undefined;
 
   return (
     <ProjectsContainer
       data-test="projects"
-      animateIn={"bounceInRight"}
+      animateIn={'bounceInRight'}
       animateOnce={true}
     >
       <ProjecstTitle>{projectsHeader}</ProjecstTitle>
@@ -118,27 +123,32 @@ const Projects = ({
         <ProjectsCircleZero
           data-test="projects-set-first"
           onClick={() => setCurrentProjectFirst(lang)}
-          id={id}
+          projId={id}
         />
         <ProjectsCircleOne
           data-test="projects-set-second"
           onClick={() => setCurrentProjectSecond(lang)}
-          id={id}
+          projId={id}
         />
         <ProjectsCircleTwo
           data-test="projects-set-third"
           onClick={() => setCurrentProjectThird(lang)}
-          id={id}
+          projId={id}
         />
         <ProjectsCircleThree
           data-test="projects-set-fourth"
           onClick={() => setCurrentProjectFourth(lang)}
-          id={id}
+          projId={id}
         />
         <ProjectsCirclFour
           data-test="projects-set-fifth"
           onClick={() => setCurrentProjectFifth(lang)}
-          id={id}
+          projId={id}
+        />
+        <ProjectsCirclFive
+          data-test="projects-set-sixth"
+          onClick={() => setCurrentProjectSixth(lang)}
+          projId={id}
         />
       </ProjectsCircles>
       <ProjectsImageWrapper load={isLoaded}>
@@ -190,6 +200,7 @@ export default connect(mapStateToProps, {
   setCurrentProjectThird,
   setCurrentProjectFourth,
   setCurrentProjectFifth,
+  setCurrentProjectSixth,
   setCurrentProjectNext,
   getCurrentProject,
   // setCurrentProjectPrev

@@ -1,7 +1,7 @@
-import projectsTypes from "./projects.types";
+import projectsTypes from './projects.types';
 
 // projects constants
-import projectsData from "./projectsConstants";
+import projectsData from './projectsConstants';
 
 const {
   SET_CURRENT_PROJECT_FIRST,
@@ -9,6 +9,7 @@ const {
   SET_CURRENT_PROJECT_THIRD,
   SET_CURRENT_PROJECT_FOURTH,
   SET_CURRENT_PROJECT_FIFTH,
+  SET_CURRENT_PROJECT_SIXTH,
   SET_CURRENT_PROJECT_NEXT,
   SET_CURRENT_PROJECT_PREV,
   GET_CURRENT_PROJECT,
@@ -30,8 +31,10 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, currentProject: state.allProjects[action.payload][3] };
     case SET_CURRENT_PROJECT_FIFTH:
       return { ...state, currentProject: state.allProjects[action.payload][4] };
+    case SET_CURRENT_PROJECT_SIXTH:
+      return { ...state, currentProject: state.allProjects[action.payload][5] };
     case SET_CURRENT_PROJECT_NEXT:
-      if (state.currentProject.id === 4) {
+      if (state.currentProject.id === 5) {
         return {
           ...state,
           currentProject: state.allProjects[action.payload][0],
@@ -46,7 +49,7 @@ const projectsReducer = (state = INITIAL_STATE, action) => {
       if (state.currentProject.id === 0) {
         return {
           ...state,
-          currentProject: state.allProjects[action.payload][4],
+          currentProject: state.allProjects[action.payload][5],
         };
       }
       return {

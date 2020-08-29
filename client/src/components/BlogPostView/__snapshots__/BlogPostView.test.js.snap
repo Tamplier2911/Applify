@@ -18,7 +18,7 @@ exports[`<BlogPostView /> matches snapshot 1`] = `
       <styled.h4 />
       <styled.div>
         <styled.div>
-          June 11, 2020
+          August 29, 2020
         </styled.div>
         <styled.div
           onClick={[Function]}

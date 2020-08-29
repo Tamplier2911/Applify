@@ -1,5 +1,5 @@
 // reducer
-import projectsReducer from "./projects.reducer";
+import projectsReducer from './projects.reducer';
 
 // actions
 import {
@@ -11,15 +11,16 @@ import {
   setCurrentProjectThird,
   setCurrentProjectFourth,
   setCurrentProjectFifth,
+  setCurrentProjectSixth,
   setCurrentProjectNext,
   setCurrentProjectPrev,
-} from "./projects.actions";
+} from './projects.actions';
 
 // types
-import projectsTypes from "./projects.types";
+import projectsTypes from './projects.types';
 
 // constants
-import projectsData from "./projectsConstants";
+import projectsData from './projectsConstants';
 
 const {
   GET_CURRENT_PROJECT,
@@ -36,126 +37,132 @@ const {
 
 const defaultState = projectsData;
 
-describe("projects.actions", () => {
-  it("returns an action object with expected type", () => {
+describe('projects.actions', () => {
+  it('returns an action object with expected type', () => {
     const actionObject = getCurrentProject();
     expect(actionObject.type).toEqual(GET_CURRENT_PROJECT);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentImageNext();
     expect(actionObject.type).toEqual(SET_CURRENT_IMAGE_NEXT);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentImagePrev();
     expect(actionObject.type).toEqual(SET_CURRENT_IMAGE_PREV);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentProjectFirst();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_FIRST);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentProjectSecond();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_SECOND);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentProjectThird();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_THIRD);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentProjectFourth();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_FOURTH);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentProjectFifth();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_FIFTH);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentProjectNext();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_NEXT);
   });
 
-  it("returns an action object with expected type", () => {
+  it('returns an action object with expected type', () => {
     const actionObject = setCurrentProjectPrev();
     expect(actionObject.type).toEqual(SET_CURRENT_PROJECT_PREV);
   });
 });
 
-describe("projects.reducer", () => {
+describe('projects.reducer', () => {
   let newState;
   beforeEach(() => {
     newState = defaultState;
   });
 
-  it("returns default state if no action type matched", () => {
+  it('returns default state if no action type matched', () => {
     const state = projectsReducer(defaultState, {});
     expect(state).toEqual(defaultState);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, getCurrentProject("eng"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, getCurrentProject('eng'));
     newState.currentProject = defaultState.allProjects.eng[0];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentImageNext("phone"));
-    newState.currentImage = defaultState.allImages["phone"][1];
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentImageNext('phone'));
+    newState.currentImage = defaultState.allImages['phone'][1];
     expect(state.currentImage).toEqual(newState.currentImage);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentImagePrev("desktop"));
-    newState.currentImage = defaultState.allImages["desktop"][0];
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentImagePrev('desktop'));
+    newState.currentImage = defaultState.allImages['desktop'][0];
     expect(state.currentImage).toEqual(newState.currentImage);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentProjectNext("eng"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectNext('eng'));
     newState.currentProject = defaultState.allProjects.eng[1];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentProjectPrev("rus"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectPrev('rus'));
     newState.currentProject = defaultState.allProjects.rus[0];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentProjectFirst("ukr"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectFirst('ukr'));
     newState.currentProject = defaultState.allProjects.ukr[0];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentProjectSecond("eng"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectSecond('eng'));
     newState.currentProject = defaultState.allProjects.eng[1];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentProjectThird("rus"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectThird('rus'));
     newState.currentProject = defaultState.allProjects.rus[2];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentProjectFourth("ukr"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectFourth('ukr'));
     newState.currentProject = defaultState.allProjects.ukr[3];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 
-  it("performs changes to state depends on action type", () => {
-    const state = projectsReducer(defaultState, setCurrentProjectFifth("eng"));
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectFifth('eng'));
     newState.currentProject = defaultState.allProjects.eng[4];
+    expect(state.currentProject).toEqual(newState.currentProject);
+  });
+
+  it('performs changes to state depends on action type', () => {
+    const state = projectsReducer(defaultState, setCurrentProjectSixth('rus'));
+    newState.currentProject = defaultState.allProjects.rus[5];
     expect(state.currentProject).toEqual(newState.currentProject);
   });
 });

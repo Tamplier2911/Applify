@@ -1,4 +1,4 @@
-import projectsTypes from "./projects.types";
+import projectsTypes from './projects.types';
 
 const {
   SET_CURRENT_PROJECT_FIRST,
@@ -6,6 +6,7 @@ const {
   SET_CURRENT_PROJECT_THIRD,
   SET_CURRENT_PROJECT_FOURTH,
   SET_CURRENT_PROJECT_FIFTH,
+  SET_CURRENT_PROJECT_SIXTH,
   SET_CURRENT_PROJECT_NEXT,
   SET_CURRENT_PROJECT_PREV,
   GET_CURRENT_PROJECT,
@@ -35,6 +36,11 @@ export const setCurrentProjectFourth = (lang) => ({
 
 export const setCurrentProjectFifth = (lang) => ({
   type: SET_CURRENT_PROJECT_FIFTH,
+  payload: lang,
+});
+
+export const setCurrentProjectSixth = (lang) => ({
+  type: SET_CURRENT_PROJECT_SIXTH,
   payload: lang,
 });
 

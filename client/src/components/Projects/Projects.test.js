@@ -1,27 +1,27 @@
-import React from "react";
-import toJson from "enzyme-to-json";
+import React from 'react';
+import toJson from 'enzyme-to-json';
 
 // projects data
-import projectsData from "../../redux/projects/projectsConstants";
+import projectsData from '../../redux/projects/projectsConstants';
 
 // component
-import Projects from "./Projects.jsx";
+import Projects from './Projects.jsx';
 
 // utils
 import {
   setShallowC,
   findByTestAttr,
   storeFactory,
-} from "../../tests/testUtils";
+} from '../../tests/testUtils';
 
-describe("<Projects />", () => {
+describe('<Projects />', () => {
   const initialStore = {
     theme: {
-      currentTheme: "light",
+      currentTheme: 'light',
     },
     lang: {
       languagePanelHidden: true,
-      currentLanguage: "eng",
+      currentLanguage: 'eng',
     },
     projects: projectsData,
   };
@@ -32,32 +32,32 @@ describe("<Projects />", () => {
     wrapper = setShallowC(<Projects store={store} />);
   });
 
-  it("renders without an error", () => {
-    const projects = findByTestAttr(wrapper, "projects");
+  it('renders without an error', () => {
+    const projects = findByTestAttr(wrapper, 'projects');
     expect(projects).toHaveLength(1);
   });
 
-  it("renders children - projects box", () => {
-    const projectsBox = findByTestAttr(wrapper, "projects-box");
+  it('renders children - projects box', () => {
+    const projectsBox = findByTestAttr(wrapper, 'projects-box');
     expect(projectsBox).toHaveLength(1);
   });
 
-  it("switches to first project on setCurrentProjectFirst", () => {
-    const projectsSetFirst = findByTestAttr(wrapper, "projects-set-first");
+  it('switches to first project on setCurrentProjectFirst', () => {
+    const projectsSetFirst = findByTestAttr(wrapper, 'projects-set-first');
     expect(projectsSetFirst).toHaveLength(1);
 
     const oldState = store.getState();
     expect(oldState.projects.currentProject).toEqual({});
 
-    projectsSetFirst.simulate("click");
+    projectsSetFirst.simulate('click');
     const newState = store.getState();
     expect(newState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[0]
     );
   });
 
-  it("switches to second project on setCurrentProjectSecond", () => {
-    const projectsSetSecond = findByTestAttr(wrapper, "projects-set-second");
+  it('switches to second project on setCurrentProjectSecond', () => {
+    const projectsSetSecond = findByTestAttr(wrapper, 'projects-set-second');
     expect(projectsSetSecond).toHaveLength(1);
 
     const oldState = store.getState();
@@ -65,15 +65,15 @@ describe("<Projects />", () => {
       projectsData.allProjects.eng[0]
     );
 
-    projectsSetSecond.simulate("click");
+    projectsSetSecond.simulate('click');
     const newState = store.getState();
     expect(newState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[1]
     );
   });
 
-  it("switches to third project on setCurrentProjectThird", () => {
-    const projectsSetThird = findByTestAttr(wrapper, "projects-set-third");
+  it('switches to third project on setCurrentProjectThird', () => {
+    const projectsSetThird = findByTestAttr(wrapper, 'projects-set-third');
     expect(projectsSetThird).toHaveLength(1);
 
     const oldState = store.getState();
@@ -81,15 +81,15 @@ describe("<Projects />", () => {
       projectsData.allProjects.eng[1]
     );
 
-    projectsSetThird.simulate("click");
+    projectsSetThird.simulate('click');
     const newState = store.getState();
     expect(newState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[2]
     );
   });
 
-  it("switches to fourth project on setCurrentProjectFourth", () => {
-    const projectsSetFourth = findByTestAttr(wrapper, "projects-set-fourth");
+  it('switches to fourth project on setCurrentProjectFourth', () => {
+    const projectsSetFourth = findByTestAttr(wrapper, 'projects-set-fourth');
     expect(projectsSetFourth).toHaveLength(1);
 
     const oldState = store.getState();
@@ -97,15 +97,15 @@ describe("<Projects />", () => {
       projectsData.allProjects.eng[2]
     );
 
-    projectsSetFourth.simulate("click");
+    projectsSetFourth.simulate('click');
     const newState = store.getState();
     expect(newState.projects.currentProject).toEqual(
       projectsData.allProjects.eng[3]
     );
   });
 
-  it("switches to fifth project on setCurrentProjectFifth", () => {
-    const projectsSetFifth = findByTestAttr(wrapper, "projects-set-fifth");
+  it('switches to fifth project on setCurrentProjectFifth', () => {
+    const projectsSetFifth = findByTestAttr(wrapper, 'projects-set-fifth');
     expect(projectsSetFifth).toHaveLength(1);
 
     const oldState = store.getState();
@@ -113,7 +113,7 @@ describe("<Projects />", () => {
       projectsData.allProjects.eng[3]
     );
 
-    projectsSetFifth.simulate("click");
+    projectsSetFifth.simulate('click');
 
     const newState = store.getState();
     expect(newState.projects.currentProject).toEqual(
@@ -121,10 +121,27 @@ describe("<Projects />", () => {
     );
   });
 
-  it("matches snapshot", () => {
+  it('switches to sixth project on setCurrentProjectSixth', () => {
+    const projectsSetSixth = findByTestAttr(wrapper, 'projects-set-sixth');
+    expect(projectsSetSixth).toHaveLength(1);
+
+    const oldState = store.getState();
+    expect(oldState.projects.currentProject).toEqual(
+      projectsData.allProjects.eng[4]
+    );
+
+    projectsSetSixth.simulate('click');
+
+    const newState = store.getState();
+    expect(newState.projects.currentProject).toEqual(
+      projectsData.allProjects.eng[5]
+    );
+  });
+
+  it('matches snapshot', () => {
     // renders projectsData.allProjects.eng[3]
     // current project after last simulation
-    const projects = findByTestAttr(wrapper, "projects");
+    const projects = findByTestAttr(wrapper, 'projects');
     expect(toJson(projects)).toMatchSnapshot();
   });
 });
